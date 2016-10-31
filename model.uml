@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_mgQ7UIquEealCsBNxugxSg" name="Tracker" URI="" viewpoint="">
+  <packageImport xmi:id="_QAVQ8Iq2EealCsBNxugxSg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_fVRskIq0EealCsBNxugxSg" name="Backend">
+    <ownedAttribute xmi:id="_AUpbMIq2EealCsBNxugxSg" name="manschaften" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AUqCQIq2EealCsBNxugxSg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AUqCQYq2EealCsBNxugxSg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_BnnCdIq3EealCsBNxugxSg" name="teilnehmerPositonen" visibility="private" type="_gzt18IqzEealCsBNxugxSg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BnnCdYq3EealCsBNxugxSg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BnnCdoq3EealCsBNxugxSg" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_qJtitIq4EealCsBNxugxSg" name="mannschaften" visibility="private" type="_sKEVEIqxEealCsBNxugxSg" association="_qJtisIq4EealCsBNxugxSg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qJtitYq4EealCsBNxugxSg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qJtitoq4EealCsBNxugxSg" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_DP_WcJBSEeasAbuPRvskFg" name="property4" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DP_9gJBSEeasAbuPRvskFg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DP_9gZBSEeasAbuPRvskFg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_uqj4oJBTEeasAbuPRvskFg" name="race" visibility="public" type="_nSEdkJBSEeasAbuPRvskFg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uqkfsJBTEeasAbuPRvskFg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uqkfsZBTEeasAbuPRvskFg" value="1"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_4oti4Iq4EealCsBNxugxSg" name="getMitglieder">
+      <ownedParameter xmi:id="_7y8DMIq4EealCsBNxugxSg" name="manschaft" type="_sKEVEIqxEealCsBNxugxSg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_Dzc9AIq5EealCsBNxugxSg" name="addTeilnehmerPositionen">
+      <ownedParameter xmi:id="_JJNgwIq5EealCsBNxugxSg" name="teilnehmerPosition" type="_gzt18IqzEealCsBNxugxSg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_EU2Z4Iq5EealCsBNxugxSg" name="addWegepunktPositon">
+      <ownedParameter xmi:id="_TlQo4Iq5EealCsBNxugxSg" name="wegepunktPosition"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_x36jgIrDEeakO4MY7le2gA" name="getMannschaften" visibility="public">
+      <ownedParameter xmi:id="_-M-bsIrDEeakO4MY7le2gA" name="mannschaften" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#EEList"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_TXJ6cIrEEeakO4MY7le2gA" name="getTeilnehmerPositionen">
+      <ownedComment xmi:id="_Z0wlIIrGEeakO4MY7le2gA" annotatedElement="_TXJ6cIrEEeakO4MY7le2gA">
+        <body>Liefert die Positionen der Teilnehmer zum letzten, dem Backend bekannten Zeitpunkt, der vor der angegeben Zeit liegt.</body>
+      </ownedComment>
+      <ownedParameter xmi:id="_Z33OYIrEEeakO4MY7le2gA" name="teilnehmerPositionen" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_m0wioIrEEeakO4MY7le2gA" name="zeit">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#DateTime"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_9Cp2QIrGEeakO4MY7le2gA" name="anzahlPositionen">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_e7N-QIrqEea2NrsXACfPZA" name="saveGPSPosition" visibility="private">
+      <ownedParameter xmi:id="_jvrLwIrqEea2NrsXACfPZA" name="pos" type="_ouEdYIqzEealCsBNxugxSg"/>
+      <ownedParameter xmi:id="_rMj0EIrqEea2NrsXACfPZA" name="key">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_93VRIIrqEea2NrsXACfPZA" name="zeit">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#DateTime"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_GcphIIrrEea2NrsXACfPZA" name="getMannschaft" visibility="private">
+      <ownedParameter xmi:id="_JII3AIrrEea2NrsXACfPZA" name="key">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_SHy5oIrrEea2NrsXACfPZA" name="addDatabaseEntry" visibility="private"/>
+    <ownedOperation xmi:id="_beb44IrrEea2NrsXACfPZA" name="updateDatabaseENtry" visibility="private"/>
+    <ownedOperation xmi:id="_f7CAAIrrEea2NrsXACfPZA" name="deleteDatabaseEntry" visibility="private"/>
+    <ownedOperation xmi:id="_nGb2wIrrEea2NrsXACfPZA" name="init" visibility="private"/>
+    <ownedOperation xmi:id="_qs5nIIrrEea2NrsXACfPZA" name="getPost" visibility="private">
+      <ownedComment xmi:id="_vOcfsIrrEea2NrsXACfPZA" annotatedElement="_qs5nIIrrEea2NrsXACfPZA">
+        <body>wartet auf Post anfragen von GPS, je nachdem wie in JaxRS genutzt</body>
+      </ownedComment>
+    </ownedOperation>
+    <ownedOperation xmi:id="_NBF8wJBVEeasAbuPRvskFg" name="setRaceNumber">
+      <ownedParameter xmi:id="_PELO0JBVEeasAbuPRvskFg" name="raceNumber">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#PositiveInteger"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_gR9-UIq0EealCsBNxugxSg" name="Funktion">
+    <ownedLiteral xmi:id="_jtqpIIq0EealCsBNxugxSg" name="Kapitän">
+      <specification xmi:type="uml:LiteralInteger" xmi:id="_jtrQMIq0EealCsBNxugxSg"/>
+    </ownedLiteral>
+    <ownedLiteral xmi:id="_p2-wwIq0EealCsBNxugxSg" name="Großschoter">
+      <specification xmi:type="uml:LiteralInteger" xmi:id="_p2_X0Iq0EealCsBNxugxSg" value="1"/>
+    </ownedLiteral>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_qJtisIq4EealCsBNxugxSg" name="A_backends_mannschaften" memberEnd="_qJtisYq4EealCsBNxugxSg _qJtitIq4EealCsBNxugxSg">
+    <ownedEnd xmi:id="_qJtisYq4EealCsBNxugxSg" name="backends" type="_fVRskIq0EealCsBNxugxSg" association="_qJtisIq4EealCsBNxugxSg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qJtisoq4EealCsBNxugxSg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qJtis4q4EealCsBNxugxSg" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_psz_wIrCEeakO4MY7le2gA" name="Frontend">
+    <ownedAttribute xmi:id="_V_GplIrDEeakO4MY7le2gA" name="backend" type="_fVRskIq0EealCsBNxugxSg" association="_V_GpkIrDEeakO4MY7le2gA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_V_GplYrDEeakO4MY7le2gA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_V_GplorDEeakO4MY7le2gA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_KV2h8IrYEeaUzOBFMzFCBw" name="teams">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_J2emcJBLEeasAbuPRvskFg" name="Operation_1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_V_GpkIrDEeakO4MY7le2gA" name="The_frontends_backend" visibility="package" memberEnd="_V_GpkYrDEeakO4MY7le2gA _V_GplIrDEeakO4MY7le2gA">
+    <ownedEnd xmi:id="_V_GpkYrDEeakO4MY7le2gA" name="frontends" type="_psz_wIrCEeakO4MY7le2gA" association="_V_GpkIrDEeakO4MY7le2gA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_V_GpkorDEeakO4MY7le2gA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_V_Gpk4rDEeakO4MY7le2gA" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Kwjz4IrLEeakO4MY7le2gA" name="A_mannschafts_teilnehmerPositons" visibility="public" memberEnd="_Kwjz4YrLEeakO4MY7le2gA _Kwjz5IrLEeakO4MY7le2gA"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_7FZ3sIrMEeakO4MY7le2gA" name="Mannschaftsmitglieder" memberEnd="_7FZ3sYrMEeakO4MY7le2gA _7FZ3tIrMEeakO4MY7le2gA">
+    <ownedEnd xmi:id="_7FZ3sYrMEeakO4MY7le2gA" name="mannschaft" type="_sKEVEIqxEealCsBNxugxSg" association="_7FZ3sIrMEeakO4MY7le2gA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7FZ3sorMEeakO4MY7le2gA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7FZ3s4rMEeakO4MY7le2gA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_cNkm4IrXEeaUzOBFMzFCBw" name="FrontendPositionUndZeit">
+    <ownedAttribute xmi:id="_xsVZEIrYEeaUzOBFMzFCBw" name="memberPositions" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_9vV38IrYEeaUzOBFMzFCBw" name="waypoint" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9vWfAIrYEeaUzOBFMzFCBw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9vXGEIrYEeaUzOBFMzFCBw" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_fRAGMIrYEeaUzOBFMzFCBw" name="Display"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_fWd_kIrZEeaUzOBFMzFCBw" name="TeamTransmitter">
+    <ownedAttribute xmi:id="_w8CIFIrZEeaUzOBFMzFCBw" name="teamPositons" visibility="private" type="_gzt18IqzEealCsBNxugxSg" association="_w8CIEIrZEeaUzOBFMzFCBw">
+      <ownedComment xmi:id="_mvatoIraEeaUzOBFMzFCBw" annotatedElement="_w8CIFIrZEeaUzOBFMzFCBw">
+        <body>Positions which are not sent to the backend, yet.</body>
+      </ownedComment>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_w8CIFYrZEeaUzOBFMzFCBw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_w8CIForZEeaUzOBFMzFCBw" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_G61FMIrbEeaUzOBFMzFCBw" name="authKey" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G61sQIrbEeaUzOBFMzFCBw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_G61sQYrbEeaUzOBFMzFCBw" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Rd7QhIrbEeaUzOBFMzFCBw" name="backend" visibility="private" type="_fVRskIq0EealCsBNxugxSg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Rd7QhYrbEeaUzOBFMzFCBw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Rd7QhorbEeaUzOBFMzFCBw" value="*"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_YQuaAIrbEeaUzOBFMzFCBw" name="init"/>
+    <ownedOperation xmi:id="_d6PAMIrbEeaUzOBFMzFCBw" name="sendPositions"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_w8CIEIrZEeaUzOBFMzFCBw" memberEnd="_w8CIEYrZEeaUzOBFMzFCBw _w8CIFIrZEeaUzOBFMzFCBw" navigableOwnedEnd="_w8CIEYrZEeaUzOBFMzFCBw">
+    <name xsi:nil="true"/>
+    <ownedEnd xmi:id="_w8CIEYrZEeaUzOBFMzFCBw" name="memberTransmitters" type="_fWd_kIrZEeaUzOBFMzFCBw" association="_w8CIEIrZEeaUzOBFMzFCBw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_w8CIEorZEeaUzOBFMzFCBw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_w8CIE4rZEeaUzOBFMzFCBw" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_QguL8IrcEeaUzOBFMzFCBw" name="WaypointTransmitter">
+    <ownedAttribute xmi:id="_X7q6lIrcEeaUzOBFMzFCBw" name="backends" visibility="private" type="_fVRskIq0EealCsBNxugxSg" association="_X7q6kIrcEeaUzOBFMzFCBw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X7q6lYrcEeaUzOBFMzFCBw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X7q6lorcEeaUzOBFMzFCBw" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_4V_Q0IrcEeaUzOBFMzFCBw" name="authKey" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4V_34IrcEeaUzOBFMzFCBw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4V_34YrcEeaUzOBFMzFCBw" value="1"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_g5z6QIrcEeaUzOBFMzFCBw" name="sendWaypoint"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_X7q6kIrcEeaUzOBFMzFCBw" memberEnd="_X7q6kYrcEeaUzOBFMzFCBw _X7q6lIrcEeaUzOBFMzFCBw" navigableOwnedEnd="_X7q6kYrcEeaUzOBFMzFCBw">
+    <name xsi:nil="true"/>
+    <ownedEnd xmi:id="_X7q6kYrcEeaUzOBFMzFCBw" name="waypointTransmitters" type="_QguL8IrcEeaUzOBFMzFCBw" association="_X7q6kIrcEeaUzOBFMzFCBw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X7q6korcEeaUzOBFMzFCBw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X7q6k4rcEeaUzOBFMzFCBw" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_tI2A8IryEeavpJYaaPAPpw" name="A_members_clubs" memberEnd="_tI2A8YryEeavpJYaaPAPpw _tI2A9IryEeavpJYaaPAPpw" navigableOwnedEnd="_tI2A8YryEeavpJYaaPAPpw">
+    <ownedEnd xmi:id="_tI2A8YryEeavpJYaaPAPpw" name="members" type="_f-WbkIqwEealCsBNxugxSg" association="_tI2A8IryEeavpJYaaPAPpw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tI2A8oryEeavpJYaaPAPpw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tI2A84ryEeavpJYaaPAPpw" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_78QR0JBLEeasAbuPRvskFg" name="TimeLine">
+    <ownedAttribute xmi:id="_DczSIJBMEeasAbuPRvskFg" name="startTime" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#DateTime"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_r9LwkJBMEeasAbuPRvskFg" name="endTime" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#DateTime"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_jq1qcJBNEeasAbuPRvskFg" name="currentTime" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#DateTime"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_jYb2ZJBOEeasAbuPRvskFg" name="waypointPositions" visibility="private" type="_ouEdYIqzEealCsBNxugxSg" aggregation="shared" association="_jYb2YJBOEeasAbuPRvskFg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jYb2ZZBOEeasAbuPRvskFg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jYb2ZpBOEeasAbuPRvskFg" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_jYb2YJBOEeasAbuPRvskFg" memberEnd="_jYb2YZBOEeasAbuPRvskFg _jYb2ZJBOEeasAbuPRvskFg">
+    <name xsi:nil="true"/>
+    <ownedEnd xmi:id="_jYb2YZBOEeasAbuPRvskFg" name="timeLines" type="_78QR0JBLEeasAbuPRvskFg" association="_jYb2YJBOEeasAbuPRvskFg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jYb2YpBOEeasAbuPRvskFg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jYb2Y5BOEeasAbuPRvskFg" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ZNlhEJBQEeasAbuPRvskFg" name="AdminFrontend">
+    <ownedComment xmi:id="_6RbVcJBQEeasAbuPRvskFg" annotatedElement="_ZNlhEJBQEeasAbuPRvskFg">
+      <body>Dient der Einstellung der Rennparameter im Backend.</body>
+    </ownedComment>
+    <ownedAttribute xmi:id="_b5kiAJBXEeasAbuPRvskFg" name="backend" visibility="private" type="_fVRskIq0EealCsBNxugxSg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b5lJEJBXEeasAbuPRvskFg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b5lJEZBXEeasAbuPRvskFg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_eWyD8JBaEeasAbuPRvskFg" name="authKey">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_x_DEBJBaEeasAbuPRvskFg" name="race" type="_nSEdkJBSEeasAbuPRvskFg" association="_x_DEAJBaEeasAbuPRvskFg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_x_DEBZBaEeasAbuPRvskFg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_x_DEBpBaEeasAbuPRvskFg" value="1"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_Ciou8JBXEeasAbuPRvskFg" name="sendStartTime"/>
+    <ownedOperation xmi:id="_kR_lgJBXEeasAbuPRvskFg" name="sendEndTime"/>
+    <ownedOperation xmi:id="_-ZZhUJBZEeasAbuPRvskFg" name="setRaceNumber"/>
+    <ownedOperation xmi:id="_Yfq_0J9yEeaNjY-wBXaTjA" name="Operation_4"/>
+    <ownedOperation xmi:id="_YzbpUJ9yEeaNjY-wBXaTjA" name="Operation_5"/>
+    <ownedOperation xmi:id="_ZhQ_sJ9yEeaNjY-wBXaTjA" name="Operation_6"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_x_DEAJBaEeasAbuPRvskFg" memberEnd="_x_DEAZBaEeasAbuPRvskFg _x_DEBJBaEeasAbuPRvskFg">
+    <name xsi:nil="true"/>
+    <ownedEnd xmi:id="_x_DEAZBaEeasAbuPRvskFg" name="adminFrontends" type="_ZNlhEJBQEeasAbuPRvskFg" association="_x_DEAJBaEeasAbuPRvskFg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_x_DEApBaEeasAbuPRvskFg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_x_DEA5BaEeasAbuPRvskFg" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_UfhX8JErEeaRH54_o4WLtA" name="Interface1"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_f38owJErEeaRH54_o4WLtA" name="org.rennspur.model">
+    <packagedElement xmi:type="uml:Class" xmi:id="_nSEdkJBSEeasAbuPRvskFg" name="Race">
+      <ownedAttribute xmi:id="_s-Vc0JBSEeasAbuPRvskFg" name="startTime" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#DateTime"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_7yiQ8JBSEeasAbuPRvskFg" name="endTime" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#DateTime"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_ChZVoJBTEeasAbuPRvskFg" name="nummer" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_QR0_oJBTEeasAbuPRvskFg" name="targetTime" visibility="private">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#TimeInterval"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_aIOdAJBTEeasAbuPRvskFg" name="windSpeed" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#PositiveInteger"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_8W5_4JEvEeaRH54_o4WLtA" name="handicap" visibility="private">
+        <ownedComment xmi:id="_3v8mYJEwEeaRH54_o4WLtA" annotatedElement="_8W5_4JEvEeaRH54_o4WLtA">
+          <body>TRUE - wenn es </body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_SAvtsIqvEealCsBNxugxSg" name="Club">
+      <ownedAttribute xmi:id="_PooU4IqxEealCsBNxugxSg" name="name" visibility="package">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Poo78IqxEealCsBNxugxSg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Poo78YqxEealCsBNxugxSg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_TsXQEIqxEealCsBNxugxSg" name="kürzel" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TsX3IIqxEealCsBNxugxSg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TsYeMIqxEealCsBNxugxSg" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_f-WbkIqwEealCsBNxugxSg" name="Member">
+      <ownedAttribute xmi:id="_WtISYIqxEealCsBNxugxSg" name="surname" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WtI5cIqxEealCsBNxugxSg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WtI5cYqxEealCsBNxugxSg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Y01lwIqxEealCsBNxugxSg" name="name" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Y02M0IqxEealCsBNxugxSg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Y02M0YqxEealCsBNxugxSg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_dMI9MIqxEealCsBNxugxSg" name="age" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dMJkQIqxEealCsBNxugxSg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dMJkQYqxEealCsBNxugxSg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_tI2A9IryEeavpJYaaPAPpw" name="club" visibility="private" type="_SAvtsIqvEealCsBNxugxSg" association="_tI2A8IryEeavpJYaaPAPpw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tI2A9YryEeavpJYaaPAPpw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tI2A9oryEeavpJYaaPAPpw" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_sKEVEIqxEealCsBNxugxSg" name="Team">
+      <ownedComment xmi:id="_xp5DkJEvEeaRH54_o4WLtA" annotatedElement="_sKEVEIqxEealCsBNxugxSg">
+        <body>Ein Team ist eine Gruppe von Rennteilnehmern mit gleicher Bewertung in einem Rennen. Wenn es sich um eine Veranstaltung mit  Handycap handelt (wie etwa ein Yardstick Segelrennen), so wird die Mannschaft mit dem gleichen Handycap bewertet.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_xYJjgIqxEealCsBNxugxSg" name="nummer" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xYJjgYqxEealCsBNxugxSg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xYJjgoqxEealCsBNxugxSg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_GLsD4IqyEealCsBNxugxSg" name="land" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GLsq8IqyEealCsBNxugxSg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GLsq8YqyEealCsBNxugxSg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_KhqloIqyEealCsBNxugxSg" name="name" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KhqloYqyEealCsBNxugxSg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KhqlooqyEealCsBNxugxSg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_P11N8IqyEealCsBNxugxSg" name="kapitän" visibility="private" type="_f-WbkIqwEealCsBNxugxSg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_P11N8YqyEealCsBNxugxSg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_P11N8oqyEealCsBNxugxSg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_7FZ3tIrMEeakO4MY7le2gA" name="mitglieder" visibility="private" type="_f-WbkIqwEealCsBNxugxSg" aggregation="shared" association="_7FZ3sIrMEeakO4MY7le2gA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7FZ3tYrMEeakO4MY7le2gA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7FZ3torMEeakO4MY7le2gA" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Kwjz5IrLEeakO4MY7le2gA" name="positonen" visibility="private" type="_gzt18IqzEealCsBNxugxSg" aggregation="shared" association="_Kwjz4IrLEeakO4MY7le2gA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Kwjz5YrLEeakO4MY7le2gA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Kwjz5orLEeakO4MY7le2gA" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_0MIW0JEvEeaRH54_o4WLtA" name="handicapFactor" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0MI94JEvEeaRH54_o4WLtA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0MI94ZEvEeaRH54_o4WLtA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_cn-KkZ91EeaNjY-wBXaTjA" name="club" type="_SAvtsIqvEealCsBNxugxSg" association="_cn-KkJ91EeaNjY-wBXaTjA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cn-Kkp91EeaNjY-wBXaTjA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cn-Kk591EeaNjY-wBXaTjA" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ouEdYIqzEealCsBNxugxSg" name="Position">
+      <ownedAttribute xmi:id="_rAPUUIqzEealCsBNxugxSg" name="latitude" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rAP7YIqzEealCsBNxugxSg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rAP7YYqzEealCsBNxugxSg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_vR-2UIqzEealCsBNxugxSg" name="longitude" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vR-2UYqzEealCsBNxugxSg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_vR-2UoqzEealCsBNxugxSg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_523KUIqzEealCsBNxugxSg" name="zeit" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#DateTime"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_523KUYqzEealCsBNxugxSg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_523xYIqzEealCsBNxugxSg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2ppQUIrHEeakO4MY7le2gA" name="id" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2ppQUYrHEeakO4MY7le2gA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2pp3YIrHEeakO4MY7le2gA" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_gzt18IqzEealCsBNxugxSg" name="TeamPositon">
+      <ownedComment xmi:id="_vPsHcJEuEeaRH54_o4WLtA" annotatedElement="_gzt18IqzEealCsBNxugxSg">
+        <body>Eine Teamposition ist eine (GPS) Position, die ein Team während eines Rennens zu einem bestimmten Zeitpunkt einnimmt.</body>
+      </ownedComment>
+      <generalization xmi:id="_UohCYIrJEeakO4MY7le2gA" general="_ouEdYIqzEealCsBNxugxSg"/>
+      <ownedAttribute xmi:id="_Kwjz4YrLEeakO4MY7le2gA" name="mannschaft" visibility="private" type="_sKEVEIqxEealCsBNxugxSg" association="_Kwjz4IrLEeakO4MY7le2gA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Kwjz4orLEeakO4MY7le2gA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Kwjz44rLEeakO4MY7le2gA" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_cn-KkJ91EeaNjY-wBXaTjA" memberEnd="_cn-KkZ91EeaNjY-wBXaTjA _cn-KlJ91EeaNjY-wBXaTjA" navigableOwnedEnd="_cn-KlJ91EeaNjY-wBXaTjA">
+      <name xsi:nil="true"/>
+      <ownedEnd xmi:id="_cn-KlJ91EeaNjY-wBXaTjA" name="teams" type="_sKEVEIqxEealCsBNxugxSg" association="_cn-KkJ91EeaNjY-wBXaTjA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cn-KlZ91EeaNjY-wBXaTjA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cn-Klp91EeaNjY-wBXaTjA" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

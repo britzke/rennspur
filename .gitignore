@@ -1,0 +1,6 @@
+/target/
+/derby.log
+/rennspur/
+/rennspur-db/
+/.project
+/.classpath
