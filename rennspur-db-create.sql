@@ -1,4 +1,5 @@
-set schema app;
+create schema rennspur;
+set schema rennspur;
 create table clubs (
 	id int not null primary key,
 	name varchar(256) not null,
