@@ -436,6 +436,14 @@
                     <styles xmi:type="notation:FontStyle" xmi:id="_iGH1UZ91EeaNjY-wBXaTjA" fontName=".SF NS Text" fontHeight="8"/>
                     <layoutConstraint xmi:type="notation:Location" xmi:id="_iGH1Up91EeaNjY-wBXaTjA"/>
                   </children>
+                  <children xmi:type="notation:Node" xmi:id="_KVM6EKZVEeaOjaB9k49gbw" type="3010" element="_KSBqQKZVEeaOjaB9k49gbw">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_KVM6EaZVEeaOjaB9k49gbw" fontName="Ubuntu" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_KVM6EqZVEeaOjaB9k49gbw"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_UzmyoKZVEeaOjaB9k49gbw" type="3010" element="_UxLwwKZVEeaOjaB9k49gbw">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_UzmyoaZVEeaOjaB9k49gbw" fontName="Ubuntu" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_UzmyoqZVEeaOjaB9k49gbw"/>
+                  </children>
                   <styles xmi:type="notation:SortingStyle" xmi:id="_FstOcpEsEeaRH54_o4WLtA"/>
                   <styles xmi:type="notation:FilteringStyle" xmi:id="_FstOc5EsEeaRH54_o4WLtA"/>
                 </children>
@@ -1360,10 +1368,26 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
           </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_iFYOcJ91EeaNjY-wBXaTjA" name="clubs : Club [*]{unique}">
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_iFYOcJ91EeaNjY-wBXaTjA" name="club : Club [*]{unique}">
             <target xmi:type="uml:Property" href="model.uml#_cn-KkZ91EeaNjY-wBXaTjA"/>
             <semanticElements xmi:type="uml:Property" href="model.uml#_cn-KkZ91EeaNjY-wBXaTjA"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_iFY1gJ91EeaNjY-wBXaTjA" labelAlignment="LEFT">
+              <description xmi:type="style:SquareDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
+          </ownedElements>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_KSBqQKZVEeaOjaB9k49gbw" name="email : String [1]">
+            <target xmi:type="uml:Property" href="model.uml#_KRgs4KZVEeaOjaB9k49gbw"/>
+            <semanticElements xmi:type="uml:Property" href="model.uml#_KRgs4KZVEeaOjaB9k49gbw"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_KSCRUKZVEeaOjaB9k49gbw" labelAlignment="LEFT">
+              <description xmi:type="style:SquareDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
+          </ownedElements>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_UxLwwKZVEeaOjaB9k49gbw" name="hash : String [1]">
+            <target xmi:type="uml:Property" href="model.uml#_UwracKZVEeaOjaB9k49gbw"/>
+            <semanticElements xmi:type="uml:Property" href="model.uml#_UwracKZVEeaOjaB9k49gbw"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_UxMX0KZVEeaOjaB9k49gbw" labelAlignment="LEFT">
               <description xmi:type="style:SquareDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']/@style"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
@@ -1527,7 +1551,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_cpwTQJ91EeaNjY-wBXaTjA" name="A_clubs_teams" sourceNode="_tv4B4JErEeaRH54_o4WLtA" targetNode="_FaNJMJEsEeaRH54_o4WLtA" beginLabel="clubs[*]" endLabel="teams[*]">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_cpwTQJ91EeaNjY-wBXaTjA" name="A_club_teams" sourceNode="_tv4B4JErEeaRH54_o4WLtA" targetNode="_FaNJMJEsEeaRH54_o4WLtA" beginLabel="club[*]" endLabel="teams[*]">
         <target xmi:type="uml:Association" href="model.uml#_cn-KkJ91EeaNjY-wBXaTjA"/>
         <semanticElements xmi:type="uml:Association" href="model.uml#_cn-KkJ91EeaNjY-wBXaTjA"/>
         <semanticElements xmi:type="uml:Property" href="model.uml#_cn-KlJ91EeaNjY-wBXaTjA"/>

@@ -30,6 +30,10 @@ public class Team implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="CLUBS_ID")
 	private Club club;
+	
+	private String email;
+	
+	private String hash;
 
 	//bi-directional many-to-one association to TeamMember
 	@OneToMany(mappedBy="team")
@@ -80,6 +84,34 @@ public class Team implements Serializable {
 
 	public void setClub(Club club) {
 		this.club = club;
+	}
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/**
+	 * @return the hash
+	 */
+	public String getHash() {
+		return hash;
+	}
+
+	/**
+	 * @param hash the hash to set
+	 */
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
 
 	public List<TeamMember> getTeamMembers() {

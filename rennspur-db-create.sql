@@ -28,6 +28,8 @@ create table teams (
 	land varchar(3) not null,
 	handycap_faktor int,
 	clubs_id int not null,
+	email varchar(256) not null,
+	hash char(64) not null,
 	constraint fk_teams_clubs foreign key (clubs_id) references clubs
 );
 

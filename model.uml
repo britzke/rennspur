@@ -332,6 +332,16 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cn-Kkp91EeaNjY-wBXaTjA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cn-Kk591EeaNjY-wBXaTjA" value="*"/>
       </ownedAttribute>
+      <ownedAttribute xmi:id="_KRgs4KZVEeaOjaB9k49gbw" name="email" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KRk-UKZVEeaOjaB9k49gbw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KRk-UaZVEeaOjaB9k49gbw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_UwracKZVEeaOjaB9k49gbw" name="hash" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UwsBgKZVEeaOjaB9k49gbw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UwsokKZVEeaOjaB9k49gbw" value="1"/>
+      </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_ouEdYIqzEealCsBNxugxSg" name="Position">
       <ownedAttribute xmi:id="_rAPUUIqzEealCsBNxugxSg" name="latitude" visibility="private">
