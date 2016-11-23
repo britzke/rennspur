@@ -1,7 +1,7 @@
 /*
  *  This file is part of Renspur.
  *  
- *  Copyright (C) 2016  leon.s
+ *  Copyright (C) 2016  leon.schlender
  *  
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -25,238 +25,86 @@ import java.util.List;
 
 import de.rennspur.model.*;
 
-
 /**
- * Empfängt, sendet und vearbeitet Daten Sendet an das Frontend Empfängt vom GPS
- * Veareitet in eine Datenbank
+ * Recieves, sends and processes data from the Database
  * 
  * @author e4_schlender
  */
 public class Backend {
-	/**
-	 * a hash.
-	 */
-	public HashSet<WaypointTransmitter> waypointTransmitters = new HashSet<WaypointTransmitter>();
 
 	/**
-	 * Description of the property property4.
+	 * A list for all Teams.
 	 */
-	public String property4 = "";
+	private HashSet<Team> Teams = new HashSet<Team>();
 
-	/**
-	 * Description of the property manschaften.
-	 */
-	private String manschaften = "";
-
-	/**
-	 * Description of the property teilnehmerPositionen.
-	 */
-	private HashSet<TeamPosition> teilnehmerPositonen = new HashSet<TeamPosition>();
-
-	/**
-	 * Description of the property mannschaften.
-	 */
-	private HashSet<Team> mannschaften = new HashSet<Team>();
-
-	/**
-	 * Description of the property race.
-	 */
-	public Race race = null;
-
-	/**
-	 * The constructor.
-	 */
 	public Backend() {
-		
+
 		super();
 	}
 
 	/**
-	 * Description of the method getMitglieder.
+	 * Returns all Members of a team.
 	 * 
-	 * @param manschaft
+	 * @param team
+	 *            ID of the team
 	 */
-	public void getMitglieder(Team manschaft) {
-		
+	public void getMembers(Team team) {
+
 	}
 
 	/**
-	 * Description of the method addTeilnehmerPositionen.
+	 * Returns a specific amount of the latest Positions of a team
 	 * 
-	 * @param teilnehmerPosition
-	 */
-	public void addTeilnehmerPositionen(TeamPosition teilnehmerPosition) {
-	
-	}
-
-	/**
-	 * Description of the method addWegepunktPositon.
-	 * 
-	 * @param wegepunktPosition
-	 */
-	public void addWegepunktPositon(Object wegepunktPosition) {
-		
-	}
-
-	
-	/*
-	 * Liefert die Positionen der Teilnehmer zum letzten, dem Backend bekannten
-	 * Zeitpunkt, der vor der angegeben Zeit liegt.
-	 * 
-	 * @param zeit
-	 * @param anzahlPositionen
+	 * @param teamid
+	 *            ID of the wanted team
+	 * @param positionsCount
 	 * @return
 	 */
-	
-	public List<TeamPosition> getTeilnehmerPositionen(Date zeit, Integer anzahlPositionen) {
-		// Start of user code for method getTeilnehmerPositionen
-		List getTeilnehmerPositionen = null;
+
+	public List<TeamPosition> getLatestMemberPositions(int teamid, Integer positionsCount) {
+		List<TeamPosition> getTeilnehmerPositionen = null;
 		return getTeilnehmerPositionen;
-		// End of user code
 	}
 
 	/**
-	 * Description of the method saveGPSPosition.
+	 * Saves a new Position into the Database
 	 * 
 	 * @param pos
+	 *            Position
 	 * @param key
-	 * @param zeit
+	 *            Token of the Team
+	 * @param date
+	 *            Date of the Position
 	 */
-	private void saveGPSPosition(Position pos, String key, Date zeit) {
-		
+
+	private void saveGPSPosition(Position pos, String key, Date date) {
+
 	}
 
 	/**
-	 * Description of the method getMannschaft.
-	 * 
-	 * @param key
-	 */
-	private void getMannschaft(String key) {
-		
-	}
-
-	/**
-	 * Description of the method addDatabaseEntry.
-	 */
-	private void addDatabaseEntry() {
-		
-	}
-
-	/**
-	 * Description of the method updateDatabaseENtry.
-	 */
-	private void updateDatabaseENtry() {
-		
-	}
-
-	/**
-	 * Description of the method deleteDatabaseEntry.
-	 */
-	private void deleteDatabaseEntry() {
-	
-	}
-
-	/**
-	 * Description of the method init.
-	 */
-	private void init() {
-		
-	}
-
-	/**
-	 * wartet auf Post anfragen von GPS, je nachdem wie in JaxRS genutzt
+	 * Waits for new POST Requests from the GPS
 	 */
 	public void getPost() {
-		
+
 	}
 
 	/**
 	 * Description of the method setRaceNumber.
 	 * 
 	 * @param raceNumber
+	 *            the chosen race number
 	 */
 	public void setRaceNumber(int raceNumber) {
-		
-	}
-	/**
-	 * Returns waypointTransmitters.
-	 * 
-	 * @return waypointTransmitters
-	 */
-	public HashSet<WaypointTransmitter> getWaypointTransmitters() {
-		return this.waypointTransmitters;
+
 	}
 
 	/**
-	 * Returns property4.
+	 * Returns Teams.
 	 * 
-	 * @return property4
+	 * @return Teams
 	 */
-	public String getProperty4() {
-		return this.property4;
-	}
-
-	/**
-	 * Sets a value to attribute property4.
-	 * 
-	 * @param newProperty4
-	 */
-	public void setProperty4(String newProperty4) {
-		this.property4 = newProperty4;
-	}
-
-	/**
-	 * Returns manschaften.
-	 * 
-	 * @return manschaften
-	 */
-	public String getManschaften() {
-		return this.manschaften;
-	}
-
-	/**
-	 * Sets a value to attribute manschaften.
-	 * 
-	 * @param newManschaften
-	 */
-	public void setManschaften(String newManschaften) {
-		this.manschaften = newManschaften;
-	}
-
-	/**
-	 * Returns teilnehmerPositonen.
-	 * 
-	 * @return teilnehmerPositonen
-	 */
-	public HashSet<TeamPosition> getTeilnehmerPositonen() {
-		return this.teilnehmerPositonen;
-	}
-
-	/**
-	 * Returns mannschaften.
-	 * 
-	 * @return mannschaften
-	 */
-	public HashSet<Team> getMannschaften() {
-		return this.mannschaften;
-	}
-
-	/**
-	 * Returns race.
-	 * 
-	 * @return race
-	 */
-	public Race getRace() {
-		return this.race;
-	}
-
-	/**
-	 * Sets a value to attribute race.
-	 * 
-	 * @param newRace
-	 */
-	public void setRace(Race newRace) {
-		this.race = newRace;
+	public HashSet<Team> getTeams() {
+		return this.Teams;
 	}
 
 }
