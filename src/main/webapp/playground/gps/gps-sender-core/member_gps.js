@@ -1,43 +1,104 @@
-/**
- * author Konstantin Baltruschat
- *
+/*
+ *  This file is part of Rennspur.
+ *  
+ *  Copyright (C) 2016  burghard.britzke, bubi@charmides.in-berlin.de
+ *  
+ *  Rennspur is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  Rennspur is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Call saveLocation with random Parameter values to test the function while running
-function clickTest() {
-	saveLocation(13, 12);
+/**
+ * Clear all saved Locations from the localstorage
+ * only called after successfully sending them to the server
+ */
+function clearLocalStorage(){
+	/** clear status array in json */
 }
 
-// Initialize the JSON into the local storage once
-// TODO: make sure it doesnt get called if localstorage isn't empy
+
+
+/**
+ * Sends all positions from the localstorage to the server
+ */
+function sendLocations(){
+	/** Use POST to send the positions as json string to server */
+}
+
+/**
+ * Prepare the localStorage to save positions and the key
+ */
+function prepareLocalStorage(){
+	//TODO: Insert key from HTML into json string
+	var json = '{"key":"","status" : []}';
+	localStorage.setItem("rennspur_gps_locations", json);
+}
+
+/**
+ * Initialize data on localstorage.
+ * Should be called once before calling other functions
+ */
 function init() {
-	var json = JSON
-			.parse('{"key" : "","status" : [{"long" : 1,"lat" : 2,	"time" : 3},{"long" : 4,"lat" : 5,"time" : 6}]}');
-	var sjson = JSON.stringify(json)
-	localStorage.setItem("gps_locations", sjson);
+	/** check if localStorage is empty */
+	var storageItem = localStorage.getItem("rennspur_gps_locations");
+	if (storageItem == null) {
+		/** nothing found, creating new */
+		prepareLocalStorage();
+	} else {
+		/** if existing check if saved Data is the correct JSON-Format */
+		var storageItemJson = JSON.parse(storageItem);
+		if(storageItemJson.status == null || storageItemJson.key == null){
+			/** status array or auth key in JSON object is missing, creating new */
+			prepareLocalStorage();
+		}
+		//TODO: check if the found data is old, maybe from another event?
+		/** everything is fine, keeping old localStorage */
+		
+	}
 }
 
-// Save location into localstorage
-// param lo: longitude of the location
-// param la: latitude of the location
+/**
+ * Saves the location into the localstorage with the current system-time
+ * 
+ * @param {number} lo [lo = 51.3256] - longitude of the location
+ * @param {number} la [la = 40.9034] - latitude of the location
+ */
 function saveLocation(lo, la) {
+	/** Get the time of the function call */
 	var time = Date.now();
-	var json = JSON.parse(JSON.stringify({
+
+	/** Save positions and time as json */
+	var positionJson = JSON.parse(JSON.stringify({
 		"long" : lo,
 		"lat" : la,
 		"time" : time
 	}));
 
-	var slocs = localStorage.getItem("gps_locations");
+	/** Get existing array of positions from the localstorage */
+	var locationJsonString = localStorage.getItem("rennspur_gps_locations");
 
-	var locs = JSON.parse(slocs);
-	locs.status.push(json);
-	console.log(locs.status);
+	/** Turn them into a JSON object */
+	var locactionJson = JSON.parse(locationJsonString);
 
-	localStorage.setItem("gps_locations", JSON.stringify(locs));
+	/** Add the saved position into the array */
+	locactionJson.status.push(positionJson);
+
+	/** Save the JSON object back into the localstorage as string */
+	localStorage.setItem("rennspur_gps_locations", JSON.stringify(locactionJson));
 }
 
-// to test functions
+/**
+ * To test , call init at start and then save a test-location
+ */
 window.onload = function() {
 	init();
 	saveLocation(10, 20);
