@@ -86,6 +86,7 @@ window.onload = function() {
 
       var myImage = document.createElement('img');
       var myFigure = document.createElement('figure');
+      var myCaption = document.createElement('caption');
       var imageURL = window.URL.createObjectURL(arrayResponse[0]);
 
       myImage.src = imageURL;
@@ -94,6 +95,7 @@ window.onload = function() {
 
       imgSection.appendChild(myFigure);
       myFigure.appendChild(myImage);
+      myFigure.appendChild(myCaption);
 
     }, function(Error) {
       console.log(Error);
