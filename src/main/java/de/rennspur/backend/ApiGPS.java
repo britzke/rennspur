@@ -16,7 +16,6 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package de.rennspur.backend;
 
 import javax.ws.rs.Consumes;
@@ -42,7 +41,6 @@ public class ApiGPS {
 	 * 
 	 * @return ok String with the message of success.
 	 */
-
 	@POST
 	@Consumes({ MediaType.TEXT_PLAIN })
 	@Produces(MediaType.APPLICATION_JSON)
