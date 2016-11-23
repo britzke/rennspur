@@ -16,14 +16,13 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 var map;
 var layer_mapnik;
 var layer_tah;
 var layer_seamark;
 var marker;
 
-/* 
+/*
  * Position and zoomlevel of the map
  */
 var lon = 13.34148;
@@ -34,9 +33,14 @@ var linkTextSkipperGuide = "Beschreibung auf SkipperGuide";
 var linkTextWeatherHarbour = "Meteogramm";
 var language = 'de';
 
-/*
+/**
  * Sets the start frame.
- */			
+ * 
+ * @param lon
+ * @param lat
+ * @param zoom
+ * @returns
+ */
 function jumpTo(lon, lat, zoom) {
 	var x = Lon2Merc(lon);
 	var y = Lat2Merc(lat);
@@ -44,15 +48,21 @@ function jumpTo(lon, lat, zoom) {
 	return false;
 }
 
-/*
+/**
  * Longitude
+ * 
+ * @param lon
+ * @returns
  */
 function Lon2Merc(lon) {
 	return 20037508.34 * lon / 180;
 }
 
-/*
+/**
  * Latitude
+ * 
+ * @param lat
+ * @returns
  */
 function Lat2Merc(lat) {
 	var PI = 3.14159265358979323846;
@@ -60,8 +70,11 @@ function Lat2Merc(lat) {
 	return 20037508.34 * lat / 180;
 }
 
-/*
+/**
  * Loads the map and sets the properties of the map in the window
+ * 
+ * @param bounds
+ * @returns
  */
 function getTileURL(bounds) {
 	var res = this.map.getResolution();
@@ -82,12 +95,12 @@ function getTileURL(bounds) {
 	}
 }
 
-/*
- * draws the map 
+/**
+ * Draws the map.
+ * 
+ * @returns nothing
  */
 function drawmap() {
-
-
 	map = new OpenLayers.Map('map', {
 		projection: new OpenLayers.Projection("EPSG:900913"),
 		displayProjection: new OpenLayers.Projection("EPSG:4326"),
@@ -106,24 +119,21 @@ function drawmap() {
 					numZoomLevels: 18,
 					maxResolution: 156543,
 					units: 'meters'
-				});
+		});
 
-				/*
-				 * Add Layers to map
-				 * Mapnik	
-				 * seamark			
-				 */
-				layer_mapnik = new OpenLayers.Layer.OSM.Mapnik("Mapnik");
-				layer_seamark = new OpenLayers.Layer.TMS("Seezeichen", "http://tiles.openseamap.org/seamark/", { numZoomLevels: 18, type: 'png', getURL: getTileURL, isBaseLayer: false, displayOutsideMaxExtent: true});
-				
-				map.addLayers([layer_mapnik, layer_seamark]);
-				jumpTo(lon, lat, zoom);
-				
-			}
+		// Add Layers to map Mapnik seamark
+		layer_mapnik = new OpenLayers.Layer.OSM.Mapnik("Mapnik");
+		layer_seamark = new OpenLayers.Layer.TMS("Seezeichen", "http://tiles.openseamap.org/seamark/", { numZoomLevels: 18, type: 'png', getURL: getTileURL, isBaseLayer: false, displayOutsideMaxExtent: true});
+		
+		map.addLayers([layer_mapnik, layer_seamark]);
+		jumpTo(lon, lat, zoom);
+}
 
-			/*
-			 * Map event listener moved
-			 */ 
-			function mapEventMove(event) {
-
-			}
+/**
+ * Map event listener moved
+ * 
+ * @param event
+ * @returns
+ */
+function mapEventMove(event) {
+}
