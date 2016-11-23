@@ -19,10 +19,19 @@
 
 package de.rennspur.backend;
 
-@Path("/backend")
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
+/**
+ * ApiGPS objects are the service endpoints to handle the incomming GPS-Data
+ * from the GPS-Clients.
+ * 
+ * @author ruben maurer, burghard.britzke
+ */
+@Path("/backend")
 public class ApiGPS {
 
 	/**
@@ -36,20 +45,15 @@ public class ApiGPS {
 
 	@POST
 	@Consumes({ MediaType.TEXT_PLAIN })
-	// @Produces({ MediaType.TEXT_PLAIN })
-	@Path("/backend")
+	@Produces(MediaType.APPLICATION_JSON)
 	public String getGPSDataInJSON(String jsonString) {
 
-		/**
-		 * 	Convert JSON-String to Java JSONObject.
-		 */
-		JSONObject jsonObj = new JSONObject(jsonString);
+		// 	Convert JSON-String to Java JSONObject.
+//		JsonObject jsonObj = new JsonObject(jsonString);
 
-		/**
-		 * Extract data from the Java JSONObject.
-		 */
-		String key = jsonObj.get("key");
-		ArrayList<TeamPosition> newPos = jsonObj.get("status");
+		// Extract data from the Java JSONObject.
+//		String key = jsonObj.get("key");
+//		ArrayList<TeamPosition> newPos = jsonObj.get("status");
 
 		return "ok";
 	}
