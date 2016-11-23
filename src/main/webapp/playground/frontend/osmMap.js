@@ -26,9 +26,9 @@ var marker;
 /* 
  * Position and zoomlevel of the map
  */
-var lon = 12.0915;
-var lat = 54.1878;
-var zoom = 15;
+var lon = 13.34148;
+var lat = 52.49603;
+var zoom = 18;
 				
 var linkTextSkipperGuide = "Beschreibung auf SkipperGuide";
 var linkTextWeatherHarbour = "Meteogramm";
@@ -60,35 +60,6 @@ function Lat2Merc(lat) {
 	return 20037508.34 * lat / 180;
 }
 
-/*
- * Adds a maker
- */
-function addMarker(layer, lon, lat, popupContentHTML) {
-	var ll = new OpenLayers.LonLat(Lon2Merc(lon), Lat2Merc(lat));
-	var feature = new OpenLayers.Feature(layer, ll);
-	feature.closeBox = true;
-	feature.popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {minSize: new OpenLayers.Size(260, 100) } );
-	feature.data.popupContentHTML = popupContentHTML;
-	feature.data.overflow = "hidden";
-
-	marker = new OpenLayers.Marker(ll);
-	marker.feature = feature;
-
-	var markerClick = function(evt) {
-		if (this.popup == null) {
-			this.popup = this.createPopup(this.closeBox);
-			map.addPopup(this.popup);
-			this.popup.show();
-		} else {
-			this.popup.toggle();
-		}
-			OpenLayers.Event.stop(evt);
-	};
-	marker.events.register("mousedown", feature, markerClick);
-
-	layer.addMarker(marker);
-	map.addPopup(feature.createPopup(feature.closeBox));
-}
 /*
  * Loads the map and sets the properties of the map in the window
  */
@@ -137,24 +108,22 @@ function drawmap() {
 					units: 'meters'
 				});
 
-				// Add Layers to
-				// map-------------------------------------------------------------------------------------------------------
-				// Mapnik
+				/*
+				 * Add Layers to map
+				 * Mapnik	
+				 * seamark			
+				 */
 				layer_mapnik = new OpenLayers.Layer.OSM.Mapnik("Mapnik");
-				// Seamark
 				layer_seamark = new OpenLayers.Layer.TMS("Seezeichen", "http://tiles.openseamap.org/seamark/", { numZoomLevels: 18, type: 'png', getURL: getTileURL, isBaseLayer: false, displayOutsideMaxExtent: true});
 				
 				map.addLayers([layer_mapnik, layer_seamark]);
 				jumpTo(lon, lat, zoom);
-
-				// Update harbour layer
-				refreshHarbours();
+				
 			}
 
 			/*
 			 * Map event listener moved
 			 */ 
 			function mapEventMove(event) {
-				// Update harbour layer
-				refreshHarbours();
+
 			}
