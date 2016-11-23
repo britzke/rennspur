@@ -23,6 +23,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import de.rennspur.model.*;
 
 /**
@@ -35,7 +39,8 @@ public class Backend {
 	/**
 	 * A list for all Teams.
 	 */
-	private HashSet<Team> Teams = new HashSet<Team>();
+	private HashSet<Team> Teams = new HashSet<Team>(); 
+	private static EntityManagerFactory factory;
 
 	public Backend() {
 
@@ -48,8 +53,20 @@ public class Backend {
 	 * @param team
 	 *            ID of the team
 	 */
-	public void getMembers(Team team) {
+	public TeamMember getMembers(Team team) {
+		factory = Persistence.createEntityManagerFactory("MEMBERS");
+        EntityManager em = factory.createEntityManager();
+       
+        /*
+        Query q = em.createQuery("select * from");
+        List<Todo> todoList = q.getResultList();
+        for (Todo todo : todoList) {
+                System.out.println(todo);
+        }
+        System.out.println("Size: " + todoList.size());
 
+      */
+        return null;
 	}
 
 	/**
@@ -77,7 +94,8 @@ public class Backend {
 	 *            Date of the Position
 	 */
 
-	private void saveGPSPosition(Position pos, String key, Date date) {
+	private void saveGPSPosition(TeamPosition pos, String key, Date date) 
+	{
 
 	}
 
@@ -85,7 +103,7 @@ public class Backend {
 	 * Waits for new POST Requests from the GPS
 	 */
 	public void getPost() {
-
+		
 	}
 
 	/**
