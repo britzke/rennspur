@@ -1,7 +1,7 @@
 /*
  *  This file is part of Renspur.
  *  
- *  Copyright (C) 2016  burghard.britzke, bubi@charmides.in-berlin.de
+ *  Copyright (C) 2016  maurer.ruben, maurerruben97@gmail.com
  *  
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -26,37 +26,31 @@ package de.rennspur.backend;
 public class ApiGPS {
 
 	/**
-	 * Receives the Post from the GPS-component.
-	 * @return c String with content of JSON.
+	 * Handles the Post from the GPS-component.
+	 * 
+	 * @param jsonString
+	 *            The received JSON-obeject as a String.
+	 * 
+	 * @return ok String with the message of success.
 	 */
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("{id}")
-	public String getJSON(@PathParam("id") int id) {
-		string c = "" + id;
-		return c;
-	}
 
-	/**
-	 * Parses the received JSON File into single arguments which are then uploaded
-	 * to the Database.
-	 * @param json The JSON to parse.
-	 */
-	public void parseJson(MediaType.APPLICATION_JSON json) {
-		JSONParser parser = new JSONParser();
+	@POST
+	@Consumes({ MediaType.TEXT_PLAIN })
+	// @Produces({ MediaType.TEXT_PLAIN })
+	@Path("/backend")
+	public String getGPSDataInJSON(String jsonString) {
 
-		try {
+		/**
+		 * 	Convert JSON-String to Java JSONObject.
+		 */
+		JSONObject jsonObj = new JSONObject(jsonString);
 
-			Object obj = parser.parse(new FileReader("c:\\test.json"));
+		/**
+		 * Extract data from the Java JSONObject.
+		 */
+		String key = jsonObj.get("key");
+		ArrayList<TeamPosition> newPos = jsonObj.get("status");
 
-			JSONObject jsonObject = (JSONObject) obj;
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		return "ok";
 	}
 }
