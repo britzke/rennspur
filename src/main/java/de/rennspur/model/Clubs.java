@@ -74,7 +74,6 @@ public class Clubs {
      *    getClub().add(newItem);
      * </pre>
      * 
-     * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Club }
