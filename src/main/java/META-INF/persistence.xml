@@ -14,6 +14,7 @@
 		<class>de.rennspur.model.Race</class>
 		<class>de.rennspur.model.Waypoint</class>
 		<class>de.rennspur.model.WaypointPosition</class>
+		<class>de.rennspur.model.BooleanYNConverter</class>
 		<properties>
 			<property name="eclipselink.ddl-generation" value="create-tables" />
 			<property name="eclipselink.ddl-generation.output-mode"
@@ -26,6 +27,5 @@
 			<property name="javax.persistence.jdbc.user" value="app" />
 			<property name="javax.persistence.jdbc.password" value="app" />
 		</properties>
-
-	</persistence-unit>
+		</persistence-unit>
 </persistence>
