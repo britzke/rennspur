@@ -263,10 +263,20 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Poo78IqxEealCsBNxugxSg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Poo78YqxEealCsBNxugxSg" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_TsXQEIqxEealCsBNxugxSg" name="kürzel" visibility="private">
+      <ownedAttribute xmi:id="_TsXQEIqxEealCsBNxugxSg" name="abreviation" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TsX3IIqxEealCsBNxugxSg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TsYeMIqxEealCsBNxugxSg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_MLNAoLYzEeaQppfxafBk9g" name="url" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MLNnsLYzEeaQppfxafBk9g"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MLNnsbYzEeaQppfxafBk9g" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_U6hhMLYzEeaQppfxafBk9g" name="dsvNumber" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_U6iIQLYzEeaQppfxafBk9g"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_U6iIQbYzEeaQppfxafBk9g" value="1"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_f-WbkIqwEealCsBNxugxSg" name="Member">
@@ -352,7 +362,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vR-2UYqzEealCsBNxugxSg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_vR-2UoqzEealCsBNxugxSg" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_523KUIqzEealCsBNxugxSg" name="zeit" visibility="private">
+      <ownedAttribute xmi:id="_523KUIqzEealCsBNxugxSg" name="time" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#DateTime"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_523KUYqzEealCsBNxugxSg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_523xYIqzEealCsBNxugxSg" value="1"/>
@@ -368,7 +378,7 @@
         <body>Eine Teamposition ist eine (GPS) Position, die ein Team während eines Rennens zu einem bestimmten Zeitpunkt einnimmt.</body>
       </ownedComment>
       <generalization xmi:id="_UohCYIrJEeakO4MY7le2gA" general="_ouEdYIqzEealCsBNxugxSg"/>
-      <ownedAttribute xmi:id="_Kwjz4YrLEeakO4MY7le2gA" name="mannschaft" visibility="private" type="_sKEVEIqxEealCsBNxugxSg" association="_Kwjz4IrLEeakO4MY7le2gA">
+      <ownedAttribute xmi:id="_Kwjz4YrLEeakO4MY7le2gA" name="team" visibility="private" type="_sKEVEIqxEealCsBNxugxSg" association="_Kwjz4IrLEeakO4MY7le2gA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Kwjz4orLEeakO4MY7le2gA" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Kwjz44rLEeakO4MY7le2gA" value="1"/>
       </ownedAttribute>

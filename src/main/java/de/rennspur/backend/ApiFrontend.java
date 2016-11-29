@@ -53,7 +53,7 @@ public class ApiFrontend<FrontendData> {
 		TeamPosition teamposition = new TeamPosition();
 
 		team.getName();
-		club.getKürzel();
+		club.getAbreviation();
 
 		// TODO - return the result to the client
 		return null;

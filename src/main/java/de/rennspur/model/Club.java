@@ -42,8 +42,8 @@ import java.util.List;
  *       &lt;all>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="kürzel" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="dsvNummer" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="abreviation" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="dsvNumber" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/all>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -66,11 +66,11 @@ public class Club implements Serializable {
 	private int id;
 
 	@XmlElement(required = true)
-	@Column(name="DSV_NUMMER")
-	private String dsvNummer;
+	@Column(name="DSV_NUMBER")
+	private String dsvNumber;
 
 	@XmlElement(required = true)
-	private String kürzel;
+	private String abreviation;
 
 	@XmlElement(required = true)
 	private String name;
@@ -104,20 +104,20 @@ public class Club implements Serializable {
 		this.id = id;
 	}
 
-	public String getDsvNummer() {
-		return this.dsvNummer;
+	public String getDsvNumber() {
+		return this.dsvNumber;
 	}
 
-	public void setDsvNummer(String dsvNummer) {
-		this.dsvNummer = dsvNummer;
+	public void setDsvNumber(String dsvNummer) {
+		this.dsvNumber = dsvNummer;
 	}
 
-	public String getKürzel() {
-		return this.kürzel;
+	public String getAbreviation() {
+		return this.abreviation;
 	}
 
-	public void setKürzel(String kürzel) {
-		this.kürzel = kürzel;
+	public void setAbreviation(String kürzel) {
+		this.abreviation = kürzel;
 	}
 
 	public String getName() {
