@@ -20,7 +20,6 @@ package de.rennspur.init.db;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -41,10 +40,6 @@ import de.rennspur.model.Clubs;
  * 
  */
 public class InitClubs {
-
-	List<Club> clubs;
-	static EntityManagerFactory emf;
-	EntityManager em;
 
 	/**
 	 * Haupteinstiegspunkt in das Programm. Die {@link Club} Datensätze werden
