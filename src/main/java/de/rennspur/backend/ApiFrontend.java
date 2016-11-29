@@ -52,7 +52,7 @@ public class ApiFrontend<FrontendData> {
 		TeamMember teammember = new TeamMember();
 		TeamPosition teamposition = new TeamPosition();
 
-		team.getKennung();
+		team.getName();
 		club.getKürzel();
 
 		// TODO - return the result to the client

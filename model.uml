@@ -193,7 +193,7 @@
     <ownedAttribute xmi:id="_jq1qcJBNEeasAbuPRvskFg" name="currentTime" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#DateTime"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_jYb2ZJBOEeasAbuPRvskFg" name="waypointPositions" visibility="private" type="_ouEdYIqzEealCsBNxugxSg" aggregation="shared" association="_jYb2YJBOEeasAbuPRvskFg">
+    <ownedAttribute xmi:id="_jYb2ZJBOEeasAbuPRvskFg" name="waypointPositions" visibility="private" type="_HZ8xwLYrEeaQppfxafBk9g" aggregation="shared" association="_jYb2YJBOEeasAbuPRvskFg">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jYb2ZZBOEeasAbuPRvskFg"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jYb2ZpBOEeasAbuPRvskFg" value="*"/>
     </ownedAttribute>
@@ -252,15 +252,13 @@
       <ownedAttribute xmi:id="_aIOdAJBTEeasAbuPRvskFg" name="windSpeed" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#PositiveInteger"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_8W5_4JEvEeaRH54_o4WLtA" name="handicap" visibility="private">
-        <ownedComment xmi:id="_3v8mYJEwEeaRH54_o4WLtA" annotatedElement="_8W5_4JEvEeaRH54_o4WLtA">
-          <body>TRUE - wenn es </body>
-        </ownedComment>
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      <ownedAttribute xmi:id="_Ik4_FLYkEeaQppfxafBk9g" name="event" visibility="private" type="_0AtJULYjEeaQppfxafBk9g" association="_Ik4_ELYkEeaQppfxafBk9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ik4_FbYkEeaQppfxafBk9g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ik4_FrYkEeaQppfxafBk9g" value="1"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_SAvtsIqvEealCsBNxugxSg" name="Club">
-      <ownedAttribute xmi:id="_PooU4IqxEealCsBNxugxSg" name="name" visibility="package">
+      <ownedAttribute xmi:id="_PooU4IqxEealCsBNxugxSg" name="name" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Poo78IqxEealCsBNxugxSg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Poo78YqxEealCsBNxugxSg" value="1"/>
@@ -296,12 +294,12 @@
       <ownedComment xmi:id="_xp5DkJEvEeaRH54_o4WLtA" annotatedElement="_sKEVEIqxEealCsBNxugxSg">
         <body>Ein Team ist eine Gruppe von Rennteilnehmern mit gleicher Bewertung in einem Rennen. Wenn es sich um eine Veranstaltung mit  Handycap handelt (wie etwa ein Yardstick Segelrennen), so wird die Mannschaft mit dem gleichen Handycap bewertet.</body>
       </ownedComment>
-      <ownedAttribute xmi:id="_xYJjgIqxEealCsBNxugxSg" name="nummer" visibility="private">
+      <ownedAttribute xmi:id="_xYJjgIqxEealCsBNxugxSg" name="number" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xYJjgYqxEealCsBNxugxSg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xYJjgoqxEealCsBNxugxSg" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_GLsD4IqyEealCsBNxugxSg" name="land" visibility="private">
+      <ownedAttribute xmi:id="_GLsD4IqyEealCsBNxugxSg" name="country" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GLsq8IqyEealCsBNxugxSg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GLsq8YqyEealCsBNxugxSg" value="1"/>
@@ -311,15 +309,15 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KhqloYqyEealCsBNxugxSg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KhqlooqyEealCsBNxugxSg" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_P11N8IqyEealCsBNxugxSg" name="kapitän" visibility="private" type="_f-WbkIqwEealCsBNxugxSg">
+      <ownedAttribute xmi:id="_P11N8IqyEealCsBNxugxSg" name="captain" visibility="private" type="_f-WbkIqwEealCsBNxugxSg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_P11N8YqyEealCsBNxugxSg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_P11N8oqyEealCsBNxugxSg" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_7FZ3tIrMEeakO4MY7le2gA" name="mitglieder" visibility="private" type="_f-WbkIqwEealCsBNxugxSg" aggregation="shared" association="_7FZ3sIrMEeakO4MY7le2gA">
+      <ownedAttribute xmi:id="_7FZ3tIrMEeakO4MY7le2gA" name="members" visibility="private" type="_f-WbkIqwEealCsBNxugxSg" aggregation="shared" association="_7FZ3sIrMEeakO4MY7le2gA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7FZ3tYrMEeakO4MY7le2gA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7FZ3torMEeakO4MY7le2gA" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_Kwjz5IrLEeakO4MY7le2gA" name="positonen" visibility="private" type="_gzt18IqzEealCsBNxugxSg" aggregation="shared" association="_Kwjz4IrLEeakO4MY7le2gA">
+      <ownedAttribute xmi:id="_Kwjz5IrLEeakO4MY7le2gA" name="positons" visibility="private" type="_gzt18IqzEealCsBNxugxSg" aggregation="shared" association="_Kwjz4IrLEeakO4MY7le2gA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Kwjz5YrLEeakO4MY7le2gA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Kwjz5orLEeakO4MY7le2gA" value="*"/>
       </ownedAttribute>
@@ -328,7 +326,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0MI94JEvEeaRH54_o4WLtA" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0MI94ZEvEeaRH54_o4WLtA" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_cn-KkZ91EeaNjY-wBXaTjA" name="club" type="_SAvtsIqvEealCsBNxugxSg" association="_cn-KkJ91EeaNjY-wBXaTjA">
+      <ownedAttribute xmi:id="_cn-KkZ91EeaNjY-wBXaTjA" name="club" visibility="private" type="_SAvtsIqvEealCsBNxugxSg" association="_cn-KkJ91EeaNjY-wBXaTjA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cn-Kkp91EeaNjY-wBXaTjA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cn-Kk591EeaNjY-wBXaTjA" value="*"/>
       </ownedAttribute>
@@ -337,7 +335,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KRk-UKZVEeaOjaB9k49gbw" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KRk-UaZVEeaOjaB9k49gbw" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_UwracKZVEeaOjaB9k49gbw" name="hash" visibility="public">
+      <ownedAttribute xmi:id="_UwracKZVEeaOjaB9k49gbw" name="hash" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UwsBgKZVEeaOjaB9k49gbw" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UwsokKZVEeaOjaB9k49gbw" value="1"/>
@@ -380,6 +378,95 @@
       <ownedEnd xmi:id="_cn-KlJ91EeaNjY-wBXaTjA" name="teams" type="_sKEVEIqxEealCsBNxugxSg" association="_cn-KkJ91EeaNjY-wBXaTjA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cn-KlZ91EeaNjY-wBXaTjA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cn-Klp91EeaNjY-wBXaTjA" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_0AtJULYjEeaQppfxafBk9g" name="Event">
+      <ownedAttribute xmi:id="_vkYSgLYkEeaQppfxafBk9g" name="name" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vkY5kLYkEeaQppfxafBk9g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_vkY5kbYkEeaQppfxafBk9g" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Khmt8bYlEeaQppfxafBk9g" name="club" visibility="private" type="_SAvtsIqvEealCsBNxugxSg" association="_Khmt8LYlEeaQppfxafBk9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Khmt8rYlEeaQppfxafBk9g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Khmt87YlEeaQppfxafBk9g" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Ik4_EbYkEeaQppfxafBk9g" name="races" visibility="private" type="_nSEdkJBSEeasAbuPRvskFg" association="_Ik4_ELYkEeaQppfxafBk9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ik4_ErYkEeaQppfxafBk9g"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ik4_E7YkEeaQppfxafBk9g" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_4UUBobYlEeaQppfxafBk9g" name="wayPoints" visibility="private" type="_goY-4LYlEeaQppfxafBk9g" association="_4UUBoLYlEeaQppfxafBk9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4UUBorYlEeaQppfxafBk9g"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4UUBo7YlEeaQppfxafBk9g" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_3zTw4bYmEeaQppfxafBk9g" name="teams" visibility="private" type="_sKEVEIqxEealCsBNxugxSg" association="_3zTw4LYmEeaQppfxafBk9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3zTw4rYmEeaQppfxafBk9g"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3zTw47YmEeaQppfxafBk9g" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_8W5_4JEvEeaRH54_o4WLtA" name="handicap" visibility="private">
+        <ownedComment xmi:id="_3v8mYJEwEeaRH54_o4WLtA" annotatedElement="_8W5_4JEvEeaRH54_o4WLtA">
+          <body>TRUE - wenn es </body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Ik4_ELYkEeaQppfxafBk9g" memberEnd="_Ik4_EbYkEeaQppfxafBk9g _Ik4_FLYkEeaQppfxafBk9g">
+      <name xsi:nil="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Khmt8LYlEeaQppfxafBk9g" memberEnd="_Khmt8bYlEeaQppfxafBk9g _Khmt9LYlEeaQppfxafBk9g">
+      <name xsi:nil="true"/>
+      <ownedEnd xmi:id="_Khmt9LYlEeaQppfxafBk9g" name="event" type="_0AtJULYjEeaQppfxafBk9g" association="_Khmt8LYlEeaQppfxafBk9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Khmt9bYlEeaQppfxafBk9g"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Khmt9rYlEeaQppfxafBk9g" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_goY-4LYlEeaQppfxafBk9g" name="Waypoint">
+      <ownedAttribute xmi:id="_4UUBpLYlEeaQppfxafBk9g" name="event" visibility="private" type="_0AtJULYjEeaQppfxafBk9g" association="_4UUBoLYlEeaQppfxafBk9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4UUBpbYlEeaQppfxafBk9g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4UUBprYlEeaQppfxafBk9g" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_TL585LYrEeaQppfxafBk9g" name="waypointPositions" visibility="private" type="_HZ8xwLYrEeaQppfxafBk9g" association="_TL584LYrEeaQppfxafBk9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TL585bYrEeaQppfxafBk9g"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TL585rYrEeaQppfxafBk9g" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_tKmThLYrEeaQppfxafBk9g" name="races" visibility="private" type="_nSEdkJBSEeasAbuPRvskFg" association="_tKmTgLYrEeaQppfxafBk9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tKmThbYrEeaQppfxafBk9g"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tKmThrYrEeaQppfxafBk9g" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_4UUBoLYlEeaQppfxafBk9g" name="A_wayPoints_events" memberEnd="_4UUBobYlEeaQppfxafBk9g _4UUBpLYlEeaQppfxafBk9g"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_3zTw4LYmEeaQppfxafBk9g" memberEnd="_3zTw4bYmEeaQppfxafBk9g _3zTw5LYmEeaQppfxafBk9g">
+      <name xsi:nil="true"/>
+      <ownedEnd xmi:id="_3zTw5LYmEeaQppfxafBk9g" name="events" type="_0AtJULYjEeaQppfxafBk9g" association="_3zTw4LYmEeaQppfxafBk9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3zTw5bYmEeaQppfxafBk9g"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3zTw5rYmEeaQppfxafBk9g" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_HZ8xwLYrEeaQppfxafBk9g" name="WaypointPosition">
+      <generalization xmi:id="_o441cLYlEeaQppfxafBk9g" general="_ouEdYIqzEealCsBNxugxSg"/>
+      <ownedAttribute xmi:id="_TL584bYrEeaQppfxafBk9g" name="waypoint" visibility="private" type="_goY-4LYlEeaQppfxafBk9g" association="_TL584LYrEeaQppfxafBk9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TL584rYrEeaQppfxafBk9g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TL5847YrEeaQppfxafBk9g" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_CSAVpLYtEeaQppfxafBk9g" name="race" visibility="private" type="_nSEdkJBSEeasAbuPRvskFg" association="_CSAVoLYtEeaQppfxafBk9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CSAVpbYtEeaQppfxafBk9g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CSAVprYtEeaQppfxafBk9g" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_TL584LYrEeaQppfxafBk9g" memberEnd="_TL584bYrEeaQppfxafBk9g _TL585LYrEeaQppfxafBk9g">
+      <name xsi:nil="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_tKmTgLYrEeaQppfxafBk9g" memberEnd="_tKmTgbYrEeaQppfxafBk9g _tKmThLYrEeaQppfxafBk9g" navigableOwnedEnd="_tKmTgbYrEeaQppfxafBk9g">
+      <name xsi:nil="true"/>
+      <ownedEnd xmi:id="_tKmTgbYrEeaQppfxafBk9g" name="waypoints" type="_goY-4LYlEeaQppfxafBk9g" association="_tKmTgLYrEeaQppfxafBk9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tKmTgrYrEeaQppfxafBk9g"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tKmTg7YrEeaQppfxafBk9g" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_CSAVoLYtEeaQppfxafBk9g" memberEnd="_CSAVobYtEeaQppfxafBk9g _CSAVpLYtEeaQppfxafBk9g">
+      <name xsi:nil="true"/>
+      <ownedEnd xmi:id="_CSAVobYtEeaQppfxafBk9g" name="waypointPositions" type="_HZ8xwLYrEeaQppfxafBk9g" association="_CSAVoLYtEeaQppfxafBk9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CSAVorYtEeaQppfxafBk9g"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CSAVo7YtEeaQppfxafBk9g" value="*"/>
       </ownedEnd>
     </packagedElement>
   </packagedElement>

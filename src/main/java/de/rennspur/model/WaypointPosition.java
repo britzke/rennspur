@@ -48,6 +48,11 @@ public class WaypointPosition implements Serializable {
 	@JoinColumn(name="WAYPOINTS_ID")
 	private Waypoint waypoint;
 
+	//bi-directional many-to-one association to Waypoint
+	@ManyToOne
+	@JoinColumn(name="RACES_ID")
+	private Race race;
+	
 	public WaypointPosition() {
 	}
 
@@ -89,6 +94,20 @@ public class WaypointPosition implements Serializable {
 
 	public void setWaypoint(Waypoint waypoint) {
 		this.waypoint = waypoint;
+	}
+
+	/**
+	 * @return the race
+	 */
+	public Race getRace() {
+		return race;
+	}
+
+	/**
+	 * @param race the race to set
+	 */
+	public void setRace(Race race) {
+		this.race = race;
 	}
 
 }

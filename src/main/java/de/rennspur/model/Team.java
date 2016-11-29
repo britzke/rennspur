@@ -40,9 +40,9 @@ public class Team implements Serializable {
 	@Column(name="HANDYCAP_FAKTOR")
 	private int handycapFaktor;
 
-	private String kennung;
+	private String name;
 
-	private String land;
+	private String country;
 
 	//bi-directional many-to-one association to Club
 	@ManyToOne
@@ -55,11 +55,11 @@ public class Team implements Serializable {
 
 	//bi-directional many-to-one association to TeamMember
 	@OneToMany(mappedBy="team")
-	private List<TeamMember> teamMembers;
+	private List<TeamMember> members;
 
 	//bi-directional many-to-one association to TeamPosition
 	@OneToMany(mappedBy="team")
-	private List<TeamPosition> teamPositions;
+	private List<TeamPosition> positions;
 
 	public Team() {
 	}
@@ -80,20 +80,26 @@ public class Team implements Serializable {
 		this.handycapFaktor = handycapFaktor;
 	}
 
-	public String getKennung() {
-		return this.kennung;
+	/**
+	 * @return
+	 */
+	public String getName() {
+		return this.name;
 	}
 
-	public void setKennung(String kennung) {
-		this.kennung = kennung;
+	/**
+	 * @param name
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getLand() {
-		return this.land;
+	public String getCountry() {
+		return this.country;
 	}
 
-	public void setLand(String land) {
-		this.land = land;
+	public void setCountry(String land) {
+		this.country = land;
 	}
 
 	public Club getClub() {
@@ -132,48 +138,88 @@ public class Team implements Serializable {
 		this.hash = hash;
 	}
 
-	public List<TeamMember> getTeamMembers() {
-		return this.teamMembers;
+	/**
+	 * @return The members.
+	 */
+	public List<TeamMember> getMembers() {
+		return this.members;
 	}
 
-	public void setTeamMembers(List<TeamMember> teamMembers) {
-		this.teamMembers = teamMembers;
+	/**
+	 * @param teamMembers The members to set.
+	 */
+	public void setMembers(List<TeamMember> teamMembers) {
+		this.members = teamMembers;
 	}
 
-	public TeamMember addTeamMember(TeamMember teamMember) {
-		getTeamMembers().add(teamMember);
-		teamMember.setTeam(this);
+	/**
+	 * Adds a member to the team.
+	 * 
+	 * @param member
+	 *            The member to add.
+	 * @return The added member.
+	 */
+	public TeamMember addMember(TeamMember member) {
+		getMembers().add(member);
+		member.setTeam(this);
 
-		return teamMember;
+		return member;
 	}
 
-	public TeamMember removeTeamMember(TeamMember teamMember) {
-		getTeamMembers().remove(teamMember);
-		teamMember.setTeam(null);
+	/**
+	 * Removes a member from the team.
+	 * 
+	 * @param member
+	 *            The member to remove.
+	 * @return The removed member.
+	 */
+	public TeamMember removeMember(TeamMember member) {
+		getMembers().remove(member);
+		member.setTeam(null);
 
-		return teamMember;
+		return member;
 	}
 
-	public List<TeamPosition> getTeamPositions() {
-		return this.teamPositions;
+	/**
+	 * @return
+	 */
+	public List<TeamPosition> getPositions() {
+		return this.positions;
 	}
 
-	public void setTeamPositions(List<TeamPosition> teamPositions) {
-		this.teamPositions = teamPositions;
+	/**
+	 * @param teamPositions
+	 */
+	public void setPositions(List<TeamPosition> teamPositions) {
+		this.positions = teamPositions;
 	}
 
-	public TeamPosition addTeamPosition(TeamPosition teamPosition) {
-		getTeamPositions().add(teamPosition);
-		teamPosition.setTeam(this);
+	/**
+	 * Adds a position to the team.
+	 * 
+	 * @param position
+	 *            The position to add.
+	 * @return The position added.
+	 */
+	public TeamPosition addPosition(TeamPosition position) {
+		getPositions().add(position);
+		position.setTeam(this);
 
-		return teamPosition;
+		return position;
 	}
 
-	public TeamPosition removeTeamPosition(TeamPosition teamPosition) {
-		getTeamPositions().remove(teamPosition);
-		teamPosition.setTeam(null);
+	/**
+	 * Removes the specified position from the team.
+	 * 
+	 * @param position
+	 *            The position to remove
+	 * @return The removed position
+	 */
+	public TeamPosition removePosition(TeamPosition position) {
+		getPositions().remove(position);
+		position.setTeam(null);
 
-		return teamPosition;
+		return position;
 	}
 
 }

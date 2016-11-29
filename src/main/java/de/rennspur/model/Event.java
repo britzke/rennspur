@@ -39,7 +39,7 @@ public class Event implements Serializable {
 
 	private String name;
 
-	private String yardstick;
+	private boolean handicap;
 
 	//bi-directional many-to-one association to Club
 	@ManyToOne
@@ -73,12 +73,19 @@ public class Event implements Serializable {
 		this.name = name;
 	}
 
-	public String getYardstick() {
-		return this.yardstick;
+
+	/**
+	 * @return the handicap
+	 */
+	public boolean isHandicap() {
+		return handicap;
 	}
 
-	public void setYardstick(String yardstick) {
-		this.yardstick = yardstick;
+	/**
+	 * @param handicap the handicap to set
+	 */
+	public void setHandicap(boolean handicap) {
+		this.handicap = handicap;
 	}
 
 	public Club getClub() {
