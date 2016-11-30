@@ -18,34 +18,61 @@
  */
 
 /**
- * Clear all saved Locations from the localstorage
- * only called after successfully sending them to the server
+ * Clear all saved Locations from the localstorage only called after
+ * successfully sending them to the server
  */
-function clearLocalStorage(){
-	/** clear status array in json */
+function clearStatusArray() {
+	/** Get the status array out of the localstorage */
+	var jsonString = localStorage.getItem("rennspur_gps_locations");
+	var jsonObject = JSON.parse(jsonString);
+
+	/** clear the array by initializing it as a new, empty array */
+	jsonObject.status.length = [];
+
+	/** put the JSON object back into the localStorage */
+	jsonString = JSON.stringify(jsonObject);
+	localStorage.setItem("rennspur_gps_locations", jsonString);
 }
-
-
 
 /**
  * Sends all positions from the localstorage to the server
+ * Example how making a POST request might be done
  */
-function sendLocations(){
-	/** Use POST to send the positions as json string to server */
+function sendLocations() {
+	/** create XMLHttpRequest object, set the URL to the Member-GPS API */
+	var request = new XMLHttpRequest();
+	var url = "https://???.??/API/mGPS";
+
+	/** insert the JSON string into the post attribute "json" */
+	var params = "json=" + localStorage.getItem("rennspur_gps_locations");
+	request.open("POST", url, true);
+
+	/** set content type */
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	/** create anonymous callback to handle the answer of the server */
+	request.onreadystatechange = function() {
+		if (request.readyState == 4 && request.status == 200) {
+			alert(request.responseText);
+		}
+	}
+
+	/** finally send POST request */
+	request.send(params);
 }
 
 /**
  * Prepare the localStorage to save positions and the key
  */
-function prepareLocalStorage(){
-	//TODO: Insert key from HTML into json string
+function prepareLocalStorage() {
+	// TODO: Insert key from HTML into json string
 	var json = '{"key":"","status" : []}';
 	localStorage.setItem("rennspur_gps_locations", json);
 }
 
 /**
- * Initialize data on localstorage.
- * Should be called once before calling other functions
+ * Initialize data on localstorage. Should be called once before calling other
+ * functions
  */
 function init() {
 	/** check if localStorage is empty */
@@ -56,21 +83,21 @@ function init() {
 	} else {
 		/** if existing check if saved Data is the correct JSON-Format */
 		var storageItemJson = JSON.parse(storageItem);
-		if(storageItemJson.status == null || storageItemJson.key == null){
+		if (storageItemJson.status == null || storageItemJson.key == null) {
 			/** status array or auth key in JSON object is missing, creating new */
 			prepareLocalStorage();
 		}
-		//TODO: check if the found data is old, maybe from another event?
-		/** everything is fine, keeping old localStorage */
-		
+		// TODO: check if the found data is old, maybe from another event?
 	}
 }
 
 /**
  * Saves the location into the localstorage with the current system-time
  * 
- * @param {number} lo [lo = 51.3256] - longitude of the location
- * @param {number} la [la = 40.9034] - latitude of the location
+ * @param {number}
+ *            lo [lo = 51.3256] - longitude of the location
+ * @param {number}
+ *            la [la = 40.9034] - latitude of the location
  */
 function saveLocation(lo, la) {
 	/** Get the time of the function call */
@@ -94,6 +121,13 @@ function saveLocation(lo, la) {
 
 	/** Save the JSON object back into the localstorage as string */
 	localStorage.setItem("rennspur_gps_locations", JSON.stringify(locactionJson));
+}
+
+/**
+ * onClick to test some functions
+ */
+function clickTest() {
+	sendLocations(); // testing 
 }
 
 /**
