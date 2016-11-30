@@ -23,7 +23,7 @@
 			<property name="eclipselink.logging.exceptions" value="true" />
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:derby://localhost:1527/rennspur-db;create=true" />
+				value="jdbc:derby://localhost:1527/rennspur-db" />
 			<property name="javax.persistence.jdbc.user" value="app" />
 			<property name="javax.persistence.jdbc.password" value="app" />
 		</properties>
