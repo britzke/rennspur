@@ -33,6 +33,28 @@ var linkTextSkipperGuide = "Beschreibung auf SkipperGuide";
 var linkTextWeatherHarbour = "Meteogramm";
 var language = 'de';
 
+
+
+function showModalDialog() {
+
+    //Declare an overlay to fade out the primary view.
+    var overlay = $('<div id="overlay" style="position:fixed;overflow:hidden; height: 100%; width: 100%;background-color: rgba(0,0,0,0.5);z-index: 1;" />');
+
+    //Declare a dialog to hold the input fields.
+    var dialog = $('<div id="modal" style="position:absolute;top: 50%; left: 50%;-ms-transform: translate(-50%,-50%);-webkit-transform: translate(-50%,-50%); transform: translate(-50%,-50%); width:350px; z-index: 2;background-color: white;" />');
+
+    //Add content to the dialog.
+    dialog.append('<h3>Create</h3>');
+    dialog.append('<label style="display: block;">Data field 1: <input type="text" id="dataField1" /></label>');
+    dialog.append('<label style="display: block;">Data field 2: <input type="text" id="dataField2" /></label>');
+    dialog.append('<label style="display: block;">Data field 3: <input type="text" id="dataField3" /></label>');
+    dialog.append('<input type="button" id="btnCreate" value="use data" onclick="useData();" />');
+
+    //Show the overlay and the dialog.
+    $('html').prepend(overlay);
+    $('html').prepend(dialog);
+}
+
 /**
  * Sets the start frame.
  * 
@@ -137,3 +159,5 @@ function drawmap() {
  */
 function mapEventMove(event) {
 }
+
+
