@@ -23,28 +23,39 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.Query;
 
-import de.rennspur.model.*;
+import de.rennspur.model.Team;
+import de.rennspur.model.TeamMember;
+import de.rennspur.model.TeamPosition;
 
 /**
  * Recieves, sends and processes data from the Database
  * 
  * @author e4_schlender
  */
+@RequestScoped
 public class Backend {
 
 	/**
 	 * A list for all Teams.
 	 */
-	private HashSet<Team> Teams = new HashSet<Team>(); 
-	private static EntityManagerFactory factory;
+	private HashSet<Team> Teams = new HashSet<Team>();
+	@Inject
+	private EntityManagerFactory factory;
 
 	public Backend() {
 
 		super();
+	}
+	@PostConstruct
+	public void init() {
+
 	}
 
 	/**
@@ -53,20 +64,15 @@ public class Backend {
 	 * @param team
 	 *            ID of the team
 	 */
-	public TeamMember getMembers(Team team) {
-		factory = Persistence.createEntityManagerFactory("MEMBERS");
-        EntityManager em = factory.createEntityManager();
-       
-        /*
-        Query q = em.createQuery("select * from");
-        List<Todo> todoList = q.getResultList();
-        for (Todo todo : todoList) {
-                System.out.println(todo);
-        }
-        System.out.println("Size: " + todoList.size());
+	public List<TeamMember> getMembers(int team) {
+		// factory = Persistence.createEntityManagerFactory("MEMBERS");
+		EntityManager em = factory.createEntityManager();
 
-      */
-        return null;
+		Query query = em.createNativeQuery("select * from teams where id=:id");
+		query.setParameter("id", team);
+		List<TeamMember> members = query.getResultList();
+
+		return members;
 	}
 
 	/**
@@ -79,8 +85,14 @@ public class Backend {
 	 */
 
 	public List<TeamPosition> getLatestMemberPositions(int teamid, Integer positionsCount) {
+		/*
+		 * factory = Persistence.createEntityManagerFactory("POSITIONS");
+		 * EntityManager em = factory.createEntityManager();
+		 */
 		List<TeamPosition> getTeilnehmerPositionen = null;
+
 		return getTeilnehmerPositionen;
+
 	}
 
 	/**
@@ -94,8 +106,7 @@ public class Backend {
 	 *            Date of the Position
 	 */
 
-	private void saveGPSPosition(TeamPosition pos, String key, Date date) 
-	{
+	private void saveGPSPosition(TeamPosition pos, String key, Date date) {
 
 	}
 
@@ -103,7 +114,7 @@ public class Backend {
 	 * Waits for new POST Requests from the GPS
 	 */
 	public void getPost() {
-		
+
 	}
 
 	/**

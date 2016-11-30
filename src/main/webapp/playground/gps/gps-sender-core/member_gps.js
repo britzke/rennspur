@@ -35,30 +35,26 @@ function clearStatusArray() {
 }
 
 /**
- * Sends all positions from the localstorage to the server
- * Example how making a POST request might be done
+ * Sends all positions from the localstorage to the server Example how making a
+ * POST request might be done
  */
 function sendLocations() {
-	/** create XMLHttpRequest object, set the URL to the Member-GPS API */
-	var request = new XMLHttpRequest();
-	var url = "https://???.??/API/mGPS";
-
-	/** insert the JSON string into the post attribute "json" */
-	var params = "json=" + localStorage.getItem("rennspur_gps_locations");
-	request.open("POST", url, true);
-
-	/** set content type */
-	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-	/** create anonymous callback to handle the answer of the server */
-	request.onreadystatechange = function() {
-		if (request.readyState == 4 && request.status == 200) {
-			alert(request.responseText);
-		}
-	}
-
+	
 	/** finally send POST request */
-	request.send(params);
+
+	$.ajax({
+		url : 'http://localhost:8080/rennspur/rest/gps-service',
+		type : 'post',
+		headers : {
+			"Accept" : "text/plain",
+			"Content-Type" : "text/plain"
+		},
+		dataType : 'text',
+		data : localStorage.getItem("rennspur_gps_locations")	,
+		success : function(result) {
+			alert('the request was successfully sent to the server' + result);
+		}
+	});
 }
 
 /**
@@ -120,14 +116,15 @@ function saveLocation(lo, la) {
 	locactionJson.status.push(positionJson);
 
 	/** Save the JSON object back into the localstorage as string */
-	localStorage.setItem("rennspur_gps_locations", JSON.stringify(locactionJson));
+	localStorage.setItem("rennspur_gps_locations", JSON
+			.stringify(locactionJson));
 }
 
 /**
  * onClick to test some functions
  */
 function clickTest() {
-	sendLocations(); // testing 
+	sendLocations(); // testing
 }
 
 /**

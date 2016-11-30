@@ -1,60 +1,13 @@
 <html>
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-		<title>OpenSeaMap</title>
-
-
-		<style type="text/css">
-			.olImageLoadError
-			{
-				display: none !important;
-			}
-			
-			#overlay
-			{
-    			position: fixed;
-    			top: 0;
-   				right: 0;
-    			width: 400px;
-    			height: 400px;
-    			background-color: #000;
-    			filter:alpha(opacity=50);
-    			-moz-opacity:0.5;
-    			-khtml-opacity: 0.5;
-    			opacity: 0.5;
-    			z-index: 10000;
-			}
-		</style>
-		
-		<link rel="stylesheet" href="https://openlayers.org/en/v3.19.1/css/ol.css" type="text/css">
-		<!-- bring in the OpenLayers javascript library
-			(here we bring it from the remote site, but you could
-			easily serve up this javascript yourself) -->
-		<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-
-		<!-- bring in the OpenStreetMap OpenLayers layers.
-			Using this hosted file will make sure we are kept up
-			to date with any necessary changes -->
-		<script src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js"></script>
-		<script type="text/javascript" src="http://map.openseamap.org/map/javascript/map_utils.js"></script>
-		<script type="text/javascript" src="http://map.openseamap.org/map/javascript/utilities.js"></script>
-		<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
-    	<script src="https://openlayers.org/en/v3.19.1/build/ol.js"></script>
-		<script type="text/javascript" src="osmMap.js"></script>
-		 <script src="jquery-3.1.1.min.js"></script>
-
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>OpenSeaMap</title>
+<script
+	src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+<script src="ol-debug.js"></script>
+<script type="text/javascript" src="osmMap.js"></script>
 </head>
-<div id="map" class="map"></div>
-<!-- body.onload is called once the page is loaded (call the 'init' function) -->
-<body onload="drawmap();">
-
-    <!-- define a DIV into which the map will appear. Make it take up the whole window -->
-    <div id="map"></div>
-    <div id="overlay"></div>
-   
-    	
-   
-
+<body onload="drawmap()">
+	<div id="mapdiv"></div>
 </body>
-
 </html>

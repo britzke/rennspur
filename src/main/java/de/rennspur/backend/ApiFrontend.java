@@ -36,7 +36,7 @@ import de.rennspur.model.TeamPosition;
  * @author Leo Winter
  * @param <FrontendData>
  */
-@Path("/API")
+@Path("/APId")
 public class ApiFrontend<FrontendData> {
 
 	@GET
