@@ -18,21 +18,25 @@
  */
 package de.rennspur.backend;
 
+import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
  * ApiGPS objects are the service endpoints to handle the incomming GPS-Data
  * from the GPS-Clients.
  * 
- * @author ruben maurer, burghard.britzke
+ * @author ruben maurer, burghard.britzke,leon schlender
  */
-@Path("/backend")
+@Path("/gps-service")
 public class ApiGPS {
-
+	//@Inject
+	private EntityManagerFactory emf;
+	
 	/**
 	 * Handles the Post from the GPS-component.
 	 * 
@@ -44,8 +48,10 @@ public class ApiGPS {
 	@POST
 	@Consumes({ MediaType.TEXT_PLAIN })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getGPSDataInJSON(String jsonString) {
-
+	public String getGPSDataInJSON(@QueryParam("competitor-data") String test) {
+		System.out.println(test);
+		System.out.println(emf);
+		//List<TeamMember> members = backend.getMembers(1);
 		// 	Convert JSON-String to Java JSONObject.
 //		JsonObject jsonObj = new JsonObject(jsonString);
 
