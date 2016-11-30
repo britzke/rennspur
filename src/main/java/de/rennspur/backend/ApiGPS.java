@@ -60,7 +60,7 @@ public class ApiGPS {
 	@POST
 	@Consumes({ MediaType.TEXT_PLAIN })
 	@Produces(MediaType.TEXT_PLAIN)
-	public String getGPSDataInJSON(@QueryParam("competitor-data") String jsonString) {
+	public String getGPSDataInJSON(String jsonString) {
 		
 		/**
 		 * Test Output.
