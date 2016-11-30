@@ -20,6 +20,8 @@ package de.rennspur.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import java.util.Date;
 import java.util.List;
 
 
@@ -40,6 +42,14 @@ public class Event implements Serializable {
 	private String name;
 
 	private Boolean handicap;
+	
+	@Column(name = "START_DATE")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date startDate;
+
+	@Column(name = "END_DATE")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date endDate;
 
 	//bi-directional many-to-one association to Club
 	@ManyToOne
@@ -86,6 +96,34 @@ public class Event implements Serializable {
 	 */
 	public void setHandicap(Boolean handicap) {
 		this.handicap = handicap;
+	}
+
+	/**
+	 * @return the startDate
+	 */
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	/**
+	 * @param startDate the startDate to set
+	 */
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	/**
+	 * @return the endDate
+	 */
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	/**
+	 * @param endDate the endDate to set
+	 */
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 	public Club getClub() {

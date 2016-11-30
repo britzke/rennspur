@@ -418,6 +418,16 @@
         </ownedComment>
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
       </ownedAttribute>
+      <ownedAttribute xmi:id="_zmYBILZMEeaQppfxafBk9g" name="startDate" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zmYoMLZMEeaQppfxafBk9g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zmYoMbZMEeaQppfxafBk9g" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_ED_DELZNEeaQppfxafBk9g" name="endDate" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#Date"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ED_qILZNEeaQppfxafBk9g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ED_qIbZNEeaQppfxafBk9g" value="1"/>
+      </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_Ik4_ELYkEeaQppfxafBk9g" memberEnd="_Ik4_EbYkEeaQppfxafBk9g _Ik4_FLYkEeaQppfxafBk9g">
       <name xsi:nil="true"/>

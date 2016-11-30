@@ -535,11 +535,19 @@
                     <styles xmi:type="notation:FontStyle" xmi:id="_ZSVBMbYuEeaQppfxafBk9g" fontName=".SF NS Text" fontHeight="8"/>
                     <layoutConstraint xmi:type="notation:Location" xmi:id="_ZSVBMrYuEeaQppfxafBk9g"/>
                   </children>
+                  <children xmi:type="notation:Node" xmi:id="_zpBsgLZMEeaQppfxafBk9g" type="3010" element="_zmqVALZMEeaQppfxafBk9g">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_zpBsgbZMEeaQppfxafBk9g" fontName=".SF NS Text" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_zpBsgrZMEeaQppfxafBk9g"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_EGdvULZNEeaQppfxafBk9g" type="3010" element="_EERW8LZNEeaQppfxafBk9g">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_EGdvUbZNEeaQppfxafBk9g" fontName=".SF NS Text" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_EGdvUrZNEeaQppfxafBk9g"/>
+                  </children>
                   <styles xmi:type="notation:SortingStyle" xmi:id="_0EkVobYjEeaQppfxafBk9g"/>
                   <styles xmi:type="notation:FilteringStyle" xmi:id="_0EkVorYjEeaQppfxafBk9g"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_0EcZ0bYjEeaQppfxafBk9g" fontName=".SF NS Text" bold="true"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0EcZ0rYjEeaQppfxafBk9g" x="559" y="260" width="191" height="123"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0EcZ0rYjEeaQppfxafBk9g" x="559" y="260" width="191" height="169"/>
               </children>
               <children xmi:type="notation:Node" xmi:id="_gqaYILYlEeaQppfxafBk9g" type="3009" element="_goZl8LYlEeaQppfxafBk9g">
                 <children xmi:type="notation:Node" xmi:id="_gqaYI7YlEeaQppfxafBk9g" type="5004"/>
@@ -776,7 +784,7 @@
             <styles xmi:type="notation:FontStyle" xmi:id="_Kjlq8rYlEeaQppfxafBk9g" fontName=".SF NS Text" fontHeight="8"/>
             <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Kjlq87YlEeaQppfxafBk9g" points="[29, 0, 24, -172]$[29, 78, 24, -94]$[35, 78, 30, -94]$[35, 112, 30, -60]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KjmSAbYlEeaQppfxafBk9g" id="(0.5,1.0)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KjmSArYlEeaQppfxafBk9g" id="(0.0,0.49586776859504134)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KjmSArYlEeaQppfxafBk9g" id="(0.0,0.3592814371257485)"/>
           </edges>
           <edges xmi:type="notation:Edge" xmi:id="_4WTlsLYlEeaQppfxafBk9g" type="4001" element="_4WGxYLYlEeaQppfxafBk9g" source="_gqaYILYlEeaQppfxafBk9g" target="_0EcZ0LYjEeaQppfxafBk9g">
             <children xmi:type="notation:Node" xmi:id="_4WTltLYlEeaQppfxafBk9g" type="6001">
@@ -792,7 +800,7 @@
             <styles xmi:type="notation:FontStyle" xmi:id="_4WTlsrYlEeaQppfxafBk9g" fontName=".SF NS Text" fontHeight="8"/>
             <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_4WTls7YlEeaQppfxafBk9g" points="[-14, -7, 18, 156]$[-14, -55, 18, 108]$[-20, -55, 12, 108]$[-20, -140, 12, 23]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_4WUMwrYlEeaQppfxafBk9g" id="(0.325,0.08)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_4WUMw7YlEeaQppfxafBk9g" id="(0.31216931216931215,0.8099173553719008)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_4WUMw7YlEeaQppfxafBk9g" id="(0.31216931216931215,0.5868263473053891)"/>
           </edges>
           <edges xmi:type="notation:Edge" xmi:id="_31PqkLYmEeaQppfxafBk9g" type="4001" element="_31DdULYmEeaQppfxafBk9g" source="_FssnYJEsEeaRH54_o4WLtA" target="_0EcZ0LYjEeaQppfxafBk9g">
             <children xmi:type="notation:Node" xmi:id="_31PqlLYmEeaQppfxafBk9g" type="6001">
@@ -808,7 +816,7 @@
             <styles xmi:type="notation:FontStyle" xmi:id="_31PqkrYmEeaQppfxafBk9g" fontName=".SF NS Text" fontHeight="8"/>
             <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_31Pqk7YmEeaQppfxafBk9g" points="[0, 0, -80, 57]$[80, -57, 0, 0]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_31QRpLYmEeaQppfxafBk9g" id="(1.0,0.8476190476190476)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_31QRpbYmEeaQppfxafBk9g" id="(0.21693121693121692,1.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_31QRpbYmEeaQppfxafBk9g" id="(0.21693121693121692,0.7245508982035928)"/>
           </edges>
           <edges xmi:type="notation:Edge" xmi:id="_PYptsLYrEeaQppfxafBk9g" type="4001" element="_o5D0kLYlEeaQppfxafBk9g" source="_Hb6goLYrEeaQppfxafBk9g" target="_o8CC8JEsEeaRH54_o4WLtA">
             <children xmi:type="notation:Node" xmi:id="_PYpttLYrEeaQppfxafBk9g" type="6001">
@@ -844,17 +852,17 @@
           </edges>
           <edges xmi:type="notation:Edge" xmi:id="_tM-SELYrEeaQppfxafBk9g" type="4001" element="_tMxdwLYrEeaQppfxafBk9g" source="_gqaYILYlEeaQppfxafBk9g" target="_rW4KMJErEeaRH54_o4WLtA">
             <children xmi:type="notation:Node" xmi:id="_tM-SFLYrEeaQppfxafBk9g" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tM-SFbYrEeaQppfxafBk9g" x="-47" y="-13"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tM-SFbYrEeaQppfxafBk9g" x="-72" y="-17"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_tM-SFrYrEeaQppfxafBk9g" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tM-SF7YrEeaQppfxafBk9g" x="-28" y="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tM-SF7YrEeaQppfxafBk9g" x="2" y="20"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_tM-SGLYrEeaQppfxafBk9g" type="6003">
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tM-SGbYrEeaQppfxafBk9g" x="-4" y="10"/>
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_tM-SEbYrEeaQppfxafBk9g" routing="Rectilinear"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_tM-SErYrEeaQppfxafBk9g" fontName=".SF NS Text" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tM-SE7YrEeaQppfxafBk9g" points="[0, 0, -95, 333]$[0, -72, -95, 261]$[75, -72, -20, 261]$[75, -333, -20, 0]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tM-SE7YrEeaQppfxafBk9g" points="[0, 0, -95, 349]$[0, -56, -95, 293]$[79, -56, -16, 293]$[79, -349, -16, 0]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tM-SGrYrEeaQppfxafBk9g" id="(0.7796610169491526,0.0)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tM-SG7YrEeaQppfxafBk9g" id="(0.75,1.0)"/>
           </edges>
@@ -1747,6 +1755,22 @@
             <target xmi:type="uml:Property" href="model.uml#_8W5_4JEvEeaRH54_o4WLtA"/>
             <semanticElements xmi:type="uml:Property" href="model.uml#_8W5_4JEvEeaRH54_o4WLtA"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_Ayv5EZEwEeaRH54_o4WLtA" labelAlignment="LEFT">
+              <description xmi:type="style:SquareDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
+          </ownedElements>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_zmqVALZMEeaQppfxafBk9g" name="startDate : EDate [1]">
+            <target xmi:type="uml:Property" href="model.uml#_zmYBILZMEeaQppfxafBk9g"/>
+            <semanticElements xmi:type="uml:Property" href="model.uml#_zmYBILZMEeaQppfxafBk9g"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_zmq8ELZMEeaQppfxafBk9g" labelAlignment="LEFT">
+              <description xmi:type="style:SquareDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
+          </ownedElements>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_EERW8LZNEeaQppfxafBk9g" name="endDate : Date [1]">
+            <target xmi:type="uml:Property" href="model.uml#_ED_DELZNEeaQppfxafBk9g"/>
+            <semanticElements xmi:type="uml:Property" href="model.uml#_ED_DELZNEeaQppfxafBk9g"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_EER-ALZNEeaQppfxafBk9g" labelAlignment="LEFT">
               <description xmi:type="style:SquareDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']/@style"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
