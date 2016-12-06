@@ -70,6 +70,7 @@ public class Backend {
 
 		Query query = em.createNativeQuery("select * from teams where id=:id");
 		query.setParameter("id", team);
+		@SuppressWarnings("unchecked")
 		List<TeamMember> members = query.getResultList();
 
 		return members;
