@@ -5,7 +5,7 @@
 
 	<!-- <persistence-unit name="rennspur-db" transaction-type="RESOURCE_LOCAL"> -->
 	<persistence-unit name="rennspur-db" transaction-type="JTA">
-		<jta-data-source>java:comp/env/jdbc/rennspurDB</jta-data-source>
+		<jta-data-source>java:comp/env/jdbc/rennspur-db</jta-data-source>
 		<class>de.rennspur.model.Club</class>
 		<class>de.rennspur.model.Team</class>
 		<class>de.rennspur.model.TeamMember</class>
@@ -21,11 +21,6 @@
 				value="database" />
 			<property name="eclipselink.logging.level" value="FINE" />
 			<property name="eclipselink.logging.exceptions" value="true" />
-			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:derby://localhost:1527/rennspur-db" />
-			<property name="javax.persistence.jdbc.user" value="app" />
-			<property name="javax.persistence.jdbc.password" value="app" />
 		</properties>
-		</persistence-unit>
+	</persistence-unit>
 </persistence>

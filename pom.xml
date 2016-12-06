@@ -59,6 +59,12 @@
 			<version>2.6.4</version>
 		</dependency>
 
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>2.1</version>
+		</dependency>
+
 		<!-- JSF/primefaces -->
 		<dependency>
 			<groupId>org.apache.myfaces.core</groupId>
@@ -90,22 +96,19 @@
 
 		<!-- see https://jersey.java.net/documentation/snapshot/cdi.support.html -->
 		<dependency>
-			<groupId>org.glassfish.jersey.containers</groupId>
-			<artifactId>jersey-container-servlet</artifactId>
-			<version>2.24</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
 			<groupId>javax.ws.rs</groupId>
 			<artifactId>javax.ws.rs-api</artifactId>
 			<version>2.0.1</version>
-			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>2.24.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-servlet-core</artifactId>
-			<version>2.24</version>
-			<scope>compile</scope>
+			<version>2.24.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.hk2.external</groupId>
@@ -116,31 +119,27 @@
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-server</artifactId>
-			<scope>compile</scope>
-			<version>2.24</version>
+			<version>2.24.1</version>
 		</dependency>
+
+		<!-- dependency injection for jersey+tomcat -->
 		<dependency>
 			<groupId>org.glassfish.jersey.ext.cdi</groupId>
 			<artifactId>jersey-cdi1x</artifactId>
-			<version>2.24</version>
-			<scope>compile</scope>
+			<version>2.24.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.ext.cdi</groupId>
 			<artifactId>jersey-cdi1x-servlet</artifactId>
-			<version>2.24</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>commons-digester</groupId>
-			<artifactId>commons-digester</artifactId>
-			<version>2.1</version>
+			<version>2.24.1</version>
 		</dependency>
 
+		<!-- weld for tomcat -->
 		<dependency>
 			<groupId>org.jboss.weld.servlet</groupId>
 			<artifactId>weld-servlet</artifactId>
 			<version>2.4.0.Final</version>
 		</dependency>
+
 	</dependencies>
 </project>
