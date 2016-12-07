@@ -15,14 +15,13 @@
 	display: none !important;
 }
 
-#mapdiv
-{
+#mapdiv {
 	width: 100%;
 	height: 100%;
 }
 
 #content {
-position: fixed;
+	position: fixed;
 	top: 15;
 	right: 0;
 	width: 400px;
@@ -43,14 +42,12 @@ position: fixed;
 </style>
 
 <script>
-
-		$(document).ready(function(){
-		    $("button").click(function(){
-		        $("#content").fadeToggle();
-		    });
+	$(document).ready(function() {
+		$("button").click(function() {
+			$("#content").fadeToggle();
 		});
-
-		</script>
+	});
+</script>
 
 </head>
 <body onload="drawmap()">
@@ -64,40 +61,35 @@ position: fixed;
 	<ul id="content">
 		<form>
 			<h3>Rennveranstalung</h3>
+			
 			<form>
-				<label for="disabled">ReggataTyp</label><br> <input
+				<label for="disabled">Reggata:</label><input
 					name="disabled" value="" disabled>
 			</form>
-			<table cellspacing="5" cellpadding="10">
-				<thead>
-					<tr>
-						<th>Team</th>
-						<th>Name</th>
-						<th>kn/h</th>
-						<th>BootsNr</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr style="word-break: break-all; word-wrap: break-word;">
-						<td>test</td>
-						<td>test</td>
-						<td>test</td>
-						<td>test</td>
-					</tr>
-					<tr style="word-break: break-all; word-wrap: break-word;">
-						<td>test</td>
-						<td>test</td>
-						<td>test</td>
-						<td>test</td>
-					</tr>
-					<tr style="word-break: break-all; word-wrap: break-word;">
-						<td>test</td>
-						<td>test</td>
-						<td>test</td>
-						<td>test</td>
-					</tr>
-				</tbody>
-			</table>
+			
+			<form>
+				<label for="disabled">Boot:</label>
+				<input name="disabled" value="" disabled>
+			</form>
+			
+			<form>
+				<label for="disabled">Yardstick:</label>
+				<input name="disabled" size="3" value="" disabled>kn/h
+			</form>
+			
+			<form>
+				<label for="disabled">Segenummer:</label>
+				<input name="disabled" value="" disabled>
+			</form>
+			
+			<form>
+				<label for="disabled">Team:</label>
+				<input name="disabled" size="10" value="" disabled>
+				<label for="disabled">Nation:</label>
+				<input name="disabled" size="3" value="" disabled>
+			</form>
+			
+			
 
 		</form>
 	</ul>
