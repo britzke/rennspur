@@ -1,10 +1,4 @@
 
-body {
-	font: 20px Montserrat, sans-serif;
-	line-height: 1.8;
-	color: #f5f6f7;
-}
-
 p {
 	font-size: 25px;
 }
@@ -17,6 +11,36 @@ p {
 .bg-1 {
 	background-color: #1abc9c; /* Green */
 	color: #ffffff;	
+	
+}
+/*
+*Button zum auswählen von Bojen
+*/
+
+.select-boje{
+	
+	padding: 5px;
+	color:#f9f9f9;
+	cursor: pointer;
+    font-size: 16px;
+    padding: 6px 12px;
+    padding-top: 6px;
+    padding-right: 12px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    border-color: #46b8da;
+    border-top-color: rgb(70, 184, 218);
+    border-right-color: rgb(70, 184, 218);
+    border-bottom-color: rgb(70, 184, 218);
+    border-left-color: rgb(70, 184, 218);
+	border-radius: 4px;
+	word-spacing: -10px !important;
+	 min-width: 176px;
+	
+}
+
+.bg-2 {
+	margin-bottom: 80px !important;
 }
 
 .container-fluid {
@@ -27,6 +51,14 @@ p {
 .glyphicon{
 	color:#f9f9f9;
 	background-color: #5bc0de;
+	border: none;
+	
+	
+}
+
+.progress-bar{
+	
+	background-color: black;
 }
 
 .footer-fluid{
@@ -38,17 +70,17 @@ p {
 .bg-footer {
 	background-color: #2f2f2f; /* Black Gray */
 	color: #fff;
-	height: 50px;	
+	height: relative;	
+	
 }
 
 .dropbtn {
     background-color: #5bc0de;
     color: white;
     padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  
+     border: none;
+    
+   
 }
 
 /* Dropdown button on hover & focus */
@@ -68,9 +100,15 @@ p {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #d3d7cf;;
-    min-width: 110px;
+    background-color: #5bc0de;
+    min-width: 176px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	border-color: #46b8da;
+    border-top-color: rgb(70, 184, 218);
+    border-right-color: rgb(70, 184, 218);
+    border-bottom-color: rgb(70, 184, 218);
+    border-left-color: rgb(70, 184, 218);
+	border-radius: 4px;
 }
 
 /* Links inside the dropdown */
@@ -85,15 +123,14 @@ p {
 	width: 60%;
 	text-align: center;
 	margin: 0 auto;
+	color: #ffffff;
 	
+		
 }
 
 
 
 
-.btn{
-	color:#f9f9f9;
-}
 html, body {
 	
 	background-color: #1abc9c !important;

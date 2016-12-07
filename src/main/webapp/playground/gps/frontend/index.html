@@ -19,59 +19,56 @@
 <!-- First Container -->
 	<div class="container-fluid bg-1 text-center">
 
-		<h3 class="margin">Willkommen im Interface zum setzen der Bojen. </h3>
+		<h3  class="margin">Rennspur Bahnmarken </h3>
 	
 	
 		<div class="dropdown">
-			<button onclick="myFunction()" class="glyphicon glyphicon-map-marker">Suchen Sie hier die Boje aus</button>
+			<button onclick="myFunction()" class="glyphicon glyphicon-map-marker select-boje" id="select-button"> Wähle eine Boje</button>
   			<div id="myDropdown" class="dropdown-content">
-    			<a onclick="ersteFunction()">Erste Boje</a>
-    			<a onclick="zweiteFunction()">Zweite Boje</a>
+    			<a onclick="ersteFunction()"id="erstefu">Erste Boje</a>
+    			<a onclick="zweiteFunction()"id="zweitefu">Zweite Boje</a>
     			
-   				<a onclick="dritteFunction()">Dritte Boje</a>
-    			<a onclick="vierteFunction()">Vierte Boje</a>
+   				<a onclick="dritteFunction()"id="drittefu">Dritte Boje</a>
+    			<a onclick="vierteFunction()"id="viertefu">Vierte Boje</a>
  			 </div>
 		</div>		
 	</div>
 
 <!-- Second Container -->
 	
-	<div class="form-group">
+	<div class="form-group bg-2">
 				
 		
-	<form class="w3-container w3-card-4">
- 
-  <input class="w3-check" type="checkbox">
-  <label class="w3-validate"> Setzen Sie die Boje während dem Rennen?</label>
 
- 	</form>
+		<div class="progress">
+  			<div id="progress-bar" class="progress-bar progress-bar-info progress-bar-info" role="progressbar"
+  				aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+  				 50 % der Bojen wurden gesetzt
+ 			 </div>
+		</div>
+		
+		
+		
+		
 			<h3 class="margin">Im Anschluss werden ihre GPS-Daten abgefragt
 			und eine Boje an der aktuellen Postition gesetzt.</h3>	
 	
 		<p>
-			<button type="button" class="btn btn-info">
-				<span class="glyphicon glyphicon-map-marker"></span> Boje setzen
+			<button type="button" onclick="sendeFunction()" class="btn btn-info">
+				<span class="glyphicon glyphicon-map-marker "></span> Boje setzen
 			</button>
 		</p>
 	
 	
 	</div>
 	
-		
-		
-	</div>
 <!-- Footer -->
 	<footer class="footer-fluid bg-footer text-center">
 		
 			Sportevent Trackerproject created by MIA17 - <a
 				href="http://www.lette-verein.de/Informatik%2B-%2BAktuelles">www.Lette-Verein.de</a>
 		
-		
-		
 	</footer>
-
-
-
 
 
 
