@@ -92,6 +92,11 @@
 			<groupId>org.webjars.npm</groupId>
 			<artifactId>primeng</artifactId>
 			<version>1.0.0-rc.3</version>
+		</dependency>				
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.1.1</version>
 		</dependency>
 
 		<!-- see https://jersey.java.net/documentation/snapshot/cdi.support.html -->
@@ -140,6 +145,5 @@
 			<artifactId>weld-servlet</artifactId>
 			<version>2.4.0.Final</version>
 		</dependency>
-
 	</dependencies>
 </project>
