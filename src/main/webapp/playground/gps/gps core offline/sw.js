@@ -25,7 +25,7 @@ this.addEventListener('install', function(event) {
     caches.open('v1').then(function(cache) {
       return cache.addAll([
 		'/rennspur/playground/gps/gps%20core%20offline/index.html',
-		'/rennspur/playground/gps/gps%20core%20offline/jquery.js',
+	//	'/rennspur/playground/gps/gps%20core%20offline/jquery.js',
 		'/rennspur/playground/gps/gps%20core%20offline/member_gps.js',
 		'/rennspur/playground/gps/gps%20core%20offline/app.js'
       ]);
