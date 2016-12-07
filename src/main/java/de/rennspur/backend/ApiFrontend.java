@@ -27,6 +27,27 @@ import javax.persistence.Query;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+<<<<<<< HEAD
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import de.rennspur.model.Club;
+import de.rennspur.model.Event;
+import de.rennspur.model.Race;
+import de.rennspur.model.Team;
+import de.rennspur.model.TeamMember;
+import de.rennspur.model.TeamPosition;
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+=======
+>>>>>>> branch 'master' of https://github.com/britzke/rennspur.git
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -39,21 +60,24 @@ import de.rennspur.model.TeamMember;
 import de.rennspur.model.TeamPosition;
 
 /**
- * The ApiFrontend provides the Api endpoint for the webfrontend.
+ * This Api part provides the Api endpoint for the webfrontend.
  * 
- * @author Leo Winter
+ * @author leo.winter, leon.schlender
  * @param <FrontendData>
  */
+<<<<<<< HEAD
+@Path("/frontend")
+=======
 @Path("/APId")
 
+>>>>>>> branch 'master' of https://github.com/britzke/rennspur.git
 public class ApiFrontend<FrontendData> {
 	@Inject
 	private EntityManagerFactory emf;
 
 	@GET
-	@Path("/FrontendFull")
+	@Path("/full")
 	@Produces(MediaType.APPLICATION_JSON)
-
 	public FrontendData getFrontendDataInJSON() {
 		// TODO - Output of every needed value.
 		Club club = new Club();
@@ -65,11 +89,35 @@ public class ApiFrontend<FrontendData> {
 
 		team.getName();
 		club.getAbreviation();
+		
+		club.getId();
+		// Backend.getLatestMemberPositions(i?, 10);
+
+		event.getHandicap();
+		event.getWaypoints();
+		
+		// pos part
+		//teampostion.getTime();
+		//teampostion.getLatitude();
+		//teampostion.getLongitude();
 
 		// TODO - return the result to the client
 		return null;
 	}
 	
+<<<<<<< HEAD
+	/**
+	 * Returns a specific amount of the latest Positions of a team
+	 * 
+	 * @param teamid
+	 *            ID of the wanted team
+	 * @param positionsCount
+	 * @return
+	 */
+	@POST
+	@Path("/update")
+	@Produces(MediaType.APPLICATION_XML)
+=======
 	@POST	
 	@Path("/FrontendUpdate")
 	@Produces(MediaType.APPLICATION_XML)
@@ -83,6 +131,7 @@ public class ApiFrontend<FrontendData> {
 	 * @return
 	 */
 
+>>>>>>> branch 'master' of https://github.com/britzke/rennspur.git
 	public List<TeamPosition> getLatestTeamPositions(@FormParam("id") int teamid) {
 		EntityManager em = emf.createEntityManager();
 
