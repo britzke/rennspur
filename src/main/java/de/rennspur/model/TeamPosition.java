@@ -20,6 +20,11 @@ package de.rennspur.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
 import java.sql.Timestamp;
 
 
@@ -27,9 +32,20 @@ import java.sql.Timestamp;
  * The persistent class for the TEAM_POSITIONS database table.
  * 
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "TeamPosition", propOrder = {
+
+})
+
 @Entity
 @Table(name="TEAM_POSITIONS")
-@NamedQuery(name="TeamPosition.findAll", query="SELECT t FROM TeamPosition t")
+@NamedQueries({
+	@NamedQuery(name="TeamPosition.findAll", 
+			query="SELECT t FROM TeamPosition t"),
+	@NamedQuery(name="TeamPosition.findLatestPositions", 
+			query="SELECT t FROM TeamPosition t WHERE t.id=:id"),
+}) 	
+
 public class TeamPosition implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -37,10 +53,13 @@ public class TeamPosition implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
+	@XmlElement(required = true)
 	private double latitude;
 
+	@XmlElement(required = true)
 	private double longitude;
 
+	@XmlElement(required = true)
 	private Timestamp time;
 
 	//bi-directional many-to-one association to Race

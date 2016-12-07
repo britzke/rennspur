@@ -18,7 +18,15 @@
  */
 package de.rennspur.backend;
 
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -37,7 +45,10 @@ import de.rennspur.model.TeamPosition;
  * @param <FrontendData>
  */
 @Path("/APId")
+
 public class ApiFrontend<FrontendData> {
+	@Inject
+	private EntityManagerFactory emf;
 
 	@GET
 	@Path("/FrontendFull")
@@ -58,4 +69,30 @@ public class ApiFrontend<FrontendData> {
 		// TODO - return the result to the client
 		return null;
 	}
+	
+	@POST	
+	@Path("/FrontendUpdate")
+	@Produces(MediaType.APPLICATION_XML)
+	
+	/**
+	 * Returns a specific amount of the latest Positions of a team
+	 * 
+	 * @param teamid
+	 *            ID of the wanted team
+	 * @param positionsCount
+	 * @return
+	 */
+
+	public List<TeamPosition> getLatestTeamPositions(@FormParam("id") int teamid) {
+		EntityManager em = emf.createEntityManager();
+
+		Query query = em.createNamedQuery("TeamPosition.findLatestPositions");
+		query.setParameter("id", teamid);
+		//query.setParameter("limit", limit);
+		@SuppressWarnings("unchecked")
+		List<TeamPosition> positions = query.getResultList();
+		return positions;
+
+	}
+	
 }

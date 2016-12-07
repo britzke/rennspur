@@ -30,6 +30,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
+import de.rennspur.model.Club;
 import de.rennspur.model.Team;
 import de.rennspur.model.TeamMember;
 import de.rennspur.model.TeamPosition;
@@ -47,7 +48,7 @@ public class Backend {
 	 */
 	private HashSet<Team> Teams = new HashSet<Team>();
 	@Inject
-	private EntityManagerFactory factory;
+	private EntityManagerFactory emf;
 
 	public Backend() {
 
@@ -66,7 +67,7 @@ public class Backend {
 	 */
 	public List<TeamMember> getMembers(int team) {
 		// factory = Persistence.createEntityManagerFactory("MEMBERS");
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = emf.createEntityManager();
 
 		Query query = em.createNativeQuery("select * from teams where id=:id");
 		query.setParameter("id", team);
@@ -76,25 +77,6 @@ public class Backend {
 		return members;
 	}
 
-	/**
-	 * Returns a specific amount of the latest Positions of a team
-	 * 
-	 * @param teamid
-	 *            ID of the wanted team
-	 * @param positionsCount
-	 * @return
-	 */
-
-	public List<TeamPosition> getLatestMemberPositions(int teamid, Integer positionsCount) {
-		/*
-		 * factory = Persistence.createEntityManagerFactory("POSITIONS");
-		 * EntityManager em = factory.createEntityManager();
-		 */
-		List<TeamPosition> getTeilnehmerPositionen = null;
-
-		return getTeilnehmerPositionen;
-
-	}
 
 	/**
 	 * Saves a new Position into the Database
