@@ -52,7 +52,7 @@ function sendLocations() {
 		dataType : 'text',
 		data : localStorage.getItem("rennspur_gps_locations")	,
 		success : function(result) {
-			alert('the request was successfully sent to the server' + result);
+			alert('the request was successfully sent to the server ' + result);
 		}
 	});
 }
@@ -124,7 +124,12 @@ function saveLocation(lo, la) {
  * onClick to test some functions
  */
 function clickTest() {
-	sendLocations(); // testing
+	window.open("index2.html", "_self");
+	//sendLocations(); // testing
+}
+function clickTest2(){
+	
+	window.open("index.html", "_self");
 }
 
 /**

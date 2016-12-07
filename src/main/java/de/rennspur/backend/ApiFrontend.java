@@ -27,6 +27,7 @@ import javax.persistence.Query;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -39,21 +40,22 @@ import de.rennspur.model.TeamMember;
 import de.rennspur.model.TeamPosition;
 
 /**
- * The ApiFrontend provides the Api endpoint for the webfrontend.
+ * This Api part provides the Api endpoint for the webfrontend.
  * 
- * @author Leo Winter
+ * @author leo.winter, leon.schlender
  * @param <FrontendData>
  */
-@Path("/APId")
+
+
+@Path("/frontend")
 
 public class ApiFrontend<FrontendData> {
 	@Inject
 	private EntityManagerFactory emf;
 
 	@GET
-	@Path("/FrontendFull")
+	@Path("/full")
 	@Produces(MediaType.APPLICATION_JSON)
-
 	public FrontendData getFrontendDataInJSON() {
 		// TODO - Output of every needed value.
 		Club club = new Club();
@@ -65,13 +67,35 @@ public class ApiFrontend<FrontendData> {
 
 		team.getName();
 		club.getAbreviation();
+		
+		club.getId();
+		// Backend.getLatestMemberPositions(i?, 10);
+
+		event.getHandicap();
+		event.getWaypoints();
+		
+		// pos part
+		//teampostion.getTime();
+		//teampostion.getLatitude();
+		//teampostion.getLongitude();
 
 		// TODO - return the result to the client
 		return null;
 	}
 	
+
+	/**
+	 * Returns a specific amount of the latest Positions of a team
+	 * 
+	 * @param teamid
+	 *            ID of the wanted team
+	 * @param positionsCount
+	 * @return
+	 */
+
+
 	@POST	
-	@Path("/FrontendUpdate")
+	@Path("/update")
 	@Produces(MediaType.APPLICATION_XML)
 	
 	/**
