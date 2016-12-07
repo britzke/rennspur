@@ -24,7 +24,9 @@ this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v1').then(function(cache) {
       return cache.addAll([
+    	'/rennspur/playground/gps/gps%20core%20offline/',
 		'/rennspur/playground/gps/gps%20core%20offline/index.html',
+		'/rennspur/playground/gps/gps%20core%20offline/index2.html', //Test site
 	//	'/rennspur/playground/gps/gps%20core%20offline/jquery.js',
 		'/rennspur/playground/gps/gps%20core%20offline/member_gps.js',
 		'/rennspur/playground/gps/gps%20core%20offline/app.js'
@@ -36,6 +38,7 @@ this.addEventListener('install', function(event) {
 		 * Check if there are changes in the cached files. If yes update the
 		 * cache
 		 */
+
 this.addEventListener('fetch', function(event) {
   var response;
   event.respondWith(caches.match(event.request).catch(function() {
@@ -43,10 +46,10 @@ this.addEventListener('fetch', function(event) {
   }).then(function(r) {
     response = r;
     caches.open('v1').then(function(cache) {
-      cache.put(event.request, response);
+      cache.put(event.request,response);
     });
     return response.clone();
   }).catch(function() {
-    return caches.match('/rennspur/playground/gps/gps%20core%20offline/index.html'); // CHANGE ME
+    return caches.match('/rennspur/playground/gps/gps%20core%20offline/index.html'); 
   }));
-});
+}); 

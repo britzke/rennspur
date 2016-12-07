@@ -18,62 +18,30 @@
  */
 package de.rennspur.model;
 
-import java.io.Serializable;
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
 import java.sql.Timestamp;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 /**
- * The persistent class for the TEAM_POSITIONS database table.
- * 
+ * Position is a class to be extended by the entity classes
+ * TeamMember and TeamPostion.
+ *
+ * @author burghard.britzke bubi@charmides.in-berlin.de
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TeamPosition", propOrder = {
-
-})
-
-@Entity
-@Table(name="TEAM_POSITIONS")
-@NamedQueries({
-	@NamedQuery(name="TeamPosition.findAll", 
-			query="SELECT t FROM TeamPosition t"),
-	@NamedQuery(name="TeamPosition.findLatestPositions", 
-			query="SELECT t FROM TeamPosition t WHERE t.id=:id"),
-}) 	
-
-public class TeamPosition implements Serializable {
-	private static final long serialVersionUID = 1L;
-
+@MappedSuperclass
+public class Position {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@XmlElement(required = true)
 	private double latitude;
 
-	@XmlElement(required = true)
 	private double longitude;
 
-	@XmlElement(required = true)
 	private Timestamp time;
-
-	//bi-directional many-to-one association to Race
-	@ManyToOne
-	@JoinColumn(name="RACES_ID")
-	private Race race;
-
-	//bi-directional many-to-one association to Team
-	@ManyToOne
-	@JoinColumn(name="TEAMS_ID")
-	private Team team;
-
-	public TeamPosition() {
-	}
 
 	public int getId() {
 		return this.id;
@@ -106,21 +74,4 @@ public class TeamPosition implements Serializable {
 	public void setTime(Timestamp time) {
 		this.time = time;
 	}
-
-	public Race getRace() {
-		return this.race;
-	}
-
-	public void setRace(Race race) {
-		this.race = race;
-	}
-
-	public Team getTeam() {
-		return this.team;
-	}
-
-	public void setTeam(Team team) {
-		this.team = team;
-	}
-
 }
