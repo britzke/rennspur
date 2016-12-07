@@ -1,0 +1,45 @@
+{
+  "boot1": {
+    "position": [
+      {
+        "time": "1479284718803",
+        "lat": "52.520007",
+        "long": "13.404954"
+      },
+      {
+        "time": "1479287712832",
+        "lat": "13.341249999999945",
+        "long": "52.49617"
+      }
+    ],
+    "name": "Boot Name - string",
+    "speed": "Boot Speed - int",
+    "yardstick": "Der Yardstick",
+    "segelnummer": "Die Segelnummer",
+    "team": {
+      "name": "Der Team Name",
+      "nation": "Nation der Manschaft",
+      "team-member": [
+        "Die Mitglieder",
+        "Vor Nachname",
+        "in einemString"
+      ]
+    }
+  },
+  "boot2": {
+    "position": [
+      {
+        "time": "1479284718803",
+        "lat": "52.520007",
+        "long": "13.404954"
+      },
+      {
+        "time": "1479287712832",
+        "lat": "13.341249999999945",
+        "long": "52.49617"
+      }
+    	]
+   }    
+}
+    
+    

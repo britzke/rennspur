@@ -1,40 +1,47 @@
+$(document).ready(function () {
+  $("body").prepend(function () {
+    var showData = $('#show');
+
+    $.getJSON('testData.json', function (data) {
+      console.log(data);
+      
+      var items = [];
+      $.each( data, function(key,val) {
+        items.push( "<li id='" + key + "'>" + val + "</li>" );
+      });
+     
+      $( "<ul/>", {
+        "class": "my-new-list",
+        html: items.join( "" )
+      }).appendTo( "body" );
+ 
+    });
+
+    showData.text('test');
+    
+    var jqxhr = $.getJSON( "testData.json", function() {
+    	  console.log( "success" );
+    	})
+    	  .done(function() {
+    	    console.log( "second success" );
+    	  })
+    	  .fail(function() {
+    	    console.log( "error" );
+    	  })
+    	  .always(function() {
+    	    console.log( "complete" );
+    	  });
+    	 
+    	// Perform other work here ...
+    	 
+    	// Set another completion function for the request above
+    	jqxhr.complete(function() {
+    	  console.log( "second complete" );
+    	});
 
 
-var basicData = JSON.parse(BasicData);
-alert(basicData[0].name);
-alert(basicData[0].alter);
-alert(basicData[1].name);
-alert(basicData[1].alter);
-
-var refreshedData = JSON.parse(RefreshedData);
-alert(refreshedData[0].name);
-alert(refreshedData[0].alter);
-alert(refreshedData[1].name);
-alert(refreshedData[1].alter);
-
-
-var basicData = $.getJSON( "example.json", function() {
-  console.log( "success" );
-})
-  .done(function() {
-    console.log( "second success" );
-  })
-  .fail(function() {
-    console.log( "error" );
-  })
-  .always(function() {
-    console.log( "complete" );
+    
   });
+});
 
-var refreshedData = $.getJSON( "example.json", function() {
-	  console.log( "success" );
-	})
-	  .done(function() {
-	    console.log( "second success" );
-	  })
-	  .fail(function() {
-	    console.log( "error" );
-	  })
-	  .always(function() {
-	    console.log( "complete" );
-	  });
+
