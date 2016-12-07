@@ -23,7 +23,7 @@
  */ 
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js', { scope: '/path/to/application/scope' }).then(function(reg) {
+  navigator.serviceWorker.register('sw.js', { scope: '/rennspur/playground/gps/gps%20core%20offline/' }).then(function(reg) {
     
     if(reg.installing) {
       console.log('Service worker installing');

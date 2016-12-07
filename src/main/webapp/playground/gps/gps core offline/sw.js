@@ -24,9 +24,10 @@ this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v1').then(function(cache) {
       return cache.addAll([
-		'/path/to/file/to/cache1.html',
-		'/path/to/file/to/cache2.js',
-		'/path/to/file/to/cache3.js'	// CHANGE ME
+		'/rennspur/playground/gps/gps%20core%20offline/index.html',
+		'/rennspur/playground/gps/gps%20core%20offline/jquery.js',
+		'/rennspur/playground/gps/gps%20core%20offline/member_gps.js',
+		'/rennspur/playground/gps/gps%20core%20offline/app.js'
       ]);
     })
   );
@@ -46,6 +47,6 @@ this.addEventListener('fetch', function(event) {
     });
     return response.clone();
   }).catch(function() {
-    return caches.match('/path/to/file/that/might/change.html'); // CHANGE ME
+    return caches.match('/rennspur/playground/gps/gps%20core%20offline/index.html'); // CHANGE ME
   }));
 });
