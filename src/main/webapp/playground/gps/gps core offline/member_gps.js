@@ -140,3 +140,4 @@ window.onload = function() {
 	init();
 	saveLocation(10, 20);
 }
+}
