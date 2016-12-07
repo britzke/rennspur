@@ -38,25 +38,6 @@ import de.rennspur.model.Race;
 import de.rennspur.model.Team;
 import de.rennspur.model.TeamMember;
 import de.rennspur.model.TeamPosition;
-import java.util.List;
-
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-
-import de.rennspur.model.Club;
-import de.rennspur.model.Event;
-import de.rennspur.model.Race;
-import de.rennspur.model.Team;
-import de.rennspur.model.TeamMember;
-import de.rennspur.model.TeamPosition;
 
 /**
  * This Api part provides the Api endpoint for the webfrontend.
@@ -66,7 +47,7 @@ import de.rennspur.model.TeamPosition;
  */
 
 
-@Path("/APId")
+@Path("/frontend")
 
 public class ApiFrontend<FrontendData> {
 	@Inject
@@ -114,7 +95,7 @@ public class ApiFrontend<FrontendData> {
 
 
 	@POST	
-	@Path("/FrontendUpdate")
+	@Path("/update")
 	@Produces(MediaType.APPLICATION_XML)
 	
 	/**
