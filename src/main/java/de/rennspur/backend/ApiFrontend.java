@@ -27,7 +27,7 @@ import javax.persistence.Query;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-<<<<<<< HEAD
+
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -46,8 +46,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-=======
->>>>>>> branch 'master' of https://github.com/britzke/rennspur.git
+
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -65,12 +64,10 @@ import de.rennspur.model.TeamPosition;
  * @author leo.winter, leon.schlender
  * @param <FrontendData>
  */
-<<<<<<< HEAD
-@Path("/frontend")
-=======
+
+
 @Path("/APId")
 
->>>>>>> branch 'master' of https://github.com/britzke/rennspur.git
 public class ApiFrontend<FrontendData> {
 	@Inject
 	private EntityManagerFactory emf;
@@ -105,7 +102,7 @@ public class ApiFrontend<FrontendData> {
 		return null;
 	}
 	
-<<<<<<< HEAD
+
 	/**
 	 * Returns a specific amount of the latest Positions of a team
 	 * 
@@ -114,10 +111,8 @@ public class ApiFrontend<FrontendData> {
 	 * @param positionsCount
 	 * @return
 	 */
-	@POST
-	@Path("/update")
-	@Produces(MediaType.APPLICATION_XML)
-=======
+
+
 	@POST	
 	@Path("/FrontendUpdate")
 	@Produces(MediaType.APPLICATION_XML)
@@ -131,7 +126,6 @@ public class ApiFrontend<FrontendData> {
 	 * @return
 	 */
 
->>>>>>> branch 'master' of https://github.com/britzke/rennspur.git
 	public List<TeamPosition> getLatestTeamPositions(@FormParam("id") int teamid) {
 		EntityManager em = emf.createEntityManager();
 
