@@ -3,8 +3,8 @@ set schema rennspur;
 create table clubs (
 	id int not null primary key,
 	name varchar(256) not null,
-	kürzel varchar (4) not null,
-	dsv_nummer varchar (6)
+	abbreviation varchar (4) not null,
+	dsv_number varchar (6)
 );
 
 create table events (
@@ -24,8 +24,8 @@ create table races (
 
 create table teams (
 	id int not null primary key,
-	kennung varchar(10) not null,
-	land varchar(3) not null,
+	name varchar(10) not null,
+	country varchar(3) not null,
 	handycap_faktor int,
 	clubs_id int not null,
 	email varchar(256) not null,
@@ -57,7 +57,7 @@ create table team_positions (
 
 create table waypoints (
 	id int not null primary key,
-	kennung varchar(5) not null,
+	name varchar(5) not null,
 	events_id int not null,
 	races_id int,
 	constraint fk_waypoints_events foreign key (events_id) references events,
