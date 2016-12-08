@@ -27,7 +27,7 @@ this.addEventListener('install', function(event) {
     	'/rennspur/playground/gps/gps%20core%20offline/',
 		'/rennspur/playground/gps/gps%20core%20offline/index.html',
 		'/rennspur/playground/gps/gps%20core%20offline/index2.html', //Test site
-	//	'/rennspur/playground/gps/gps%20core%20offline/jquery.js',
+		'/rennspur/webjars/jquery/3.1.1/jquery.js',
 		'/rennspur/playground/gps/gps%20core%20offline/member_gps.js',
 		'/rennspur/playground/gps/gps%20core%20offline/app.js'
       ]);

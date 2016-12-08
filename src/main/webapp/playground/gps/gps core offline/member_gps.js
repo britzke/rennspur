@@ -56,6 +56,7 @@ function sendLocations() {
 						+ result);
 			}
 		});
+	}
 }
 
 /**
@@ -139,5 +140,4 @@ function clickTest2() {
 window.onload = function() {
 	init();
 	saveLocation(10, 20);
-}
 }
