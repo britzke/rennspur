@@ -37,7 +37,7 @@ public class Waypoint implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	private String kennung;
+	private String name;
 
 	//bi-directional many-to-one association to Event
 	@ManyToOne
@@ -64,12 +64,12 @@ public class Waypoint implements Serializable {
 		this.id = id;
 	}
 
-	public String getKennung() {
-		return this.kennung;
+	public String getName() {
+		return this.name;
 	}
 
-	public void setKennung(String kennung) {
-		this.kennung = kennung;
+	public void setName(String kennung) {
+		this.name = kennung;
 	}
 
 	public Event getEvent() {

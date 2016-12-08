@@ -25,7 +25,7 @@ create table races (
 create table teams (
 	id int not null primary key,
 	name varchar(10) not null,
-	country varchar(3) not null,
+	nation varchar(3) not null,
 	handycap_faktor int,
 	clubs_id int not null,
 	email varchar(256) not null,
