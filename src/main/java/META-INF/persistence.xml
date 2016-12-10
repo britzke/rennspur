@@ -3,7 +3,6 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 
-	<!-- <persistence-unit name="rennspur-db" transaction-type="RESOURCE_LOCAL"> -->
 	<persistence-unit name="rennspur-db" transaction-type="JTA">
 		<jta-data-source>java:comp/env/jdbc/rennspur-db</jta-data-source>
 		<class>de.rennspur.model.Club</class>
@@ -21,6 +20,31 @@
 				value="database" />
 			<property name="eclipselink.logging.level" value="FINE" />
 			<property name="eclipselink.logging.exceptions" value="true" />
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="rennspur-db-local" transaction-type="RESOURCE_LOCAL">
+		<jta-data-source>java:comp/env/jdbc/rennspur-db</jta-data-source>
+		<class>de.rennspur.model.Club</class>
+		<class>de.rennspur.model.Team</class>
+		<class>de.rennspur.model.TeamMember</class>
+		<class>de.rennspur.model.TeamPosition</class>
+		<class>de.rennspur.model.Event</class>
+		<class>de.rennspur.model.Race</class>
+		<class>de.rennspur.model.Waypoint</class>
+		<class>de.rennspur.model.WaypointPosition</class>
+		<class>de.rennspur.model.BooleanYNConverter</class>
+		<properties>
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="database" />
+			<property name="eclipselink.logging.level" value="FINE" />
+			<property name="eclipselink.logging.exceptions" value="true" />
+						<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:derby://localhost:1527/rennspur-db;create=true" />
+			<property name="javax.persistence.jdbc.user" value="rennspur" />
+			<property name="javax.persistence.jdbc.password" value="rennspur" />
 		</properties>
 	</persistence-unit>
 </persistence>

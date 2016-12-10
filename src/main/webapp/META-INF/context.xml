@@ -5,7 +5,7 @@
 	<Resource name="jdbc/rennspur-db" auth="Container" type="javax.sql.DataSource"
 		username="rennspur"
 		password="rennspur" 
-		maxActive="2" maxIdle="1" maxWait="10000" driverClassName="org.apache.derby.jdbc.ClientDriver"
+		maxTotal="2" maxIdle="1" maxWaitMillis="10000" driverClassName="org.apache.derby.jdbc.ClientDriver"
 		url="jdbc:derby://localhost:1527/rennspur-db;create=true" />
 
 </Context>

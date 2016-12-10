@@ -63,7 +63,7 @@ public class InitClubs {
 						.unmarshal(new FileInputStream(args[0]));
 
 				EntityManagerFactory emf = Persistence
-						.createEntityManagerFactory("rennspur-db");
+						.createEntityManagerFactory("rennspur-db-local");
 				EntityManager em = emf.createEntityManager();
 				EntityTransaction et = em.getTransaction();
 				et.begin();

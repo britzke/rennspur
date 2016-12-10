@@ -63,11 +63,13 @@ public class TeamPosition implements Serializable {
 	private Timestamp time;
 
 	//bi-directional many-to-one association to Race
+	@XmlElement(required=true)
 	@ManyToOne
 	@JoinColumn(name="RACES_ID")
 	private Race race;
 
 	//bi-directional many-to-one association to Team
+	@XmlElement(required=true)
 	@ManyToOne
 	@JoinColumn(name="TEAMS_ID")
 	private Team team;
