@@ -8,6 +8,7 @@
 	<name>rennspur</name>
 	<properties>
 		<org.apache.derby.version>10.13.1.1</org.apache.derby.version>
+		<org.glassfish.jersey.version>2.24.1</org.glassfish.jersey.version>
 	</properties>
 
 	<build>
@@ -99,7 +100,6 @@
 			<version>3.1.1-1</version>
 		</dependency>
 
-		<!-- see https://jersey.java.net/documentation/snapshot/cdi.support.html -->
 		<dependency>
 			<groupId>javax.ws.rs</groupId>
 			<artifactId>javax.ws.rs-api</artifactId>
@@ -108,35 +108,36 @@
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-servlet</artifactId>
-			<version>2.24.1</version>
+			<version>${org.glassfish.jersey.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-servlet-core</artifactId>
-			<version>2.24.1</version>
+			<version>${org.glassfish.jersey.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.hk2.external</groupId>
 			<artifactId>javax.inject</artifactId>
-			<version>2.5.0-b28</version>
+			<version>2.5.0-b30</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-server</artifactId>
-			<version>2.24.1</version>
+			<version>${org.glassfish.jersey.version}</version>
 		</dependency>
 
 		<!-- dependency injection for jersey+tomcat -->
+		<!-- see https://jersey.java.net/documentation/snapshot/cdi.support.html -->
 		<dependency>
 			<groupId>org.glassfish.jersey.ext.cdi</groupId>
 			<artifactId>jersey-cdi1x</artifactId>
-			<version>2.24.1</version>
+			<version>${org.glassfish.jersey.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.ext.cdi</groupId>
 			<artifactId>jersey-cdi1x-servlet</artifactId>
-			<version>2.24.1</version>
+			<version>${org.glassfish.jersey.version}</version>
 		</dependency>
 
 		<!-- weld for tomcat -->
