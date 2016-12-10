@@ -99,6 +99,16 @@
 			<artifactId>jquery</artifactId>
 			<version>3.1.1-1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>openlayers</artifactId>
+			<version>3.17.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.3.7-1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>javax.ws.rs</groupId>
