@@ -39,9 +39,7 @@ function clearPositionsArray() {
  * POST request might be done
  */
 function sendLocations() {
-
-/** finally send POST request */
-
+	/** use jquery to post the locations to the Rest interface */
 	$.ajax({
 		url : 'http://localhost:8080/rennspur/rest/gps-service',
 		type : 'post',
@@ -52,7 +50,13 @@ function sendLocations() {
 		dataType : 'json',
 		data : localStorage.getItem("rennspur_gps_locations"),
 		success : function(result) {
-			alert('the request was successfully sent to the server ' + result);
+			/** in case of successful POST request clear the saved positions */
+
+			clearPositionsArray();
+		},
+		error : function(result) {
+			// alert("Error sending locations");
+			//do nothing
 		}
 	});
 
@@ -63,7 +67,9 @@ function sendLocations() {
  */
 function prepareLocalStorage() {
 	// TODO: Insert hash from HTML into json string
-	var json = '{"hash":"","positions" : []}';
+	var url = window.location.href;
+	var hash = url.split("?")[1];
+	var json = '{"hash":"' + hash + '","positions" : []}';
 	localStorage.setItem("rennspur_gps_locations", json);
 }
 
