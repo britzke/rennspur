@@ -1,12 +1,16 @@
 package de.rennspur.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GPSPosition {
 	String hash;
-	
 	List<Position> positions;
 
+	public GPSPosition(){
+		positions = new ArrayList<>();
+		hash = "23794zui23rdfi32";
+	}
 	/**
 	 * @return the hash
 	 */

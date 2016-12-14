@@ -23,8 +23,6 @@
 
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
-	
-	'/rennspur/playground/gps/gps%20core%20offline/',
 	'/rennspur/playground/gps/gps%20core%20offline/index.html',
 	'/rennspur/playground/gps/gps%20core%20offline/index2.html', // Test
 	'/rennspur/webjars/jquery/3.1.1-1/jquery.js',
@@ -48,6 +46,11 @@ self.addEventListener('install', function(event) {
 		 * cache
 		 */
 self.addEventListener('fetch', function(event) {
+	  var response;
+	  var request = event.request;
+	 if (request.method == 'POST') {
+		 return; 
+	 }
 	  event.respondWith(
 	    caches.match(event.request)
 	      .then(function(response) {

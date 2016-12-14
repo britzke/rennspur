@@ -21,13 +21,13 @@
  * Clear all saved Locations from the localstorage only called after
  * successfully sending them to the server
  */
-function clearStatusArray() {
-	/** Get the status array out of the localstorage */
+function clearpositionsArray() {
+	/** Get the positions array out of the localstorage */
 	var jsonString = localStorage.getItem("rennspur_gps_locations");
 	var jsonObject = JSON.parse(jsonString);
 
 	/** clear the array by initializing it as a new, empty array */
-	jsonObject.status.length = [];
+	jsonObject.positions.length = [];
 
 	/** put the JSON object back into the localStorage */
 	jsonString = JSON.stringify(jsonObject);
@@ -40,7 +40,7 @@ function clearStatusArray() {
  */
 function sendLocations() {
 
-	/** finally send POST request */
+/** finally send POST request */
 
 	$.ajax({
 		url : 'http://localhost:8080/rennspur/rest/gps-service',
@@ -59,11 +59,11 @@ function sendLocations() {
 }
 
 /**
- * Prepare the localStorage to save positions and the key
+ * Prepare the localStorage to save positions and the hash
  */
 function prepareLocalStorage() {
-	// TODO: Insert key from HTML into json string
-	var json = '{"key":"","status" : []}';
+	// TODO: Insert hash from HTML into json string
+	var json = '{"hash":"","positions" : []}';
 	localStorage.setItem("rennspur_gps_locations", json);
 }
 
@@ -80,8 +80,8 @@ function init() {
 	} else {
 		/** if existing check if saved Data is the correct JSON-Format */
 		var storageItemJson = JSON.parse(storageItem);
-		if (storageItemJson.status == null || storageItemJson.key == null) {
-			/** status array or auth key in JSON object is missing, creating new */
+		if (storageItemJson.positions == null || storageItemJson.hash == null) {
+			/** positions array or auth hash in JSON object is missing, creating new */
 			prepareLocalStorage();
 		}
 		// TODO: check if the found data is old, maybe from another event?
@@ -102,8 +102,8 @@ function saveLocation(lo, la) {
 
 	/** Save positions and time as json */
 	var positionJson = JSON.parse(JSON.stringify({
-		"long" : lo,
-		"lat" : la,
+		"longitude" : lo,
+		"latitude" : la,
 		"time" : time
 	}));
 
@@ -114,7 +114,7 @@ function saveLocation(lo, la) {
 	var locactionJson = JSON.parse(locationJsonString);
 
 	/** Add the saved position into the array */
-	locactionJson.status.push(positionJson);
+	locactionJson.positions.push(positionJson);
 
 	/** Save the JSON object back into the localstorage as string */
 	localStorage.setItem("rennspur_gps_locations", JSON
