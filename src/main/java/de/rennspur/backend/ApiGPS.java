@@ -18,9 +18,6 @@
  */
 package de.rennspur.backend;
 
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -87,8 +84,6 @@ public class ApiGPS {
 			EntityTransaction et = em.getTransaction();
 			Team team = new Team();
 
-			// TODO Authenticate and authorisate incomming request against db
-			// TODO validate race
 			et.begin();
 			if (team.getHash() == gpsPosition.getHash()) {
 				for (Position position : gpsPosition.getPositions()){
@@ -96,9 +91,14 @@ public class ApiGPS {
 					
 					newTeamPosition.setLatitude(position.getLatitude());
 					newTeamPosition.setLongitude(position.getLongitude());
-					newTeamPosition.setRace(new Race()); // creating anonymous race because we can't know which race is currently running
 					newTeamPosition.setTime(position.getTime());
-					
+
+					/**
+					 * creating anonymous race because we can't know which race is currently running
+					 * TODO validate race
+					 */
+					newTeamPosition.setRace(new Race()); // 
+
 					em.merge(newTeamPosition);
 				}
 				et.commit();
