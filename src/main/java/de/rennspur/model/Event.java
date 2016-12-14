@@ -41,6 +41,7 @@ public class Event implements Serializable {
 
 	private String name;
 
+	@Transient
 	private Boolean handicap;
 	
 	@Column(name = "START_DATE")
