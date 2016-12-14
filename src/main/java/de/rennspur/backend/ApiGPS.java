@@ -80,6 +80,11 @@ public class ApiGPS {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String postTeamPositions(GPSPosition gpsPosition) {
 		try {
+			
+			/**
+			 * Creating the entityManager.
+			 * Uses persistence.xml as config for connection
+			 */
 			EntityManager em = emf.createEntityManager();
 			EntityTransaction et = em.getTransaction();
 			Team team = new Team();
@@ -89,6 +94,9 @@ public class ApiGPS {
 				for (Position position : gpsPosition.getPositions()){
 					TeamPosition newTeamPosition = new TeamPosition();
 					
+					/**
+					 * Filling the new TeamPosition Object with data from the post
+					 */
 					newTeamPosition.setLatitude(position.getLatitude());
 					newTeamPosition.setLongitude(position.getLongitude());
 					newTeamPosition.setTime(position.getTime());
@@ -98,11 +106,23 @@ public class ApiGPS {
 					 * TODO validate race
 					 */
 					newTeamPosition.setRace(new Race()); // 
-
+					
+					/**
+					 * Merging all positions into a package
+					 */
 					em.merge(newTeamPosition);
 				}
+				
+				/**
+				 * Committing the final changes into the database
+				 */
 				et.commit();
+				
+				/**
+				 * Closing connection after successfull commit
+				 */
 				em.close();
+				
 				return "ok";
 			} else {
 				return "failed";
