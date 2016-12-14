@@ -32,6 +32,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.google.gson.Gson;
+
 import de.rennspur.model.Club;
 import de.rennspur.model.Event;
 import de.rennspur.model.Race;
@@ -45,7 +47,6 @@ import de.rennspur.model.TeamPosition;
  * @author leo.winter, leon.schlender
  * @param <FrontendData>
  */
-
 
 @Path("/frontend")
 
@@ -67,22 +68,21 @@ public class ApiFrontend<FrontendData> {
 
 		team.getName();
 		club.getAbreviation();
-		
+
 		club.getId();
 		// Backend.getLatestMemberPositions(i?, 10);
 
 		event.getHandicap();
 		event.getWaypoints();
-		
+
 		// pos part
-		//teampostion.getTime();
-		//teampostion.getLatitude();
-		//teampostion.getLongitude();
+		// teampostion.getTime();
+		// teampostion.getLatitude();
+		// teampostion.getLongitude();
 
 		// TODO - return the result to the client
 		return null;
 	}
-	
 
 	/**
 	 * Returns a specific amount of the latest Positions of a team
@@ -93,30 +93,29 @@ public class ApiFrontend<FrontendData> {
 	 * @return
 	 */
 
-
-	@POST	
+	@POST
 	@Path("/update")
-	@Produces(MediaType.APPLICATION_XML)
-	
+	@Produces(MediaType.APPLICATION_JSON)
+
 	/**
 	 * Returns a specific amount of the latest Positions of a team
 	 * 
 	 * @param teamid
 	 *            ID of the wanted team
-	 * @param positionsCount
-	 * @return
+	 * @return The list for TeamPositions for the given team id.
 	 */
-
 	public List<TeamPosition> getLatestTeamPositions(@FormParam("id") int teamid) {
 		EntityManager em = emf.createEntityManager();
 
 		Query query = em.createNamedQuery("TeamPosition.findLatestPositions");
 		query.setParameter("id", teamid);
-		//query.setParameter("limit", limit);
+		// query.setParameter("limit", limit);
 		@SuppressWarnings("unchecked")
 		List<TeamPosition> positions = query.getResultList();
+		for(TeamPosition e: positions)
+		{
+			System.out.println(e.getLatitude());
+		}
 		return positions;
-
 	}
-	
 }

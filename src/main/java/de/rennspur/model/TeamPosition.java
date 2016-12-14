@@ -23,10 +23,10 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import java.sql.Timestamp;
-
 
 /**
  * The persistent class for the TEAM_POSITIONS database table.
@@ -38,19 +38,15 @@ import java.sql.Timestamp;
 })
 
 @Entity
-@Table(name="TEAM_POSITIONS")
-@NamedQueries({
-	@NamedQuery(name="TeamPosition.findAll", 
-			query="SELECT t FROM TeamPosition t"),
-	@NamedQuery(name="TeamPosition.findLatestPositions", 
-			query="SELECT t FROM TeamPosition t WHERE t.id=:id"),
-}) 	
+@Table(name = "TEAM_POSITIONS")
+@NamedQueries({ @NamedQuery(name = "TeamPosition.findAll", query = "SELECT t FROM TeamPosition t"),
+		@NamedQuery(name = "TeamPosition.findLatestPositions", query = "SELECT tp FROM TeamPosition tp inner join tp.team t WHERE t.id=:id"), })
 
 public class TeamPosition implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@XmlElement(required = true)
@@ -62,16 +58,16 @@ public class TeamPosition implements Serializable {
 	@XmlElement(required = true)
 	private Timestamp time;
 
-	//bi-directional many-to-one association to Race
-	@XmlElement(required=true)
+	// bi-directional many-to-one association to Race
+	@XmlElement(required = true)
 	@ManyToOne
-	@JoinColumn(name="RACES_ID")
+	@JoinColumn(name = "RACES_ID")
 	private Race race;
 
-	//bi-directional many-to-one association to Team
-	@XmlElement(required=true)
+	// bi-directional many-to-one association to Team
+	@XmlElement(required = true)
 	@ManyToOne
-	@JoinColumn(name="TEAMS_ID")
+	@JoinColumn(name = "TEAMS_ID")
 	private Team team;
 
 	public TeamPosition() {
@@ -123,6 +119,10 @@ public class TeamPosition implements Serializable {
 
 	public void setTeam(Team team) {
 		this.team = team;
+	}
+	
+	public String toString() {
+		return "<TeamPosition(id="+id+", latitude="+latitude+", longitude="+longitude+", race="+race+", team="+team+")>";
 	}
 
 }
