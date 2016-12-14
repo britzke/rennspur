@@ -23,14 +23,17 @@
  */ 
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('sw.js').then(function(registration) {
-      // Registration was successful
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }).catch(function(err) {
-      // registration failed :(
-      console.log('ServiceWorker registration failed: ', err);
-    });
+  navigator.serviceWorker.register('sw.js', { scope: '/rennspur/playground/gps/gps%20core%20offline/' }).then(function(reg) {
+    if(reg.installing) {
+      console.log('Service worker installing');
+    } else if(reg.waiting) {
+      console.log('Service worker installed');
+    } else if(reg.active) {
+      console.log('Service worker active');
+    }  
+  }).catch(function(error) {
+    console.log('Registration failed with ' + error);
   });
 }
+
 
