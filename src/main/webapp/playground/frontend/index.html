@@ -7,36 +7,7 @@
 <script src="/rennspur/webjars/openlayers/3.17.1/ol.js"></script>
 <script type="text/javascript" src="osmMap.js"></script>
 <script src="/rennspur/webjars/jquery/3.1.1-1/jquery.min.js"></script>
-<script type="text/javascript">
 
-$(document).ready(function () {
-	  $("body").prepend(function () {
-		    var showData = $('#show');
-
-		    var json = (function () {
-		        var json = null;
-		        $.ajax({
-		            'async': false,
-		            'global': false,
-		            'url': "testData.json",
-		            'dataType': "json",
-		            'success': function (data) {
-		                json = data;
-		            }
-		        });
-		        return json;
-		    })(); 
-			
-		    alert(json.Boot1position.lat);
-		    
-		   
-
-		    
-		  });
-		});
-
-
-</script>
 <style type="text/css">
 .olImageLoadError {
 	display: none !important;
@@ -117,6 +88,35 @@ $(document).ready(function () {
 			</form>
 			
 			
+			<form>
+				<label for="disabled">Test position:</label>
+				<input id=test name="disabled" size="10" value="" disabled>
+				<script type="text/javascript">
+				
+				var json = (function () {
+			        var json = null;
+			        $.ajax({
+			            'async': false,
+			            'global': false,
+			            'url': "testData.json",
+			            'dataType': "json",
+			            'success': function (data) {
+			                json = data;
+			            }
+			        });
+			        return json;
+			    })(); 
+				
+			    
+			   
+			  $( "#test" ).val(json.Boot1position.lat+" "+json.Boot1position.long);
+			 
+			
+
+				
+				</script>
+				
+			</form>
 
 		</form>
 	</ul>
