@@ -1,8 +1,6 @@
 $(document).ready(function () {
-  $("body").prepend(function () {
-    var showData = $('#show');
-
-    var json = (function () {
+ 
+	var json = (function () {
         var json = null;
         $.ajax({
             'async': false,
@@ -15,13 +13,11 @@ $(document).ready(function () {
         });
         return json;
     })(); 
-    
-    alert(json.Boot1position.lat);
+	
     
    
-
-    
-  });
+  $( "#test" ).val(json.Boot1position.time);
+ 
 });
 
 
