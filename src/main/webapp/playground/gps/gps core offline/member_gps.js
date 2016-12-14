@@ -46,10 +46,10 @@ function sendLocations() {
 		url : 'http://localhost:8080/rennspur/rest/gps-service',
 		type : 'post',
 		headers : {
-			"Accept" : "text/plain",
-			"Content-Type" : "text/plain"
+			"Accept" : "application/json",
+			"Content-Type" : "application/json"
 		},
-		dataType : 'text',
+		dataType : 'json',
 		data : localStorage.getItem("rennspur_gps_locations"),
 		success : function(result) {
 			alert('the request was successfully sent to the server ' + result);
@@ -125,12 +125,8 @@ function saveLocation(lo, la) {
  * onClick to test some functions
  */
 function clickTest() {
-	window.open("index2.html", "_self");
 	sendLocations(); // testing
-}
-function clickTest2() {
 
-	window.open("index.html", "_self");
 }
 
 /**
