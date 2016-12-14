@@ -33,6 +33,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import de.rennspur.model.Club;
+import de.rennspur.model.Race;
+import de.rennspur.model.Team;
 import de.rennspur.model.TeamPosition;
 
 /**
@@ -74,20 +76,25 @@ public class ApiGPS {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String postTeamPositions(List<TeamPosition> positions) {
+	public String postTeamPositions(List<TeamPosition> positions, String hash) {
 		try {
 			EntityManager em = emf.createEntityManager();
 			EntityTransaction et = em.getTransaction();
+			Team team = new Team();
 
 			// TODO Authenticate and authorisate incomming request against db
 			// TODO validate race
 			et.begin();
-			for (TeamPosition position : positions) {
-				em.merge(position);
+			if (team.getHash() == hash) {
+				for (TeamPosition position : positions) {
+					em.merge(position);
+				}
+				et.commit();
+				em.close();
+				return "ok";
+			} else {
+				return "failed";
 			}
-			et.commit();
-			em.close();
-			return "ok";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return e.getMessage();
