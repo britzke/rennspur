@@ -29,42 +29,7 @@ var lat = 52.49605;
 var lon1 = 13.3435;
 var lat1 = 52.49615;
 
-/*var pointsObj = {
-	'type' : 'FeatureCollection',
-	'features' : [
-			{
-				'type' : 'Feature',
-				'geometry' : {
-					'type' : 'Polygon',
-					'coordinates' : [ [ [ -5e6, 6e6 ], [ -5e6, 8e6 ],
-							[ -3e6, 8e6 ], [ -3e6, 6e6 ], [ -5e6, 6e6 ] ] ]
-				}
-			},
-			{
-				'type' : 'Feature',
-				'geometry' : {
-					'type' : 'Polygon',
-					'coordinates' : [ [ [ -2e6, 6e6 ], [ -2e6, 8e6 ],
-							[ 0, 8e6 ], [ 0, 6e6 ], [ -2e6, 6e6 ] ] ]
-				}
-			},
-			{
-				'type' : 'Feature',
-				'geometry' : {
-					'type' : 'Polygon',
-					'coordinates' : [ [ [ 1e6, 6e6 ], [ 1e6, 8e6 ],
-							[ 3e6, 8e6 ], [ 3e6, 6e6 ], [ 1e6, 6e6 ] ] ]
-				}
-			},
-			{
-				'type' : 'Feature',
-				'geometry' : {
-					'type' : 'Polygon',
-					'coordinates' : [ [ [ -2e6, -1e6 ], [ -1e6, 1e6 ],
-							[ 0, -1e6 ], [ -2e6, -1e6 ] ] ]
-				}
-			} ]
-}; */
+var choords = [[lon, lat], [lon1, lat1]];
 
 var zoom = 18;
 /**
@@ -102,7 +67,13 @@ function drawmap() {
 
 	iconFeature1.setStyle(iconStyle1);
 	// -------------------------------------------------------------------
-
+	/*var lineString = new ol.geom.LineString(choords);
+	lineString.transform('EPSG:4326', 'EPSG:3875');
+	
+	var lineFeature = new ol.Feature({
+		geometry: lineString,
+		name: 'Line'
+	});*/
 	// -------------------------------------------------------------------
 
 	var vectorSource = new ol.source.Vector({
@@ -131,15 +102,5 @@ function drawmap() {
 		target : "mapdiv"
 
 	});
-
-	/**
-	 * Map event listener moved
-	 * 
-	 * @param event
-	 * @returns
-	 */
-	function mapEventMove(event) {
-
-	}
 
 }
