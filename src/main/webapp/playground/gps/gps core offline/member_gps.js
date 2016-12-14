@@ -21,7 +21,7 @@
  * Clear all saved Locations from the localstorage only called after
  * successfully sending them to the server
  */
-function clearpositionsArray() {
+function clearPositionsArray() {
 	/** Get the positions array out of the localstorage */
 	var jsonString = localStorage.getItem("rennspur_gps_locations");
 	var jsonObject = JSON.parse(jsonString);

@@ -9,7 +9,6 @@ public class GPSPosition {
 
 	public GPSPosition(){
 		positions = new ArrayList<>();
-		hash = "23794zui23rdfi32";
 	}
 	/**
 	 * @return the hash
