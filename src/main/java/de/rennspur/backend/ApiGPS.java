@@ -18,6 +18,9 @@
  */
 package de.rennspur.backend;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -33,6 +36,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import de.rennspur.model.Club;
+import de.rennspur.model.GPSPosition;
+import de.rennspur.model.Position;
+import de.rennspur.model.Race;
+import de.rennspur.model.Team;
 import de.rennspur.model.TeamPosition;
 
 /**
@@ -74,20 +81,32 @@ public class ApiGPS {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String postTeamPositions(List<TeamPosition> positions) {
+	public String postTeamPositions(GPSPosition gpsPosition) {
 		try {
 			EntityManager em = emf.createEntityManager();
 			EntityTransaction et = em.getTransaction();
+			Team team = new Team();
 
 			// TODO Authenticate and authorisate incomming request against db
 			// TODO validate race
 			et.begin();
-			for (TeamPosition position : positions) {
-				em.merge(position);
+			if (team.getHash() == gpsPosition.getHash()) {
+				for (Position position : gpsPosition.getPositions()){
+					TeamPosition newTeamPosition = new TeamPosition();
+					
+					newTeamPosition.setLatitude(position.getLatitude());
+					newTeamPosition.setLongitude(position.getLongitude());
+					newTeamPosition.setRace(new Race()); // creating anonymous race because we can't know which race is currently running
+					newTeamPosition.setTime(position.getTime());
+					
+					em.merge(newTeamPosition);
+				}
+				et.commit();
+				em.close();
+				return "ok";
+			} else {
+				return "failed";
 			}
-			et.commit();
-			em.close();
-			return "ok";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return e.getMessage();

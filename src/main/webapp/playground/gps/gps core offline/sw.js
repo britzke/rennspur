@@ -20,41 +20,59 @@
 /*
  * Define which files the service worker caches.
  */
-this.addEventListener('install', function(event) {
+
+var CACHE_NAME = 'my-site-cache-v1';
+var urlsToCache = [
+	
+	'/rennspur/playground/gps/gps%20core%20offline/',
+	'/rennspur/playground/gps/gps%20core%20offline/index.html',
+	'/rennspur/playground/gps/gps%20core%20offline/index2.html', // Test
+	'/rennspur/webjars/jquery/3.1.1-1/jquery.js',
+	'/rennspur/playground/gps/gps%20core%20offline/member_gps.js',
+	'/rennspur/playground/gps/gps%20core%20offline/app.js'
+	
+];
+
+self.addEventListener('install', function(event) {
+  // Perform install steps
   event.waitUntil(
-    caches.open('v1').then(function(cache) {
-      return cache.addAll([
-    	'/rennspur/playground/gps/gps%20core%20offline/',
-		'/rennspur/playground/gps/gps%20core%20offline/index.html',
-		'/rennspur/playground/gps/gps%20core%20offline/index2.html', // Test
-		'/rennspur/webjars/jquery/3.1.1/jquery.js',
-		'/rennspur/playground/gps/gps%20core%20offline/member_gps.js',
-		'/rennspur/playground/gps/gps%20core%20offline/app.js'
-      ]);
-    })
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
   );
 });
         /*
 		 * Check if there are changes in the cached files. If yes update the
 		 * cache
 		 */
+self.addEventListener('fetch', function(event) {
+	  event.respondWith(
+	    caches.match(event.request)
+	      .then(function(response) {
+	        // Cache hit - return response
+	        if (response) {
+	          return response;
+	        }
+	        var fetchRequest = event.request.clone();
 
-this.addEventListener('fetch', function(event) {
-  var response;
-  var request = event.request;
- if (request.methd !== 'GET') { 
-	  return; }
- else{  
-  event.respondWith(caches.match(event.request).catch(function() {
-    return fetch(event.request);
-  }).then(function(r) {
-    response = r;
-    caches.open('v1').then(function(cache) {
-      cache.put(event.request,response);
-    });
-    return response.clone();
-  }).catch(function() {
-    return caches.match('/rennspur/playground/gps/gps%20core%20offline/index.html'); 
-  }));
- }
-}); 
+	        return fetch(fetchRequest).then(
+	          function(response) {
+	            // Check if we received a valid response
+	            if(!response || response.status !== 200 || response.type !== 'basic') {
+	              return response;
+	            }
+	            var responseToCache = response.clone();
+
+	            caches.open(CACHE_NAME)
+	              .then(function(cache) {
+	                cache.put(event.request, responseToCache);
+	              });
+
+	            return response;
+	          }
+	        );
+	      })
+	    );
+	});
