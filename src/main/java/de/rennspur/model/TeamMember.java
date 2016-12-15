@@ -20,34 +20,37 @@ package de.rennspur.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
+import javax.validation.constraints.NotNull;
 
 /**
  * The persistent class for the TEAM_MEMBERS database table.
  * 
+ * @author burghard.britzke bubi@charmides.in-berlin.de
  */
 @Entity
-@Table(name="TEAM_MEMBERS")
-@NamedQuery(name="TeamMember.findAll", query="SELECT t FROM TeamMember t")
+@Table(name = "TEAM_MEMBERS")
+@NamedQuery(name = "TeamMember.findAll", query = "SELECT t FROM TeamMember t")
 public class TeamMember implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@NotNull
+	@Column(nullable = false)
 	private String name;
 
 	private String surname;
 
-	//bi-directional many-to-one association to Club
+	// bi-directional many-to-one association to Club
 	@ManyToOne
-	@JoinColumn(name="CLUBS_ID")
+	@JoinColumn(name = "CLUBS_ID")
 	private Club club;
 
-	//bi-directional many-to-one association to Team
+	// bi-directional many-to-one association to Team
 	@ManyToOne
-	@JoinColumn(name="TEAMS_ID")
+	@JoinColumn(name = "TEAMS_ID")
 	private Team team;
 
 	public TeamMember() {
@@ -91,6 +94,17 @@ public class TeamMember implements Serializable {
 
 	public void setTeam(Team team) {
 		this.team = team;
+	}
+
+	/**
+	 * Converts the TeamMember to a human readable string.
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return "<TeamMember (id=" + getId() + ", name=" + name + ", surname="
+				+ surname + ", club=" + club.getAbreviation() + ", team="
+				+ team.getName() + ")>";
 	}
 
 }

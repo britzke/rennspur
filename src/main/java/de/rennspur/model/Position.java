@@ -26,11 +26,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
 /**
- * Position is a class to be extended by the entity classes
- * TeamMember and TeamPostion.
+ * Position is a class to be extended by the entity classes TeamMember and
+ * TeamPostion.
  *
  * @author burghard.britzke bubi@charmides.in-berlin.de
  */
@@ -42,10 +44,20 @@ public class Position implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@NotNull
+	@DecimalMin("-180")
+	@DecimalMax("180.0")
+	@Column(nullable = false)
 	private double latitude;
 
+	@NotNull
+	@DecimalMin("-180")
+	@DecimalMax("180.0")
+	@Column(nullable = false)
 	private double longitude;
 
+	@NotNull
+	@Column(nullable = false)
 	private Timestamp time;
 
 	public int getId() {
@@ -79,13 +91,14 @@ public class Position implements Serializable {
 	public void setTime(Timestamp time) {
 		this.time = time;
 	}
-	
+
 	/**
 	 * Converts the Position to a human readable string.
 	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return "<Position (id=" + getId() + ", latitude=" + getLatitude() + ", longitude=" + getLongitude() + ")>";
+		return "<Position (id=" + getId() + ", latitude=" + getLatitude()
+				+ ", longitude=" + getLongitude() + ")>";
 	}
 }

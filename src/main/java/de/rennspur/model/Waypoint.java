@@ -20,37 +20,42 @@ package de.rennspur.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.NotNull;
 
+import java.util.List;
 
 /**
  * The persistent class for the WAYPOINTS database table.
  * 
+ * @author burghard.britzke bubi@charmides.in-berlin.de
  */
 @Entity
-@Table(name="WAYPOINTS")
-@NamedQuery(name="Waypoint.findAll", query="SELECT w FROM Waypoint w")
+@Table(name = "WAYPOINTS")
+@NamedQuery(name = "Waypoint.findAll", query = "SELECT w FROM Waypoint w")
 public class Waypoint implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@NotNull
+	@Column(nullable = false)
 	private String name;
 
-	//bi-directional many-to-one association to Event
+	// bi-directional many-to-one association to Event
 	@ManyToOne
-	@JoinColumn(name="EVENTS_ID")
+	@JoinColumn(name = "EVENTS_ID")
 	private Event event;
 
-	//bi-directional many-to-one association to Race
+	// bi-directional many-to-one association to Race
+	@NotNull
 	@ManyToOne
-	@JoinColumn(name="RACES_ID")
+	@JoinColumn(name = "RACES_ID", nullable = false)
 	private Race race;
 
-	//bi-directional many-to-one association to WaypointPosition
-	@OneToMany(mappedBy="waypoint")
+	// bi-directional many-to-one association to WaypointPosition
+	@OneToMany(mappedBy = "waypoint")
 	private List<WaypointPosition> waypointPositions;
 
 	public Waypoint() {
@@ -96,18 +101,29 @@ public class Waypoint implements Serializable {
 		this.waypointPositions = waypointPositions;
 	}
 
-	public WaypointPosition addWaypointPosition(WaypointPosition waypointPosition) {
+	public WaypointPosition addWaypointPosition(
+			WaypointPosition waypointPosition) {
 		getWaypointPositions().add(waypointPosition);
 		waypointPosition.setWaypoint(this);
 
 		return waypointPosition;
 	}
 
-	public WaypointPosition removeWaypointPosition(WaypointPosition waypointPosition) {
+	public WaypointPosition removeWaypointPosition(
+			WaypointPosition waypointPosition) {
 		getWaypointPositions().remove(waypointPosition);
 		waypointPosition.setWaypoint(null);
 
 		return waypointPosition;
 	}
 
+	/**
+	 * Converts the Waypoint to a human readable string.
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return "<Waypoint (id=" + getId() + ", name=" + name + ", event="
+				+ event.getName() + ", race=" + race.getNumber() + ")>";
+	}
 }

@@ -20,45 +20,56 @@ package de.rennspur.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.NotNull;
 
+import java.util.List;
 
 /**
  * The persistent class for the TEAMS database table.
  * 
+ * burghard.britzke bubi@charmides.in-berlin.de
  */
 @Entity
-@Table(name="TEAMS")
-@NamedQuery(name="Team.findAll", query="SELECT t FROM Team t")
+@Table(name = "TEAMS")
+@NamedQuery(name = "Team.findAll", query = "SELECT t FROM Team t")
 public class Team implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name="HANDYCAP_FAKTOR")
+	@NotNull
+	@Column(name = "HANDYCAP_FAKTOR", nullable = false)
 	private int handycapFaktor;
 
+	@NotNull
+	@Column(nullable = false)
 	private String name;
 
+	@NotNull
+	@Column(nullable = false)
 	private String country;
 
-	//bi-directional many-to-one association to Club
+	// bi-directional many-to-one association to Club
 	@ManyToOne
-	@JoinColumn(name="CLUBS_ID")
+	@JoinColumn(name = "CLUBS_ID")
 	private Club club;
-	
+
+	@NotNull
+	@Column(nullable = false)
 	private String email;
-	
+
+	@NotNull
+	@Column(nullable = false)
 	private String hash;
 
-	//bi-directional many-to-one association to TeamMember
-	@OneToMany(mappedBy="team")
+	// bi-directional many-to-one association to TeamMember
+	@OneToMany(mappedBy = "team")
 	private List<TeamMember> members;
 
-	//bi-directional many-to-one association to TeamPosition
-	@OneToMany(mappedBy="team")
+	// bi-directional many-to-one association to TeamPosition
+	@OneToMany(mappedBy = "team")
 	private List<TeamPosition> positions;
 
 	public Team() {
@@ -118,7 +129,8 @@ public class Team implements Serializable {
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param email
+	 *            the email to set
 	 */
 	public void setEmail(String email) {
 		this.email = email;
@@ -132,7 +144,8 @@ public class Team implements Serializable {
 	}
 
 	/**
-	 * @param hash the hash to set
+	 * @param hash
+	 *            the hash to set
 	 */
 	public void setHash(String hash) {
 		this.hash = hash;
@@ -146,7 +159,8 @@ public class Team implements Serializable {
 	}
 
 	/**
-	 * @param teamMembers The members to set.
+	 * @param teamMembers
+	 *            The members to set.
 	 */
 	public void setMembers(List<TeamMember> teamMembers) {
 		this.members = teamMembers;
@@ -220,6 +234,18 @@ public class Team implements Serializable {
 		position.setTeam(null);
 
 		return position;
+	}
+
+	/**
+	 * Converts the Team to a human readable string.
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return "<Team (id=" + getId() + ", name=" + name + ", club="
+				+ club.getName() + ", email=" + email + ", members="
+				+ (members != null ? members.size() : 0) + "positions="
+				+ (positions != null ? positions.size() : 0) + ")>";
 	}
 
 }

@@ -20,6 +20,7 @@ package de.rennspur.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -28,12 +29,13 @@ import javax.xml.bind.annotation.XmlType;
 
 import java.util.List;
 
-
 /**
- * <p>Java-Klasse für XML anonymous complex type.
- * The persistent class for the CLUBS database table.
+ * <p>
+ * Implementation for XML anonymous complex type. The persistent class for the
+ * CLUBS database table.
  * 
- * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>
+ * The following xml schema fragment shows the structure of the club element.
  * 
  * <pre>
  * &lt;complexType>
@@ -50,47 +52,53 @@ import java.util.List;
  * &lt;/complexType>
  * </pre>
  * 
+ * @author burghard.britzke bubi@charmides.in-berlin.de
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-
-})
+@XmlType(name = "")
 @Entity
-@Table(name="CLUBS")
-@NamedQuery(name="Club.findAll", query="SELECT c FROM Club c")
+@Table(name = "CLUBS")
+@NamedQuery(name = "Club.findAll", query = "SELECT c FROM Club c")
 public class Club implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@XmlElement(required = true)
-	@Column(name="DSV_NUMBER")
+	@NotNull
+	@Column(name = "DSV_NUMBER", nullable = false)
 	private String dsvNumber;
 
 	@XmlElement(required = true)
+	@NotNull
+	@Column(nullable = false)
 	private String abreviation;
 
 	@XmlElement(required = true)
+	@NotNull
+	@Column(nullable = false)
 	private String name;
 
 	@XmlElement(required = true)
+	@NotNull
+	@Column(nullable = false)
 	private String url;
-	
+
 	@XmlTransient
-	//bi-directional many-to-one association to Event
-	@OneToMany(mappedBy="club")
+	// bi-directional many-to-one association to Event
+	@OneToMany(mappedBy = "club")
 	private List<Event> events;
 
 	@XmlTransient
-	//bi-directional many-to-one association to Team
-	@OneToMany(mappedBy="club")
+	// bi-directional many-to-one association to Team
+	@OneToMany(mappedBy = "club")
 	private List<Team> teams;
 
 	@XmlTransient
-	//bi-directional many-to-one association to TeamMember
-	@OneToMany(mappedBy="club")
+	// bi-directional many-to-one association to TeamMember
+	@OneToMany(mappedBy = "club")
 	private List<TeamMember> teamMembers;
 
 	public Club() {
@@ -136,7 +144,8 @@ public class Club implements Serializable {
 	}
 
 	/**
-	 * @param url the url to set
+	 * @param url
+	 *            the url to set
 	 */
 	public void setUrl(String url) {
 		this.url = url;
@@ -208,4 +217,14 @@ public class Club implements Serializable {
 		return teamMember;
 	}
 
+	/**
+	 * Converts the club to a human readable string.
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return "<Club (id=" + getId() + ", abreviation=" + abreviation
+				+ ", name=" + name + ", url=" + url + "events="
+				+ (events != null ? events.size() : 0) + ")>";
+	}
 }

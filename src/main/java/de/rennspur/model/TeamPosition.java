@@ -24,6 +24,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -41,7 +42,8 @@ import javax.xml.bind.annotation.XmlType;
 
 @Entity
 @Table(name = "TEAM_POSITIONS")
-@NamedQueries({ @NamedQuery(name = "TeamPosition.findAll", query = "SELECT t FROM TeamPosition t"),
+@NamedQueries({
+		@NamedQuery(name = "TeamPosition.findAll", query = "SELECT t FROM TeamPosition t"),
 		@NamedQuery(name = "TeamPosition.findLatestPositions", query = "SELECT tp FROM TeamPosition tp inner join tp.team t WHERE t.id=:id"), })
 
 public class TeamPosition extends Position {
@@ -55,8 +57,9 @@ public class TeamPosition extends Position {
 
 	// bi-directional many-to-one association to Team
 	@XmlElement(required = true)
+	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "TEAMS_ID")
+	@JoinColumn(name = "TEAMS_ID", nullable = false)
 	private Team team;
 
 	public TeamPosition() {
@@ -84,7 +87,8 @@ public class TeamPosition extends Position {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return "<TeamPosition (id=" + getId() + ", latitude=" + getLatitude() + ", longitude=" + getLongitude()
-				+ ", race=" + race + ", team=" + team + ")>";
+		return "<TeamPosition (id=" + getId() + ", latitude=" + getLatitude()
+				+ ", longitude=" + getLongitude() + ", race=" + race.getNumber()
+				+ ", team=" + team.getName() + ")>";
 	}
 }

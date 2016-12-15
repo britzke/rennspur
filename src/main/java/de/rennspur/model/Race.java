@@ -20,36 +20,40 @@ package de.rennspur.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.NotNull;
 
+import java.util.List;
 
 /**
  * The persistent class for the RACES database table.
  * 
+ * @author burghard.britzke bubi@charmides.in-berlin.de
  */
 @Entity
-@Table(name="RACES")
-@NamedQuery(name="Race.findAll", query="SELECT r FROM Race r")
+@Table(name = "RACES")
+@NamedQuery(name = "Race.findAll", query = "SELECT r FROM Race r")
 public class Race implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@NotNull
+	@Column(nullable = false)
 	private int number;
 
-	//bi-directional many-to-one association to Event
+	// bi-directional many-to-one association to Event
 	@ManyToOne
-	@JoinColumn(name="EVENTS_ID")
+	@JoinColumn(name = "EVENTS_ID")
 	private Event event;
 
-	//bi-directional many-to-one association to TeamPosition
-	@OneToMany(mappedBy="race")
+	// bi-directional many-to-one association to TeamPosition
+	@OneToMany(mappedBy = "race")
 	private List<TeamPosition> teamPositions;
 
-	//bi-directional many-to-one association to Waypoint
-	@OneToMany(mappedBy="race")
+	// bi-directional many-to-one association to Waypoint
+	@OneToMany(mappedBy = "race")
 	private List<Waypoint> waypoints;
 
 	public Race() {
@@ -123,4 +127,16 @@ public class Race implements Serializable {
 		return waypoint;
 	}
 
+	/**
+	 * Converts the Race to a human readable string.
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return "<Race (id=" + getId() + ", number=" + number + ", event="
+				+ event.getName() + ", teamPositions="
+				+ (teamPositions != null ? teamPositions.size() : 0)
+				+ ", waypoints=" + (waypoints != null ? waypoints.size() : 0)
+				+ ")>";
+	}
 }

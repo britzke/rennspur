@@ -24,27 +24,28 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  * The persistent class for the EVENTS database table.
  * 
+ * @author burghard.britzke bubi@charmides.in-berlin.de
  */
 @Entity
-@Table(name="EVENTS")
-@NamedQuery(name="Event.findAll", query="SELECT e FROM Event e")
+@Table(name = "EVENTS")
+@NamedQuery(name = "Event.findAll", query = "SELECT e FROM Event e")
 public class Event implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@Column(nullable = false)
 	private String name;
 
 	@Transient
 	private Boolean handicap;
-	
-	@Column(name = "START_DATE")
+
+	@Column(name = "START_DATE", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date startDate;
 
@@ -52,17 +53,17 @@ public class Event implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date endDate;
 
-	//bi-directional many-to-one association to Club
+	// bi-directional many-to-one association to Club
 	@ManyToOne
-	@JoinColumn(name="CLUBS_ID")
+	@JoinColumn(name = "CLUBS_ID", nullable = false)
 	private Club club;
 
-	//bi-directional many-to-one association to Race
-	@OneToMany(mappedBy="event")
+	// bi-directional many-to-one association to Race
+	@OneToMany(mappedBy = "event")
 	private List<Race> races;
 
-	//bi-directional many-to-one association to Waypoint
-	@OneToMany(mappedBy="event")
+	// bi-directional many-to-one association to Waypoint
+	@OneToMany(mappedBy = "event")
 	private List<Waypoint> waypoints;
 
 	public Event() {
@@ -84,7 +85,6 @@ public class Event implements Serializable {
 		this.name = name;
 	}
 
-
 	/**
 	 * @return the handicap
 	 */
@@ -93,7 +93,8 @@ public class Event implements Serializable {
 	}
 
 	/**
-	 * @param handicap the handicap to set
+	 * @param handicap
+	 *            the handicap to set
 	 */
 	public void setHandicap(Boolean handicap) {
 		this.handicap = handicap;
@@ -107,7 +108,8 @@ public class Event implements Serializable {
 	}
 
 	/**
-	 * @param startDate the startDate to set
+	 * @param startDate
+	 *            the startDate to set
 	 */
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
@@ -121,7 +123,8 @@ public class Event implements Serializable {
 	}
 
 	/**
-	 * @param endDate the endDate to set
+	 * @param endDate
+	 *            the endDate to set
 	 */
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
@@ -179,4 +182,15 @@ public class Event implements Serializable {
 		return waypoint;
 	}
 
+	/**
+	 * Converts the event to a human readable string.
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return "<Event (id=" + getId() + ", name=" + name + ", handicap="
+				+ handicap + ", club=" + club.getAbreviation() + ", races="
+				+ (races != null ? races.size() : 0) + "waypoints="
+				+ (waypoints != null ? waypoints.size() : 0) + ")>";
+	}
 }
