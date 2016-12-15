@@ -33,7 +33,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import de.rennspur.model.Club;
-import de.rennspur.model.GPSPosition;
+import de.rennspur.model.GPSPositionsTransfer;
 import de.rennspur.model.Position;
 import de.rennspur.model.Race;
 import de.rennspur.model.Team;
@@ -78,51 +78,29 @@ public class ApiGPS {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String postTeamPositions(GPSPosition gpsPosition) {
+	public String postTeamPositions(GPSPositionsTransfer positionsTransfer) {
 		try {
-			
-			/**
-			 * Creating the entityManager.
-			 * Uses persistence.xml as config for connection
-			 */
 			EntityManager em = emf.createEntityManager();
-			EntityTransaction et = em.getTransaction();
-			Team team = new Team();
+			Query q=em.createNamedQuery("Teams.getTeamByHash");
+			q.setParameter("hash", positionsTransfer.getHash());
+			Team team= (Team)q.getSingleResult();
 
-			et.begin();
-			if (team.getHash() == gpsPosition.getHash()) {
-				for (Position position : gpsPosition.getPositions()){
+			if (team != null) {	// Team with hash exists
+				// TODO retrieve actual race information
+				
+				EntityTransaction et = em.getTransaction();
+				et.begin();
+				for (Position position : positionsTransfer.getPositions()) {
 					TeamPosition newTeamPosition = new TeamPosition();
-					
-					/**
-					 * Filling the new TeamPosition Object with data from the post
-					 */
 					newTeamPosition.setLatitude(position.getLatitude());
 					newTeamPosition.setLongitude(position.getLongitude());
 					newTeamPosition.setTime(position.getTime());
-
-					/**
-					 * creating anonymous race because we can't know which race is currently running
-					 * TODO validate race
-					 */
-					newTeamPosition.setRace(new Race()); // 
-					
-					/**
-					 * Merging all positions into a package
-					 */
+					newTeamPosition.setRace(new Race());
 					em.merge(newTeamPosition);
 				}
-				
-				/**
-				 * Committing the final changes into the database
-				 */
 				et.commit();
-				
-				/**
-				 * Closing connection after successfull commit
-				 */
 				em.close();
-				
+
 				return "ok";
 			} else {
 				return "failed";
