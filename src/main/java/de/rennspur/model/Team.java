@@ -31,7 +31,9 @@ import java.util.List;
  */
 @Entity
 @Table(name = "TEAMS")
-@NamedQuery(name = "Team.findAll", query = "SELECT t FROM Team t")
+@NamedQueries({
+		@NamedQuery(name = "Team.findAll", query = "SELECT t FROM Team t"),
+		@NamedQuery(name = "Team.getTeamByHash", query = "SELECT t FROM Team t where t.hash = :hash") })
 public class Team implements Serializable {
 	private static final long serialVersionUID = 1L;
 
