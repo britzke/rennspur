@@ -18,74 +18,34 @@
  */
 package de.rennspur.model;
 
-import java.io.Serializable;
-import javax.persistence.*;
-import java.sql.Timestamp;
-
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the WAYPOINT_POSITIONS database table.
  * 
+ * @author burghard.britzke bubi@charmides.in-berlin.de
  */
 @Entity
-@Table(name="WAYPOINT_POSITIONS")
-@NamedQuery(name="WaypointPosition.findAll", query="SELECT w FROM WaypointPosition w")
-public class WaypointPosition implements Serializable {
+@Table(name = "WAYPOINT_POSITIONS")
+@NamedQuery(name = "WaypointPosition.findAll", query = "SELECT w FROM WaypointPosition w")
+public class WaypointPosition extends Position {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-
-	private double latitude;
-
-	private double longitude;
-
-	private Timestamp time;
-
-	//bi-directional many-to-one association to Waypoint
+	// bi-directional many-to-one association to Waypoint
 	@ManyToOne
-	@JoinColumn(name="WAYPOINTS_ID")
+	@JoinColumn(name = "WAYPOINTS_ID")
 	private Waypoint waypoint;
 
-	//bi-directional many-to-one association to Waypoint
+	// bi-directional many-to-one association to Waypoint
 	@ManyToOne
-	@JoinColumn(name="RACES_ID")
+	@JoinColumn(name = "RACES_ID")
 	private Race race;
-	
+
 	public WaypointPosition() {
-	}
-
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public double getLatitude() {
-		return this.latitude;
-	}
-
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
-
-	public double getLongitude() {
-		return this.longitude;
-	}
-
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
-
-	public Timestamp getTime() {
-		return this.time;
-	}
-
-	public void setTime(Timestamp time) {
-		this.time = time;
 	}
 
 	public Waypoint getWaypoint() {
@@ -104,10 +64,21 @@ public class WaypointPosition implements Serializable {
 	}
 
 	/**
-	 * @param race the race to set
+	 * @param race
+	 *            the race to set
 	 */
 	public void setRace(Race race) {
 		this.race = race;
+	}
+
+	/**
+	 * Converts the WaypointPosition to a human readable string.
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return "<WaypointPosition (id=" + getId() + ", latitude=" + getLatitude() + ", longitude=" + getLongitude()
+				+ ", race=" + race + ", waypoint=" + waypoint + ")>";
 	}
 
 }

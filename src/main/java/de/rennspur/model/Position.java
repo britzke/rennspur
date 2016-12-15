@@ -18,12 +18,15 @@
  */
 package de.rennspur.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotNull;
 
 /**
  * Position is a class to be extended by the entity classes
@@ -32,7 +35,9 @@ import javax.persistence.MappedSuperclass;
  * @author burghard.britzke bubi@charmides.in-berlin.de
  */
 @MappedSuperclass
-public class Position {
+public class Position implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -73,5 +78,14 @@ public class Position {
 
 	public void setTime(Timestamp time) {
 		this.time = time;
+	}
+	
+	/**
+	 * Converts the Position to a human readable string.
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return "<Position (id=" + getId() + ", latitude=" + getLatitude() + ", longitude=" + getLongitude() + ")>";
 	}
 }
