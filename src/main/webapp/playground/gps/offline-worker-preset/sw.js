@@ -1,7 +1,7 @@
 /*
  *  This file is part of Rennspur.
  *  
- *  Copyright (C) 2016  burghard.britzke, bubi@charmides.in-berlin.de
+ *  Copyright (C) 2016  Tim Prangel, tim.prangel@gmail.com
  *  
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -20,32 +20,66 @@
 /*
  * Define which files the service worker caches.
  */
-this.addEventListener('install', function(event) {
+
+var CACHE_NAME = 'my-site-cache-v1'; //change me or not..
+var urlsToCache = [
+	
+	/*
+	 * Change to your paths
+	 */
+	'/rennspur/playground/gps/gps%20core%20offline/index.html',
+	'/rennspur/playground/gps/gps%20core%20offline/index2.html', 
+	'/rennspur/webjars/jquery/3.1.1-1/jquery.js',
+	'/rennspur/playground/gps/gps%20core%20offline/member_gps.js',
+	'/rennspur/playground/gps/gps%20core%20offline/app.js'
+	
+];
+
+self.addEventListener('install', function(event) {
+  // Perform install steps
   event.waitUntil(
-    caches.open('v1').then(function(cache) {
-      return cache.addAll([
-		'/path/to/file/to/cache1.html',
-		'/path/to/file/to/cache2.js',
-		'/path/to/file/to/cache3.js'	// CHANGE ME
-      ]);
-    })
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
   );
 });
         /*
 		 * Check if there are changes in the cached files. If yes update the
 		 * cache
 		 */
-this.addEventListener('fetch', function(event) {
-  var response;
-  event.respondWith(caches.match(event.request).catch(function() {
-    return fetch(event.request);
-  }).then(function(r) {
-    response = r;
-    caches.open('v1').then(function(cache) {
-      cache.put(event.request, response);
-    });
-    return response.clone();
-  }).catch(function() {
-    return caches.match('/path/to/file/that/might/change.html'); // CHANGE ME
-  }));
-});
+self.addEventListener('fetch', function(event) {
+	  var response;
+	  var request = event.request;
+	 if (request.method == 'POST') {
+		 return; 
+	 }
+	  event.respondWith(
+	    caches.match(event.request)
+	      .then(function(response) {
+	        // Cache hit - return response
+	        if (response) {
+	          return response;
+	        }
+	        var fetchRequest = event.request.clone();
+
+	        return fetch(fetchRequest).then(
+	          function(response) {
+	            // Check if we received a valid response
+	            if(!response || response.status !== 200 || response.type !== 'basic') {
+	              return response;
+	            }
+	            var responseToCache = response.clone();
+
+	            caches.open(CACHE_NAME)
+	              .then(function(cache) {
+	                cache.put(event.request, responseToCache);
+	              });
+
+	            return response;
+	          }
+	        );
+	      })
+	    );
+	});
