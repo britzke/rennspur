@@ -1,7 +1,7 @@
 /*
  *  This file is part of Rennspur.
  *  
- *  Copyright (C) 2016  burghard.britzke, bubi@charmides.in-berlin.de
+ *  Copyright (C) 2016  Konstantin Baltruschat konstantin.baltruschat@gmail.com
  *  
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -16,6 +16,9 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+var send_interval;
+var pos_interval;
 
 /**
  * Clear all saved Locations from the localstorage only called after
@@ -35,8 +38,7 @@ function clearPositionsArray() {
 }
 
 /**
- * Sends all positions from the localstorage to the server Example how making a
- * POST request might be done
+ * Sends all positions from the localstorage to the server
  */
 function sendLocations() {
 	/** use jquery to post the locations to the Rest interface */
@@ -51,15 +53,9 @@ function sendLocations() {
 		data : localStorage.getItem("rennspur_gps_locations"),
 		success : function(result) {
 			/** in case of successful POST request clear the saved positions */
-
 			clearPositionsArray();
-		},
-		error : function(result) {
-			// alert("Error sending locations");
-			//do nothing
 		}
 	});
-
 }
 
 /**
@@ -87,7 +83,10 @@ function init() {
 		/** if existing check if saved Data is the correct JSON-Format */
 		var storageItemJson = JSON.parse(storageItem);
 		if (storageItemJson.positions == null || storageItemJson.hash == null) {
-			/** positions array or auth hash in JSON object is missing, creating new */
+			/**
+			 * positions array or auth hash in JSON object is missing, creating
+			 * new
+			 */
 			prepareLocalStorage();
 		}
 		// TODO: check if the found data is old, maybe from another event?
@@ -95,21 +94,18 @@ function init() {
 }
 
 /**
- * Saves the location into the localstorage with the current system-time
- * 
- * @param {number}
- *            lo [lo = 51.3256] - longitude of the location
- * @param {number}
- *            la [la = 40.9034] - latitude of the location
+ * Callback for geolocation::getCurrentPosition. Saves the location into the
+ * localstorage with the current system-time
  */
-function saveLocation(lo, la) {
+function geolocation_callback(position) {
+	console.log("geo-callback");
 	/** Get the time of the function call */
 	var time = Date.now();
 
 	/** Save positions and time as json */
 	var positionJson = JSON.parse(JSON.stringify({
-		"longitude" : lo,
-		"latitude" : la,
+		"longitude" : position.coords.longitude,
+		"latitude" : position.coords.latitude,
 		"time" : time
 	}));
 
@@ -128,11 +124,27 @@ function saveLocation(lo, la) {
 }
 
 /**
+ * find out current gps position and save them
+ */
+function saveLocation() {
+	console.log("save-location");
+	navigator.geolocation.getCurrentPosition(geolocation_callback);
+}
+
+/**
  * onClick to test some functions
  */
 function clickTest() {
-	sendLocations(); // testing
-
+	clearInterval(send_interval);
+	clearInterval(pos_interval);
+	if (navigator.geolocation) {
+		/** Every 5000ms (5s) call sendLocations() */
+		send_interval = setInterval(sendLocations, 5000);
+		/** Every 1000ms (1s) save the currentPosition */
+		pos_interval = setInterval(saveLocation, 1000);
+	} else {
+		alert("Geolocation not supported by this browser!\r\nApplication will not be able to run.")
+	}
 }
 
 /**
@@ -140,5 +152,4 @@ function clickTest() {
  */
 window.onload = function() {
 	init();
-	saveLocation(10, 20);
 }
