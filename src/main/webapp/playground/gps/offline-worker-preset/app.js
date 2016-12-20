@@ -1,7 +1,7 @@
 /*
  *  This file is part of Rennspur.
  *  
- *  Copyright (C) 2016  burghard.britzke, bubi@charmides.in-berlin.de
+ *  Copyright (C) 2016  Tim Prangel, tim.prangel@gmail.com
  *  
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -23,19 +23,14 @@
  */ 
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js', { scope: '/path/to/application/scope' }).then(function(reg) {
-    
-    if(reg.installing) {
-      console.log('Service worker installing');
-    } else if(reg.waiting) {
-      console.log('Service worker installed');
-    } else if(reg.active) {
-      console.log('Service worker active');
-    }
-    
-  }).catch(function(error) {
-    
-    console.log('Registration failed with ' + error);
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('sw.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }).catch(function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
   });
 }
 
