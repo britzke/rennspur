@@ -1,21 +1,16 @@
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>OpenSeaMap</title>
-
-
-<script src="/rennspur/webjars/openlayers/3.17.1/ol.js"></script>
-<script type="text/javascript" src="osmMap.js"></script>
+<title>rennspur map</title>
+<link rel="stylesheet" href="/rennspur/webjars/openlayers/3.20.0/ol.css" type="text/css">
 <script src="/rennspur/webjars/jquery/3.1.1-1/jquery.min.js"></script>
+<script src="/rennspur/webjars/openlayers/3.20.0/ol-debug.js"></script>
+<script type="text/ecmascript" src="rs-debug.js"></script>
 
 <style type="text/css">
 .olImageLoadError {
 	display: none !important;
-}
-
-#mapdiv {
-	width: 100%;
-	height: 100%;
 }
 
 #content {
@@ -40,86 +35,84 @@
 </style>
 
 <script>
-	$(document).ready(function() {
-		$("button").click(function() {
-			$("#content").fadeToggle();
-		});
-	});
+    var map;
+    $(document).ready(
+            function () {
+                map = new rs.Map("rs-map", [ 13.19573, 52.50151 ]);
+                map.addTrace([ 
+                    [ 13.20197, 52.50108 ], [ 13.19847, 52.50009 ],
+                    [ 13.19501, 52.50142 ], [ 13.18998, 52.50001 ],
+                    [ 13.18822, 52.50145 ] 
+                ]);
+
+                $("button").click(function () {
+                    $("#content").fadeToggle();
+                });
+            });
 </script>
 
 </head>
-<body onload="drawmap()">
-	<div id="mapdiv"></div>
+<body>
+	<div id="rs-map"></div>
 
 	<div id="button_info">
 		<button>Info</button>
 	</div>
 
-
 	<ul id="content">
 		<form>
 			<h3>Rennveranstalung</h3>
-			
+
 			<form>
-				<label for="disabled">Reggata:</label><input
-					name="disabled" value="" disabled>
+				<label for="disabled">Reggata:</label><input name="disabled"
+					value="" disabled>
 			</form>
-			
+
 			<form>
-				<label for="disabled">Boot:</label>
-				<input name="disabled" value="" disabled>
+				<label for="disabled">Boot:</label> <input name="disabled" value=""
+					disabled>
 			</form>
-			
+
 			<form>
-				<label for="disabled">Yardstick:</label>
-				<input name="disabled" size="3" value="" disabled>kn/h
+				<label for="disabled">Yardstick:</label> <input name="disabled"
+					size="3" value="" disabled>kn/h
 			</form>
-			
+
 			<form>
-				<label for="disabled">Segenummer:</label>
-				<input name="disabled" value="" disabled>
+				<label for="disabled">Segenummer:</label> <input name="disabled"
+					value="" disabled>
 			</form>
-			
+
 			<form>
-				<label for="disabled">Team:</label>
-				<input name="disabled" size="10" value="" disabled>
-				<label for="disabled">Nation:</label>
-				<input name="disabled" size="3" value="" disabled>
+				<label for="disabled">Team:</label> <input name="disabled" size="10"
+					value="" disabled> <label for="disabled">Nation:</label> <input
+					name="disabled" size="3" value="" disabled>
 			</form>
-			
-			
+
 			<form>
-				<label for="disabled">Test position:</label>
-				<input id=test name="disabled" size="10" value="" disabled>
+				<label for="disabled">Test position:</label> <input id=test
+					name="disabled" size="10" value="" disabled>
 				<script type="text/javascript">
-				
-				var json = (function () {
-			        var json = null;
-			        $.ajax({
-			            'async': false,
-			            'global': false,
-			            'url': "testData.json",
-			            'dataType': "json",
-			            'success': function (data) {
-			                json = data;
-			            }
-			        });
-			        return json;
-			    })(); 
-				
-			    
-			   
-			  $( "#test" ).val(json.Boot1position.lat+" "+json.Boot1position.long);
-			 
-			
+                    var json = (function () {
+                        var json = null;
+                        $.ajax({
+                            'async' : false,
+                            'global' : false,
+                            'url' : "testData.json",
+                            'dataType' : "json",
+                            'success' : function (data) {
+                                json = data;
+                            }
+                        });
+                        return json;
+                    })();
 
-				
-				</script>
-				
+                    $("#test").val(
+                            json.Boot1position.lat + " "
+                                    + json.Boot1position.long);
+                </script>
 			</form>
-
 		</form>
 	</ul>
-
 </body>
 </html>

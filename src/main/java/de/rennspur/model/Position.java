@@ -29,6 +29,10 @@ import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  * Position is a class to be extended by the entity classes TeamMember and
@@ -36,10 +40,14 @@ import javax.validation.constraints.NotNull;
  *
  * @author burghard.britzke bubi@charmides.in-berlin.de
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder={"longitude","latitude","time"})
+
 @MappedSuperclass
 public class Position implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@XmlTransient
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
