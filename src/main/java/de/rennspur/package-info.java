@@ -1,5 +1,5 @@
 /*
- *  This file is part of Renspur.
+ *  This file is part of Rennspur.
  *  
  *  Copyright (C) 2016  burghard.britzke, bubi@charmides.in-berlin.de
  *  
@@ -17,10 +17,9 @@
  *  along with Rennspur.  If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * The classes of this package deal with the initialization of the database with
- * various values to let the application start.
- * 
- * @author burghard.britzke bubi@charmides.in-berlin.de
+ * The classes in this package take care of the application startup and
+ * shutdown.
  *
+ * @author burghard.britzke bubi@charmides.in-berlin.de
  */
-package de.rennspur.init.db;
+package de.rennspur;
