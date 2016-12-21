@@ -21,6 +21,7 @@ package de.rennspur.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlTransient;
 
 import java.util.List;
 
@@ -43,15 +44,18 @@ public class Race implements Serializable {
 	@Column(nullable = false)
 	private int number;
 
+	@XmlTransient
 	// bi-directional many-to-one association to Event
 	@ManyToOne
 	@JoinColumn(name = "EVENTS_ID")
 	private Event event;
 
+	@XmlTransient
 	// bi-directional many-to-one association to TeamPosition
 	@OneToMany(mappedBy = "race")
 	private List<TeamPosition> teamPositions;
 
+	@XmlTransient
 	// bi-directional many-to-one association to Waypoint
 	@OneToMany(mappedBy = "race")
 	private List<Waypoint> waypoints;

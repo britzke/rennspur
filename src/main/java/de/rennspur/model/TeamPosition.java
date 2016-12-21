@@ -14,7 +14,7 @@
  *  GNU Affero General Public License for more details.
  *  
  *  You should have received a copy of the GNU Affero General Public License
- *  along with Rennspur.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with Rennspur. If not, see <http://www.gnu.org/licenses/>.
  */
 package de.rennspur.model;
 
@@ -25,22 +25,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlTransient;
+
 /**
  * The persistent class for the TEAM_POSITIONS database table.
  * 
  * @author burghard.britzke bubi@charmides.in-berlin.de
  */
-@XmlRootElement(name="position")
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TeamPosition", propOrder = {
-
-})
-
 @Entity
 @Table(name = "TEAM_POSITIONS")
 @NamedQueries({
@@ -51,18 +42,17 @@ public class TeamPosition extends Position {
 	private static final long serialVersionUID = 1L;
 
 	// bi-directional many-to-one association to Race
-	//@XmlElement(required = true)
+	@XmlTransient
 	@ManyToOne
 	@JoinColumn(name = "RACES_ID")
 	private Race race;
 
 	// bi-directional many-to-one association to Team
-	//@XmlElement(required = true)
+	@XmlTransient
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "TEAMS_ID", nullable = false)
 	private Team team;
-	
 
 	public TeamPosition() {
 	}
@@ -75,9 +65,6 @@ public class TeamPosition extends Position {
 		this.race = race;
 	}
 
-
-
-    
 	public Team getTeam() {
 		return this.team;
 	}
