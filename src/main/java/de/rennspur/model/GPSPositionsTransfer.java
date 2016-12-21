@@ -21,6 +21,9 @@ package de.rennspur.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlTransient;
+
 /**
  * A GPSPositionsTransfer object represents a trace, which is to be transferred from the
  * GPS sensor to the application server.
@@ -28,6 +31,8 @@ import java.util.List;
  * @author Ruben Maurer
  */
 public class GPSPositionsTransfer {
+	@XmlTransient
+	@NotNull
 	String hash;
 	List<Position> positions;
 
