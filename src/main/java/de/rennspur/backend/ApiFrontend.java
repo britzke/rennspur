@@ -18,6 +18,7 @@
  */
 package de.rennspur.backend;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -32,14 +33,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.google.gson.Gson;
 
-import de.rennspur.model.Club;
-import de.rennspur.model.Event;
-import de.rennspur.model.Race;
-import de.rennspur.model.Team;
-import de.rennspur.model.TeamMember;
 import de.rennspur.model.TeamPosition;
+import de.rennspur.model.Wrapper;
 
 /**
  * This Api part provides the Api endpoint for the webfrontend.
@@ -58,29 +54,6 @@ public class ApiFrontend<FrontendData> {
 	@Path("/full")
 	@Produces(MediaType.APPLICATION_JSON)
 	public FrontendData getFrontendDataInJSON() {
-		// TODO - Output of every needed value.
-		Club club = new Club();
-		Event event = new Event();
-		Race race = new Race();
-		Team team = new Team();
-		TeamMember teammember = new TeamMember();
-		TeamPosition teamposition = new TeamPosition();
-
-		team.getName();
-		club.getAbreviation();
-
-		club.getId();
-		// Backend.getLatestMemberPositions(i?, 10);
-
-		event.getHandicap();
-		event.getWaypoints();
-
-		// pos part
-		// teampostion.getTime();
-		// teampostion.getLatitude();
-		// teampostion.getLongitude();
-
-		// TODO - return the result to the client
 		return null;
 	}
 
@@ -95,8 +68,7 @@ public class ApiFrontend<FrontendData> {
 
 	@POST
 	@Path("/update")
-	@Produces(MediaType.APPLICATION_JSON)
-
+	@Produces("application/json")
 	/**
 	 * Returns a specific amount of the latest Positions of a team
 	 * 
@@ -112,10 +84,9 @@ public class ApiFrontend<FrontendData> {
 		// query.setParameter("limit", limit);
 		@SuppressWarnings("unchecked")
 		List<TeamPosition> positions = query.getResultList();
-		for(TeamPosition e: positions)
-		{
-			System.out.println(e.getLatitude());
-		}
+		//ArrayList<TeamPosition> positions = new ArrayList<TeamPosition>();
+		//Wrapper w = new Wrapper(positions);
+		
 		return positions;
 	}
 }

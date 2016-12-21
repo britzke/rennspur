@@ -28,13 +28,14 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
 /**
  * The persistent class for the TEAM_POSITIONS database table.
  * 
  * @author burghard.britzke bubi@charmides.in-berlin.de
  */
+@XmlRootElement(name="position")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TeamPosition", propOrder = {
 
@@ -50,17 +51,18 @@ public class TeamPosition extends Position {
 	private static final long serialVersionUID = 1L;
 
 	// bi-directional many-to-one association to Race
-	@XmlElement(required = true)
+	//@XmlElement(required = true)
 	@ManyToOne
 	@JoinColumn(name = "RACES_ID")
 	private Race race;
 
 	// bi-directional many-to-one association to Team
-	@XmlElement(required = true)
+	//@XmlElement(required = true)
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "TEAMS_ID", nullable = false)
 	private Team team;
+	
 
 	public TeamPosition() {
 	}
@@ -73,6 +75,9 @@ public class TeamPosition extends Position {
 		this.race = race;
 	}
 
+
+
+    
 	public Team getTeam() {
 		return this.team;
 	}
