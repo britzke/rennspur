@@ -142,7 +142,7 @@ Map : class {
     addTrace(trace) {
        var transformedTrace = [];
 
-       for (const [index, coordinate] of trace.entries()) {
+       for (var [index, coordinate] of trace.entries()) {
            transformedTrace[index] = ol.proj.transform(
                    coordinate,
                    this.source_,
