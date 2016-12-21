@@ -1,5 +1,5 @@
 /*
- *  This file is part of Renspur.
+ *  This file is part of Rennspur.
  *  
  *  Copyright (C) 2016  burghard.britzke, bubi@charmides.in-berlin.de
  *  
@@ -26,8 +26,8 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 /**
- * Application Lifecycle Listener implementation class
- * ApplicaitonStartupListener
+ * Application life cycle Listener implementation class
+ * ApplicaitonStartupListener.
  *
  * @author burghard.britzke
  */
