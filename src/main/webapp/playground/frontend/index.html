@@ -11,14 +11,44 @@
 
 <script>
     var map;
+    var array;
+    
+    var getPos = (function () {
+        var json;
+        $.ajax({
+            'async' : false,
+            'global' : false,
+            'url' : "testData.json",
+            'dataType' : "json",
+            'success' : function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();   
+    
+  
+    /*
+    
+    var latArr = parseFloat(getPos.Boot1.position[0].lat);
+    var lonArr = parseFloat(getPos.Boot1.position[0].lon);
+    
+    var latArr2 = parseFloat(getPos.Boot1.position[1].lat);
+    var lonArr2 = parseFloat(getPos.Boot1.position[1].lon);
+    
+    var latArr3 = parseFloat(getPos.Boot1.position[2].lat);
+    var lonArr3 = parseFloat(getPos.Boot1.position[2].lon);
+	
+    array = [[lonArr, latArr], [lonArr2, latArr2], [lonArr3, latArr3]];
+    
+    */
+    
+    //alert(array);
+    
     $(document).ready(
             function () {
                 map = new rs.Map("rs-map", [ 13.19573, 52.50151 ]);
-                map.addTrace([ 
-                    [ 13.20197, 52.50108 ], [ 13.19847, 52.50009 ],
-                    [ 13.19501, 52.50142 ], [ 13.18998, 52.50001 ],
-                    [ 13.18822, 52.50145 ] 
-                ]);
+                map.addTrace(array);
 
                 $("button").click(function () {
                     $("#content").fadeToggle();
@@ -50,7 +80,7 @@
 
 			<form>
 				<label for="disabled">Yardstick:</label> <input name="disabled"
-					size="3" value="" disabled>kn/h
+					size="3" value="" disabled>km/h
 			</form>
 
 			<form>
@@ -68,23 +98,7 @@
 				<label for="disabled">Test position:</label> <input id=test
 					name="disabled" size="10" value="" disabled>
 				<script type="text/javascript">
-                    var json = (function () {
-                        var json = null;
-                        $.ajax({
-                            'async' : false,
-                            'global' : false,
-                            'url' : "testData.json",
-                            'dataType' : "json",
-                            'success' : function (data) {
-                                json = data;
-                            }
-                        });
-                        return json;
-                    })();
-
-                    $("#test").val(
-                            json.Boot1position.lat + " "
-                                    + json.Boot1position.long);
+                         
                 </script>
 			</form>
 		</form>
