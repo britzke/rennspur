@@ -111,6 +111,9 @@ Map : class {
         this.traceLayer_ = new ol.layer.Vector({source: this.traceSource_});
 
         this.map_ = new ol.Map({
+            controls: ol.control.defaults().extend([
+                new ol.control.FullScreen()
+              ]),
             view : this.view_,
             layers : [ this.osmLayer_, this.seamarkLayer_, this.traceLayer_ ],
             target : div
@@ -142,19 +145,22 @@ Map : class {
     addTrace(trace) {
        var transformedTrace = [];
 
-       for (var [index, coordinate] of trace.entries()) {
+       for (let [index, coordinate] of trace.entries()) {
            transformedTrace[index] = ol.proj.transform(
                    coordinate,
                    this.source_,
                    this.destination_);
        }
 
-       var traceGeometry = new ol.geom.LineString(transformedTrace);
-       var traceFeature = new ol.Feature({
+       let traceGeometry = new ol.geom.LineString(transformedTrace);
+       let traceFeature = new ol.Feature({
                geometry : new ol.geom.LineString(transformedTrace),
-               style : new ol.style.Style({
-                   stroke : new ol.style.Stroke({color : 'rgb(255, 0, 0)'})})
        });
+       let r = Math.floor(Math.random() * 256.0);
+       let g = Math.floor(Math.random() * 220.0);
+       let b = Math.floor(Math.random() * 220.0);
+       traceFeature.setStyle(new ol.style.Style({
+           stroke : new ol.style.Stroke({color : `rgb(${r}, ${g}, ${b})`,width:3})}));
        this.traceSource_.addFeature(traceFeature);
     }
 }
