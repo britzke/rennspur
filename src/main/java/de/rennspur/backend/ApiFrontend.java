@@ -54,7 +54,12 @@ public class ApiFrontend {
 	@Path("/race")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Race getRace() {
-		return new Race();
+		EntityManager em = emf.createEntityManager();
+
+		Query query = em.createNamedQuery("Race.findLatestPositions");
+		query.setParameter("id", 1);
+		Race race = (Race) query.getSingleResult();
+		return race;
 	}
 
 	/**

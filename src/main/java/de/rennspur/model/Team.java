@@ -19,16 +19,35 @@
 package de.rennspur.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  * The persistent class for the TEAMS database table.
  * 
  * burghard.britzke bubi@charmides.in-berlin.de
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder={"id","name","handycapFaktor","country","club"})
+
 @Entity
 @Table(name = "TEAMS")
 @NamedQueries({
@@ -58,18 +77,36 @@ public class Team implements Serializable {
 	@JoinColumn(name = "CLUBS_ID")
 	private Club club;
 
+	@XmlTransient
 	@NotNull
 	@Column(nullable = false)
 	private String email;
 
+	@XmlTransient
 	@NotNull
 	@Column(nullable = false)
 	private String hash;
 
+	@XmlTransient
+	//bi-directional many-to-many association to Event
+	@ManyToMany
+	@JoinTable(
+		name="TEAM_EVENTS"
+		, joinColumns={
+			@JoinColumn(name="TEAMS_ID" )
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="EVENTS_ID")
+			}
+		)
+	private List<Event> events;
+	
+	@XmlTransient
 	// bi-directional many-to-one association to TeamMember
 	@OneToMany(mappedBy = "team")
 	private List<TeamMember> members;
 
+	@XmlTransient
 	// bi-directional many-to-one association to TeamPosition
 	@OneToMany(mappedBy = "team")
 	private List<TeamPosition> positions;
@@ -151,6 +188,20 @@ public class Team implements Serializable {
 	 */
 	public void setHash(String hash) {
 		this.hash = hash;
+	}
+
+	/**
+	 * @return the events
+	 */
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	/**
+	 * @param events the events to set
+	 */
+	public void setEvents(List<Event> events) {
+		this.events = events;
 	}
 
 	/**

@@ -20,6 +20,9 @@ package de.rennspur.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 
 import java.util.Date;
 import java.util.List;
@@ -29,6 +32,8 @@ import java.util.List;
  * 
  * @author burghard.britzke bubi@charmides.in-berlin.de
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+
 @Entity
 @Table(name = "EVENTS")
 @NamedQuery(name = "Event.findAll", query = "SELECT e FROM Event e")
@@ -58,10 +63,16 @@ public class Event implements Serializable {
 	@JoinColumn(name = "CLUBS_ID", nullable = false)
 	private Club club;
 
+	//bi-directional many-to-many association to Team
+	@ManyToMany(mappedBy="events", cascade={CascadeType.ALL})
+	private List<Team> teams;
+
+	@XmlTransient
 	// bi-directional many-to-one association to Race
 	@OneToMany(mappedBy = "event")
 	private List<Race> races;
 
+	@XmlTransient
 	// bi-directional many-to-one association to Waypoint
 	@OneToMany(mappedBy = "event")
 	private List<Waypoint> waypoints;
@@ -136,6 +147,20 @@ public class Event implements Serializable {
 
 	public void setClub(Club club) {
 		this.club = club;
+	}
+
+	/**
+	 * @return the teams
+	 */
+	public List<Team> getTeams() {
+		return teams;
+	}
+
+	/**
+	 * @param teams the teams to set
+	 */
+	public void setTeams(List<Team> teams) {
+		this.teams = teams;
 	}
 
 	public List<Race> getRaces() {

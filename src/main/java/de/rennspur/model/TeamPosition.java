@@ -25,6 +25,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
@@ -32,6 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
  * 
  * @author burghard.britzke bubi@charmides.in-berlin.de
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+
 @Entity
 @Table(name = "TEAM_POSITIONS")
 @NamedQueries({
@@ -40,7 +44,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 public class TeamPosition extends Position {
 	private static final long serialVersionUID = 1L;
-
+	
 	// bi-directional many-to-one association to Race
 	@XmlTransient
 	@ManyToOne
@@ -48,7 +52,6 @@ public class TeamPosition extends Position {
 	private Race race;
 
 	// bi-directional many-to-one association to Team
-	@XmlTransient
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "TEAMS_ID", nullable = false)
