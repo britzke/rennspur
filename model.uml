@@ -408,7 +408,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4UUBorYlEeaQppfxafBk9g"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4UUBo7YlEeaQppfxafBk9g" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_3zTw4bYmEeaQppfxafBk9g" name="teams" visibility="private" type="_sKEVEIqxEealCsBNxugxSg" association="_3zTw4LYmEeaQppfxafBk9g">
+      <ownedAttribute xmi:id="_3zTw4bYmEeaQppfxafBk9g" name="teams" visibility="private" type="_sKEVEIqxEealCsBNxugxSg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3zTw4rYmEeaQppfxafBk9g"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3zTw47YmEeaQppfxafBk9g" value="*"/>
       </ownedAttribute>
@@ -454,13 +454,6 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_4UUBoLYlEeaQppfxafBk9g" name="A_wayPoints_events" memberEnd="_4UUBobYlEeaQppfxafBk9g _4UUBpLYlEeaQppfxafBk9g"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_3zTw4LYmEeaQppfxafBk9g" memberEnd="_3zTw4bYmEeaQppfxafBk9g _3zTw5LYmEeaQppfxafBk9g">
-      <name xsi:nil="true"/>
-      <ownedEnd xmi:id="_3zTw5LYmEeaQppfxafBk9g" name="events" type="_0AtJULYjEeaQppfxafBk9g" association="_3zTw4LYmEeaQppfxafBk9g">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3zTw5bYmEeaQppfxafBk9g"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3zTw5rYmEeaQppfxafBk9g" value="*"/>
-      </ownedEnd>
-    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_HZ8xwLYrEeaQppfxafBk9g" name="WaypointPosition">
       <generalization xmi:id="_o441cLYlEeaQppfxafBk9g" general="_ouEdYIqzEealCsBNxugxSg"/>
       <ownedAttribute xmi:id="_TL584bYrEeaQppfxafBk9g" name="waypoint" visibility="private" type="_goY-4LYlEeaQppfxafBk9g" association="_TL584LYrEeaQppfxafBk9g">
@@ -487,6 +480,16 @@
       <ownedEnd xmi:id="_CSAVobYtEeaQppfxafBk9g" name="waypointPositions" type="_HZ8xwLYrEeaQppfxafBk9g" association="_CSAVoLYtEeaQppfxafBk9g">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CSAVorYtEeaQppfxafBk9g"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CSAVo7YtEeaQppfxafBk9g" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_BcBGEMuoEeapZvyPP5tKRA" memberEnd="_BcBGEcuoEeapZvyPP5tKRA _BcBGFMuoEeapZvyPP5tKRA" navigableOwnedEnd="_BcBGEcuoEeapZvyPP5tKRA _BcBGFMuoEeapZvyPP5tKRA">
+      <ownedEnd xmi:id="_BcBGEcuoEeapZvyPP5tKRA" name="events" type="_0AtJULYjEeaQppfxafBk9g" association="_BcBGEMuoEeapZvyPP5tKRA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BcBGEsuoEeapZvyPP5tKRA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BcBGE8uoEeapZvyPP5tKRA" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_BcBGFMuoEeapZvyPP5tKRA" name="teams" type="_sKEVEIqxEealCsBNxugxSg" association="_BcBGEMuoEeapZvyPP5tKRA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BcBGFcuoEeapZvyPP5tKRA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BcBGFsuoEeapZvyPP5tKRA" value="*"/>
       </ownedEnd>
     </packagedElement>
   </packagedElement>
