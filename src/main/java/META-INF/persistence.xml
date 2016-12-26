@@ -14,6 +14,8 @@
 		<class>de.rennspur.model.Waypoint</class>
 		<class>de.rennspur.model.WaypointPosition</class>
 		<class>de.rennspur.model.BooleanYNConverter</class>
+		<class>de.rennspur.model.TeamEvent</class>
+		<class>de.rennspur.model.TeamEventPK</class>
 		<properties>
 			<property name="eclipselink.ddl-generation" value="create-tables" />
 			<property name="eclipselink.ddl-generation.output-mode"
