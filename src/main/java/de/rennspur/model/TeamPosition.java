@@ -48,7 +48,7 @@ public class TeamPosition extends Position {
 	// bi-directional many-to-one association to Race
 	@XmlTransient
 	@ManyToOne
-	@JoinColumn(name = "RACES_ID")
+	@JoinColumn(name = "RACES_ID", nullable = false)
 	private Race race;
 
 	// bi-directional many-to-one association to Team

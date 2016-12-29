@@ -68,17 +68,17 @@ public class Club implements Serializable {
 
 	@XmlElement(required = true)
 	@NotNull
-	@Column(name = "DSV_NUMBER", nullable = false)
+	@Column(name = "DSV_NUMBER", nullable = false, length = 6)
 	private String dsvNumber;
 
 	@XmlElement(required = true)
 	@NotNull
-	@Column(nullable = false)
+	@Column(nullable = false, length = 64)
 	private String abreviation;
 
 	@XmlElement(required = true)
 	@NotNull
-	@Column(nullable = false)
+	@Column(nullable = false, length = 255)
 	private String name;
 
 	@XmlElement(required = true)

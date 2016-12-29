@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlType;
  * burghard.britzke bubi@charmides.in-berlin.de
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder={"id","name","handycapFaktor","country","club"})
+@XmlType(name = "", propOrder={"id","name","handycapFactor","country","club"})
 
 @Entity
 @Table(name = "TEAMS")
@@ -61,30 +61,30 @@ public class Team implements Serializable {
 	private int id;
 
 	@NotNull
-	@Column(name = "HANDYCAP_FAKTOR", nullable = false)
-	private int handycapFaktor;
+	@Column(name = "HANDYCAP_FACTOR", nullable = false)
+	private int handycapFactor;
 
 	@NotNull
-	@Column(nullable = false)
+	@Column(nullable = false, length = 10)
 	private String name;
 
 	@NotNull
-	@Column(nullable = false)
+	@Column(nullable = false, length = 3)
 	private String country;
 
 	// bi-directional many-to-one association to Club
 	@ManyToOne
-	@JoinColumn(name = "CLUBS_ID")
+	@JoinColumn(name = "CLUBS_ID", nullable = false)
 	private Club club;
 
 	@XmlTransient
 	@NotNull
-	@Column(nullable = false)
+	@Column(nullable = false, length = 255)
 	private String email;
 
 	@XmlTransient
 	@NotNull
-	@Column(nullable = false)
+	@Column(nullable = false, length = 64)
 	private String hash;
 
 	@XmlTransient
@@ -122,12 +122,12 @@ public class Team implements Serializable {
 		this.id = id;
 	}
 
-	public int getHandycapFaktor() {
-		return this.handycapFaktor;
+	public int getHandycapFactor() {
+		return this.handycapFactor;
 	}
 
-	public void setHandycapFaktor(int handycapFaktor) {
-		this.handycapFaktor = handycapFaktor;
+	public void setHandycapFactor(int handycapFaktor) {
+		this.handycapFactor = handycapFaktor;
 	}
 
 	/**

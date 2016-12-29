@@ -38,9 +38,10 @@ public class TeamMember implements Serializable {
 	private int id;
 
 	@NotNull
-	@Column(nullable = false)
+	@Column(nullable = false, length = 255)
 	private String name;
 
+	@Column(length = 255)
 	private String surname;
 
 	// bi-directional many-to-one association to Club

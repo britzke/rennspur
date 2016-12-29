@@ -62,7 +62,8 @@ public class Race implements Serializable {
 
 	// bi-directional many-to-one association to Event
 	@ManyToOne
-	@JoinColumn(name = "EVENTS_ID")
+	@NotNull
+	@JoinColumn(name = "EVENTS_ID", nullable = false)
 	private Event event;
 
 	// bi-directional many-to-one association to TeamPosition

@@ -20,6 +20,7 @@ package de.rennspur.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlTransient;
@@ -44,13 +45,16 @@ public class Event implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(nullable = false)
+	@Column(nullable = false, length = 255)
+	@NotNull
 	private String name;
 
 	@Transient
 	private Boolean handicap;
 
+	
 	@Column(name = "START_DATE", nullable = false)
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date startDate;
 
@@ -63,6 +67,7 @@ public class Event implements Serializable {
 	private double longitude;
 	
 	// bi-directional many-to-one association to Club
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "CLUBS_ID", nullable = false)
 	private Club club;
