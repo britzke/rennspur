@@ -58,6 +58,10 @@ public class Event implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date endDate;
 
+	private double latitude;
+	
+	private double longitude;
+	
 	// bi-directional many-to-one association to Club
 	@ManyToOne
 	@JoinColumn(name = "CLUBS_ID", nullable = false)
@@ -139,6 +143,34 @@ public class Event implements Serializable {
 	 */
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	/**
+	 * @return the latitude
+	 */
+	public double getLatitude() {
+		return latitude;
+	}
+
+	/**
+	 * @param latitude the latitude to set
+	 */
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	/**
+	 * @return the longitude
+	 */
+	public double getLongitude() {
+		return longitude;
+	}
+
+	/**
+	 * @param longitude the longitude to set
+	 */
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 
 	public Club getClub() {
