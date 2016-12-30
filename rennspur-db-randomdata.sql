@@ -1,16 +1,15 @@
-INSERT INTO clubs (ABREVIATION,DSV_NUMBER,NAME,URL) values ('GER','435','Die deutschen Segler','http://google.de');
-INSERT INTO clubs (ABREVIATION,DSV_NUMBER,NAME,URL) values ('SWE','534','Die schwedischen Segler','http://google.se');
+INSERT INTO clubs (ABREVIATION,DSV_NUMBER,NAME,URL) values ('DSC','435','Deutscher Segler Club','http://dsc.de');
+INSERT INTO clubs (ABREVIATION,DSV_NUMBER,NAME,URL) values ('KSS','534','Karlskrona Segelsällskap','www.knss.nu');
 
-INSERT INTO TEAMS (COUNTRY,EMAIL,HANDYCAP_FAKTOR,HASH,NAME,CLUBS_ID) VALUES ('DE','me@deutschland.de',1,'asdh832','GER 72',1);
-INSERT INTO TEAMS (COUNTRY,EMAIL,HANDYCAP_FAKTOR,HASH,NAME,CLUBS_ID) VALUES ('SE','me@schweden.se',2,'534234qasd','SWE 743',2);
+INSERT INTO TEAMS (COUNTRY,EMAIL,HANDYCAP_FACTOR,HASH,NAME,CLUBS_ID) VALUES ('GER','me@deutschland.de',93,'asdh832','GER 72',1);
+INSERT INTO TEAMS (COUNTRY,EMAIL,HANDYCAP_FACTOR,HASH,NAME,CLUBS_ID) VALUES ('SWE','me@schweden.se',114,'534234qasd','SWE 743',2);
 
- INSERT INTO events (end_date, name, start_date, clubs_id,longitude,latitude) VALUES ('1980-01-05 21:03:20', 'Segel-Cup', '1980-05-02 23:03:20', 1, 13.19573, 52.50151);
- INSERT INTO events (end_date, name, start_date, clubs_id,longitude,latitude) VALUES ('1970-01-01 23:03:20', 'ClubSegler', '1980-01-01 23:03:20', 2, 13.34148, 52.49603);
+ INSERT INTO events (end_date, name, start_date, clubs_id,longitude,latitude,handicap) VALUES ('2017-01-05', 'DSC Yardstick-Cup', '2017-01-07', 1, 13.19573, 52.50151,'Y');
+ INSERT INTO events (end_date, name, start_date, clubs_id,longitude,latitude,handicap) VALUES ('2016-09-18', '505er Lette-Cup 2016', '2016-09-19', 2, 13.34148, 52.49603,'N');
 
  insert into team_events (teams_id,events_id) values (1,1);
  insert into team_events (teams_id,events_id) values (2,1);
- 
- 
+
 INSERT INTO races (NUMBER,EVENTS_ID) VALUES (1,1);
 INSERT INTO races (NUMBER,EVENTS_ID) VALUES (2,2);
 

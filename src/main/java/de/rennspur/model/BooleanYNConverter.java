@@ -28,18 +28,18 @@ import javax.persistence.Converter;
  * @author burghard.britzke
  */
 @Converter(autoApply = true)
-public class BooleanYNConverter implements AttributeConverter<Boolean, Character> {
+public class BooleanYNConverter implements AttributeConverter<Boolean, String> {
 	/**
 	 * Converts the value true or false to the character "Y" or "N".
 	 * 
 	 * @see javax.persistence.AttributeConverter#convertToDatabaseColumn(java.lang.Object)
 	 */
 	@Override
-	public Character convertToDatabaseColumn(Boolean value) {
-		if (Boolean.TRUE.equals(value)) {
-			return 'Y';
+	public String convertToDatabaseColumn(Boolean value) {
+		if (value.equals(Boolean.TRUE)) {
+			return "Y";
 		} else {
-			return 'N';
+			return "N";
 		}
 	}
 
@@ -49,8 +49,8 @@ public class BooleanYNConverter implements AttributeConverter<Boolean, Character
 	 * @see javax.persistence.AttributeConverter#convertToEntityAttribute(java.lang.Object)
 	 */
 	@Override
-	public Boolean convertToEntityAttribute(Character value) {
-		return value.equals('Y');
+	public Boolean convertToEntityAttribute(String value) {
+		return value.equals("Y");
 	}
 
 }

@@ -49,17 +49,18 @@ public class Event implements Serializable {
 	@NotNull
 	private String name;
 
-	@Transient
+	@Column(nullable=false, length = 1)
+	@NotNull
 	private Boolean handicap;
 
 	
 	@Column(name = "START_DATE", nullable = false)
 	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date startDate;
 
 	@Column(name = "END_DATE")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date endDate;
 
 	private double latitude;
