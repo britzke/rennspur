@@ -43,7 +43,7 @@ function clearPositionsArray() {
 function sendLocations() {
 	/** use jquery to post the locations to the Rest interface */
 	$.ajax({
-		url : 'http://localhost:8080/rennspur/rest/gps-service',
+		url : `${location.origin}/rennspur/rest/gps-service`,
 		type : 'post',
 		headers : {
 			"Accept" : "application/json",
@@ -84,9 +84,9 @@ function init() {
 		var storageItemJson = JSON.parse(storageItem);
 		if (storageItemJson.positions == null || storageItemJson.hash == null) {
 			/**
-			 * positions array or auth hash in JSON object is missing, creating
-			 * new
-			 */
+             * positions array or auth hash in JSON object is missing, creating
+             * new
+             */
 			prepareLocalStorage();
 		}
 		// TODO: check if the found data is old, maybe from another event?
