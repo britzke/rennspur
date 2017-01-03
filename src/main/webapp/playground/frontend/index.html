@@ -3,55 +3,33 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>rennspur map</title>
-<link rel="stylesheet" href="/rennspur/webjars/openlayers/3.20.0/ol.css" type="text/css">
+<link rel="stylesheet" href="/rennspur/webjars/openlayers/3.20.0/ol.css"
+	type="text/css">
 <link rel="stylesheet" href="/rennspur/rs.css" type="text/css">
-<script src="/rennspur/webjars/jquery/3.1.1-1/jquery.min.js" type="text/ecmascript"></script>
-<script src="/rennspur/webjars/openlayers/3.20.0/ol-debug.js" type="text/ecmascript"></script>
+<script src="/rennspur/webjars/jquery/3.1.1-1/jquery.min.js"
+	type="text/ecmascript"></script>
+<script src="/rennspur/webjars/openlayers/3.20.0/ol-debug.js"
+	type="text/ecmascript"></script>
+<script
+	src="/rennspur/webjars/json.date-extensions/1.2.2/json.date-extensions.js"
+	type="text/ecmascript"></script>
 <script src="/rennspur/rs-debug.js" type="text/ecmascript"></script>
 
 <script>
     var map;
-    var array;
     
-    var getPos = (function () {
-        var json;
-        $.ajax({
-            'async' : true,
-            'global' : false,
-            'url' : "testData.json",
-            'dataType' : "json",
-            'success' : function (data) {
-                json = data;
-            }
-        });
-        return json;
-    })();   
-    
-  
-    /*
-    
-    var latArr = parseFloat(getPos.Boot1.position[0].lat);
-    var lonArr = parseFloat(getPos.Boot1.position[0].lon);
-    
-    var latArr2 = parseFloat(getPos.Boot1.position[1].lat);
-    var lonArr2 = parseFloat(getPos.Boot1.position[1].lon);
-    
-    var latArr3 = parseFloat(getPos.Boot1.position[2].lat);
-    var lonArr3 = parseFloat(getPos.Boot1.position[2].lon);
-	
-    array = [[lonArr, latArr], [lonArr2, latArr2], [lonArr3, latArr3]];
-    
-    */
-    
-    //alert(array);
-    
+    JSON.useDateParser(); // parse json dates to js Date objects (see. json.date-extensions)
+
     $(document).ready(
             function () {
-                map = new rs.Map("rs-map", [ 13.19573, 52.50151 ]);
-                map.addTrace(array);
-
-                $("button").click(function () {
-                    $("#content").fadeToggle();
+                $.getJSON( "/rennspur/rest/frontend/race")
+            	.done(function( data ) {
+               	 	console.log(data);
+                	race = new rs.model.Race(data);
+                	console.log(race);
+	                map = new rs.Map("rs-map", race);})
+                .fail(function () {
+                    console.log("xhr-error");
                 });
             });
 </script>
@@ -59,49 +37,5 @@
 </head>
 <body>
 	<div id="rs-map"></div>
-
-	<div id="button_info">
-		<button>Info</button>
-	</div>
-
-	<ul id="content">
-		<form>
-			<h3>Rennveranstalung</h3>
-
-			<form>
-				<label for="disabled">Reggata:</label><input name="disabled"
-					value="" disabled>
-			</form>
-
-			<form>
-				<label for="disabled">Boot:</label> <input name="disabled" value=""
-					disabled>
-			</form>
-
-			<form>
-				<label for="disabled">Yardstick:</label> <input name="disabled"
-					size="3" value="" disabled>km/h
-			</form>
-
-			<form>
-				<label for="disabled">Segenummer:</label> <input name="disabled"
-					value="" disabled>
-			</form>
-
-			<form>
-				<label for="disabled">Team:</label> <input name="disabled" size="10"
-					value="" disabled> <label for="disabled">Nation:</label> <input
-					name="disabled" size="3" value="" disabled>
-			</form>
-
-			<form>
-				<label for="disabled">Test position:</label> <input id=test
-					name="disabled" size="10" value="" disabled>
-				<script type="text/javascript">
-                         
-                </script>
-			</form>
-		</form>
-	</ul>
 </body>
 </html>

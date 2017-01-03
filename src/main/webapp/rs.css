@@ -3,16 +3,82 @@
 	display: none !important;
 }
 
-#content {
-	position: fixed;
-	top: 15;
-	right: 0;
-	width: 400px;
-	height: 400px;
-	background-color: white;
-	box-shadow: 5px 5px 20px grey;
-	opacity: 1;
-	z-index: 10000;
+.toggle-legend.shown.ol-control {
+    background-color: transparent;
+}
+
+.toggle-legend.shown.ol-control:hover {
+    background-color: transparent;
+}
+
+.toggle-legend {
+    position: absolute;
+    top: 3.5em;
+    right: 0.5em;
+    text-align: left;
+}
+
+.toggle-legend.shown {
+    bottom: 3em;
+}
+
+.toggle-legend .panel {
+    padding: 0 1em 0 0;
+    margin: 0;
+    border: 4px solid #eee;
+    border-radius: 4px;
+    background-color: rgba(255,255,255,0.5);
+    display: none;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.toggle-legend.shown .panel {
+    display: block;
+}
+
+.toggle-legend.shown button {
+    display: none;
+}
+
+.toggle-legend ul {
+    padding-left: 1em;
+    list-style: none;
+}
+
+.toggle-legend li.group {
+    padding-top: 5px;
+}
+
+.toggle-legend li.group > label {
+    font-weight: bold;
+}
+
+.toggle-legend li.layer {
+    display: table;
+}
+
+.toggle-legend li.layer label, .toggle-legend li.layer input {
+    display: table-cell;
+    vertical-align: sub;
+}
+
+.toggle-legend input {
+    margin: 4px;
+}
+
+.toggle-legend.touch ::-webkit-scrollbar {
+    width: 4px;
+}
+
+.toggle-legend.touch ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.toggle-legend.touch ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
 
 #button_info {
@@ -22,3 +88,13 @@
 	opacity: 1;
 	z-index: 10000;
 }
+
+/* Legend Button */
+.toggle-legend {
+  top: 40px;
+  right: .5em;
+}
+.ol-touch .toggle-legend {
+  top: 80px;
+}
+
