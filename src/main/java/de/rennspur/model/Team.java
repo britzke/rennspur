@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlType;
  * burghard.britzke bubi@charmides.in-berlin.de
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder={"id","name","handycapFactor","country","club"})
+@XmlType(name = "", propOrder={"id","name","handicapFactor","country","club"})
 
 @Entity
 @Table(name = "TEAMS")
@@ -61,8 +61,8 @@ public class Team implements Serializable {
 	private int id;
 
 	@NotNull
-	@Column(name = "HANDYCAP_FACTOR", nullable = false)
-	private int handycapFactor;
+	@Column(name = "HANDICAP_FACTOR", nullable = false)
+	private int handicapFactor;
 
 	@NotNull
 	@Column(nullable = false, length = 10)
@@ -122,12 +122,12 @@ public class Team implements Serializable {
 		this.id = id;
 	}
 
-	public int getHandycapFactor() {
-		return this.handycapFactor;
+	public int getHandicapFactor() {
+		return this.handicapFactor;
 	}
 
-	public void setHandycapFactor(int handycapFaktor) {
-		this.handycapFactor = handycapFaktor;
+	public void setHandicapFactor(int handicapFactor) {
+		this.handicapFactor = handicapFactor;
 	}
 
 	/**

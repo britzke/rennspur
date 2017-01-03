@@ -18,10 +18,6 @@
     text-align: left;
 }
 
-.toggle-legend.shown {
-    bottom: 3em;
-}
-
 .toggle-legend .panel {
     padding: 0 1em 0 0;
     margin: 0;

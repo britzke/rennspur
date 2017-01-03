@@ -24,75 +24,189 @@ var rs= rs || {};
 /** @namespace */
 rs.model = {};
 
+/**
+ * A club can organize events and members of competitor teams can belong to a
+ * club.
+ * 
+ * @class
+ */
 rs.model.Club = class {
+    /**
+     * @constructs
+     * @param {object}
+     *            properties An object with the properties to initialize.
+     * @return {rs.model.Club} The initialized club object.
+     */
+    constructor (properties) {
+        for (let property in properties) {
+            this[property] = properties[property];
+        }
+    }
+    get id() {
+        return this.id_;
+    }
+    set id(id) {
+        this.id_ = id;
+    }
     
+    get dsvNumber() {
+        return this.dsvNumber_;
+    }
+    
+    set dsvNumber(dsvNumber) {
+        this.dsvNumber_ = dsvNumber;
+    }
+    
+    get abreviation() {
+        return this.abreviation_;
+    }
+    
+    set abreviation(abreviation) {
+        this.abreviation_ = abreviation;
+    }
+    get name() {
+        return this.name_;
+    }
+    
+    set name(name) {
+        this.name_ = name;
+    }
+    
+    get url() {
+        return this.url_;
+    }
+    
+    set url(url) {
+        this.url_ = url;
+    }
 };
 
+/**
+ * A group of races which form the event.
+ * 
+ * @class
+ */
 rs.model.Event = class {
-    constructor (numberOrObject) {
-        if (typeof numberOrObject === "number") {
-            this.number_ = numberOrObject;
-        } else {
-            for (let property in numberOrObject) {
-                if (typeof numberOrObject[property] == "object") {
-                    switch (property) {
-                        case "club":
-                            this[property] = new rs.model.Club(numberOrObject[property]);
-                            break;
-                        case "team":
-                            this[property] = new rs.model.Team(numberOrObject[property]);                            
-                        default:
-                            this[property] = numberOrObject[property];
+    /**
+     * @constructs
+     * @param {object}
+     *            properties An object with the properties to initialize.
+     * @return {rs.model.Event} The initialized event object.
+     */
+    constructor (properties) {
+        for (let property in properties) {
+            switch (property) {
+                case "club":
+                    this[property] = new rs.model.Club(properties[property]);
+                    break;
+                case "teams":
+                    let teams = [];
+                    for (let team of properties[property]) {
+                        teams[teams.length] = new rs.model.Team(team);
                     }
-                }
-                else {
-                    this[property] = numberOrObject[property];                    
-                }
+                    this[property] = teams;
+                case "races":
+                    let races = [];
+                    for (let race of properties[property]) {
+                        races[race.length] = new rs.model.Race(race);
+                    }
+                    this[property] = races;
+                default:
+                    this[property] = properties[property];
             }
         }
     }
-
+    get id() {
+        return this.id_;
+    }
+    set id(id) {
+        this.id_ = id;
+    }
+        
+    get club() {
+        return this.club_;
+    }
+    set club(club) {
+        this.club_ = club;
+    }
+    get team() {
+        return this.team_;
+    }
+    set team(team) {
+        this.team_ = team;
+    }
 };
 
+/**
+ * A group of members who form one competitor team - the team.
+ */
 rs.model.Team = class {
-    constructor (nameOrObject = null) {
-        if (typeof nameOrObject === "string") {
-            this.name_=nameOrObject;
-        } else {
-            for (let property in nameOrObject) {
-                this[property]  = nameOrObject[property];
-            }
+    constructor (properties = null) {
+        for (let property in properties) {
+           this[property]  = properties[property];
         }
+    }
+    get id() {
+        return this.id_;
+    }
+    set id(id) {
+        this.id_ = id;
+    }
+    
+    get name() {
+        return name_;
+    }
+    set name(name) {
+        this.name_ = name;
+    }
+    get country() {
+        return this.country_;
+    }
+    set country(country) {
+        this.country_ = country;
+    }
+    get handycapFactor () {
+        return this.handycapFactor_;
+    }
+    set handicapFactor (handicapFactor) {
+        this.handicapFactor_ = handicapFactor;
+    }
+    get club() {
+        return this.club_;
+    }
+    set club(club) {
+        this.club_ = club;
     }
 };
 
+/**
+ * A race with its relations to events and teamPositions.
+ */
 rs.model.Race = class {
-    constructor (numberOrObject) {
-        if (typeof numberOrObject === "number") {
-            this.number_ = numberOrObject;
-        } else {
-            for (let property in numberOrObject) {
-                if (typeof numberOrObject[property] == "object") {
-                    switch (property) {
-                        case "event":
-                            this[property] = new rs.model.Event(numberOrObject[property]);
-                            break;
-                        case "teamPositions":
-                            let pos = [];
-                            for (let teamPosition of numberOrObject[property]) {
-                                pos[pos.length] = new rs.model.TeamPosition(teamPosition);
-                            }
-                            this[property] = pos;
-                            break;
-                        default:
-                            this[property] = numberOrObject[property];
+    constructor (properties) {
+        for (let property in properties) {
+            switch (property) {
+                case "event":
+                    this[property] = new rs.model.Event(properties[property]);
+                    break;
+                case "teamPositions":
+                    let pos = [];
+                    for (let teamPosition of properties[property]) {
+                        pos[pos.length] = new rs.model.TeamPosition(teamPosition);
                     }
-                }
-                else {
-                    this[property] = numberOrObject[property];
-                }
-            }
-        }
+                    this[property] = pos;
+                    break;
+                default:
+                    this[property] = propterties[property];
+             }
+         }
+     }
+
+    get id() {
+        return this.id_;
+    }
+    set id(id) {
+        this.id_ = id;
     }
 };
 
@@ -267,28 +381,8 @@ rs.Legend = function (opt_options) {
 ol.inherits(rs.Legend, ol.control.Control);
 
 /**
- * Set the map instance the control is associated with.
- * 
- * @param {ol.Map}
- *            map The map instance.
+ * Toggles, whether the panel is visible or not.
  */
-rs.Legend.prototype.setMap = function(map) {
-    // Clean up listeners associated with the previous map
-    for (var i = 0, key; i < this.mapListeners.length; i++) {
-        this.getMap().unByKey(this.mapListeners[i]);
-    }
-    this.mapListeners.length = 0;
-    // Wire up listeners etc. and store reference to new map
-    ol.control.Control.prototype.setMap.call(this, map);
-/*
- * if (map) { var this_ = this; this.mapListeners.push(map.on('pointerdown',
- * function() { this_.hidePanel(); }));
- * 
- * this.renderPanel(); }
- */
-};
-
-
 rs.Legend.prototype.togglePanel = function() {
     if (this.element.className != this.shownClassName) {
         this.element.className = this.shownClassName;
@@ -323,6 +417,12 @@ rs.Legend.prototype.renderPanel = function() {
     this.panel.appendChild(ul);
 };
 
+/**
+ * Add a team to the map.
+ * 
+ * @param {rs.model.Team}
+ *            team The team to add.
+ */
 rs.Legend.prototype.addTeam = function (team) {
     this.teams_.push(team);
 };
