@@ -24,6 +24,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -83,6 +84,7 @@ public class ApiGPS {
 			EntityManager em = emf.createEntityManager();
 			Query q=em.createNamedQuery("Team.getTeamByHash");
 			q.setParameter("hash", positionsTransfer.getHash());
+			System.out.println("Hash:" + positionsTransfer.getHash());
 			Team team= (Team)q.getSingleResult();
 
 			if (team != null) {	// Team with hash exists
@@ -103,11 +105,12 @@ public class ApiGPS {
 
 				return "ok";
 			} else {
-				return "failed";
+				throw new ErrorHandling("");
 			}
-		} catch (Exception e) {
+		} catch (NoResultException e) {
 			e.printStackTrace();
-			return e.getMessage();
+			throw new ErrorHandling("");
+			//return e.getMessage();
 		}
 	}
 }
