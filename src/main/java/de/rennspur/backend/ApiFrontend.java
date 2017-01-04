@@ -1,7 +1,7 @@
 /*
  *  This file is part of Renspur.
  *  
- *  Copyright (C) 2016  Leo Winter
+ *  Copyright (C) 2016  Leo Winter, leon.schlender, burghard.britzke
  *  
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -24,10 +24,9 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -37,7 +36,7 @@ import de.rennspur.model.TeamPosition;
 /**
  * This is the service endpoint, which provides the Api for the web frontend.
  * 
- * @author leo.winter, leon.schlender
+ * @author leo.winter, leon.schlender, burghard.britzke
  * @param <FrontendData>
  */
 @Path("/frontend")
@@ -70,18 +69,17 @@ public class ApiFrontend {
 	 * @param positionsCount
 	 * @return The list for TeamPositions for the given team id.
 	 */
-	@POST
-	@Path("/update")
+	@GET
+	@Path("/update/{id}")
 	@Produces("application/json")
 	public List<TeamPosition> getLatestTeamPositions(
-			@FormParam("id") int teamid) {
+			@PathParam("id") int teamid) {
 		EntityManager em = emf.createEntityManager();
 
 		Query query = em.createNamedQuery("TeamPosition.findLatestPositions");
 		query.setParameter("id", teamid);
 		@SuppressWarnings("unchecked")
 		List<TeamPosition> positions = query.getResultList();
-
 		return positions;
 	}
 }
