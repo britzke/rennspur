@@ -30,7 +30,7 @@ rs.model = {};
  * 
  * @class
  */
-rs.model.Club = class {
+rs.model.Club = class Club{
     /**
      * @constructs
      * @param {object}
@@ -86,7 +86,7 @@ rs.model.Club = class {
  * 
  * @class
  */
-rs.model.Event = class {
+rs.model.Event = class Event{
     /**
      * @constructs
      * @param {object}
@@ -140,7 +140,7 @@ rs.model.Event = class {
 /**
  * A group of members who form one competitor team - the team.
  */
-rs.model.Team = class {
+rs.model.Team = class Team{
     constructor (properties = null) {
         for (let property in properties) {
            this[property]  = properties[property];
@@ -182,7 +182,7 @@ rs.model.Team = class {
 /**
  * A race with its relations to events and teamPositions.
  */
-rs.model.Race = class {
+rs.model.Race = class Race {
     constructor (properties) {
         for (let property in properties) {
             switch (property) {
@@ -197,7 +197,7 @@ rs.model.Race = class {
                     this[property] = pos;
                     break;
                 default:
-                    this[property] = propterties[property];
+                    this[property] = properties[property];
              }
          }
      }
@@ -213,7 +213,7 @@ rs.model.Race = class {
 /**
  * Represents a position with longitude, latitude, time.
  */
-rs.model.Position = class {
+rs.model.Position = class Position{
     /**
      * Generates a rs.Position object. Initializes its properties.
      * 
@@ -279,7 +279,7 @@ rs.model.Position = class {
 /**
  * Represents a TeamPosition, a position of a team in a race.
  */
-rs.model.TeamPosition = class extends rs.model.Position{
+rs.model.TeamPosition = class TeamPosition extends rs.model.Position{
     /**
      * Constructs a new TeamPosition either out of an object or out of
      * longitude, latitude, and time.
@@ -370,6 +370,7 @@ rs.Legend = function (opt_options) {
         this.panel.className = 'panel';
         element.appendChild(this.panel);
         this.panel.addEventListener('click', toggleLegend, false);
+        this.panel.addEventListener('touchstart', toggleLegend, false);
 
         rs.Legend.enableTouchScroll_(this.panel);
         
