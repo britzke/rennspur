@@ -147,6 +147,11 @@ function clickTest() {
 	}
 }
 
+function stop(){
+	clearInterval(send_interval);
+	clearInterval(pos_interval);
+}
+
 /**
  * To test , call init at start and then save a test-location
  */
