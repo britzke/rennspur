@@ -30,8 +30,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import de.rennspur.model.Clubs;
 import de.rennspur.model.Race;
+import de.rennspur.model.Team;
 import de.rennspur.model.TeamPosition;
+
 
 /**
  * This is the service endpoint, which provides the Api for the web frontend.
@@ -82,4 +85,26 @@ public class ApiFrontend {
 		List<TeamPosition> positions = query.getResultList();
 		return positions;
 	}
+	
+	@GET
+	@Path("/clubs")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Clubs> getClubs() {
+		EntityManager em = emf.createEntityManager();
+		Query query = em.createNamedQuery("Club.findAll");
+		query.setParameter("id", 1);
+		List<Clubs> clubs = query.getResultList();
+		return clubs;
+	}
+	
+//	@GET
+//	@Path("/teams")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public List<Team> getTeam() {
+//		EntityManager em = emf.createEntityManager();
+//		Query query = em.createNamedQuery("Team.findAll");
+//		query.setParameter("id", 1);
+//		List<Team> team = query.getResultList();
+//		return team;
+//	}
 }

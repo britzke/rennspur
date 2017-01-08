@@ -25,8 +25,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
-
 import java.util.List;
 
 /**
@@ -55,10 +53,11 @@ import java.util.List;
  * @author burghard.britzke bubi@charmides.in-berlin.de
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
+
 @Entity
 @Table(name = "CLUBS")
 @NamedQuery(name = "Club.findAll", query = "SELECT c FROM Club c")
+
 public class Club implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -124,8 +123,8 @@ public class Club implements Serializable {
 		return this.abreviation;
 	}
 
-	public void setAbreviation(String kÃ¼rzel) {
-		this.abreviation = kÃ¼rzel;
+	public void setAbreviation(String kürzel) {
+		this.abreviation = kürzel;
 	}
 
 	public String getName() {
