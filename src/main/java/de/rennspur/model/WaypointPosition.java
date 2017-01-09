@@ -24,6 +24,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 
 /**
  * The persistent class for the WAYPOINT_POSITIONS database table.
@@ -36,12 +41,14 @@ import javax.validation.constraints.NotNull;
 public class WaypointPosition extends Position {
 	private static final long serialVersionUID = 1L;
 
+	@XmlTransient
 	// bi-directional many-to-one association to Waypoint
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "WAYPOINTS_ID", nullable = false)
 	private Waypoint waypoint;
 
+	@XmlTransient
 	// bi-directional many-to-one association to Waypoint
 	@NotNull
 	@ManyToOne
