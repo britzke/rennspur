@@ -40,11 +40,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "TEAM_POSITIONS")
 @NamedQueries({
 		@NamedQuery(name = "TeamPosition.findAll", query = "SELECT t FROM TeamPosition t"),
-		@NamedQuery(name = "TeamPosition.findLatestPositions", query = "SELECT tp FROM TeamPosition tp inner join tp.team t WHERE t.id=:id"), })
+		@NamedQuery(name = "TeamPosition.findLatestPositions", 
+				query = "SELECT tp FROM TeamPosition tp inner join tp.team t WHERE t.id=:id order by tp.time desc"), })
 
 public class TeamPosition extends Position {
 	private static final long serialVersionUID = 1L;
-	
+
 	// bi-directional many-to-one association to Race
 	@XmlTransient
 	@ManyToOne

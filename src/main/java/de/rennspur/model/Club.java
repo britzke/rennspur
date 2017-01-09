@@ -123,8 +123,8 @@ public class Club implements Serializable {
 		return this.abreviation;
 	}
 
-	public void setAbreviation(String kürzel) {
-		this.abreviation = kürzel;
+	public void setAbreviation(String abreviation) {
+		this.abreviation = abreviation;
 	}
 
 	public String getName() {

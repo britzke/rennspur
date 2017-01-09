@@ -31,6 +31,7 @@
 
 .toggle-legend.shown .panel {
     display: block;
+    font-family: monospace;
 }
 
 .toggle-legend.shown button {
@@ -42,12 +43,8 @@
     list-style: none;
 }
 
-.toggle-legend li.group {
-    padding-top: 5px;
-}
-
-.toggle-legend li.group > label {
-    font-weight: bold;
+.toggle-legend ul li {
+	font-size: xx-large;	
 }
 
 .toggle-legend li.layer {

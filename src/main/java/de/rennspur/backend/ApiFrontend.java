@@ -32,7 +32,6 @@ import javax.ws.rs.core.MediaType;
 
 import de.rennspur.model.Clubs;
 import de.rennspur.model.Race;
-import de.rennspur.model.Team;
 import de.rennspur.model.TeamPosition;
 
 
@@ -61,11 +60,13 @@ public class ApiFrontend {
 		Query query = em.createNamedQuery("Race.findRace");
 		query.setParameter("id", 1);
 		Race race = (Race) query.getSingleResult();
+
+		em.close();
 		return race;
 	}
 
 	/**
-	 * Returns a specific amount of the latest Positions of a team
+	 * Returns the latest 50 Positions of a team.
 	 * 
 	 * @param teamid
 	 *            ID of the wanted team
@@ -80,12 +81,18 @@ public class ApiFrontend {
 		EntityManager em = emf.createEntityManager();
 
 		Query query = em.createNamedQuery("TeamPosition.findLatestPositions");
-		query.setParameter("id", teamid);
+		query.setParameter("id", teamid).setMaxResults(50);
 		@SuppressWarnings("unchecked")
 		List<TeamPosition> positions = query.getResultList();
+		
+		em.close();
 		return positions;
 	}
 	
+	/**
+	 * Returns a list of all clubs.
+	 * @return The list of clubs.
+	 */
 	@GET
 	@Path("/clubs")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -93,6 +100,7 @@ public class ApiFrontend {
 		EntityManager em = emf.createEntityManager();
 		Query query = em.createNamedQuery("Club.findAll");
 		query.setParameter("id", 1);
+		@SuppressWarnings("unchecked")
 		List<Clubs> clubs = query.getResultList();
 		return clubs;
 	}

@@ -343,7 +343,6 @@ rs.Legend = function (opt_options) {
         
         this.event_ = options.event ? options.event : {};
         this.teams_ = [];
-        this.mapListeners = [];
 
         this.hiddenClassName = 'ol-unselectable ol-control toggle-legend';
         if (rs.Legend.isTouchDevice_()) {
@@ -359,7 +358,6 @@ rs.Legend = function (opt_options) {
 
         var that = this;
         var toggleLegend = function(e) {
-            // TODO toggle the legend
             e = e || window.event;
             that.togglePanel();
             e.preventDefault();
@@ -433,7 +431,7 @@ rs.Legend.prototype.addTeam = function (team) {
 
 /**
  * Get the teams.
- *
+ * 
  * @returns {Array.Team}
  */
 rs.Legend.prototype.getTeams = function () {
@@ -532,7 +530,7 @@ rs.Map = class {
             this.addTrace(team, race.teamPositions.filter(
                     teamPosition => teamPosition.team.id == team.id));
         }
-        var timer = setInterval(rs.Map.updateTraces, 2000);
+        var timer = setInterval(rs.Map.updateTraces, 1000);
     }
     
     get zoom() {
@@ -589,7 +587,7 @@ rs.Map = class {
      *            Array of coordinate Arrays.
      */
     addTrace(team,trace) {
-        let r = Math.floor(Math.random() * 64.0 + 192.0); // preverred red
+        let r = Math.floor(Math.random() * 128.0 + 128.0); // preverred red
         // tones
         let g = Math.floor(Math.random() * 220.0);
         let b = Math.floor(Math.random() * 220.0);
@@ -597,13 +595,17 @@ rs.Map = class {
         this.legend.addTeam(team);
         let transformedTrace = this.coordinateTrace_(trace);
         let traceGeometry = new ol.geom.LineString(transformedTrace);
+        let line = new ol.geom.LineString(transformedTrace);
+        if (transformedTrace[0]) {
+            let boat = new ol.geom.Point (transformedTrace[0]);
+        }
         let traceFeature = new ol.Feature({
-            geometry : new ol.geom.LineString(transformedTrace)});
+            geometry : line});
           traceFeature.setStyle(
                   new ol.style.Style({ 
                       stroke : new ol.style.Stroke({color : team.color, width:3})
           }));
-          traceFeature.setId(team.id);
+          traceFeature.setId(`${team.id}.trace`);
           this.traceSource_.addFeature(traceFeature);
     }
     
@@ -613,15 +615,21 @@ rs.Map = class {
      */
     static updateTraces() {
         for (let team of rs.map.race.event.teams) {  // for each team
-            let teamPositions = [];
-            $.getJSON("/rennspur/rest/frontend/update/"+team.id)
-            .done(function( data ) {
+            let xhr = $.getJSON("/rennspur/rest/frontend/update/"+team.id);
+            xhr.teamId= team.id;    // pass team id to function via xhr
+            xhr.done(function( data, status, xhr ) {
+                let teamPositions = [];
                 for (let item of data) {
-                    teamPositions.push(new rs.model.TeamPosition(item));
+                    let teamPosition = new rs.model.TeamPosition(item);
+                    teamPositions.push(teamPosition);
                 }
-                let feature = rs.map.traceSource.getFeatureById(team.id);
-                feature.getGeometry().setCoordinates(rs.map.coordinateTrace_(teamPositions));
-                feature.changed();
+                let team = xhr.teamId;  // get the team id out of the xhr
+                if (team) {
+                    let feature = rs.map.traceSource.getFeatureById(`${team}.trace`);
+                    let line = feature.getGeometry();
+                    let transformedTrace = rs.map.coordinateTrace_(teamPositions);
+                    line.setCoordinates(transformedTrace);
+                }
             })
             .fail(function () {
                 console.log("xhr-error");
