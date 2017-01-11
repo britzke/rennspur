@@ -484,13 +484,33 @@ rs.Map = class {
      *            Information about the race to display.
      * @returns The RennspurMap Object.
      */
-    constructor (div = "rs-map", race = null, zoom = 16, source = "EPSG:4326", destination = "EPSG:3857") {
+    constructor (div = "rs-map", race = null, zoom = 2, source = "EPSG:4326", destination = "EPSG:3857") {
         this.source_ = source;
         this.destination_ = destination;
         this.race_ = race;
         this.center_ = [race.event.longitude,race.event.latitude];
         this.zoom_ = zoom;
-
+        var pos = [13.1872, 52.4976];
+        
+        var iconFeature = new ol.Feature({
+        	geometry: new ol.geom.Point(pos)
+        });
+        
+        var iconStyle = new ol.style.Style({
+        	image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+                src: 'https://openlayers.org/en/v3.20.1/examples/data/icon.png'
+              }))
+        });
+        
+        iconFeature.setStyle(iconStyle);
+        
+        //this.traceSource_.addFeature(traceFeature);
+        
+        this.imageSource_ = new ol.source.Vector();
+        this.imageLayer_ = new ol.layer.Vector({
+        	source: this.imageSource_});
+        this.imageSource_.addFeature(iconFeature);  
+        
         rs.map = this;
         var center = ol.proj.transform(this.center_, this.source_, this.destination_);
 
@@ -521,7 +541,7 @@ rs.Map = class {
                 this.legend
               ]),
             view : this.view_,
-            layers : [ this.osmLayer_, this.seamarkLayer_, this.traceLayer_ ],
+            layers : [ this.osmLayer_, this.seamarkLayer_, this.traceLayer_, this.imageLayer_ ],
             target : div
         });
         
