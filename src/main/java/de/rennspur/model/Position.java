@@ -66,6 +66,8 @@ public class Position implements Serializable {
 
 	@NotNull
 	@Column(nullable = false)
+	private long timeCode;
+	
 	private Timestamp time;
 
 	public int getId() {
@@ -93,11 +95,21 @@ public class Position implements Serializable {
 	}
 
 	public Timestamp getTime() {
+		this.time = new Timestamp(timeCode);
+		System.out.println("############### TimeCode : " + timeCode);
 		return this.time;
 	}
 
 	public void setTime(Timestamp time) {
 		this.time = time;
+	}
+
+	public long getTimeCode() {
+		return timeCode;
+	}
+
+	public void setTimeCode(long timeCode) {
+		this.timeCode = timeCode;
 	}
 
 	/**
@@ -107,6 +119,6 @@ public class Position implements Serializable {
 	 */
 	public String toString() {
 		return "<Position (id=" + getId() + ", latitude=" + getLatitude()
-				+ ", longitude=" + getLongitude() + ")>";
+				+ ", longitude=" + getLongitude() + ", time=" + getTime() + ")>";
 	}
 }

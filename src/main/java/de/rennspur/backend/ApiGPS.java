@@ -82,22 +82,26 @@ public class ApiGPS {
 	public String postTeamPositions(GPSPositionsTransfer positionsTransfer) {
 		try {
 			EntityManager em = emf.createEntityManager();
-			Query q=em.createNamedQuery("Team.getTeamByHash");
+			Query q = em.createNamedQuery("Team.getTeamByHash");
 			q.setParameter("hash", positionsTransfer.getHash());
 			System.out.println("Hash:" + positionsTransfer.getHash());
-			Team team= (Team)q.getSingleResult();
+			Team team = (Team) q.getSingleResult();
 
-			if (team != null) {	// Team with hash exists
+			if (team != null) { // Team with hash exists
 				// TODO retrieve actual race information
-				
+				q = em.createNamedQuery("Race.findRace");
+				q.setParameter("id", 1);
+				Race race = (Race) q.getSingleResult();
 				EntityTransaction et = em.getTransaction();
 				et.begin();
+				System.out.println("########## RACE ID : " + race.getId());
 				for (Position position : positionsTransfer.getPositions()) {
 					TeamPosition newTeamPosition = new TeamPosition();
 					newTeamPosition.setLatitude(position.getLatitude());
 					newTeamPosition.setLongitude(position.getLongitude());
 					newTeamPosition.setTime(position.getTime());
-					newTeamPosition.setRace(new Race());
+					newTeamPosition.setRace(race);
+					newTeamPosition.setTeam(team);
 					em.merge(newTeamPosition);
 				}
 				et.commit();
@@ -110,7 +114,7 @@ public class ApiGPS {
 		} catch (NoResultException e) {
 			e.printStackTrace();
 			throw new ErrorHandling("");
-			//return e.getMessage();
+			// return e.getMessage();
 		}
 	}
 }
