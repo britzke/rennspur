@@ -21,8 +21,13 @@ package de.rennspur.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 
 import java.util.List;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 
 /**
  * The persistent class for the WAYPOINTS database table.
@@ -43,11 +48,13 @@ public class Waypoint implements Serializable {
 	@Column(nullable = false)
 	private String name;
 
+	@XmlTransient
 	// bi-directional many-to-one association to Event
 	@ManyToOne
 	@JoinColumn(name = "EVENTS_ID")
 	private Event event;
 
+	@XmlTransient
 	// bi-directional many-to-one association to Race
 	@NotNull
 	@ManyToOne

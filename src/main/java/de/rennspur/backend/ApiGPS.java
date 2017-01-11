@@ -2,6 +2,7 @@
  *  This file is part of Renspur.
  *  
  *  Copyright (C) 2016  maurer.ruben, maurerruben97@gmail.com
+ *  					burghard.britzke bubi@charmides.in-berlin.de
  *  
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by

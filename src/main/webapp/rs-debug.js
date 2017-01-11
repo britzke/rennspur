@@ -18,6 +18,8 @@
  *  along with Rennspur.  If not, see <http://www.gnu.org/licenses/>.
  */
 "use strict";
+JSON.useDateParser(); // parse json dates to js Date objects (see.
+                        // json.date-extensions)
 
 /** @namespace */
 var rs= rs || {};
@@ -149,6 +151,7 @@ rs.model.Team = class Team{
     get id() {
         return this.id_;
     }
+    
     set id(id) {
         this.id_ = id;
     }
@@ -340,7 +343,6 @@ rs.Legend = function (opt_options) {
         
         this.event_ = options.event ? options.event : {};
         this.teams_ = [];
-        this.mapListeners = [];
 
         this.hiddenClassName = 'ol-unselectable ol-control toggle-legend';
         if (rs.Legend.isTouchDevice_()) {
@@ -356,7 +358,6 @@ rs.Legend = function (opt_options) {
 
         var that = this;
         var toggleLegend = function(e) {
-            // TODO toggle the legend
             e = e || window.event;
             that.togglePanel();
             e.preventDefault();
@@ -429,6 +430,14 @@ rs.Legend.prototype.addTeam = function (team) {
 };
 
 /**
+ * Get the teams.
+ * 
+ * @returns {Array.Team}
+ */
+rs.Legend.prototype.getTeams = function () {
+    return this.teams_;
+}
+/**
  * @private
  * @desc Apply workaround to enable scrolling of overflowing content within an
  *       element. Adapted from https://gist.github.com/chrismbarr/4107472
@@ -459,7 +468,6 @@ rs.Legend.isTouchDevice_ = function() {
     }
 };
 
-
 /**
  * Represents a rennspur map, a map for animating traces of races.
  */
@@ -482,7 +490,8 @@ rs.Map = class {
         this.race_ = race;
         this.center_ = [race.event.longitude,race.event.latitude];
         this.zoom_ = zoom;
-        
+
+        rs.map = this;
         var center = ol.proj.transform(this.center_, this.source_, this.destination_);
 
         this.view_ = new ol.View({
@@ -502,12 +511,7 @@ rs.Map = class {
         
         this.traceSource_ = new ol.source.Vector();
         this.traceLayer_ = new ol.layer.Vector({
-            source: this.traceSource_,
-            style: function(feature, resolution) {
-                style.getText().setText(resolution < 5000 ? feature.get('name') : '');
-                return style;
-             }
-        });
+            source: this.traceSource_});
 
         this.legend_ = new rs.Legend({event:this.race_.event});
         
@@ -526,6 +530,7 @@ rs.Map = class {
             this.addTrace(team, race.teamPositions.filter(
                     teamPosition => teamPosition.team.id == team.id));
         }
+        var timer = setInterval(rs.Map.updateTraces, 1000);
     }
     
     get zoom() {
@@ -553,45 +558,85 @@ rs.Map = class {
     }
 
     /**
+     * Transforms an array of TeamPositions to a transformed array of
+     * coordinates. Applies the transform into the projection to each
+     * coordinate.
+     * 
+     * @param {Array.TeamPosition}
+     *            An array of TeamPositions.
+     * @returns {Array.Array.number} An array of coordinates, transformed into
+     *          the projection of the map.
+     * @private
+     */
+    coordinateTrace_(trace) {
+        let transformedTrace = [];
+
+        let coordinates = trace.map(
+                (teamPosition) => [teamPosition.longitude,teamPosition.latitude]);
+        for (let [index, coordinate] of coordinates.entries()) {
+            transformedTrace[index] = ol.proj.transform( coordinate,
+                    this.source_, this.destination_);
+        }
+        return transformedTrace;
+    }
+    
+    /**
      * Add a trace to the map.
      * 
      * @param {[[x,y],...]}
      *            Array of coordinate Arrays.
      */
     addTrace(team,trace) {
-        let r = Math.floor(Math.random() * 64.0 + 192.0); // preverred red
+        let r = Math.floor(Math.random() * 128.0 + 128.0); // preverred red
         // tones
         let g = Math.floor(Math.random() * 220.0);
         let b = Math.floor(Math.random() * 220.0);
         team.color = `rgb(${r}, ${g}, ${b})`;
         this.legend.addTeam(team);
-        let transformedTrace = [];
-
-        let coordinateTrace = trace.map(
-                (teamPosition) => [teamPosition.longitude,teamPosition.latitude]);
-        for (let [index, coordinate] of coordinateTrace.entries()) {
-            transformedTrace[index] = ol.proj.transform( coordinate,
-                    this.source_, this.destination_);
-        }
+        let transformedTrace = this.coordinateTrace_(trace);
         let traceGeometry = new ol.geom.LineString(transformedTrace);
+        let line = new ol.geom.LineString(transformedTrace);
+        if (transformedTrace[0]) {
+            let boat = new ol.geom.Point (transformedTrace[0]);
+        }
         let traceFeature = new ol.Feature({
-            geometry : new ol.geom.LineString(transformedTrace),
-            name : "test" });
+            geometry : line});
           traceFeature.setStyle(
                   new ol.style.Style({ 
                       stroke : new ol.style.Stroke({color : team.color, width:3})
           }));
+          traceFeature.setId(`${team.id}.trace`);
           this.traceSource_.addFeature(traceFeature);
     }
-};
+    
+    /**
+     * Updates the Traces from the backend service. This routine is to be called
+     * periodically.
+     */
+    static updateTraces() {
+        for (let team of rs.map.race.event.teams) {  // for each team
+            let xhr = $.getJSON("/rennspur/rest/frontend/update/"+team.id);
+            xhr.teamId= team.id;    // pass team id to function via xhr
+            xhr.done(function( data, status, xhr ) {
+                let teamPositions = [];
+                for (let item of data) {
+                    let teamPosition = new rs.model.TeamPosition(item);
+                    teamPositions.push(teamPosition);
+                }
+                let team = xhr.teamId;  // get the team id out of the xhr
+                if (team) {
+                    let feature = rs.map.traceSource.getFeatureById(`${team}.trace`);
+                    let line = feature.getGeometry();
+                    let transformedTrace = rs.map.coordinateTrace_(teamPositions);
+                    line.setCoordinates(transformedTrace);
+                }
+            })
+            .fail(function () {
+                console.log("xhr-error");
+            });
+        }
+    }
+ };
 
 
 // ...further classes and code
-
-var foo = new rs.model.TeamPosition({
-    longitude:10.0,
-    latitude:10.0,
-    time:new Date(),
-    team:{name:"GER 72"},
-    race:{number:1}
-});
