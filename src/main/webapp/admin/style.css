@@ -1,0 +1,170 @@
+
+p {
+
+
+    font-size: absolute;
+  
+    padding-top: 6px;
+    padding-right: 12px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+   
+	word-spacing: 10px !important;
+	min-width: 176px;
+	
+	
+	text-align: center;
+
+}
+
+.margin {
+	margin-bottom: 30px;
+}
+
+
+.bg-1 {
+	background-color: #1abc9c; /* Green */
+	color: #ffffff;	
+	
+}
+/*
+*Button zum auswählen von Bojen
+*/
+
+.erstelle-button{
+	
+	padding: 5px;
+	color:#f9f9f9;
+	cursor: pointer;
+    font-size: 16px;
+    padding: 6px 12px;
+    padding-top: 6px;
+    padding-right: 12px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    border-color: #46b8da;
+    border-top-color: rgb(70, 184, 218);
+    border-right-color: rgb(70, 184, 218);
+    border-bottom-color: rgb(70, 184, 218);
+    border-left-color: rgb(70, 184, 218);
+	border-radius: 4px;
+	word-spacing: -10px !important;
+	min-width: 176px;
+	
+}
+
+.bg-2 {
+	margin-bottom: 80px !important;
+}
+
+.container-fluid {
+	padding-top: 60px;
+	padding-bottom: 60px;
+}
+
+.glyphicon{
+	color:#f9f9f9;
+	background-color: #5bc0de;
+	border: none;
+	
+	
+}
+
+.progress-bar{
+	
+	background-color: black;
+}
+
+.footer-fluid{
+	
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.bg-footer {
+	background-color: #2f2f2f; /* Black Gray */
+	color: #fff;
+	height: relative;	
+	
+}
+
+.dropbtn {
+    background-color: #5bc0de;
+    color: white;
+    padding: 16px;
+     border: none;
+    
+   
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relativ;
+    display: inline-block;
+    color: #5bc0de !important;
+    height: 20px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #5bc0de;
+    min-width: 176px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	border-color: #46b8da;
+    border-top-color: rgb(70, 184, 218);
+    border-right-color: rgb(70, 184, 218);
+    border-bottom-color: rgb(70, 184, 218);
+    border-left-color: rgb(70, 184, 218);
+	border-radius: 4px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 10px 5px;
+    text-decoration: none;
+    display: block;
+}
+
+.form-group{
+	width: 60%;
+	text-align: center;
+	margin: 0 auto;
+	color: #ffffff;
+			
+}
+
+
+.manageEvent{
+	
+	position:absolute;
+ 	left:450px !important; 
+ 	top:350px; 
+ 	width:300px;
+ 	height:150px;
+	
+}
+
+
+html, body {
+	
+	background-color: #1abc9c !important;
+	height: relativ;
+	position: center;
+	
+}
+footer {
+	bottom:0;
+	position: fixed;
+	width: 100% !important; 
+	font-size: 12px; 
+ 
+}
+
