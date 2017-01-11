@@ -95,7 +95,6 @@ public class ApiGPS {
 				Race race = (Race) q.getSingleResult();
 				EntityTransaction et = em.getTransaction();
 				et.begin();
-				System.out.println("########## RACE ID : " + race.getId());
 				for (Position position : positionsTransfer.getPositions()) {
 					TeamPosition newTeamPosition = new TeamPosition();
 					newTeamPosition.setLatitude(position.getLatitude());

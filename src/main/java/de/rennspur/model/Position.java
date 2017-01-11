@@ -111,12 +111,6 @@ public class Position implements Serializable {
 	public void setTimeCode(long timeCode) {
 		this.timeCode = timeCode;
 	}
-
-	/**
-	 * Converts the Position to a human readable string.
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	public String toString() {
 		return "<Position (id=" + getId() + ", latitude=" + getLatitude()
 				+ ", longitude=" + getLongitude() + ", time=" + getTime() + ")>";
