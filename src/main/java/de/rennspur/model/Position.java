@@ -66,8 +66,6 @@ public class Position implements Serializable {
 
 	@NotNull
 	@Column(nullable = false)
-	private long timeCode;
-	
 	private Timestamp time;
 
 	public int getId() {
@@ -95,8 +93,6 @@ public class Position implements Serializable {
 	}
 
 	public Timestamp getTime() {
-		this.time = new Timestamp(timeCode);
-		System.out.println("############### TimeCode : " + timeCode);
 		return this.time;
 	}
 
@@ -104,15 +100,13 @@ public class Position implements Serializable {
 		this.time = time;
 	}
 
-	public long getTimeCode() {
-		return timeCode;
-	}
-
-	public void setTimeCode(long timeCode) {
-		this.timeCode = timeCode;
-	}
+	/**
+	 * Converts the Position to a human readable string.
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {
 		return "<Position (id=" + getId() + ", latitude=" + getLatitude()
-				+ ", longitude=" + getLongitude() + ", time=" + getTime() + ")>";
+				+ ", longitude=" + getLongitude() + ")>";
 	}
 }
