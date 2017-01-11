@@ -527,8 +527,7 @@ rs.Map = class {
         
         // add all teams that are currently in race
         for (let team of race.event.teams) {
-            this.addTrace(team, race.teamPositions.filter(
-                    teamPosition => teamPosition.team.id == team.id));
+            this.addTeam(team);
         }
         var timer = setInterval(rs.Map.updateTraces, 1000);
     }
@@ -586,19 +585,16 @@ rs.Map = class {
      * @param {[[x,y],...]}
      *            Array of coordinate Arrays.
      */
-    addTrace(team,trace) {
+    addTeam(team) {
         let r = Math.floor(Math.random() * 128.0 + 128.0); // preverred red
         // tones
         let g = Math.floor(Math.random() * 220.0);
         let b = Math.floor(Math.random() * 220.0);
         team.color = `rgb(${r}, ${g}, ${b})`;
         this.legend.addTeam(team);
-        let transformedTrace = this.coordinateTrace_(trace);
-        let traceGeometry = new ol.geom.LineString(transformedTrace);
-        let line = new ol.geom.LineString(transformedTrace);
-        if (transformedTrace[0]) {
-            let boat = new ol.geom.Point (transformedTrace[0]);
-        }
+        let emptyTrace = [];
+        let traceGeometry = new ol.geom.LineString(emptyTrace);
+        let line = new ol.geom.LineString(emptyTrace);
         let traceFeature = new ol.Feature({
             geometry : line});
           traceFeature.setStyle(

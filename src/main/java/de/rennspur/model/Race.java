@@ -35,7 +35,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-
+import javax.xml.bind.annotation.XmlTransient;
 /**
  * The persistent class for the RACES database table.
  * 
@@ -67,6 +67,7 @@ public class Race implements Serializable {
 
 	// bi-directional many-to-one association to TeamPosition
 	@OneToMany(mappedBy = "race")
+	@XmlTransient
 	private List<TeamPosition> teamPositions;
 
 	// bi-directional many-to-one association to Waypoint
@@ -114,7 +115,6 @@ public class Race implements Serializable {
 
 		return teamPosition;
 	}
-
 	public TeamPosition removeTeamPosition(TeamPosition teamPosition) {
 		getTeamPositions().remove(teamPosition);
 		teamPosition.setRace(null);
