@@ -19,7 +19,7 @@
 package de.rennspur.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -31,8 +31,12 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import de.rennspur.backend.DateAdapter;
 
 /**
  * Position is a class to be extended by the entity classes TeamMember and
@@ -66,7 +70,9 @@ public class Position implements Serializable {
 
 	@NotNull
 	@Column(nullable = false)
-	private Timestamp time;
+	@XmlElement(name = "time", required = true) 
+    @XmlJavaTypeAdapter(DateAdapter.class)
+	private Date time;
 
 	public int getId() {
 		return this.id;
@@ -92,11 +98,11 @@ public class Position implements Serializable {
 		this.longitude = longitude;
 	}
 
-	public Timestamp getTime() {
+	public Date getTime() {
 		return this.time;
 	}
 
-	public void setTime(Timestamp time) {
+	public void setTime(Date time) {
 		this.time = time;
 	}
 
