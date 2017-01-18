@@ -24,11 +24,11 @@
 var CACHE_NAME = 'Main_cache_GPS_sender';
 var urlsToCache = [
 
-		'/rennspur/playground/gps/gps%20core%20offline/',
-		'/rennspur/playground/gps/gps%20core%20offline/index.html',
+		'/rennspur/playground/gps/teamgps/',
+		'/rennspur/playground/gps/teamgps/index.html',
 		'/rennspur/webjars/jquery/3.1.1-1/jquery.js',
-		'/rennspur/playground/gps/gps%20core%20offline/member_gps.js',
-		'/rennspur/playground/gps/gps%20core%20offline/app.js'
+		'/rennspur/playground/gps/teamgps/member_gps.js',
+		'/rennspur/playground/gps/teamgps/app.js'
 
 ];
 

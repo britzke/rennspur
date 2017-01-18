@@ -21,14 +21,14 @@
  * Define which files the service worker caches.
  */
 
-var CACHE_NAME = 'Main_cache_GPS_sender';
+var CACHE_NAME = 'Main_cache_Waypoint_sender';
 var urlsToCache = [
 
-		'/rennspur/playground/gps/gps-waypoint-offline/',
-		'/rennspur/playground/gps/gps-waypoint-offline/index.html',
+		'/rennspur/playground/gps/waypointgps/',
+		'/rennspur/playground/gps/waypointgps/index.html',
 		'/rennspur/webjars/jquery/3.1.1-1/jquery.min.js',
-		'/rennspur/playground/gps/gps-waypoint-offline/waypoint_gps.js',
-		'/rennspur/playground/gps/gps-waypoint-offline/app.js'
+		'/rennspur/playground/gps/waypointgps/waypoint_gps.js',
+		'/rennspur/playground/gps/waypointgps/app.js'
 
 ];
 
