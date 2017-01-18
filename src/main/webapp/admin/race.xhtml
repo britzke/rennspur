@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head />
+<h:head>
+	<title>Rennspur - Race</title>
+</h:head>
+
+<h:body>
+	<h:form id="form">
+		<h:panelGrid>
+
+
+			<h:outputLabel value="Name: " style="font-weight:bold" />
+			<h:inputText value="#{raceBean.name}" />
+
+			<h:outputLabel value="Country: " style="font-weight:bold" />
+			<h:inputText value="#{teamBean.country}" />
+
+			<h:outputLabel value="eMail: " style="font-weight:bold" />
+			<h:inputSecret value="#{teamBean.email}" />
+
+			<h:outputLabel value="Handycap: " style="font-weight:bold" />
+			<h:inputText value="#{teamBean.handycap}" />
+
+			<h:commandButton value="Speichern" action="#{teamBean.submit}" />
+
+
+
+
+			<form>
+
+
+				<h:selectOneMenu value="#{raceBean.name}">
+					<f:selectItems value="#{raceBean.name}" />
+				</h:selectOneMenu>
+
+
+				<label>Wählen Sie aus den Teams: <select name="top5"
+					multiple="multiple">
+
+						<option>Heino</option>
+						<option>Michael Jackson</option>
+						<option>Tom Waits</option>
+						<option>Nina Hagen</option>
+						<option>Marianne Rosenberg</option>
+				</select>
+				</label>
+			</form>
+
+		</h:panelGrid>
+	</h:form>
+</h:body>
+
+
+</html>
