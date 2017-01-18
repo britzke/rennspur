@@ -1,3 +1,5 @@
+SET SCHEMA RENNSPUR;
+
 INSERT INTO CLUBS (ABREVIATION,DSV_NUMBER,NAME,URL) VALUES ('DSC','435','Deutscher Segler Club','http://dsc.de');
 INSERT INTO CLUBS (ABREVIATION,DSV_NUMBER,NAME,URL) VALUES ('KSS','534','Karlskrona Segelsällskap','www.knss.nu');
 
