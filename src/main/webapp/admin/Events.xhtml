@@ -9,7 +9,7 @@
 
 <h:head />
 <h:body>
-	<h:form id="form">
+	<h:form>
 		<p:dataTable id="eventsTable" var="event" value="#{eventBean.events}"
 			selectionMode="single" selection="#{eventBean.selectedEvent}"
 			rowKey="#{event.id}" onRowSelectUpdate="@none"
