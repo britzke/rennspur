@@ -21,6 +21,7 @@ package de.rennspur.backend;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -40,6 +41,7 @@ import de.rennspur.model.Position;
 import de.rennspur.model.Race;
 import de.rennspur.model.Team;
 import de.rennspur.model.TeamPosition;
+import de.rennspur.model.Waypoint;
 
 /**
  * ApiGPS objects are the service endpoints to handle the incomming GPS-Data
@@ -116,5 +118,19 @@ public class ApiGPS {
 			throw new ErrorHandling("");
 			// return e.getMessage();
 		}
+	}
+
+	/**
+	 * Endpoint to post a position for a waypoint.
+	 * 
+	 * @param waypoint
+	 *            The waypoint with minimum one position.
+	 */
+	@Path("/waypoint")
+	@POST
+	@RolesAllowed("wegpunktsetzer")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void postWaypoint(Waypoint waypoint) {
+
 	}
 }
