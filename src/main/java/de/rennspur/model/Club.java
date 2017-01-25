@@ -56,7 +56,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "CLUBS")
-@NamedQuery(name = "Club.findAll", query = "SELECT c FROM Club c")
+@NamedQueries({
+	@NamedQuery (name = "Club.findAll", query = "SELECT c FROM Club c"),
+	@NamedQuery (name = "Club.findClubByID", query = "SELECT c FROM Club c where c.id =:id")
+})
 
 public class Club implements Serializable {
 	private static final long serialVersionUID = 1L;

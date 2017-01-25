@@ -16,39 +16,23 @@ $(document).ready(function(){
     if(window_width <= 991){
         lbd.initRightMenu();   
     }
-     
-    //  Activate the tooltips   
-    $('[rel="tooltip"]').tooltip();
 
-    //      Activate the switches with icons 
+    // Activate the switches with icons 
     if($('.switch').length != 0){
         $('.switch')['bootstrapSwitch']();
     }  
-    //      Activate regular switches
+    // Activate regular switches
     if($("[data-toggle='switch']").length != 0){
          $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();     
     }
-     
-    $('.form-control').on("focus", function(){
-        $(this).parent('.input-group').addClass("input-group-focus");
-    }).on("blur", function(){
-        $(this).parent(".input-group").removeClass("input-group-focus");
-    });
     
-    
-    // ToDo Need fix for open "top" as default
-    activaTab('top');
-    $('.nav-tabs-entry a').on('click', function (e) {
-        e.preventDefault();
-        $(this).tab('show');
-    });
-      
+    $('.nav-tabs a #top').tab('show');
 });
 
 // activate collapse right menu when the windows is resized 
 $(window).resize(function(){
     if($(window).width() <= 991){
-        lbd.initRightMenu();   
+        lbd.initRightMenu();
     }
 });
     
@@ -104,7 +88,6 @@ lbd = {
                        .removeAttr('data-nav-image')
                        .addClass('has-image');                
             }
-             
              
              $toggle = $('.navbar-toggle');
              
