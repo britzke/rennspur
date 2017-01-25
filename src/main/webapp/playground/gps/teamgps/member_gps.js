@@ -84,9 +84,9 @@ function init() {
 		var storageItemJson = JSON.parse(storageItem);
 		if (storageItemJson.positions == null || storageItemJson.hash == null) {
 			/**
-             * positions array or auth hash in JSON object is missing, creating
-             * new
-             */
+			 * positions array or auth hash in JSON object is missing, creating
+			 * new
+			 */
 			prepareLocalStorage();
 		}
 		// TODO: check if the found data is old, maybe from another event?
@@ -97,7 +97,7 @@ function init() {
  * Callback for geolocation::getCurrentPosition. Saves the location into the
  * localstorage with the current system-time
  */
-function geolocation_callback(position) {
+function geolocation_success_callback(position) {
 	console.log("geo-callback");
 	/** Get the time of the function call */
 	var time = Date.now();
@@ -124,17 +124,35 @@ function geolocation_callback(position) {
 }
 
 /**
+ * geolocation.getCurrentPosition error handling
+ */
+function geolocation_error_callback(error){
+	switch (error.code) {
+	case 1: // PERMISSION_DENIED
+		alert("Permission to access location denied.");
+		stop();
+		break;
+	case 2: // POSITION_UNAVAILABLE
+		alert("Location unaviable!\rHas your device position support?")
+		stop();
+		break;
+	case 3: // TIMEOUT
+		console.log("geolocation_timeout after 10.000ms");
+	}
+}
+
+/**
  * find out current gps position and save them
  */
 function saveLocation() {
 	console.log("save-location");
-	navigator.geolocation.getCurrentPosition(geolocation_callback);
+	navigator.geolocation.getCurrentPosition(geolocation_success_callback,geolocation_error_callback,{timeout:10000});
 }
 
 /**
  * onClick to test some functions
  */
-function clickTest() {
+function start() {
 	clearInterval(send_interval);
 	clearInterval(pos_interval);
 	if (navigator.geolocation) {
@@ -145,11 +163,17 @@ function clickTest() {
 	} else {
 		alert("Geolocation not supported by this browser!\r\nApplication will not be able to run.")
 	}
+	$('label').html('Sending Data...');
+	$("label").removeClass("notSending");
+	$("label").addClass("sending");
 }
 
 function stop(){
 	clearInterval(send_interval);
 	clearInterval(pos_interval);
+	$('label').html('Not Sending Data...');
+	$("label").removeClass("sending");
+	$("label").addClass("notSending");
 }
 
 /**
