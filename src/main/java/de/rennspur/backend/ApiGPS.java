@@ -87,7 +87,6 @@ public class ApiGPS {
 			EntityManager em = emf.createEntityManager();
 			Query q = em.createNamedQuery("Team.getTeamByHash");
 			q.setParameter("hash", positionsTransfer.getHash());
-			System.out.println("Hash:" + positionsTransfer.getHash());
 			Team team = (Team) q.getSingleResult();
 
 			if (team != null) { // Team with hash exists
