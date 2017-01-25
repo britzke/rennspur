@@ -1,20 +1,59 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<!-- Theme Made By www.w3schools.com - No Copyright -->
+
+<link rel="stylesheet" href="style.css">
+<title>Wegpunktsetzer</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- TODO should at least be referenced locally -->
+<!--  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> -->
+<link rel="stylesheet"
+	href="/rennspur/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
+<script src="/rennspur/webjars/jquery/3.1.1-1/jquery.js"></script>
+<script src="/rennspur/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 <script src="waypoint_gps.js"></script>
-<script src="/rennspur/webjars/jquery/3.1.1-1/jquery.min.js"></script>
-<script src="app.js"></script>
-
-<title>Insert title here</title>
 </head>
-<body>
-	<select size="5" multiple>
-		<option>wegpunkt</option>
-	</select>
 
-	<p>
-		<button onClick="load()" type="submit">Load</button>
-		<button onClick="send()" type="submit">Send</button>
-	</p>
+<body>
+	<!-- First Container -->
+	<div class="container-fluid bg-1 text-center">
+		<h3 class="margin">Rennspur Bahnmarken</h3>
+		<div class="dropdown">
+			<button onclick="showDropdown()"
+				class="glyphicon glyphicon-map-marker select-boje"
+				id="select-button">Wähle eine Boje</button>
+			<div id="myDropdown" class="dropdown-content">
+
+			</div>
+		</div>
+	</div>
+	<!-- Second Container -->
+	<div class="form-group bg-2">
+		<div class="progress">
+			<div id="progress-bar"
+				class="progress-bar progress-bar-info progress-bar-info"
+				role="progressbar" aria-valuenow="75" aria-valuemin="0"
+				aria-valuemax="100" style="width: 100%">50 % der Bojen wurden gesetzt</div>
+		</div>
+
+		<h3 class="margin">Im Anschluss werden ihre GPS-Daten abgefragt
+			und eine Boje an der aktuellen Postition gesetzt.</h3>
+		<p>
+			<button type="button" onclick="send()" class="btn btn-info">
+				<span class="glyphicon glyphicon-map-marker "></span> Boje setzen
+			</button>
+		</p>
+	</div>
+	<!-- Footer -->
+	<footer class="footer-fluid bg-footer text-center">
+		Sportevent Trackerproject created by MIA17 - <a
+			href="http://www.lette-verein.de/Informatik%2B-%2BAktuelles">www.Lette-Verein.de</a>
+	</footer>
 </body>
 </html>
+
+
+

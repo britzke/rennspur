@@ -130,6 +130,6 @@ public class ApiGPS {
 	@RolesAllowed("wegpunktsetzer")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void postWaypoint(Waypoint waypoint) {
-
+		
 	}
 }
