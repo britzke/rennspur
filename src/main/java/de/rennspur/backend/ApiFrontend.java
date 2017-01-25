@@ -57,7 +57,7 @@ public class ApiFrontend {
 	public Race getRace() {
 		EntityManager em = emf.createEntityManager();
 
-		Query query = em.createNamedQuery("Race.findRace");
+		Query query = em.createNamedQuery("Race.findRaceByID");
 		query.setParameter("id", 1);
 		Race race = (Race) query.getSingleResult();
 
