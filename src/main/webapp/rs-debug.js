@@ -490,30 +490,40 @@ rs.Map = class {
         this.race_ = race;
         this.center_ = [race.event.longitude,race.event.latitude];
         this.zoom_ = zoom;
-        
 
-        var coor = [race.event.longitude,race.event.latitude];
-        
-        var pos = ol.proj.transform(coor, this.source_, this.destination_);
-        
-        var iconFeature = new ol.Feature({
-        	geometry: new ol.geom.Point(pos)
-        });
-        
-        var iconStyle = new ol.style.Style({
-        	image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
-                src: 'http://staging.thlib.org/global/images/icon-google-maps.png'
-              }))
-        });
-        
-        iconFeature.setStyle(iconStyle);
-        
-        //this.traceSource_.addFeature(traceFeature);
-        
         this.imageSource_ = new ol.source.Vector();
         this.imageLayer_ = new ol.layer.Vector({
         	source: this.imageSource_});
-        this.imageSource_.addFeature(iconFeature);  
+        
+        var iconStyle = new ol.style.Style({
+        	image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+                src: "/rennspur/playground/frontend/waypoint.png",
+                size: [250,250] ,
+                scale: 0.25
+              }))
+        });
+        
+        var i = 0;
+        var length = race.waypoints.length;
+        
+        while(length > i){
+        	
+        	var coor = [race.waypoints[i].waypointPositions[0].longitude,
+        		race.waypoints[i].waypointPositions[0].latitude];
+        	console.log(coor);
+        	
+        	var pos = ol.proj.transform(coor, this.source_, this.destination_);
+        	
+        	var iconFeature = new ol.Feature({
+            	geometry: new ol.geom.Point(pos)
+            });
+            
+            iconFeature.setStyle(iconStyle);
+            
+            this.imageSource_.addFeature(iconFeature); 
+        	
+        	i++;
+        };
         
         rs.map = this;
         var center = ol.proj.transform(this.center_, this.source_, this.destination_);
