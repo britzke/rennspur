@@ -8,7 +8,36 @@
 
 <h:body>
 	<ui:composition>
-		<h:form id="form">
+		</h:form>
+		<!-- 
+			
+			<p:dataTable id="teamsTable" var="team" value="#{teamBean.teams}"
+				selectionMode="single" selection="#{teamBean.selectedteam}"
+				rowKey="#{team.id}" onRowSelectUpdate="@none"
+				onRowSelectComplete="location='team.xhtml?faces-redirect=true'">
+				<p:ajax team="rowSelect" listener="#{teamBean.onRowSelect}" />
+
+				<p:column headerText="Date">
+					<h:outputText value="#{team.startDate}">
+						<f:convertDateTime pattern="EE dd.MM.yy" />
+					</h:outputText>
+					<h:outputText value="#{team.endDate}"
+						rendered="#{not empty team.endDate}">
+						<f:convertDateTime pattern=" – dd.MM.yy" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="team">
+					<h:outputText value="#{team.name}" />
+				</p:column>
+				<p:column headerText="Club">
+					<h:outputText
+						value="#{team.club.abreviation.concat(' – ').concat(team.club.name)}" />
+				</p:column>
+			</p:dataTable>
+		
+		-->
+			
+			
 			<h:panelGrid>
 				<h:outputLabel value="Name: " style="font-weight:bold" />
 				<h:inputText value="#{teamBean.name}" />

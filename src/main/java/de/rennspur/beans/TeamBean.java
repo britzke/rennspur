@@ -1,5 +1,8 @@
 package de.rennspur.beans;
 
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -10,6 +13,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import de.rennspur.model.Club;
+import de.rennspur.model.Event;
 import de.rennspur.model.Team;
 
 @ApplicationScoped
@@ -23,8 +27,19 @@ public class TeamBean {
 	int handicap;
 	int clubid;
 	
+	List<Team> team;
+	
 	@Inject
 	EntityManagerFactory emf;
+	
+	@PostConstruct
+	public void init() {
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createNamedQuery("Team.findAll");
+		@SuppressWarnings("unchecked")
+		List<Team> team = q.getResultList();
+		this.team = team;
+	}
 
 	/**
 	 * Inserts a team into the database.
