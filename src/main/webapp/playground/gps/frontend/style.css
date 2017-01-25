@@ -132,3 +132,7 @@ footer {
 .sending {
 	color: #06D472 !important;
 }
+
+.paused {
+	color: #fa9e00 !important;
+}
