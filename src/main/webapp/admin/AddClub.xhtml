@@ -8,7 +8,20 @@
 
 <h:body>
 	<ui:composition>
-	<h2>ToDo</h2>
+		<h:form id="club_form">
+			<h:panelGrid>
+				<h:outputLabel value="Abbreviation:" style="font-weight:bold" />
+				<h:inputText value="#{clubBean.abbreviation}" />
+				<h:outputLabel value="DSV Number:" style="font-weight:bold" />
+				<h:inputText value="#{clubBean.dsv_number}" />
+				<h:outputLabel value="Name:" style="font-weight:bold" />
+				<h:inputText value="#{clubBean.name}" />
+				<h:outputLabel value="URL:" style="font-weight:bold" />
+				<h:inputText value="#{clubBean.url}" />
+				<h:commandButton value="Speichern"
+					action="#{clubBean.insertNewClub}" />
+			</h:panelGrid>
+		</h:form>
 	</ui:composition>
 </h:body>
 

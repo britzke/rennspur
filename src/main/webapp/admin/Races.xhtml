@@ -7,46 +7,39 @@
 <h:head />
 
 <h:body>
-<<<<<<< HEAD
-	<h:form>
-		<p:dataTable id="racesTable" var="race" value="#{eventBean.events}"
-			selectionMode="single" selection="#{raceBean.selectedRace}"
-			rowKey="#{race.id}" onRowSelectUpdate="@none"
-			onRowSelectComplete="location='event.xhtml?faces-redirect=true'">
-			<p:ajax event="rowSelect" listener="#{raceBean.onRowSelect}" />
-
-			<p:column headerText="Number">
-				<h:outputText value="#{race.startDate}">
-					<f:convertDateTime pattern="EE dd.MM.yy" />
-				</h:outputText>
-				
-			</p:column>
-			<h:outputText
-					value="#{event.club.abreviation.concat(' – ').concat(event.club.name)}" />
-			<p:column headerText="Teams">
-				<h:outputText value="#{team.name}" />
-			</p:column>
-			
-			<p:column headerText="Date">
-				<h:outputText value="#{race.startDate}">
-					<f:convertDateTime pattern="EE dd.MM.yy" />
-				</h:outputText>
-				<h:outputText value="#{race.endDate}"
-					rendered="#{not empty event.endDate}">
-					<f:convertDateTime pattern=" – dd.MM.yy" />
-				</h:outputText>
-			</p:column>
-			
-		</p:dataTable>
-	</h:form>
-=======
 	<ui:composition>
-		<h2>ToDo</h2>
-	</ui:composition>
->>>>>>> branch 'master' of https://github.com/britzke/rennspur
-</h:body>
-<<<<<<< HEAD
-=======
+		<h:form>
+			<p:dataTable id="racesTable" var="race" value="#{eventBean.events}"
+				selectionMode="single" selection="#{raceBean.selectedRace}"
+				rowKey="#{race.id}" onRowSelectUpdate="@none"
+				onRowSelectComplete="location='event.xhtml?faces-redirect=true'">
+				<p:ajax event="rowSelect" listener="#{raceBean.onRowSelect}" />
 
->>>>>>> branch 'master' of https://github.com/britzke/rennspur
+				<p:column headerText="Number">
+					<h:outputText value="#{race.startDate}">
+						<f:convertDateTime pattern="EE dd.MM.yy" />
+					</h:outputText>
+
+				</p:column>
+				<h:outputText
+					value="#{event.club.abreviation.concat(' – ').concat(event.club.name)}" />
+				<p:column headerText="Teams">
+					<h:outputText value="#{team.name}" />
+				</p:column>
+
+				<p:column headerText="Date">
+					<h:outputText value="#{race.startDate}">
+						<f:convertDateTime pattern="EE dd.MM.yy" />
+					</h:outputText>
+					<h:outputText value="#{race.endDate}"
+						rendered="#{not empty event.endDate}">
+						<f:convertDateTime pattern=" – dd.MM.yy" />
+					</h:outputText>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:composition>
+</h:body>
+
 </html>
