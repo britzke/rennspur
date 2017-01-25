@@ -19,6 +19,7 @@
 
 var send_interval;
 var pos_interval;
+var running = false;
 
 /**
  * Clear all saved Locations from the localstorage only called after
@@ -153,6 +154,7 @@ function saveLocation() {
  * onClick to test some functions
  */
 function start() {
+	if(running == false){
 	clearInterval(send_interval);
 	clearInterval(pos_interval);
 	if (navigator.geolocation) {
@@ -166,9 +168,24 @@ function start() {
 	$('label').html('Sending Data...');
 	$("label").removeClass("notSending");
 	$("label").addClass("sending");
+	$("button").html("Stop");
+
+	running = true;
+	}
+	else{
+		running = false;
+		clearInterval(send_interval);
+		clearInterval(pos_interval);
+		$('label').html('Not Sending Data...');
+		$("label").removeClass("sending");
+		$("label").addClass("notSending");
+		$("button").html("Start");
+	}
+	
 }
 
 function stop(){
+	running = false;
 	clearInterval(send_interval);
 	clearInterval(pos_interval);
 	$('label').html('Not Sending Data...');
