@@ -20,10 +20,14 @@
 			<h:outputLabel value="Country: " style="font-weight:bold" />
 			<h:inputText value="#{teamBean.country}" />
 			<h:outputLabel value="eMail: " style="font-weight:bold" />
-			<h:inputSecret value="#{teamBean.email}" />
+			<h:inputText value="#{teamBean.email}" />
 			<h:outputLabel value="Handycap: " style="font-weight:bold" />
-			<h:inputText value="#{teamBean.handycap}" />
-			<h:commandButton value="Speichern" action="#{teamBean.submit}" />
+			<h:inputText value="#{teamBean.handicap}" />
+			<h:outputLabel value="Hash: " style="font-weight:bold" />
+			<h:inputText value="#{teamBean.hash}" />
+			<h:outputLabel value="Club ID: " style="font-weight:bold" />
+			<h:inputText value="#{teamBean.clubid}" />
+			<h:commandButton value="Speichern" action="#{teamBean.insertNewTeam}" />
 		</h:panelGrid>
 	</h:form>
 </h:body>
