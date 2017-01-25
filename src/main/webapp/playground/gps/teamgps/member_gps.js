@@ -1,7 +1,7 @@
 /*
  *  This file is part of Rennspur.
  *  
- *  Copyright (C) 2016  Konstantin Baltruschat konstantin.baltruschat@gmail.com
+ *  Copyright (C) 2016  Konstantin Baltruschat konstantin.baltruschat@gmail.com, Tim Prangel tim.prangel@gmail.com
  *  
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
