@@ -7,52 +7,24 @@
 <h:head />
 
 <h:body>
-<<<<<<< HEAD
-	<h:form id="u">
-		<h:panelGrid>
-
-
-			<h:outputLabel value="Name: " style="font-weight:bold" />
-			<h:inputText value="#{}" />
-
-			<h:outputLabel value="Event: " style="font-weight:bold" />
-			<h:inputText value="#{}" />
-
-			<h:outputLabel value="Teams: " style="font-weight:bold" />
-			<h:inputSecret value="#{}" />
-
-
-			<h:commandButton value="Speichern" action="#{teamBean.submit}" />
-
-
-</h:panelGrid>
-<h:panelGrid>
-			
-
-				<h:selectOneMenu value="#{raceBean}">
-					<f:selectItems value="#{raceBean}" />
-				</h:selectOneMenu>
-
-
-				<label>Wählen Sie aus den Teams: <select name="top5"
-					multiple="multiple">
-
-						<option>Heino</option>
-						<option>Michael Jackson</option>
-						<option>Tom Waits</option>
-						<option>Nina Hagen</option>
-						<option>Marianne Rosenberg</option>
-						
-				</select>
-				</label>
-			
-		</h:panelGrid>
-	</h:form>
-=======
 	<ui:composition>
-		<h2>ToDo</h2>
+		<h:form>
+			<h:panelGrid>
+			<!--
+				<h:outputLabel value="Name: " style="font-weight:bold" />
+				<h:inputText value="#{RaceBean.name}" />
+
+				<h:outputLabel value="Event: " style="font-weight:bold" />
+				<h:inputText value="#{RaceBean.event}" />
+
+				<h:outputLabel value="Team: " style="font-weight:bold" />
+				<h:inputSecret value="#{RaceBean.team}" />
+				
+				<h:commandButton value="Speichern" action="#{RaceBean.submit}" />
+			-->
+			</h:panelGrid>
+		</h:form>
 	</ui:composition>
->>>>>>> branch 'master' of https://github.com/britzke/rennspur
 </h:body>
 
 </html>
