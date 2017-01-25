@@ -166,5 +166,19 @@
 			<artifactId>weld-servlet</artifactId>
 			<version>2.4.0.Final</version>
 		</dependency>
+
+		<!-- fron awseome icons -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>font-awesome</artifactId>
+			<version>4.7.0</version>
+		</dependency>
+		<!-- roboto font -->
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>roboto-fontface</artifactId>
+			<version>0.6.0</version>
+		</dependency>
+
 	</dependencies>
 </project>
