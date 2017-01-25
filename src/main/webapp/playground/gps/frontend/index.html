@@ -4,7 +4,7 @@
 <!-- Theme Made By www.w3schools.com - No Copyright -->
 
 <link rel="stylesheet" href="style.css">
-<title>Wegpunktsetzer</title>
+<title>GPS-Sender</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- TODO should at least be referenced locally -->
@@ -13,50 +13,34 @@
 <script src="/rennspur/webjars/jquery/3.1.1-1/jquery.js"></script>
 <script src="/rennspur/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 <script src="script.js"></script>
-
+<script src="/rennspur/playground/gps/teamgps/member_gps.js"></script>
 </head>
 <body>
 
 <!-- First Container -->
 	<div class="container-fluid bg-1 text-center">
 
-		<h3  class="margin">Rennspur Bahnmarken </h3>
-	
-	
-		<div class="dropdown">
- 			<button onclick="myFunction()" class="glyphicon glyphicon-map-marker select-boje" id="select-button"> Wähle eine Boje</button>
-  			<div id="myDropdown" class="dropdown-content">
-    			<a onclick="ersteFunction()"id="erstefu">Erste Boje</a>
-    			<a onclick="zweiteFunction()"id="zweitefu">Zweite Boje</a>
-    			
-   				<a onclick="dritteFunction()"id="drittefu">Dritte Boje</a>
-    			<a onclick="vierteFunction()"id="viertefu">Vierte Boje</a>
- 			 </div>
-		</div>		
+		<h3  class="margin">GPS-Sender </h3>
+			
 	</div>
 
 <!-- Second Container -->
 	
 	<div class="form-group bg-2">
-				
-		
-
-		<div class="progress">
-  			<div id="progress-bar" class="progress-bar progress-bar-info progress-bar-info" role="progressbar"
-  				aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-  				 50 % der Bojen wurden gesetzt
- 			 </div>
-		</div>
-		
-		
-		
-		
-			<h3 class="margin">Im Anschluss werden ihre GPS-Daten abgefragt
-			und eine Boje an der aktuellen Postition gesetzt.</h3>	
 	
+		<div class="notSending">	
 		<p>
-			<button type="button" onclick="sendeFunction()" class="btn btn-info">
-				<span class="glyphicon glyphicon-map-marker "></span> Boje setzen
+			<label>Not Sending Data...</label>
+		</p>	
+		</div>
+		<p>
+			<button type="button" onclick="start()" class="btn btn-info">
+				<span class="glyphicon glyphicon-map-marker "></span> Start
+			</button>
+		</p>
+			<p>
+			<button type="button" onclick="stop()" class="btn btn-info">
+				<span class="glyphicon glyphicon-map-marker "></span> Stop
 			</button>
 		</p>
 	

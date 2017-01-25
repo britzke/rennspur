@@ -9,7 +9,7 @@ p {
 
 
 .bg-1 {
-	background-color: #1abc9c; /* Green */
+	background-color: #4b4e4d; /* Green */
 	color: #ffffff;	
 	
 }
@@ -130,10 +130,8 @@ p {
 
 
 
-
 html, body {
-	
-	background-color: #1abc9c !important;
+	background-color: #4b4e4d !important;
 	height: relativ;
 	
 }
@@ -144,4 +142,11 @@ footer {
 	font-size: 12px; 
  
 }
+.notSending{
+	color: #E53939 !important;
+}
+.sending{
+	color: #06D472 !important;
+}
+
 

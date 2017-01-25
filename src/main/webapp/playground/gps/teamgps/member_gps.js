@@ -152,7 +152,7 @@ function saveLocation() {
 /**
  * onClick to test some functions
  */
-function clickTest() {
+function start() {
 	clearInterval(send_interval);
 	clearInterval(pos_interval);
 	if (navigator.geolocation) {
@@ -163,11 +163,17 @@ function clickTest() {
 	} else {
 		alert("Geolocation not supported by this browser!\r\nApplication will not be able to run.")
 	}
+	$('label').html('Sending Data...');
+	$("label").removeClass("notSending");
+	$("label").addClass("sending");
 }
 
 function stop(){
 	clearInterval(send_interval);
 	clearInterval(pos_interval);
+	$('label').html('Not Sending Data...');
+	$("label").removeClass("sending");
+	$("label").addClass("notSending");
 }
 
 /**
