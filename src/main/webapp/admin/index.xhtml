@@ -1,0 +1,338 @@
+<!--
+
+/*
+ *  This file is part of Renspur.
+ *  
+ *  Copyright (C) 2017  leo.winter, kazim.sevgi
+ *  
+ *  Rennspur is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  Rennspur is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ 
+ ##
+
+This page is inspired by light-bootstrap-dashboard from @creativetimofficial aka Creative Tim, thanks!
+Which source is under MIT License - https://github.com/creativetimofficial/light-bootstrap-dashboard
+-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="utf-8" />
+	<!-- <h:outputStylesheet rel="icon" type="image/png" href="assets/img/favicon.ico"> -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Rennspur</title>
+	<meta
+		content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+		name='viewport' />
+	<meta name="viewport" content="width=device-width" />
+</h:head>
+
+<h:body>
+	<ui:include src="include/CSSandJS.xhtml" />
+
+	<h:panelGroup layout="block" />
+	<div class="wrapper tabbable">
+		<div class="sidebar" data-color="blue"
+			data-image="assets/img/sidebar-bg.jpg">
+			<div class="sidebar-wrapper tabbable">
+				<div class="logo">
+					<a href="#top" class="simple-text">Rennspur</a>
+				</div>
+				<ul class="nav nav-tabs-entry" data-tabs="tabs">
+					<li class="active"><a href="#top" data-toggle="tab"> <i
+							class="fa fa-home"></i>
+							<p>Übersicht</p>
+					</a></li>
+					<!--
+					<li><a href="#" data-toggle="tab"> <i class="fa fa-map-o"></i>
+							<p>ToDO: Map</p>
+					</a></li>
+					-->
+					<li><a href="#event" data-toggle="tab"> <i
+							class="fa fa-calendar"></i>
+							<p>Event</p>
+					</a></li>
+					<li><a href="#race" data-toggle="tab"> <i
+							class="fa fa-hourglass-half"></i>
+							<p>Rennen</p>
+					</a></li>
+					<li><a href="#club" data-toggle="tab"> <i
+							class="fa fa-user"></i>
+							<p>Club</p>
+					</a></li>
+					<li><a href="#team" data-toggle="tab"> <i
+							class="fa fa-users"></i>
+							<p>Team</p>
+					</a></li>
+					<li class="active-pro"><a href="../playground/frontend/">
+							<i class="fa fa-external-link"></i>
+							<p>Live zum Rennen</p>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="tab-content">
+			<div class="main-panel tab-pane" id="top">
+				<nav class="navbar navbar-default navbar-fixed">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle"
+								data-toggle="collapse" data-target="#navigation-example-2">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="#">Übersicht</a>
+						</div>
+						<div class="collapse navbar-collapse"></div>
+					</div>
+				</nav>
+				<div class="content">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="header">
+										<h4 class="title">Text</h4>
+									</div>
+									<div class="content"></div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="header">
+										<h4 class="title">Text 2</h4>
+									</div>
+									<div class="content"></div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<ui:include src="include/Footer.xhtml" />
+			</div>
+
+			<div class="main-panel tab-pane" id="event">
+				<nav class="navbar navbar-default navbar-fixed">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle"
+								data-toggle="collapse" data-target="#navigation-example-2">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="#">Event</a>
+						</div>
+						<div class="collapse navbar-collapse"></div>
+					</div>
+				</nav>
+				<div class="content">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="header">
+										<h4 class="title">Aktuelle Events</h4>
+									</div>
+									<div class="content">
+										<ui:include src="Events.xhtml" />
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="header">
+										<h4 class="title">Event hinzufügen</h4>
+									</div>
+									<div class="content">
+										<ui:include src="AddEvent.xhtml" />
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<ui:include src="include/Footer.xhtml" />
+			</div>
+
+			<div class="main-panel tab-pane" id="race">
+				<nav class="navbar navbar-default navbar-fixed">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle"
+								data-toggle="collapse" data-target="#navigation-example-2">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="#">Rennen</a>
+						</div>
+						<div class="collapse navbar-collapse"></div>
+					</div>
+				</nav>
+				<div class="content">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="header">
+										<h4 class="title">Alle Rennen</h4>
+									</div>
+									<div class="content">
+										<ui:include src="Races.xhtml" />
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="header">
+										<h4 class="title">Text 2</h4>
+									</div>
+									<div class="content">
+										<ui:include src="AddRace.xhtml" />
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<ui:include src="include/Footer.xhtml" />
+			</div>
+
+			<div class="main-panel tab-pane" id="club">
+				<nav class="navbar navbar-default navbar-fixed">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle"
+								data-toggle="collapse" data-target="#navigation-example-2">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="#">Club Verwaltung</a>
+						</div>
+						<div class="collapse navbar-collapse"></div>
+					</div>
+				</nav>
+				<div class="content">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="header">
+										<h4 class="title">Clubs</h4>
+									</div>
+									<div class="content">
+										<ui:include src="Clubs.xhtml" />
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="header">
+										<h4 class="title">Club hinzufügen</h4>
+									</div>
+									<div class="content">
+										<ui:include src="AddClub.xhtml" />
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<ui:include src="include/Footer.xhtml" />
+			</div>
+
+			<div class="main-panel tab-pane" id="team">
+				<nav class="navbar navbar-default navbar-fixed">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle"
+								data-toggle="collapse" data-target="#navigation-example-2">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="#">Team</a>
+						</div>
+						<div class="collapse navbar-collapse"></div>
+					</div>
+				</nav>
+				<div class="content">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="header">
+										<h4 class="title">Alle Teams</h4>
+									</div>
+									<div class="content">
+										<ui:include src="Teams.xhtml" />
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="header">
+										<h4 class="title">Team hinzufügen</h4>
+									</div>
+									<div class="content">
+										<ui:include src="AddTeam.xhtml" />
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<ui:include src="include/Footer.xhtml" />
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

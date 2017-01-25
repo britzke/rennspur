@@ -104,15 +104,4 @@ public class ApiFrontend {
 		List<Clubs> clubs = query.getResultList();
 		return clubs;
 	}
-	
-//	@GET
-//	@Path("/teams")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public List<Team> getTeam() {
-//		EntityManager em = emf.createEntityManager();
-//		Query query = em.createNamedQuery("Team.findAll");
-//		query.setParameter("id", 1);
-//		List<Team> team = query.getResultList();
-//		return team;
-//	}
 }
