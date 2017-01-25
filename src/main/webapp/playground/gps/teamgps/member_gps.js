@@ -1,7 +1,7 @@
 /*
  *  This file is part of Rennspur.
  *  
- *  Copyright (C) 2016  Konstantin Baltruschat konstantin.baltruschat@gmail.com
+ *  Copyright (C) 2016  Konstantin Baltruschat konstantin.baltruschat@gmail.com, Tim Prangel tim.prangel@gmail.com
  *  
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -19,6 +19,9 @@
 
 var send_interval;
 var pos_interval;
+var running = false;
+var saveCount = 0;
+var sentCount = 0;
 
 /**
  * Clear all saved Locations from the localstorage only called after
@@ -51,12 +54,33 @@ function sendLocations() {
 		},
 		dataType : 'json',
 		data : localStorage.getItem("rennspur_gps_locations"),
-		success : function(result) {
-			/** in case of successful POST request clear the saved positions */
-			clearPositionsArray();
+		complete : function(xhr ,status){
+			if(xhr.responseText != null){
+				/** in case of successful POST request clear the saved positions */
+				clearPositionsArray();
+				sentCount += saveCount;
+				saveCount = 0;
+				$("#head").html("Sending Data...");
+				$("#head").removeClass("paused");
+				$("#head").removeClass("notSending");
+				$("#head").addClass("sending");
+
+				
+			}
+			else{
+				$("#head").html("Connection lost!");
+				$("#head").removeClass("sending");
+				$("#head").removeClass("paused");
+				$("#head").addClass("notSending");
+			}
+				
 		}
 	});
+	
+	$("#stats").html("Locations saved: " +saveCount+ " Locations sent: " + sentCount);
+
 }
+
 
 /**
  * Prepare the localStorage to save positions and the hash
@@ -91,6 +115,7 @@ function init() {
 		}
 		// TODO: check if the found data is old, maybe from another event?
 	}
+	$("#stats").html("Locations saved: " +saveCount+ " Locations sent: " + sentCount);
 }
 
 /**
@@ -121,6 +146,9 @@ function geolocation_success_callback(position) {
 	/** Save the JSON object back into the localstorage as string */
 	localStorage.setItem("rennspur_gps_locations", JSON
 			.stringify(locactionJson));
+	saveCount++;
+	$("#stats").html("Locations saved: " +saveCount+ " Locations sent: " + sentCount);
+
 }
 
 /**
@@ -147,12 +175,14 @@ function geolocation_error_callback(error){
 function saveLocation() {
 	console.log("save-location");
 	navigator.geolocation.getCurrentPosition(geolocation_success_callback,geolocation_error_callback,{timeout:10000});
+	
 }
 
 /**
  * onClick to test some functions
  */
 function start() {
+	if(running == false){
 	clearInterval(send_interval);
 	clearInterval(pos_interval);
 	if (navigator.geolocation) {
@@ -160,21 +190,34 @@ function start() {
 		send_interval = setInterval(sendLocations, 5000);
 		/** Every 1000ms (1s) save the currentPosition */
 		pos_interval = setInterval(saveLocation, 1000);
+		
 	} else {
 		alert("Geolocation not supported by this browser!\r\nApplication will not be able to run.")
 	}
-	$('label').html('Sending Data...');
-	$("label").removeClass("notSending");
-	$("label").addClass("sending");
+	$("#head").html("Sending Data...");
+	$("#head").removeClass("notSending");
+	$("#head").removeClass("paused");
+	$("#head").addClass("sending");
+	$("button").html("Stop");
+
+	running = true;
+	}
+	else{
+		running = false;
+		stop();
+		$("#head").html("Not Sending Data...");
+		$("#head").removeClass("sending");
+		$("#head").addClass("paused");
+		$("button").html("Start");
+	}
+	
 }
 
 function stop(){
 	clearInterval(send_interval);
 	clearInterval(pos_interval);
-	$('label').html('Not Sending Data...');
-	$("label").removeClass("sending");
-	$("label").addClass("notSending");
 }
+
 
 /**
  * To test , call init at start and then save a test-location
