@@ -52,6 +52,7 @@ public class RaceBean {
 	EntityManagerFactory emf;
 	int number;
 	int event_id;
+	Race selectedRace;
 
 	/**
 	 * Add an event to the events managed by this bean.
@@ -95,6 +96,20 @@ public class RaceBean {
 
 	public void setEvent_id(int event_id) {
 		this.event_id = event_id;
+	}
+
+	/**
+	 * @return the selectedRace
+	 */
+	public Race getSelectedRace() {
+		return selectedRace;
+	}
+
+	/**
+	 * @param selectedRace the selectedRace to set
+	 */
+	public void setSelectedRace(Race selectedRace) {
+		this.selectedRace = selectedRace;
 	}
 
 }
