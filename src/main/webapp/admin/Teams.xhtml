@@ -8,7 +8,32 @@
 
 <h:body>
 	<ui:composition>
-	<h2>ToDo</h2>
+		<p:dataTable id="eventsTable" var="team" value="#{teamBean.teams}"
+				selectionMode="single" selection="#{eventBean.selectedEvent}"
+				rowKey="#{team.id}" onRowSelectUpdate="@none"
+				onRowSelectComplete="location='event.xhtml?faces-redirect=true'">
+				<p:ajax event="rowSelect" listener="#{eventBean.onRowSelect}" />
+
+				<p:column headerText="Country">
+					<h:outputText value="#{team.country}">
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="Name">
+					<h:outputText value="#{team.name}">
+					</h:outputText>
+				</p:column>
+				<p:column headerText="EMail">
+					<h:outputText value="#{team.email}">
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="Hash">
+					<h:outputText value="#{team.hash}">
+					</h:outputText>
+				</p:column>
+				
+			</p:dataTable>
 	</ui:composition>
 </h:body>
 

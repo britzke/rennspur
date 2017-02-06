@@ -28,6 +28,7 @@ public class TeamBean {
 	int clubid;
 	
 	List<Team> team;
+	List<Team> teams;
 	
 	@Inject
 	EntityManagerFactory emf;
@@ -38,7 +39,7 @@ public class TeamBean {
 		Query q = em.createNamedQuery("Team.findAll");
 		@SuppressWarnings("unchecked")
 		List<Team> team = q.getResultList();
-		this.team = team;
+		this.teams = team;
 	}
 
 	/**
@@ -73,6 +74,14 @@ public class TeamBean {
 
 	}
 
+	public List<Team> getTeams() {
+		return teams;
+	}
+
+	public void setTeams(List<Team> teams) {
+		this.teams = teams;
+	}
+	
 	public String getName() {
 		return name;
 	}
