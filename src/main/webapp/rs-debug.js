@@ -140,6 +140,45 @@ rs.model.Event = class Event{
 };
 
 /**
+ * A waypoint is a mark, which all competitors must pass during a race. this
+ * mark has a position, which may change.
+ */
+rs.model.Waypoint = class Waypoint{
+    /**
+     * 
+     */
+    constructor (properties = null) {
+        for (let property in properties) {
+            switch (property) {
+            case "waypointPositions":
+                let waypointPositions = [];
+                for (let waypointPosition of properties[property]) {
+                    waypointPositions[waypointPositions.length] = new rs.model.WaypointPosition(waypointPosition);
+                }
+                this[property] = waypointPositions;
+                break;
+            default:
+                this[property]  = properties[property];
+            }
+        }        
+    }
+    
+    get id() {
+        return this.id_;
+    }
+    
+    set id(id) {
+        this.id_ = id;
+    }
+    
+    get name() {
+        return name_;
+    }
+    set name(name) {
+        this.name_ = name;
+    }    
+}
+/**
  * A group of members who form one competitor team - the team.
  */
 rs.model.Team = class Team{
@@ -198,6 +237,13 @@ rs.model.Race = class Race {
                         pos[pos.length] = new rs.model.TeamPosition(teamPosition);
                     }
                     this[property] = pos;
+                    break;
+                case "waypoints":
+                    let wpos = [];
+                    for (let waypoint of properties[property]) {
+                        wpos[wpos.length] = new rs.model.Waypoint(waypoint);
+                    }
+                    this[property] = wpos;
                     break;
                 default:
                     this[property] = properties[property];
@@ -317,6 +363,52 @@ rs.model.TeamPosition = class TeamPosition extends rs.model.Position{
         this.team_=team;
     }
 
+    get race() {
+        return this.race_;
+    }
+    set race(race) {
+        this.race_=race;
+    }
+};
+
+/**
+ * Represents a WaypointPosition, a position of a mark in a race, which all
+ * competitors must pass.
+ */
+rs.model.WaypointPosition = class WaypointPosition extends rs.model.Position{
+    /**
+     * Constructs a new WaypointPosition either out of an object or out of
+     * longitude, latitude, and time.
+     * 
+     * @constructs
+     * @param {number|object}
+     *            A longitude or an Object from which the properties ar taken.
+     *            When it is an object, further attributes are ignored.
+     * @param {number}
+     *            A latitude. In case that the first parameter is an object,
+     *            this parameter is ignored.
+     * @param {Date}
+     *            The time, when the position is taken. If the first parameter
+     *            is an object, this parameter is ignored.
+     */
+    constructor (longitudeOrObject = 0.0, latitude = 0.0, time = null, race = null) {
+        if (typeof longitudeOrObject === "number" ) {
+            super(longitudeOrObject, latitude,time);
+            this.race_= new rs.model.Race(race);
+        } else {
+            super(0.0,0.0,null);
+            for (let property in longitudeOrObject) {
+                this[property] = longitudeOrObject[property];
+            }
+        }
+    }
+
+    get name() {
+        return this.name_;
+    }
+    set name(name) {
+        this.name_=name;
+    }
     get race() {
         return this.race_;
     }
@@ -498,31 +590,23 @@ rs.Map = class {
         var iconStyle = new ol.style.Style({
         	image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
                 src: "/rennspur/playground/frontend/waypoint.png",
-                size: [250,250] ,
-                scale: 0.25
+                size: [250,250],
+                scale: 0.25,
+                anchor: [84,9],
+                anchorOrigin: "bottom-left",
+                anchorXUnits: "pixels",
+                anchorYUnits: "pixels"
               }))
         });
         
-        var i = 0;
-        var length = race.waypoints.length;
-        
-        while(length > i){
-        	
-        	var coor = [race.waypoints[i].waypointPositions[0].longitude,
-        		race.waypoints[i].waypointPositions[0].latitude];
-        	console.log(coor);
-        	
-        	var pos = ol.proj.transform(coor, this.source_, this.destination_);
+        for (var waypoint of race.waypoints){
+        	var pos = ol.proj.transform(waypoint.waypointPositions[0].coordinate, this.source_, this.destination_);
         	
         	var iconFeature = new ol.Feature({
             	geometry: new ol.geom.Point(pos)
             });
-            
             iconFeature.setStyle(iconStyle);
-            
-            this.imageSource_.addFeature(iconFeature); 
-        	
-        	i++;
+            this.imageSource_.addFeature(iconFeature);
         };
         
         rs.map = this;
