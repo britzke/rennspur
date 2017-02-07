@@ -7,9 +7,32 @@
 <h:head />
 
 <h:body>
-	<ui:composition>
-		<h2>ToDo</h2>
-	</ui:composition>
+	<h:form>
+			<p:dataTable id="clubTable" var="club" value="#{clubBean.clubs}"
+				selectionMode="single" selection="#{clubBean.selectedClub}"
+				rowKey="#{club.id}" onRowSelectUpdate="@none"
+				onRowSelectComplete="location='club.xhtml?faces-redirect=true'">
+				
+				<p:ajax event="rowSelect" listener="#{clubBean.onRowSelect}" />
+
+				<p:column headerText="ID">
+					<h:outputText value="#{club.id}"
+						rendered="#{not empty club.id}">
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Abreviation">
+					<h:outputText value="#{club.abreviation}" />
+				</p:column>
+				<p:column headerText="DSV Number">
+					<h:outputText
+						value="#{club.dsvNumber}" />
+				</p:column>
+				<p:column headerText="NAME">
+					<h:outputText
+						value="#{club.name}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
 </h:body>
 
 </html>
