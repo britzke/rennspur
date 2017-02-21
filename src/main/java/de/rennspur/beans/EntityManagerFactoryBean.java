@@ -22,6 +22,8 @@ package de.rennspur.beans;
 import java.io.Serializable;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
 
 import javax.persistence.EntityManagerFactory;
@@ -60,4 +62,14 @@ public class EntityManagerFactoryBean implements Serializable {
 	public EntityManagerFactory getEntityManagerFactory() {
 		return entityManagerFactory;
 	}
+	
+	
+	/**
+	 * Closes the entityManagerFactory.
+	 * 
+	 * @param entityManagerFactory
+	 */
+	public void closeEntityManagerFactory(@Disposes EntityManagerFactory entityManagerFactory) {
+		entityManagerFactory.close();
+    }
 }
