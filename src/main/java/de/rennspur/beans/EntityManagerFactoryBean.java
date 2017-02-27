@@ -63,13 +63,13 @@ public class EntityManagerFactoryBean implements Serializable {
 		return entityManagerFactory;
 	}
 	
-	
-	/**
-	 * Closes the entityManagerFactory.
-	 * 
-	 * @param entityManagerFactory
-	 */
-	public void closeEntityManagerFactory(@Disposes EntityManagerFactory entityManagerFactory) {
-		entityManagerFactory.close();
-    }
+//	TODO Produces unexpected IllegalStateException "Attempting to execute an operation on a closed EntityManagerFactory." must be further investigated"
+//	/**
+//	 * Closes the entityManagerFactory.
+//	 * 
+//	 * @param entityManagerFactory
+//	 */
+//	public void closeEntityManagerFactory(@Disposes EntityManagerFactory entityManagerFactory) {
+//		entityManagerFactory.close();
+//    }
 }
