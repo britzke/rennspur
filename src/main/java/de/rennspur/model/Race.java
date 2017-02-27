@@ -46,8 +46,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "RACES")
 @NamedQueries({
-		@NamedQuery(name = "Race.findAll", query = "SELECT r FROM Race r"),
-		@NamedQuery(name = "Race.findRaceByID", query = "SELECT r FROM Race r WHERE r.id=:id")})
+		@NamedQuery(name = "Race.findAll", 		   query = "SELECT r FROM Race r"),
+		@NamedQuery(name = "Race.findRaceByID",    query = "SELECT r FROM Race r WHERE r.id=:id"),
+		@NamedQuery(name = "Race.findRaceByEvent", query = "SELECT r FROM Race r WHERE r.event=:id")
+		
+})
 public class Race implements Serializable {
 	private static final long serialVersionUID = 1L;
 
