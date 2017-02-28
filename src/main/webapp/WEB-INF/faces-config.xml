@@ -5,4 +5,13 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 
+
+
+<application>
+	<resource-bundle>
+		<base-name>Bundle</base-name>
+		<var>trans</var>
+	</resource-bundle>
+</application>
+
 </faces-config>

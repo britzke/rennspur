@@ -25,6 +25,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.eclipse.persistence.jpa.config.Cascade;
+
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -36,7 +38,10 @@ import java.util.List;
  */
 @Entity
 @Table(name = "WAYPOINTS")
-@NamedQuery(name = "Waypoint.findAll", query = "SELECT w FROM Waypoint w")
+@NamedQueries({
+@NamedQuery(name = "Waypoint.findAll", query = "SELECT w FROM Waypoint w"),
+@NamedQuery(name = "Waypoint.getWaypointById", query = "SELECT w FROM Waypoint w where w.id = :id") })
+
 public class Waypoint implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -62,7 +67,7 @@ public class Waypoint implements Serializable {
 	private Race race;
 
 	// bi-directional many-to-one association to WaypointPosition
-	@OneToMany(mappedBy = "waypoint")
+	@OneToMany(mappedBy = "waypoint", cascade = CascadeType.PERSIST)
 	private List<WaypointPosition> waypointPositions;
 
 	public Waypoint() {

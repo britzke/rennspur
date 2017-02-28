@@ -18,8 +18,6 @@
  *  along with Rennspur.  If not, see <http://www.gnu.org/licenses/>.
  */
 "use strict";
-JSON.useDateParser(); // parse json dates to js Date objects (see.
-                        // json.date-extensions)
 
 /** @namespace */
 var rs= rs || {};

@@ -42,6 +42,7 @@ import de.rennspur.model.Race;
 import de.rennspur.model.Team;
 import de.rennspur.model.TeamPosition;
 import de.rennspur.model.Waypoint;
+import de.rennspur.model.WaypointPosition;
 
 /**
  * ApiGPS objects are the service endpoints to handle the incomming GPS-Data
@@ -91,7 +92,7 @@ public class ApiGPS {
 
 			if (team != null) { // Team with hash exists
 				// TODO retrieve actual race information
-				q = em.createNamedQuery("Race.findRace");
+				q = em.createNamedQuery("Race.findRaceByID");
 				q.setParameter("id", 1);
 				Race race = (Race) q.getSingleResult();
 				EntityTransaction et = em.getTransaction();
@@ -103,7 +104,7 @@ public class ApiGPS {
 					newTeamPosition.setTime(position.getTime());
 					newTeamPosition.setRace(race);
 					newTeamPosition.setTeam(team);
-					em.merge(newTeamPosition);
+					newTeamPosition = em.merge(newTeamPosition);
 				}
 				et.commit();
 				em.close();
@@ -129,7 +130,28 @@ public class ApiGPS {
 	@POST
 	@RolesAllowed("wegpunktsetzer")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void postWaypoint(Waypoint waypoint) {
-		
+	public void postWaypoint(Waypoint recievedWaypoint) {
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createNamedQuery("Waypoint.getWaypointById");
+		q.setParameter("id", recievedWaypoint.getId());
+		Waypoint waypoint = (Waypoint) q.getSingleResult();
+
+		q = em.createNamedQuery("Race.findRaceByID");
+		q.setParameter("id", 1);
+		Race race = (Race) q.getSingleResult();
+
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		for (WaypointPosition p : recievedWaypoint.getWaypointPositions()
+				.toArray(new WaypointPosition[recievedWaypoint.getWaypointPositions().size()])) {
+			if (p.getTime() != null) {
+				p.setRace(race);
+				p.setWaypoint(waypoint);
+				waypoint.getWaypointPositions().add(p);
+			}
+		}
+		waypoint.setRace(race);
+		et.commit();
+		em.close();
 	}
 }

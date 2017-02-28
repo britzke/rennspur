@@ -42,7 +42,7 @@ function geolocation_success_callback(position) {
 		"latitude" : position.coords.latitude,
 		"time" : Date.now()
 	});
-	
+	alert(JSON.stringify(race.waypoints[selected]));
 	$.ajax({
 		url : `${location.origin}/rennspur/rest/gps-service/waypoint`,
 		type : 'post',
@@ -68,7 +68,6 @@ function showDropdown() {
 }
 
 function select() {
-	// document.getElementById("select-button").innerHTML =
 	// document.getElementById("first").innerHTML;
 	document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -98,10 +97,10 @@ window.onload = function(){
 	});
 }
 
-// Close the dropdown if the user clicks outside of it //TODO: NOT WORKING
 window.onclick = function(event) {
 	if(event.target.id.split(":")[0] == "selection"){
 		selected = parseInt(event.target.id.split(":")[1]);
+		$("#select-button").html(" " + event.target.text);
 	} else if (event.target.id != "select-button") {
 		var dropdowns = document.getElementsByClassName("dropdown-content");
 		var i;
