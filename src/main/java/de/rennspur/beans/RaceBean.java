@@ -18,13 +18,7 @@
  */
 package de.rennspur.beans;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -33,11 +27,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import org.primefaces.event.SelectEvent;
-
-import de.rennspur.model.Club;
-import de.rennspur.model.Event;
 import de.rennspur.model.Race;
+import de.rennspur.model.Event;
 
 /**
  * The RaceBean is an application scoped bean, which provides the actual race
@@ -68,10 +59,12 @@ public class RaceBean {
 			et.begin();
 
 			Race race = new Race();
-			race.setNumber(number);
 
-			Query q = em.createNamedQuery("Event.findRaceByID");
-			q.setParameter("id", 1);
+			Query q = em.createNamedQuery("Event.findEventByID");
+			q.setParameter("id", event_id);
+						
+			race.setNumber(number);
+			race.setEvent((Event) q.getSingleResult());
 
 			em.merge(race);
 			et.commit();
