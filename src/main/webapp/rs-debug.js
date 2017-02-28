@@ -616,7 +616,7 @@ rs.Map = class {
         });
 
         this.osmLayer_ =  new ol.layer.Tile({
-            source: new ol.source.Stamen({layer: 'watercolor'})
+            source: new ol.source.Stamen({layer: 'terrain'})
         });
         this.seamarkLayer_ = new ol.layer.Tile({
             source: new ol.source.OSM({
