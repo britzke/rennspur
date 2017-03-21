@@ -28,6 +28,12 @@
 	</build>
 	<dependencies>
 		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
 			<version>${org.apache.derby.version}</version>
@@ -57,7 +63,7 @@
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>eclipselink</artifactId>
-			<version>2.6.4</version>
+			<version>2.6.0</version>
 		</dependency>
 
 		<dependency>
@@ -167,6 +173,17 @@
 			<version>2.4.0.Final</version>
 		</dependency>
 
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.7.19</version>
+		</dependency>
 		<!-- fron awseome icons -->
 		<dependency>
 			<groupId>org.webjars</groupId>
