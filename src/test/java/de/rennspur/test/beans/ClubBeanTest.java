@@ -3,6 +3,7 @@
  */
 package de.rennspur.test.beans;
 
+import static org.junit.Assert.fail;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -71,7 +72,7 @@ public class ClubBeanTest {
 	 */
 	@Test
 	public void testInsertNewClub() {
-		// fail("Not yet implemented");
+		 fail("Not yet implemented");
 	}
 
 	/**
@@ -80,7 +81,7 @@ public class ClubBeanTest {
 	 */
 	@Test
 	public void testOnRowSelect() {
-		// fail("Not yet implemented");
+		 fail("Not yet implemented");
 	}
 
 }
