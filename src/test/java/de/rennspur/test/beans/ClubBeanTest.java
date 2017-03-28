@@ -3,22 +3,29 @@
  */
 package de.rennspur.test.beans;
 
-import static org.junit.Assert.fail;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
+
+import java.lang.reflect.Method;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+
+import static org.mockito.Mockito.*;
+import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.stubbing.Answer;
 
 import de.rennspur.beans.ClubBean;
+import de.rennspur.model.Club;
 
 /**
  * Tests the ClubBean unit.
@@ -37,6 +44,8 @@ public class ClubBeanTest {
 	EntityManager em;
 	@Mock
 	Query q;
+	@Mock
+	EntityTransaction et;
 
 	/**
 	 * @throws java.lang.Exception
@@ -54,6 +63,7 @@ public class ClubBeanTest {
 
 		when(emf.createEntityManager()).thenReturn(em);
 		when(em.createNamedQuery("Club.findAll")).thenReturn(q);
+		when(em.getTransaction()).thenReturn(et);
 	}
 
 	/**
@@ -69,10 +79,33 @@ public class ClubBeanTest {
 
 	/**
 	 * Test method for {@link de.rennspur.beans.ClubBean#insertNewClub()}.
+	 * 
+	 * @throws SecurityException
+	 * @throws NoSuchMethodException
 	 */
 	@Test
-	public void testInsertNewClub() {
-		 fail("Not yet implemented");
+	public void testInsertNewClub() throws NoSuchMethodException, SecurityException {
+		Class<? extends ClubBean> probandClass = proband.getClass();
+		Method insertNewClubMethod = probandClass.getMethod("insertNewClub");
+		assertTrue(insertNewClubMethod.getReturnType().equals(Void.TYPE));
+
+		when(em.merge(any())).then(new Answer<Object>() {
+			@Override
+			public Object answer(InvocationOnMock invocation) throws Throwable {
+				Object obj = invocation.getArguments()[0];
+				if (obj instanceof Club) {
+					Club club = (Club) obj;
+					assertEquals(proband.getName(), club.getName());
+					assertEquals(proband.getAbbreviation(), club.getAbreviation());
+					assertEquals(proband.getUrl(), club.getUrl());
+					assertEquals(proband.getDsv_number(), club.getDsvNumber());
+				}
+				return null;
+			}
+		});
+		proband.insertNewClub();
+		verify(et, atLeast(1)).commit();
+		verify(em, atLeast(1)).close();
 	}
 
 	/**
@@ -81,7 +114,7 @@ public class ClubBeanTest {
 	 */
 	@Test
 	public void testOnRowSelect() {
-		 fail("Not yet implemented");
+		fail("Not yet implemented");
 	}
 
 }
