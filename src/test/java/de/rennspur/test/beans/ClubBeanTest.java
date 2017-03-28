@@ -17,8 +17,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-
 import static org.mockito.Mockito.*;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -64,6 +62,17 @@ public class ClubBeanTest {
 		when(emf.createEntityManager()).thenReturn(em);
 		when(em.createNamedQuery("Club.findAll")).thenReturn(q);
 		when(em.getTransaction()).thenReturn(et);
+		when(em.merge(any(Club.class))).then(new Answer<Object>() {
+			@Override
+			public Object answer(InvocationOnMock invocation) throws Throwable {
+				Club club = (Club) invocation.getArguments()[0];
+				assertEquals(proband.getName(), club.getName());
+				assertEquals(proband.getAbbreviation(), club.getAbreviation());
+				assertEquals(proband.getUrl(), club.getUrl());
+				assertEquals(proband.getDsv_number(), club.getDsvNumber());
+				return null;
+			}
+		});
 	}
 
 	/**
@@ -85,27 +94,15 @@ public class ClubBeanTest {
 	 */
 	@Test
 	public void testInsertNewClub() throws NoSuchMethodException, SecurityException {
+		// Check if return type is Type void
 		Class<? extends ClubBean> probandClass = proband.getClass();
 		Method insertNewClubMethod = probandClass.getMethod("insertNewClub");
 		assertTrue(insertNewClubMethod.getReturnType().equals(Void.TYPE));
 
-		when(em.merge(any())).then(new Answer<Object>() {
-			@Override
-			public Object answer(InvocationOnMock invocation) throws Throwable {
-				Object obj = invocation.getArguments()[0];
-				if (obj instanceof Club) {
-					Club club = (Club) obj;
-					assertEquals(proband.getName(), club.getName());
-					assertEquals(proband.getAbbreviation(), club.getAbreviation());
-					assertEquals(proband.getUrl(), club.getUrl());
-					assertEquals(proband.getDsv_number(), club.getDsvNumber());
-				}
-				return null;
-			}
-		});
 		proband.insertNewClub();
+
+		// verify that the changes have been committed
 		verify(et, atLeast(1)).commit();
-		verify(em, atLeast(1)).close();
 	}
 
 	/**
