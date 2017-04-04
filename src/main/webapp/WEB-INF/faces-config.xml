@@ -9,7 +9,7 @@
 
 <application>
 	<resource-bundle>
-		<base-name>Bundle</base-name>
+		<base-name>translation</base-name>
 		<var>trans</var>
 	</resource-bundle>
 </application>

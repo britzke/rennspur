@@ -5,15 +5,19 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head />
-
+<f:view locale="#{facesContext.externalContext.requestLocale}">
 <h:body>
 	<ui:composition>
 		<h:form id="club_form">
 			<h:panelGrid>
-				<h:outputLabel value="Abbreviation:" style="font-weight:bold" />
+			
+			
+				<h:outputLabel value="#{trans.abbrevation}" style="font-weight:bold" />
 				<h:inputText value="#{clubBean.abbreviation}" />
-				<h:outputLabel value="DSV Number:" style="font-weight:bold" />
+				
+				<h:outputLabel value="#{trans.dsv}" style="font-weight:bold" />
 				<h:inputText value="#{clubBean.dsv_number}" />
+				
 				<h:outputLabel value="Name:" style="font-weight:bold" />
 				<h:inputText value="#{clubBean.name}" />
 				<h:outputLabel value="URL:" style="font-weight:bold" />
@@ -24,5 +28,6 @@
 		</h:form>
 	</ui:composition>
 </h:body>
+</f:view>
 
 </html>
