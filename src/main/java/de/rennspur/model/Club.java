@@ -36,18 +36,18 @@ import java.util.List;
  * The following xml schema fragment shows the structure of the club element.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;all>
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="abreviation" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="dsvNumber" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *       &lt;/all>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;all&gt;
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="abreviation" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="dsvNumber" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *       &lt;/all&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * @author burghard.britzke bubi@charmides.in-berlin.de
