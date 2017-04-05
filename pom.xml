@@ -10,7 +10,33 @@
 		<org.apache.derby.version>10.13.1.1</org.apache.derby.version>
 		<org.glassfish.jersey.version>2.25</org.glassfish.jersey.version>
 	</properties>
-
+	<profiles>
+		<profile>
+			<id>profile-development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>environment</name>
+					<value>dev</value>
+				</property>
+			</activation>
+			<properties>
+				<webXmlPath>src/main/webapp/WEB-INF/web.xml</webXmlPath>
+			</properties>
+		</profile>
+		<profile>
+			<id>profile-production</id>
+			<activation>
+				<property>
+					<name>environment</name>
+					<value>prod</value>
+				</property>
+			</activation>
+			<properties>
+				<webXmlPath>src/main/webapp/WEB-INF/production-web.xml</webXmlPath>
+			</properties>
+		</profile>
+	</profiles>
 	<build>
 		<plugins>
 			<plugin>
@@ -22,6 +48,13 @@
 					<showDeprecation>true</showDeprecation>
 					<showWarnings>true</showWarnings>
 					<fork>true</fork>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<webXml>${webXmlPath}</webXml>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -58,7 +91,6 @@
 			<artifactId>derbyoptionaltools</artifactId>
 			<version>${org.apache.derby.version}</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
@@ -184,6 +216,7 @@
 			<artifactId>mockito-core</artifactId>
 			<version>2.7.19</version>
 		</dependency>
+
 		<!-- fron awseome icons -->
 		<dependency>
 			<groupId>org.webjars</groupId>
@@ -196,6 +229,5 @@
 			<artifactId>roboto-fontface</artifactId>
 			<version>0.6.0</version>
 		</dependency>
-
 	</dependencies>
 </project>
