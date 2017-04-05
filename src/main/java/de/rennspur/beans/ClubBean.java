@@ -16,16 +16,13 @@ import javax.persistence.Query;
 
 import org.primefaces.event.SelectEvent;
 
+import de.rennspur.backend.ApiGPS;
 import de.rennspur.model.Club;
 
 @ApplicationScoped
 @Named
 public class ClubBean {
 
-	String abbreviation;
-	String dsv_number;
-	String name;
-	String url;
 	List<Club> clubs;
 	Club selectedClub;
 	
@@ -43,7 +40,7 @@ public class ClubBean {
 	/**
 	 * Inserts a club into the database.
 	 */
-	public void insertNewClub() {
+	public void insertNewClub(String abbreviation, String dsv_number, String name, String url) {
 		try {
 			EntityManager em = emf.createEntityManager();
 			EntityTransaction et = em.getTransaction();
@@ -55,6 +52,9 @@ public class ClubBean {
 			club.setName(name);
 			club.setUrl(url);
 
+			//em.getEntityManagerFactory().getCache().evictAll();
+			//em.refresh(em.find(Club.class, 1));
+			
 			em.merge(club);
 			et.commit();
 			em.close();
@@ -62,50 +62,16 @@ public class ClubBean {
 		} catch (NoResultException e) {
 			e.printStackTrace();
 		}
-
 	}
 	
 	public void onRowSelect(SelectEvent club) {
 		try {
-			System.out.println(club);
+			System.out.println("CLUB : " + club);
 			FacesContext.getCurrentInstance().getExternalContext()
 					.redirect("club.xhtml?id=" + selectedClub.getId());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-	}
-
-	public String getAbbreviation() {
-		return abbreviation;
-	}
-
-	public void setAbbreviation(String abreviation) {
-		this.abbreviation = abreviation;
-	}
-
-	public String getDsv_number() {
-		return dsv_number;
-	}
-
-	public void setDsv_number(String dsv_number) {
-		this.dsv_number = dsv_number;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
 	}
 
 	/**

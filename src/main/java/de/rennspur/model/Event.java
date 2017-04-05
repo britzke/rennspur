@@ -52,7 +52,6 @@ public class Event implements Serializable {
 	@Column(nullable=false, length = 1)
 	@NotNull
 	private Boolean handicap;
-
 	
 	@Column(name = "START_DATE", nullable = false)
 	@NotNull

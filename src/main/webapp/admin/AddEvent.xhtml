@@ -8,43 +8,30 @@
 
 <h:body>
 	<ui:composition>
-		<h:form>
-			<p:panelGrid columns="2">
-				<p:outputLabel for="name" value="Name " />
-				<p:inplace id="name" editor="true">
-					<p:inputText value="#{eventBean.selectedEvent.name}"
-						required="true" label="text" />
-				</p:inplace>
-				<p:outputLabel for="handicap" value="Handicap " />
-				<p:inplace id="handicap" editor="true">
-					<f:facet name="output">
-						<h:outputText
-							value="#{eventBean.selectedEvent.handicap ? 'yes':'no'}" />
-					</f:facet>
-					<h:selectBooleanCheckbox
-						value="#{eventBean.selectedEvent.handicap}" />
-				</p:inplace>
-				<p:outputLabel for="name" value="Start Date " />
-				<p:inplace editor="true">
-					<f:facet name="output">
-						<h:outputText value="#{eventBean.selectedEvent.startDate}">
-							<f:convertDateTime pattern="dd.MM.yyyy" />
-						</h:outputText>
-					</f:facet>
-					<p:calendar value="#{eventBean.selectedEvent.startDate}"
-						required="true" label="text" />
-				</p:inplace>
-				<p:outputLabel for="endDate" value="until " />
-				<p:inplace id="endDate" editor="true">
-					<f:facet name="output">
-						<h:outputText value="#{eventBean.selectedEvent.endDate}">
-							<f:convertDateTime pattern="dd.MM.yyyy" />
-						</h:outputText>
-					</f:facet>
-					<p:calendar value="#{eventBean.selectedEvent.endDate}" label="text" />
-				</p:inplace>
-
-			</p:panelGrid>
+		<h:form id="wrapper">
+			<h:panelGrid>
+				<h:outputLabel value="Event ID: " style="font-weight:bold" />
+				<h:inputText id="id" />
+				<h:outputLabel value="Clubs ID: " style="font-weight:bold" />
+				<h:inputText id="clubsId" />
+				<h:outputLabel value="Name: " style="font-weight:bold" />
+				<h:inputText id="name" />
+				<h:outputLabel value="Startdate: " style="font-weight:bold" />
+				<h:inputText id="startDate" />
+				<h:outputLabel value="Enddate: " style="font-weight:bold" />
+				<h:inputText id="endDate" />
+				<h:outputLabel value="Handicap: " style="font-weight:bold" />
+				<h:selectBooleanCheckbox id="handicap" />
+				<h:commandButton value="Hinzufügen"
+					action="#{eventBean.addEvent(
+					param['wrapper:id'], 
+					param['wrapper:name'], 
+					param['wrapper:startDate'], 
+					param['wrapper:endDate'], 
+					param['wrapper:clubsId'], 
+					param['wrapper:handicap'])}" 
+				/>
+			</h:panelGrid>
 		</h:form>
 	</ui:composition>
 </h:body>
