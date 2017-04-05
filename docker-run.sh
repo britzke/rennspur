@@ -30,4 +30,8 @@ docker run -d --net=host --name rennspur-tomcat -v "$PWD"/target/rennspur-0.0.1-
 echo Tomcat server is running.
 # ToDo: Check for error...
 
+echo Finished!
+echo Depending on your computer speed it may take a few minutes until tomcat is online.
+echo Visit http://<your-ip>:8080/rennspur/
+
 exit 0

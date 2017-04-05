@@ -28,4 +28,4 @@ git clone
 3) Tomcat Server:
 ```docker run -d --net=host --name rennspur-tomcat -v "$PWD"/target/rennspur-0.0.1-SNAPSHOT.war:/usr/local/tomcat/webapps/rennspur.war tomcat:8.5-alpine```
 
-> ```--net=host``` is not not recommended! Use ```-p 8080:8080``` and a [own bridge network](https://docs.docker.com/engine/userguide/networking/#a-bridge-network) to connect to the database on port ```1527```.
+> ```--net=host``` is not not recommended! Use ```-p 8080:8080``` and ```-p 1527:1527``` on a [own bridge network](https://docs.docker.com/engine/userguide/networking/#a-bridge-network) to connect the database on port ```1527```.
