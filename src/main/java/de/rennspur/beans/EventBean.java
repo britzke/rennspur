@@ -19,8 +19,13 @@
 package de.rennspur.beans;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -34,6 +39,7 @@ import javax.persistence.Query;
 
 import org.primefaces.event.SelectEvent;
 
+import de.rennspur.model.Club;
 import de.rennspur.model.Event;
 import de.rennspur.model.Race;
 
@@ -103,11 +109,31 @@ public class EventBean {
 	 * @param event
 	 *            The event, which is to be added.
 	 * @return The event, which has been added.
+	 * @throws ParseException 
 	 */
-	public Event addEvent(Event event) {
+	public Event addEvent(String eventid, String name, String startDate, String endDate, String clubsId, String handicap) throws ParseException {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction t = em.getTransaction();
 		t.begin();
+		
+		Event event = new Event();
+		event.setId(Integer.parseInt(eventid));
+		event.setName(name);
+		
+		DateFormat format = new SimpleDateFormat("MM d, yyyy", Locale.ENGLISH);
+		Date date = format.parse(startDate);
+		
+		event.setStartDate(date);
+		date = format.parse(endDate);
+		event.setEndDate(date);
+		
+		Query q = em.createNamedQuery("Club.findClubByID");
+		q.setParameter("id", Integer.parseInt(clubsId));
+		
+		event.setClub((Club) q.getSingleResult());
+		
+		event.setHandicap(Boolean.parseBoolean(handicap));
+		
 		event = em.merge(event);
 		getEvents().add(event);
 		t.commit();
