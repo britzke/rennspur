@@ -11,6 +11,11 @@
 		<param-name>org.jboss.weld.development</param-name>
 		<param-value>true</param-value>
 	</context-param>
+	<context-param>
+		<param-name>primefaces.FONT_AWESOME</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
 	<servlet>
 		<servlet-name>javax.ws.rs.core.Application</servlet-name>
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
