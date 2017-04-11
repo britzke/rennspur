@@ -15,6 +15,11 @@
 		<param-name>primefaces.FONT_AWESOME</param-name>
 		<param-value>true</param-value>
 	</context-param>
+		<context-param> 
+        <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name> 
+        <param-value>true</param-value> 
+    </context-param> 
+	
 
 	<servlet>
 		<servlet-name>javax.ws.rs.core.Application</servlet-name>
