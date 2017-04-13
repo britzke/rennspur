@@ -8,18 +8,24 @@
 		<param-value>Development</param-value>
 	</context-param>
 	<context-param>
-		<param-name>org.jboss.weld.development</param-name>
+		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
 		<param-value>true</param-value>
 	</context-param>
+
 	<context-param>
 		<param-name>primefaces.FONT_AWESOME</param-name>
 		<param-value>true</param-value>
 	</context-param>
-		<context-param> 
-        <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name> 
-        <param-value>true</param-value> 
-    </context-param> 
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>rennspur</param-value>
+	</context-param>
 	
+	<context-param>
+		<param-name>org.jboss.weld.development</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
 
 	<servlet>
 		<servlet-name>javax.ws.rs.core.Application</servlet-name>
