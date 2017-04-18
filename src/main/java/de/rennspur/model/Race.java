@@ -36,6 +36,7 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlTransient;
+
 /**
  * The persistent class for the RACES database table.
  * 
@@ -46,9 +47,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "RACES")
 @NamedQueries({
-		@NamedQuery(name = "Race.findAll", query = "SELECT r FROM Race r"),
-		@NamedQuery(name = "Race.findRacesByID", query = "SELECT r FROM Race r WHERE r.id=:id"),
-		@NamedQuery(name = "Race.findRacesByEventId", query = "SELECT r FROM Race r WHERE r.event=:event")})
+		@NamedQuery(name = "Race.findAll", query = "SELECT r FROM Race r order by r.number"),
+		@NamedQuery(name = "Race.findRaceByID", query = "SELECT r FROM Race r WHERE r.id=:id"),
+		@NamedQuery(name = "Race.findRacesByEventId", query = "SELECT r FROM Race r WHERE r.event=:event order by r.number") })
 public class Race implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -59,7 +60,7 @@ public class Race implements Serializable {
 	@NotNull
 	@Column(nullable = false)
 	private int number;
-	
+
 	@NotNull
 	@Column(nullable = false)
 	private boolean finished;
@@ -106,7 +107,8 @@ public class Race implements Serializable {
 	}
 
 	/**
-	 * @param finished the finished to set
+	 * @param finished
+	 *            the finished to set
 	 */
 	public void setFinished(boolean finished) {
 		this.finished = finished;
@@ -128,12 +130,27 @@ public class Race implements Serializable {
 		this.teamPositions = teamPositions;
 	}
 
+	/**
+	 * Add the given TeamPosition to the list of TeamPositions.
+	 * 
+	 * @param teamPosition
+	 *            The TeamPosition to add.
+	 * @return The added TeamPosition.
+	 */
 	public TeamPosition addTeamPosition(TeamPosition teamPosition) {
 		getTeamPositions().add(teamPosition);
 		teamPosition.setRace(this);
 
 		return teamPosition;
 	}
+
+	/**
+	 * Removes the given TeamPosition from the list of TeamPositions.
+	 * 
+	 * @param teamPosition
+	 *            The TeamPosition to be removed.
+	 * @return The removed TeamPosition.
+	 */
 	public TeamPosition removeTeamPosition(TeamPosition teamPosition) {
 		getTeamPositions().remove(teamPosition);
 		teamPosition.setRace(null);
@@ -149,13 +166,23 @@ public class Race implements Serializable {
 		this.waypoints = waypoints;
 	}
 
+	/**
+	 * Add a Waypoint to the list of Waypoints.
+	 * @param waypoint The Waypoint to add.
+	 * @return The added Waypoint.
+	 */
 	public Waypoint addWaypoint(Waypoint waypoint) {
 		getWaypoints().add(waypoint);
 		waypoint.setRace(this);
 
-		return waypoint;
+	return waypoint;
 	}
 
+	/**
+	 * Removes a given Waypoint from the list of Waypoints.
+	 * @param waypoint The Waypoint to remove.
+	 * @return The removed Waypoint.
+	 */
 	public Waypoint removeWaypoint(Waypoint waypoint) {
 		getWaypoints().remove(waypoint);
 		waypoint.setRace(null);
