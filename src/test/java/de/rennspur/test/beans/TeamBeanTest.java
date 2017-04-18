@@ -35,7 +35,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import de.rennspur.beans.EventBean;
 import de.rennspur.beans.TeamBean;
+import de.rennspur.model.Event;
 import de.rennspur.model.Team;
 
 /**
@@ -46,16 +48,20 @@ import de.rennspur.model.Team;
 @RunWith(MockitoJUnitRunner.class)
 public class TeamBeanTest {
 	@Mock
-	EntityManager em;
+	private EntityManager em;
 	@Mock
-	Query q;
+	private Query q;
 	@Mock
-	EntityTransaction transaction;
+	private EntityTransaction transaction;
+	@Mock
+	private EventBean eventBean;
+	@Mock
+	private Event event;
 
 	@InjectMocks
-	TeamBean proband;
+	private TeamBean proband;
 
-	List<Team> list;
+	private List<Team> teams;
 
 	/**
 	 * Set up the Mock objects to act like desired.
@@ -64,9 +70,9 @@ public class TeamBeanTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		when(em.createNamedQuery("Races.findRacesByEvent")).thenReturn(q);
-		when(em.getTransaction()).thenReturn(transaction);
-		when(q.getResultList()).thenReturn(list = new ArrayList<Team>());
+		when(em.createNamedQuery("Team.findTeamsByEventId")).thenReturn(q);
+		when(q.getResultList()).thenReturn(teams = new ArrayList<Team>());
+		when(eventBean.getSelectedEvent()).thenReturn(event);
 	}
 
 	/**
@@ -78,7 +84,7 @@ public class TeamBeanTest {
 
 		assertEquals(
 				"The RaceBean's list of races must be the list, which the EntityManager returns for the query 'Race.findRaceByEvent'",
-				proband.getTeams(), list);
+				proband.getTeams(), teams);
 	}
 
 	/**

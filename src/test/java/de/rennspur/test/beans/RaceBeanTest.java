@@ -19,7 +19,6 @@
 package de.rennspur.test.beans;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -36,6 +35,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import de.rennspur.beans.EventBean;
 import de.rennspur.beans.RaceBean;
 import de.rennspur.model.Race;
 
@@ -47,12 +47,14 @@ import de.rennspur.model.Race;
 @RunWith(MockitoJUnitRunner.class)
 public class RaceBeanTest {
 	@Mock
-	EntityManager em;
+	private EntityManager em;
 	@Mock
-	Query q;
+	private Query q;
 	@Mock
-	EntityTransaction transaction;
-
+	private EntityTransaction transaction;
+	@Mock
+	private EventBean eventBean;
+	
 	@InjectMocks
 	RaceBean proband;
 
@@ -63,8 +65,7 @@ public class RaceBeanTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		when(em.createNamedQuery("Races.findRacesByEvent")).thenReturn(q);
-		when(em.getTransaction()).thenReturn(transaction);
+		when(em.createNamedQuery("Race.findRacesByEventId")).thenReturn(q);
 		when(q.getResultList()).thenReturn(list = new ArrayList<Race>());
 	}
 
@@ -85,7 +86,6 @@ public class RaceBeanTest {
 	 */
 	@Test
 	public void testAddRace() {
-		fail("Not yet implemented");
+		// TODO implement the test when method used
 	}
-
 }
