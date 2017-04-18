@@ -19,13 +19,10 @@
 
 package de.rennspur.beans;
 
-import java.io.Serializable;
-
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
-
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -33,15 +30,12 @@ import javax.persistence.Persistence;
  * The EntityManagerFactoryBean provides an application scoped
  * EntityManagerFactory. Because the EntityManagerFactory itself is not
  * Serializable, it can only injected in <b>transient</b> properties, if the
- * bean into which is incected is {@code @SessionScoped}.
+ * bean into which it is injected is {@code @SessionScoped}.
  * 
- * @see Serializable
  * @author burghard.britzke
  */
 @ApplicationScoped
-public class EntityManagerFactoryBean implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class EntityManagerFactoryBean {
 
 	@Produces
 	private EntityManagerFactory entityManagerFactory;
@@ -60,16 +54,31 @@ public class EntityManagerFactoryBean implements Serializable {
 	 * @return the entityManager
 	 */
 	public EntityManagerFactory getEntityManagerFactory() {
+		System.out
+				.println("EntityManagerFactoryBean::getEntityManagerFactory()");
 		return entityManagerFactory;
 	}
-	
-//	TODO Produces unexpected IllegalStateException "Attempting to execute an operation on a closed EntityManagerFactory." must be further investigated"
-//	/**
-//	 * Closes the entityManagerFactory.
-//	 * 
-//	 * @param entityManagerFactory
-//	 */
-//	public void closeEntityManagerFactory(@Disposes EntityManagerFactory entityManagerFactory) {
-//		entityManagerFactory.close();
-//    }
+
+	/**
+	 * Get a fresh EntityManager.
+	 * 
+	 * @return A newly created entityManager
+	 */
+	@Produces
+	public EntityManager getEntityManager() {
+		System.out.println("EntityManagerFactoryBean::getEntityManager()");
+		return entityManagerFactory.createEntityManager();
+	}
+
+	/**
+	 * Closes the entityManager.
+	 * 
+	 * @param entityManager
+	 */
+	public void closeEntityManager(@Disposes EntityManager entityManager) {
+		System.out.println(
+				"EntityManagerFactoryBean::closeEntityManager(entityManger="
+						+ entityManager + ")");
+		entityManager.close();
+	}
 }
