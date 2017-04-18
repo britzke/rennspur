@@ -47,7 +47,8 @@ public class ContextListener implements ServletContextListener {
 
 	/**
 	 * Connect to the Database. If database is not populated with tables
-	 * populates them.
+	 * populates them. This is set up with the eclipselink properties in the
+	 * file persistence.xml.
 	 * 
 	 * @see ServletContextListener#contextInitialized(ServletContextEvent)
 	 */

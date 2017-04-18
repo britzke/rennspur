@@ -1,38 +1,52 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<!--
+/*
+ *  This file is part of Renspur.
+ *  
+ *  Copyright (C) 2017  leo.winter, burghard.britzke bubi@charmides.in-berlin.de
+ *  
+ *  Rennspur is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  Rennspur is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ -->
+<ui:composition template="index.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<h:head />
+	<ui:define name="title">Klubs</ui:define>
+	<ui:define name="content">
+		<p:dataTable id="clubTable" var="club" value="#{clubBean.clubs}"
+			selectionMode="single" selection="#{clubBean.selectedClub}"
+			rowKey="#{club.id}" onRowSelectUpdate="@none"
+			onRowSelectComplete="location='club.xhtml?faces-redirect=true'">
 
-<h:body>
-	<h:form>
-			<p:dataTable id="clubTable" var="club" value="#{clubBean.clubs}"
-				selectionMode="single" selection="#{clubBean.selectedClub}"
-				rowKey="#{club.id}" onRowSelectUpdate="@none"
-				onRowSelectComplete="location='club.xhtml?faces-redirect=true'">
-				
-				<p:ajax event="rowSelect" listener="#{clubBean.onRowSelect}" />
+			<p:ajax event="rowSelect" listener="#{clubBean.onRowSelect}" />
 
-				<p:column headerText="ID">
-					<h:outputText value="#{club.id}"
-						rendered="#{not empty club.id}">
-					</h:outputText>
-				</p:column>
-				<p:column headerText="Abreviation">
-					<h:outputText value="#{club.abreviation}" />
-				</p:column>
-				<p:column headerText="DSV Number">
-					<h:outputText
-						value="#{club.dsvNumber}" />
-				</p:column>
-				<p:column headerText="NAME">
-					<h:outputText
-						value="#{club.name}" />
-				</p:column>
-			</p:dataTable>
-		</h:form>
-</h:body>
-
-</html>
+			<p:column headerText="ID">
+				<h:outputText value="#{club.id}" rendered="#{not empty club.id}">
+				</h:outputText>
+			</p:column>
+			<p:column headerText="Abreviation">
+				<h:outputText value="#{club.abreviation}" />
+			</p:column>
+			<p:column headerText="DSV Number">
+				<h:outputText value="#{club.dsvNumber}" />
+			</p:column>
+			<p:column headerText="NAME">
+				<h:outputText value="#{club.name}" />
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+</ui:composition>

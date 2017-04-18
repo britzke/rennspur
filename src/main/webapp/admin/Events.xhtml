@@ -1,19 +1,37 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<h:head />
-
-<h:body>
-	<ui:composition>
-		<h:form>
+<!--
+/*
+ *  This file is part of Renspur.
+ *  
+ *  Copyright (C) 2017  leo.winter, burghard.britzke bubi@charmides.in-berlin.de
+ *  
+ *  Rennspur is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  Rennspur is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ -->
+	<ui:composition template="index.xhtml"
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+		xmlns:h="http://xmlns.jcp.org/jsf/html"
+		xmlns:f="http://xmlns.jcp.org/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+		<ui:define name="title">Veranstaltungen</ui:define>
+		<ui:define name="content">
 			<p:dataTable id="eventsTable" var="event" value="#{eventBean.events}"
 				selectionMode="single" selection="#{eventBean.selectedEvent}"
-				rowKey="#{event.id}" onRowSelectUpdate="@none"
-				onRowSelectComplete="location='event.xhtml?faces-redirect=true'">
-				<p:ajax event="rowSelect" listener="#{eventBean.onRowSelect}" />
+				rowKey="#{event.id}">
+				<p:ajax event="rowSelect" listener="#{eventBean.onRowSelect}"
+					update="@parent form:menu" />
 
 				<p:column headerText="Date">
 					<h:outputText value="#{event.startDate}">
@@ -32,8 +50,6 @@
 						value="#{event.club.abreviation.concat(' – ').concat(event.club.name)}" />
 				</p:column>
 			</p:dataTable>
-		</h:form>
+			<ui:include id="selectedEvent" src="selectedEvent.xhtml" />
+		</ui:define>
 	</ui:composition>
-</h:body>
-
-</html>

@@ -18,17 +18,19 @@
  */
 package de.rennspur.beans;
 
-import javax.enterprise.context.ApplicationScoped;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import de.rennspur.model.Race;
 import de.rennspur.model.Event;
+import de.rennspur.model.Race;
 
 /**
  * The RaceBean is an application scoped bean, which provides the actual race
@@ -36,15 +38,26 @@ import de.rennspur.model.Event;
  * 
  * @author burghard.britzke mailto:bubi@charmides.in-berlin.de
  */
-@ApplicationScoped
+@RequestScoped
 @Named
 public class RaceBean {
-	@Inject
-	EntityManagerFactory emf;
-	int number;
-	int event_id;
-	Race selectedRace;
 
+	@Inject
+	private EntityManager entityManager;
+	
+	@Inject
+	private EventBean eventBean;
+	
+	private List<Race> races;
+	private Race selectedRace;
+
+	@SuppressWarnings("unchecked")
+	@PostConstruct
+	public void init() {
+		Query q = entityManager.createNamedQuery("Race.findRacesByEventId");
+		q.setParameter("event", eventBean.getSelectedEvent());
+		races = q.getResultList();
+	}
 	/**
 	 * Add an event to the events managed by this bean.
 	 * 
@@ -54,43 +67,62 @@ public class RaceBean {
 	 */
 	public void addRace() {
 		try {
-			EntityManager em = emf.createEntityManager();
-			EntityTransaction et = em.getTransaction();
+			EntityTransaction et = entityManager.getTransaction();
 			et.begin();
 
 			Race race = new Race();
 
-			Query q = em.createNamedQuery("Event.findEventByID");
-			q.setParameter("id", event_id);
+			Query q = entityManager.createNamedQuery("Event.findEventByID");
+			q.setParameter("id", eventBean);
 						
-			race.setNumber(number);
 			race.setEvent((Event) q.getSingleResult());
 
-			em.merge(race);
+			entityManager.merge(race);
 			et.commit();
-			em.close();
 
 		} catch (NoResultException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public int getNumber() {
-		return number;
+	/**
+	 * @return the entityManager
+	 */
+	public EntityManager getEntityManager() {
+		return entityManager;
 	}
 
-	public void setNumber(int number) {
-		this.number = number;
+	/**
+	 * @param entityManager the entityManager to set
+	 */
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
 	}
-
-	public int getEvent_id() {
-		return event_id;
+	/**
+	 * @return the eventBean
+	 */
+	public EventBean getEventBean() {
+		return eventBean;
 	}
-
-	public void setEvent_id(int event_id) {
-		this.event_id = event_id;
+	/**
+	 * @param eventBean the eventBean to set
+	 */
+	public void setEventBean(EventBean eventBean) {
+		this.eventBean = eventBean;
 	}
-
+	/**
+	 * @return the races
+	 */
+	public List<Race> getRaces() {
+		System.out.println("RaceBean::getRaces(): "+races);
+		return races;
+	}
+	/**
+	 * @param races the races to set
+	 */
+	public void setRaces(List<Race> races) {
+		this.races = races;
+	}
 	/**
 	 * @return the selectedRace
 	 */

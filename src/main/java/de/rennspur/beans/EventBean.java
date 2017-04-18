@@ -18,53 +18,48 @@
  */
 package de.rennspur.beans;
 
-import java.io.IOException;
-import java.text.DateFormat;
+import java.io.Serializable;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.faces.context.FacesContext;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import org.primefaces.event.SelectEvent;
 
-import de.rennspur.model.Club;
 import de.rennspur.model.Event;
 import de.rennspur.model.Race;
 
 /**
- * The EventBean is an application scoped bean, which provides the actual race
- * for each event, which is currently running
+ * The EventBean is an session scoped bean, which provides a list of events and
+ * information about selected event, races, teams.
  * 
  * @author burghard.britzke mailto:bubi@charmides.in-berlin.de
  */
-@ApplicationScoped
+@SessionScoped
 @Named
-public class EventBean {
-	@Inject
-	EntityManagerFactory emf;
+public class EventBean implements Serializable {
+	private static final long serialVersionUID = 1704171304L;
 
-	List<Event> events;
-	Event selectedEvent;
-	List<Race> actualRaces;
+	@Inject
+	private transient EntityManager entityManager;
+
+	private List<Event> events;
+	private Event selectedEvent;
+	private List<Race> eventRaces;
 
 	/**
 	 * Constructs a new EventBean. Initializes the actual races list with an
 	 * empty list.
 	 */
 	public EventBean() {
-		actualRaces = new ArrayList<Race>();
+		eventRaces = new ArrayList<Race>();
 	}
 
 	/**
@@ -73,11 +68,17 @@ public class EventBean {
 	 */
 	@PostConstruct
 	public void init() {
-		EntityManager em = emf.createEntityManager();
-		Query q = em.createNamedQuery("Event.findAll");
+		Query q = entityManager.createNamedQuery("Event.findAll");
 		@SuppressWarnings("unchecked")
 		List<Event> events = q.getResultList();
 		this.events = events;
+	}
+
+	/**
+	 * @param entityManager the entityManager to set
+	 */
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
 	}
 
 	/**
@@ -99,7 +100,8 @@ public class EventBean {
 	 *            the selectedEvent to set
 	 */
 	public void setSelectedEvent(Event selectedEvent) {
-		System.out.println(selectedEvent);
+		System.out.println(
+				"EventBean::setSelectedEvent(Event=" + selectedEvent + ")");
 		this.selectedEvent = selectedEvent;
 	}
 
@@ -109,32 +111,12 @@ public class EventBean {
 	 * @param event
 	 *            The event, which is to be added.
 	 * @return The event, which has been added.
-	 * @throws ParseException 
+	 * @throws ParseException
 	 */
-	public Event addEvent(String eventid, String name, String startDate, String endDate, String clubsId, String handicap) throws ParseException {
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction t = em.getTransaction();
+	public Event addEvent(Event event) {
+		EntityTransaction t = entityManager.getTransaction();
 		t.begin();
-		
-		Event event = new Event();
-		event.setId(Integer.parseInt(eventid));
-		event.setName(name);
-		
-		DateFormat format = new SimpleDateFormat("MM d, yyyy", Locale.ENGLISH);
-		Date date = format.parse(startDate);
-		
-		event.setStartDate(date);
-		date = format.parse(endDate);
-		event.setEndDate(date);
-		
-		Query q = em.createNamedQuery("Club.findClubByID");
-		q.setParameter("id", Integer.parseInt(clubsId));
-		
-		event.setClub((Club) q.getSingleResult());
-		
-		event.setHandicap(Boolean.parseBoolean(handicap));
-		
-		event = em.merge(event);
+		event = entityManager.merge(event);
 		getEvents().add(event);
 		t.commit();
 		return event;
@@ -148,7 +130,11 @@ public class EventBean {
 	 * @return The event, which has been removed.
 	 */
 	public Event removeEvent(Event event) {
+		EntityTransaction t = entityManager.getTransaction();
+		t.begin();
 		getEvents().remove(event);
+		entityManager.remove(event);
+		t.commit();
 		return event;
 	}
 
@@ -165,23 +151,23 @@ public class EventBean {
 			if (e.getId() == event.getId()) {
 				for (Race r : e.getRaces()) {
 					if (r.getId() == race.getId()) {
-						for (Race actualRace : actualRaces) {
+						for (Race actualRace : eventRaces) {
 							if (actualRace.getEvent().getId() == event
 									.getId()) {
-								actualRaces.remove(actualRace);
+								eventRaces.remove(actualRace);
 							}
 						}
-						actualRaces.add(r);
+						eventRaces.add(r);
 						return;
 					}
 				}
 				e.addRace(race);
-				actualRaces.add(race);
+				eventRaces.add(race);
 				return;
 			}
 		}
 		events.add(event);
-		actualRaces.add(race);
+		eventRaces.add(race);
 	}
 
 	/**
@@ -192,7 +178,7 @@ public class EventBean {
 	 * @return The actual race for the given event.
 	 */
 	public Race getActualRace(Event event) {
-		for (Race race : actualRaces) {
+		for (Race race : eventRaces) {
 			if (race.getEvent().getId() == event.getId()) {
 				return race;
 			}
@@ -201,13 +187,13 @@ public class EventBean {
 	}
 
 	public void onRowSelect(SelectEvent event) {
-		try {
-			System.out.println(event);
-			FacesContext.getCurrentInstance().getExternalContext()
-					.redirect("event.xhtml?id=" + selectedEvent.getId());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		// try {
+		System.out.println("EventBean::onRowSelect(event=" + event + ")");
+		// FacesContext.getCurrentInstance().getExternalContext()
+		// .redirect("selectedEvent.xhtml?id=" + selectedEvent.getId());
+		// } catch (IOException e) {
+		// e.printStackTrace();
+		// }
 
 	}
 }

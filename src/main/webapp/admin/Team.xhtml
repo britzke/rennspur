@@ -1,59 +1,45 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<!--
+/*
+ *  This file is part of Renspur.
+ *  
+ *  Copyright (C) 2017  leo.winter, Num2,
+ *						burghard.britzke bubi@charmides.in-berlin.de
+ *  
+ *  Rennspur is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  Rennspur is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ -->
+<ui:composition template="index.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<h:head />
-
-<h:body>
-	<ui:composition>
-		</h:form>
-		<!-- 
-			
-			<p:dataTable id="teamsTable" var="team" value="#{teamBean.teams}"
-				selectionMode="single" selection="#{teamBean.selectedteam}"
-				rowKey="#{team.id}" onRowSelectUpdate="@none"
-				onRowSelectComplete="location='team.xhtml?faces-redirect=true'">
-				<p:ajax team="rowSelect" listener="#{teamBean.onRowSelect}" />
-
-				<p:column headerText="Date">
-					<h:outputText value="#{team.startDate}">
-						<f:convertDateTime pattern="EE dd.MM.yy" />
-					</h:outputText>
-					<h:outputText value="#{team.endDate}"
-						rendered="#{not empty team.endDate}">
-						<f:convertDateTime pattern=" – dd.MM.yy" />
-					</h:outputText>
-				</p:column>
-				<p:column headerText="team">
-					<h:outputText value="#{team.name}" />
-				</p:column>
-				<p:column headerText="Club">
-					<h:outputText
-						value="#{team.club.abreviation.concat(' – ').concat(team.club.name)}" />
-				</p:column>
-			</p:dataTable>
-		
-		-->
-			
-			
-			<h:panelGrid>
-				<h:outputLabel value="Name: " style="font-weight:bold" />
-				<h:inputText value="#{teamBean.name}" />
-				<h:outputLabel value="Country: " style="font-weight:bold" />
-				<h:inputText value="#{teamBean.country}" />
-				<h:outputLabel value="eMail: " style="font-weight:bold" />
-				<h:inputText value="#{teamBean.email}" />
-				<h:outputLabel value="Handicap: " style="font-weight:bold" />
-				<h:inputText value="#{teamBean.handicap}" />
-				<h:outputLabel value="Hash " style="font-weight:bold" />
-				<h:inputText value="#{teamBean.hash}" />
-				<h:commandButton value="Speichern"
-					action="#{teamBean.insertNewTeam}" />
-			</h:panelGrid>
-		</h:form>
-	</ui:composition>
-</h:body>
-
-</html>
+	<ui:define name="title">Team erfassen</ui:define>
+	<ui:define name="content">
+		<h:panelGrid>
+			<h:outputLabel value="Name: " style="font-weight:bold" />
+			<h:inputText value="#{teamBean.selectedTeam.name}" />
+			<h:outputLabel value="Country: " style="font-weight:bold" />
+			<h:inputText value="#{teamBean.selectedTeam.country}" />
+			<h:outputLabel value="eMail: " style="font-weight:bold" />
+			<h:inputText value="#{teamBean.selectedTeam.email}" />
+			<h:outputLabel value="Handicap: " style="font-weight:bold" />
+			<h:inputText value="#{teamBean.selectedTeam.handicapFactor}" />
+			<h:outputLabel value="Hash " style="font-weight:bold" />
+			<h:inputText value="#{teamBean.selectedTeam.hash}" />
+			<h:commandButton value="Speichern" action="#{teamBean.insertNewTeam}" />
+		</h:panelGrid>
+	</ui:define>
+</ui:composition>

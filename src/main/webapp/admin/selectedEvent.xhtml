@@ -19,25 +19,21 @@
  *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
  -->
-<ui:composition template="index.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	<ui:define name="title">Rennen</ui:define>
-	<ui:define name="content">
-		<ui:include src="selectedEvent.xhtml" />
-		<p:dataTable id="racesTable" var="race" value="#{raceBean.races}"
-			selectionMode="single" selection="#{raceBean.selectedRace}"
-			rowKey="#{race.id}" update="@none">
 
-			<p:column headerText="Number">
-				<h:outputText value="#{race.number}" />
-			</p:column>
-			<p:column headerText="planned/finished">
-				<h:outputText value="#{race.finished}" />
-			</p:column>
-		</p:dataTable>
-	</ui:define>
+	<p:panel styleClass="content"
+		rendered="#{eventBean.selectedEvent != null}">
+		<p:outputLabel for="event-name" value="aktuelle Veranstaltung:"></p:outputLabel>
+		<h:outputText id="event-name" value="#{eventBean.selectedEvent.name}" />
+		<h:outputText id="race-count"
+			value=", #{fn:length(eventBean.selectedEvent.races)} Rennen" />
+		<h:outputText id="team-count"
+			value=", #{fn:length(eventBean.selectedEvent.teams)} Teams" />
+	</p:panel>
+
 </ui:composition>

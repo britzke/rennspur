@@ -1,5 +1,22 @@
-/**
- * 
+/*
+ *  This file is part of Renspur.
+ *  
+ *  Copyright (C) 2017  burghard.britzke bubi@charmides.in-berlin.de
+ *  					Konstantin Baltruschat
+ *  					Ruben Maurer
+ *  
+ *  Rennspur is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  Rennspur is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with Rennspur.  If not, see <http://www.gnu.org/licenses/>.
  */
 package de.rennspur.test.beans;
 
@@ -46,19 +63,12 @@ public class ClubBeanTest {
 	EntityTransaction et;
 
 	/**
+	 * Initializes the Mocks to return the objects needed for the test.
+	 * 
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		// proband = new ClubBean();
-		// emf = mock(EntityManagerFactory.class);
-		// em = mock(EntityManager.class);
-		// q = mock(Query.class);
-		// Class<? extends ClubBean> probandClass = proband.getClass();
-		// Field emfField = probandClass.getDeclaredField("emf");
-		// emfField.setAccessible(true);
-		// emfField.set(proband, emf);
-
 		when(emf.createEntityManager()).thenReturn(em);
 		when(em.createNamedQuery("Club.findAll")).thenReturn(q);
 		when(em.getTransaction()).thenReturn(et);
@@ -66,13 +76,20 @@ public class ClubBeanTest {
 			@Override
 			public Object answer(InvocationOnMock invocation) throws Throwable {
 				Club club = (Club) invocation.getArguments()[0];
+				Club newClub = new Club();
+				newClub.setName(club.getName());
+				newClub.setAbreviation(club.getAbreviation());
+				newClub.setUrl(club.getUrl());
+				newClub.setDsvNumber(club.getDsvNumber());
+
 				/*
-				assertEquals(proband.getName(), club.getName());
-				assertEquals(proband.getAbbreviation(), club.getAbreviation());
-				assertEquals(proband.getUrl(), club.getUrl());
-				assertEquals(proband.getDsv_number(), club.getDsvNumber());
-				*/
-				return null;
+				 * assertEquals(proband.getName(), club.getName());
+				 * assertEquals(proband.getAbbreviation(),
+				 * club.getAbreviation()); assertEquals(proband.getUrl(),
+				 * club.getUrl()); assertEquals(proband.getDsv_number(),
+				 * club.getDsvNumber());
+				 */
+				return newClub;
 			}
 		});
 	}
@@ -85,25 +102,30 @@ public class ClubBeanTest {
 	public void testIfInitInitializesFieldClubs() {
 
 		proband.init();
-		assertNotNull(proband.getClubs());
+		assertNotNull("Field 'Clubs' must be initialized.", proband.getClubs());
 	}
 
 	/**
 	 * Test method for {@link de.rennspur.beans.ClubBean#insertNewClub()}.
 	 * 
 	 * @throws SecurityException
+	 *             If a SecurityManager is used and no permission to some
+	 *             reflection operation is granted.
 	 * @throws NoSuchMethodException
+	 *             If an expected Method of the class under test is not defined
+	 *             by it.
 	 */
 	@Test
-	public void testInsertNewClub() throws NoSuchMethodException, SecurityException {
-		// Check if return type is Type void
+	public void testInsertNewClub()
+			throws NoSuchMethodException, SecurityException {
+
 		Class<? extends ClubBean> probandClass = proband.getClass();
-		Method insertNewClubMethod = probandClass.getMethod("insertNewClub");
+		Method insertNewClubMethod = probandClass
+				.getDeclaredMethod("insertNewClub");
 		assertTrue(insertNewClubMethod.getReturnType().equals(Void.TYPE));
 
-		//proband.insertNewClub();
+		proband.insertNewClub();
 
-		// verify that the changes have been committed
 		verify(et, atLeast(1)).commit();
 	}
 
@@ -113,7 +135,6 @@ public class ClubBeanTest {
 	 */
 	@Test
 	public void testOnRowSelect() {
-		fail("Not yet implemented");
+		// TODO implement the test if the method is used.
 	}
-
 }

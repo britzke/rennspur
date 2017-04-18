@@ -16,7 +16,6 @@ import javax.persistence.Query;
 
 import org.primefaces.event.SelectEvent;
 
-import de.rennspur.backend.ApiGPS;
 import de.rennspur.model.Club;
 
 @ApplicationScoped
@@ -40,22 +39,13 @@ public class ClubBean {
 	/**
 	 * Inserts a club into the database.
 	 */
-	public void insertNewClub(String abbreviation, String dsv_number, String name, String url) {
+	public void insertNewClub() {
 		try {
 			EntityManager em = emf.createEntityManager();
 			EntityTransaction et = em.getTransaction();
 			et.begin();
-
-			Club club = new Club();
-			club.setAbreviation(abbreviation);
-			club.setDsvNumber(dsv_number);
-			club.setName(name);
-			club.setUrl(url);
-
-			//em.getEntityManagerFactory().getCache().evictAll();
-			//em.refresh(em.find(Club.class, 1));
 			
-			em.merge(club);
+			em.merge(selectedClub);
 			et.commit();
 			em.close();
 
@@ -66,7 +56,6 @@ public class ClubBean {
 	
 	public void onRowSelect(SelectEvent club) {
 		try {
-			System.out.println("CLUB : " + club);
 			FacesContext.getCurrentInstance().getExternalContext()
 					.redirect("club.xhtml?id=" + selectedClub.getId());
 		} catch (IOException e) {

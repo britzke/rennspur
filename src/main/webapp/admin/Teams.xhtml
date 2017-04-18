@@ -1,40 +1,58 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
+<!--
+/*
+ *  This file is part of Renspur.
+ *  
+ *  Copyright (C) 2017  leo.winter, Num2,
+ *						burghard.britzke bubi@charmides.in-berlin.de
+ *  
+ *  Rennspur is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  Rennspur is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ -->
+<ui:composition template="index.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<h:head />
+	<ui:define name="title">Teams</ui:define>
+	<ui:define name="content">
+		<ui:include src="selectedEvent.xhtml" />
 
-<h:body>
-	<ui:composition>
 		<p:dataTable id="eventsTable" var="team" value="#{teamBean.teams}"
-				selectionMode="single" selection="#{eventBean.selectedEvent}"
-				rowKey="#{team.id}" onRowSelectUpdate="@none"
-				onRowSelectComplete="location='event.xhtml?faces-redirect=true'">
-				<p:ajax event="rowSelect" listener="#{eventBean.onRowSelect}" />
+			selectionMode="single" selection="#{teamBean.selectedTeam}"
+			rowKey="#{team.id}" update="@none">
 
-				<p:column headerText="Country">
-					<h:outputText value="#{team.country}">
-					</h:outputText>
-				</p:column>
-				
-				<p:column headerText="Name">
-					<h:outputText value="#{team.name}">
-					</h:outputText>
-				</p:column>
-				<p:column headerText="EMail">
-					<h:outputText value="#{team.email}">
-					</h:outputText>
-				</p:column>
-				
-				<p:column headerText="Hash">
-					<h:outputText value="#{team.hash}">
-					</h:outputText>
-				</p:column>
-				
-			</p:dataTable>
-	</ui:composition>
-</h:body>
+			<p:column headerText="Country">
+				<h:outputText value="#{team.country}">
+				</h:outputText>
+			</p:column>
 
+			<p:column headerText="Name">
+				<h:outputText value="#{team.name}">
+				</h:outputText>
+			</p:column>
+			<p:column headerText="EMail">
+				<h:outputText value="#{team.email}">
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Hash">
+				<h:outputText value="#{team.hash}">
+				</h:outputText>
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+</ui:composition>
 </html>
