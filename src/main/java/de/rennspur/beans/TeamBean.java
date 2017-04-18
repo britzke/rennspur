@@ -9,48 +9,62 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.primefaces.event.SelectEvent;
 
-import de.rennspur.model.Club;
+import de.rennspur.model.Event;
 import de.rennspur.model.Team;
 
+/**
+ * A Bean to manage a list of Teams for a specific Event, including CRUD
+ * database operations.
+ * 
+ * @author Leon Schlender, burghard.britzke bubi@charmides.in-berlin.de
+ */
 @RequestScoped
 @Named
 public class TeamBean {
-	
-	List<Team> team;
+
 	private List<Team> teams;
 	private Team selectedTeam;
-	
-	@Inject 
-	private EventBean eventBean;
-	
+
 	@Inject
-	EntityManagerFactory emf;
-	
+	private EventBean eventBean;
+
+	@Inject
+	EntityManager entityManager;
+
+	/**
+	 * Initalizes the list of {@link Team} objects for the selected
+	 * {@link Event}. If there is no selected event, the bean can not be
+	 * initalized. In this case an {@link IllegalArgumentException} is thrown.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             If no selected {@link Event} exists.
+	 */
 	@SuppressWarnings("unchecked")
 	@PostConstruct
 	public void init() {
-		EntityManager em = emf.createEntityManager();
-		Query q = em.createNamedQuery("Team.findTeamsByEventId");
-		q.setParameter("id",eventBean.getSelectedEvent().getId());
+		if (eventBean.getSelectedEvent() == null) {
+			throw new IllegalArgumentException(
+					"TeamBean cannot be instanciated without a selected event");
+		}
+		Query q = entityManager.createNamedQuery("Team.findTeamsByEventId");
+		q.setParameter("id", eventBean.getSelectedEvent().getId());
 		this.teams = q.getResultList();
 	}
 
 	public void onRowSelect(SelectEvent team) {
 		try {
-			System.out.println("TeamBean::onRowSelect(team="+team+")");
+			System.out.println("TeamBean::onRowSelect(team=" + team + ")");
 			FacesContext.getCurrentInstance().getExternalContext()
 					.redirect("Team.xhtml?id=" + selectedTeam.getId());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/**
@@ -58,36 +72,31 @@ public class TeamBean {
 	 */
 	public void insertNewTeam() {
 		try {
-			EntityManager em = emf.createEntityManager();
-			EntityTransaction et = em.getTransaction();
+			EntityTransaction et = entityManager.getTransaction();
 			et.begin();
-			
-			Team team = new Team();
-			
-			Query q = em.createNamedQuery("Team.findTeamByEventID");
-			q.setParameter("id", selectedTeam.getId());
-			
-			//team.setMembers(); //todo
-			team.setClub((Club) q.getSingleResult());
-			
-			em.merge(team);
+			selectedTeam = entityManager.merge(selectedTeam);
 			et.commit();
-			em.close();
-
 		} catch (NoResultException e) {
 			e.printStackTrace();
 		}
-
 	}
 
+
+	/**
+	 * @return the teams
+	 */
 	public List<Team> getTeams() {
 		return teams;
 	}
 
+	/**
+	 * @param teams
+	 *            the teams to set
+	 */
 	public void setTeams(List<Team> teams) {
 		this.teams = teams;
 	}
-	
+
 	/**
 	 * @return the selectedTeam
 	 */
@@ -96,12 +105,12 @@ public class TeamBean {
 	}
 
 	/**
-	 * @param selectedTeam the selectedTeam to set
+	 * @param selectedTeam
+	 *            the selectedTeam to set
 	 */
 	public void setSelectedTeam(Team selectedTeam) {
 		this.selectedTeam = selectedTeam;
 	}
-
 
 	/**
 	 * @return the selectedEvent
@@ -111,17 +120,25 @@ public class TeamBean {
 	}
 
 	/**
-	 * @param selectedEvent the selectedEvent to set
+	 * @param selectedEvent
+	 *            the selectedEvent to set
 	 */
 	public void setEventBean(EventBean eventBean) {
 		this.eventBean = eventBean;
 	}
 
-	public EntityManagerFactory getEmf() {
-		return emf;
+	/**
+	 * @return the entityManager
+	 */
+	public EntityManager getEntityManager() {
+		return entityManager;
 	}
 
-	public void setEmf(EntityManagerFactory emf) {
-		this.emf = emf;
+	/**
+	 * @param entityManager
+	 *            the entityManager to set
+	 */
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
 	}
 }
