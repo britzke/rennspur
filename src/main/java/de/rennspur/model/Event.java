@@ -252,7 +252,8 @@ public class Event implements Serializable {
 	public String toString() {
 		return "<Event (id=" + getId() + ", name=" + name + ", handicap="
 				+ handicap + ", club=" + club.getAbreviation() + ", races="
-				+ (races != null ? races.size() : 0) + "waypoints="
-				+ (waypoints != null ? waypoints.size() : 0) + ")>";
+				+ (races != null ? races.size() : 0) + ", waypoints="
+				+ (waypoints != null ? waypoints.size() : 0) + ", teams="
+				+ (teams != null ? teams.size(): 0) + ")>";
 	}
 }
