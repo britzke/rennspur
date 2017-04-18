@@ -46,11 +46,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "RACES")
 @NamedQueries({
-		@NamedQuery(name = "Race.findAll", 		   query = "SELECT r FROM Race r"),
-		@NamedQuery(name = "Race.findRaceByID",    query = "SELECT r FROM Race r WHERE r.id=:id"),
-		@NamedQuery(name = "Race.findRaceByEvent", query = "SELECT r FROM Race r WHERE r.event=:id")
-		
-})
+		@NamedQuery(name = "Race.findAll", query = "SELECT r FROM Race r"),
+		@NamedQuery(name = "Race.findRacesByID", query = "SELECT r FROM Race r WHERE r.id=:id"),
+		@NamedQuery(name = "Race.findRacesByEventId", query = "SELECT r FROM Race r WHERE r.event=:event")})
 public class Race implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -61,6 +59,10 @@ public class Race implements Serializable {
 	@NotNull
 	@Column(nullable = false)
 	private int number;
+	
+	@NotNull
+	@Column(nullable = false)
+	private boolean finished;
 
 	// bi-directional many-to-one association to Event
 	@ManyToOne
@@ -94,6 +96,20 @@ public class Race implements Serializable {
 
 	public void setNumber(int number) {
 		this.number = number;
+	}
+
+	/**
+	 * @return the finished
+	 */
+	public boolean isFinished() {
+		return finished;
+	}
+
+	/**
+	 * @param finished the finished to set
+	 */
+	public void setFinished(boolean finished) {
+		this.finished = finished;
 	}
 
 	public Event getEvent() {
