@@ -19,45 +19,39 @@
  *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
  -->
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:p="http://primefaces.org/ui">
-<h:head />
-<h:body>
-	<ui:composition>
-		<div class="sidebar" data-color="blue"
-			data-image="#{request.contextPath}/admin/assets/img/sidebar-bg.jpg">
-			<div class="sidebar-wrapper tabbable">
-				<div class="logo">
-					<a href="#top" class="simple-text">Rennspur</a>
-				</div>
-				<div class="ui-fluid">
-					<p:menu styleClass="nav nav-tabs-entry" pt:data-tabs="tabs"
-						id="menu">
-						<p:menuitem value="Übersicht" action="index.xhtml"
-							icon="fa fa-home" pt:data-toggle="tab">
-						</p:menuitem>
-						<p:menuitem pt:data-toggle="tab" value="Veranstaltungen"
-							action="Events.xhtml" icon="fa fa-calendar">
-						</p:menuitem>
-						<p:menuitem pt:data-toggle="tab" value="Rennen"
-							action="Races.xhtml" icon="fa fa-hourglass-half"
-							disabled="#{eventBean.selectedEvent == null}">
-						</p:menuitem>
-						<p:menuitem pt:data-toggle="tab" value="Teams"
-							action="Teams.xhtml" icon="fa fa-users"
-							disabled="#{eventBean.selectedEvent == null}">
-						</p:menuitem>
-						<p:menuitem pt:data-toggle="tab" value="Klubs"
-							action="Clubs.xhtml" icon="fa fa-user">
-						</p:menuitem>
-					</p:menu>
-				</div>
+	<div class="sidebar" data-color="blue"
+		data-image="#{request.contextPath}/admin/assets/img/sidebar-bg.jpg">
+		<div class="sidebar-wrapper tabbable">
+			<div class="logo">
+				<a href="#top" class="simple-text">Rennspur</a>
+			</div>
+			<div class="ui-fluid">
+				<p:menu styleClass="nav nav-tabs-entry" pt:data-tabs="tabs"
+					id="menu">
+					<p:menuitem value="Übersicht" action="index.xhtml"
+						icon="fa fa-home" pt:data-toggle="tab">
+					</p:menuitem>
+					<p:menuitem pt:data-toggle="tab" value="Veranstaltungen"
+						action="Events.xhtml" icon="fa fa-calendar">
+					</p:menuitem>
+					<p:menuitem pt:data-toggle="tab" value="Rennen"
+						action="Races.xhtml" icon="fa fa-hourglass-half"
+						disabled="#{eventBean.selectedEvent == null}">
+					</p:menuitem>
+					<p:menuitem pt:data-toggle="tab" value="Teams" action="Teams.xhtml"
+						icon="fa fa-users" disabled="#{eventBean.selectedEvent == null}">
+					</p:menuitem>
+					<p:menuitem pt:data-toggle="tab" value="Klubs" action="Clubs.xhtml"
+						icon="fa fa-user">
+					</p:menuitem>
+				</p:menu>
 			</div>
 		</div>
-	</ui:composition>
-</h:body>
-</html>
+	</div>
+</ui:composition>
