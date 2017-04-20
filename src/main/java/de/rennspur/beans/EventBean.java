@@ -18,13 +18,12 @@
  */
 package de.rennspur.beans;
 
-import java.io.Serializable;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -33,25 +32,28 @@ import javax.persistence.Query;
 
 import org.primefaces.event.SelectEvent;
 
+import de.rennspur.annotations.SelectedEvent;
 import de.rennspur.model.Event;
 import de.rennspur.model.Race;
 
 /**
- * The EventBean is an session scoped bean, which provides a list of events and
+ * The EventBean is an  bean, which provides a list of events and
  * information about selected event, races, teams.
  * 
  * @author burghard.britzke mailto:bubi@charmides.in-berlin.de
  */
-@SessionScoped
+@RequestScoped
 @Named
-public class EventBean implements Serializable {
-	private static final long serialVersionUID = 1704171304L;
+public class EventBean{
 
 	@Inject
 	private transient EntityManager entityManager;
 
 	private List<Event> events;
+	
+	@Inject @SelectedEvent
 	private Event selectedEvent;
+	
 	private List<Race> eventRaces;
 
 	/**
@@ -89,15 +91,15 @@ public class EventBean implements Serializable {
 	}
 
 	/**
-	 * @return the selectedEvent
+	 * @return the SelectedEventBean
 	 */
 	public Event getSelectedEvent() {
 		return selectedEvent;
 	}
 
 	/**
-	 * @param selectedEvent
-	 *            the selectedEvent to set
+	 * @param SelectedEventBean
+	 *            the SelectedEventBean to set
 	 */
 	public void setSelectedEvent(Event selectedEvent) {
 		System.out.println(
@@ -190,7 +192,7 @@ public class EventBean implements Serializable {
 		// try {
 		System.out.println("EventBean::onRowSelect(event=" + event + ")");
 		// FacesContext.getCurrentInstance().getExternalContext()
-		// .redirect("selectedEvent.xhtml?id=" + selectedEvent.getId());
+		// .redirect("SelectedEventBean.xhtml?id=" + SelectedEventBean.getId());
 		// } catch (IOException e) {
 		// e.printStackTrace();
 		// }

@@ -35,23 +35,25 @@
 				<p:menu styleClass="nav nav-tabs-entry" pt:data-tabs="tabs"
 					id="menu">
 					<p:menuitem value="Übersicht" action="index.xhtml"
-						icon="fa fa-home" pt:data-toggle="tab">
-					</p:menuitem>
+						icon="fa fa-home" pt:data-toggle="tab"/>
 					<p:menuitem pt:data-toggle="tab" value="Veranstaltungen"
-						action="Events.xhtml" icon="fa fa-calendar">
-					</p:menuitem>
+						action="Events.xhtml" icon="fa fa-calendar"/>
 					<p:menuitem pt:data-toggle="tab" value="Rennen"
 						action="Races.xhtml" icon="fa fa-hourglass-half"
-						disabled="#{eventBean.selectedEvent == null}">
-					</p:menuitem>
+						disabled="#{selectedEventBean.event == null}" />
 					<p:menuitem pt:data-toggle="tab" value="Teams" action="Teams.xhtml"
-						icon="fa fa-users" disabled="#{eventBean.selectedEvent == null}">
-					</p:menuitem>
+						icon="fa fa-users" disabled="#{selectedEventBean.event == null}"/>
 					<p:menuitem pt:data-toggle="tab" value="Klubs" action="Clubs.xhtml"
-						icon="fa fa-user">
-					</p:menuitem>
+						icon="fa fa-user"/>
+					<p:menuitem class="actie-pro" value="Live zum Rennen" icon="fa fa-external-link"/>
 				</p:menu>
 			</div>
+			<ul class="nav nav-tabs-entry" data-tabs="tabs" id="menu">
+				<li class="active-pro"><a href="../playground/frontend/"> <i
+						class="fa fa-external-link"></i>
+						<p>Live zum Rennen</p>
+				</a></li>
+			</ul>
 		</div>
 	</div>
 </ui:composition>

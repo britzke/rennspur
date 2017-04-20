@@ -28,7 +28,7 @@
 		<ui:define name="title">Veranstaltungen</ui:define>
 		<ui:define name="content">
 			<p:dataTable id="eventsTable" var="event" value="#{eventBean.events}"
-				selectionMode="single" selection="#{eventBean.selectedEvent}"
+				selectionMode="single" selection="#{selectedEventBean.event}"
 				rowKey="#{event.id}">
 				<p:ajax event="rowSelect" listener="#{eventBean.onRowSelect}"
 					update="@parent form:menu" />

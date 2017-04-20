@@ -34,23 +34,17 @@
 			selectionMode="single" selection="#{teamBean.selectedTeam}"
 			rowKey="#{team.id}" update="@none">
 
-			<p:column headerText="Country">
-				<h:outputText value="#{team.country}">
-				</h:outputText>
+			<p:column headerText="Land">
+				<h:outputText value="#{team.country}"/>
 			</p:column>
-
+			<p:column headerText="Klub">
+				<h:outputText value="#{team.club.abreviation}" />
+			</p:column>
 			<p:column headerText="Name">
-				<h:outputText value="#{team.name}">
-				</h:outputText>
+				<h:outputText value="#{team.name}"/>
 			</p:column>
-			<p:column headerText="EMail">
-				<h:outputText value="#{team.email}">
-				</h:outputText>
-			</p:column>
-
-			<p:column headerText="Hash">
-				<h:outputText value="#{team.hash}">
-				</h:outputText>
+			<p:column headerText="E-Mail">
+				<h:outputText value="#{team.email}"/>
 			</p:column>
 		</p:dataTable>
 	</ui:define>

@@ -15,6 +15,7 @@ import javax.persistence.Query;
 
 import org.primefaces.event.SelectEvent;
 
+import de.rennspur.annotations.SelectedEvent;
 import de.rennspur.model.Event;
 import de.rennspur.model.Team;
 
@@ -31,8 +32,8 @@ public class TeamBean {
 	private List<Team> teams;
 	private Team selectedTeam;
 
-	@Inject
-	private EventBean eventBean;
+	@Inject @SelectedEvent
+	private Event selectedEvent;
 
 	@Inject
 	EntityManager entityManager;
@@ -48,18 +49,21 @@ public class TeamBean {
 	@SuppressWarnings("unchecked")
 	@PostConstruct
 	public void init() {
-		if (eventBean.getSelectedEvent() == null) {
+		if (selectedEvent == null) {
 			throw new IllegalArgumentException(
 					"TeamBean cannot be instanciated without a selected event");
 		}
 		Query q = entityManager.createNamedQuery("Team.findTeamsByEventId");
-		q.setParameter("id", eventBean.getSelectedEvent().getId());
+		q.setParameter("id", selectedEvent.getId());
 		this.teams = q.getResultList();
 	}
 
-	public void onRowSelect(SelectEvent team) {
+	/**
+	 * @param event
+	 */
+	public void onRowSelect(SelectEvent event) {
 		try {
-			System.out.println("TeamBean::onRowSelect(team=" + team + ")");
+			System.out.println("TeamBean::onRowSelect(event=" + event + ")");
 			FacesContext.getCurrentInstance().getExternalContext()
 					.redirect("Team.xhtml?id=" + selectedTeam.getId());
 		} catch (IOException e) {
@@ -115,16 +119,15 @@ public class TeamBean {
 	/**
 	 * @return the selectedEvent
 	 */
-	public EventBean getEventBean() {
-		return eventBean;
+	public Event getSelectedEvent() {
+		return selectedEvent;
 	}
 
 	/**
-	 * @param selectedEvent
-	 *            the selectedEvent to set
+	 * @param selectedEvent the selectedEvent to set
 	 */
-	public void setEventBean(EventBean eventBean) {
-		this.eventBean = eventBean;
+	public void setSelectedEvent(Event selectedEvent) {
+		this.selectedEvent = selectedEvent;
 	}
 
 	/**
