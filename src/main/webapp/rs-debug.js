@@ -585,7 +585,7 @@ rs.Map = class {
         this.imageLayer_ = new ol.layer.Vector({
         	source: this.imageSource_});
         
-        var iconStyle = new ol.style.Style({
+        this.waypointStyle_ = new ol.style.Style({
         	image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
                 src: "/rennspur/playground/frontend/waypoint.png",
                 size: [250,250],
@@ -596,16 +596,6 @@ rs.Map = class {
                 anchorYUnits: "pixels"
               }))
         });
-        
-        for (var waypoint of race.waypoints){
-        	var pos = ol.proj.transform(waypoint.waypointPositions[0].coordinate, this.source_, this.destination_);
-        	
-        	var iconFeature = new ol.Feature({
-            	geometry: new ol.geom.Point(pos)
-            });
-            iconFeature.setStyle(iconStyle);
-            this.imageSource_.addFeature(iconFeature);
-        };
         
         rs.map = this;
         var center = ol.proj.transform(this.center_, this.source_, this.destination_);
@@ -641,6 +631,10 @@ rs.Map = class {
             target : div
         });
         
+        for (let waypoint of race.waypoints){
+            this.addWaypoint(waypoint);
+        };
+
         // add all teams that are currently in race
         for (let team of race.event.teams) {
             this.addTeam(team);
@@ -696,7 +690,7 @@ rs.Map = class {
     }
     
     /**
-     * Add a trace to the map.
+     * Add a trace for a team to the map.
      * 
      * @param {[[x,y],...]}
      *            Array of coordinate Arrays.
@@ -719,6 +713,27 @@ rs.Map = class {
           }));
           traceFeature.setId(`${team.id}.trace`);
           this.traceSource_.addFeature(traceFeature);
+    }
+    /**
+     * add waypoints and for every waypoint all of it's waypointPositions to the map.
+     * 
+     * @param {[[x,y],...]}
+     *            Array of coordinate Arrays.
+     */
+    addWaypoint(waypoint) {
+        if (waypoint.waypointPositions != null) {
+            let waypointCoordinates = rs.map.coordinateTrace_(waypoint.waypointPositions);
+        
+            for (let waypointCoordinate of waypointCoordinates) {
+                let waypointFeature = new ol.Feature({
+                    geometry: new ol.geom.Point(waypointCoordinates[0])
+                });
+                waypointFeature.setStyle(this.waypointStyle_);
+                this.imageSource_.addFeature(waypointFeature);
+            }
+        } else {
+            console.log ("Waypoint "+waypoint.name+" without a position.")
+        }
     }
     
     /**
