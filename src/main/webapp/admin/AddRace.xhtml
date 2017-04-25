@@ -10,11 +10,13 @@
 	<ui:composition>
 		<h:form>
 			<h:panelGrid>
-				<h:outputLabel value="Race Number: " style="font-weight:bold" />
+				<h:outputLabel value="#{trans.rennnummer}" style="font-weight:bold" />
+				
 				<h:inputText value="#{raceBean.number}" />
-				<h:outputLabel value="Event ID: " style="font-weight:bold" />
+				<h:outputLabel value="#{trans.eventid}" style="font-weight:bold" />
+				
 				<h:inputText value="#{raceBean.event_id}" />
-				<h:commandButton value="Speichern" action="#{raceBean.addRace}" />
+				<h:commandButton value="#{trans.speichern}" action="#{raceBean.addRace}" />
 			</h:panelGrid>
 		</h:form>
 	</ui:composition>

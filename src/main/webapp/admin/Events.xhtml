@@ -19,13 +19,15 @@
  *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
  -->
+ 	
 	<ui:composition template="index.xhtml"
 		xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 		xmlns:h="http://xmlns.jcp.org/jsf/html"
 		xmlns:f="http://xmlns.jcp.org/jsf/core"
 		xmlns:p="http://primefaces.org/ui">
-		<ui:define name="title">Veranstaltungen</ui:define>
+	
+		<ui:define name="title" value="#{trans.veranstaltung}"></ui:define>
 		<ui:define name="content">
 			<p:dataTable id="eventsTable" var="event" value="#{eventBean.events}"
 				selectionMode="single" selection="#{selectedEventBean.event}"
@@ -33,7 +35,7 @@
 				<p:ajax event="rowSelect" 
 					update="form:selectedEvent form:menu" />
 
-				<p:column headerText="Date">
+				<p:column value="#{trans.datum}">
 					<h:outputText value="#{event.startDate}">
 						<f:convertDateTime pattern="EE dd.MM.yy" />
 					</h:outputText>
@@ -52,4 +54,6 @@
 			</p:dataTable>
 			<ui:include src="selectedEvent.xhtml" />
 		</ui:define>
+		
 	</ui:composition>
+	

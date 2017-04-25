@@ -25,6 +25,8 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:p="http://primefaces.org/ui">
+	<f:view locale="#{facesContext.externalContext.requestLocale}">
+	
 	<div class="sidebar" data-color="blue"
 		data-image="#{request.contextPath}/admin/assets/img/sidebar-bg.jpg">
 		<div class="sidebar-wrapper tabbable">
@@ -34,18 +36,18 @@
 			<div class="ui-fluid">
 				<p:menu styleClass="nav nav-tabs-entry" pt:data-tabs="tabs"
 					id="menu">
-					<p:menuitem value="Übersicht" action="index.xhtml?faces-redirect=true"
+					<p:menuitem value="#{trans.ubersicht}" action="index.xhtml?faces-redirect=true"
 						icon="fa fa-home" pt:data-toggle="tab"/>
-					<p:menuitem pt:data-toggle="tab" value="Veranstaltungen"
+					<p:menuitem pt:data-toggle="tab" value="#{trans.veran}"
 						action="Events.xhtml?faces-redirect=true" icon="fa fa-calendar"/>
-					<p:menuitem pt:data-toggle="tab" value="Rennen"
+					<p:menuitem pt:data-toggle="tab" value="#{trans.rennen}"
 						action="Races.xhtml?faces-redirect=true" icon="fa fa-hourglass-half"
 						disabled="#{selectedEventBean.event == null}" />
-					<p:menuitem pt:data-toggle="tab" value="Teams" action="Teams.xhtml?faces-redirect=true"
+					<p:menuitem pt:data-toggle="tab" value="#{trans.teams}" action="Teams.xhtml?faces-redirect=true"
 						icon="fa fa-users" disabled="#{selectedEventBean.event == null}"/>
-					<p:menuitem pt:data-toggle="tab" value="Klubs" action="Clubs.xhtml?faces-redirect=true"
+					<p:menuitem pt:data-toggle="tab" value="#{trans.klubs}" action="Clubs.xhtml?faces-redirect=true"
 						icon="fa fa-user"/>
-					<p:menuitem class="actie-pro" value="Live zum Rennen" icon="fa fa-external-link"/>
+					<p:menuitem class="actie-pro" value="#{trans.lzr}" icon="fa fa-external-link"/>
 				</p:menu>
 			</div>
 			<ul class="nav nav-tabs-entry" data-tabs="tabs" id="menu">
@@ -56,4 +58,5 @@
 			</ul>
 		</div>
 	</div>
+	</f:view>
 </ui:composition>
