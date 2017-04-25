@@ -19,6 +19,8 @@
 package de.rennspur.model;
 
 import java.io.Serializable;
+
+import javax.inject.Named;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -54,6 +56,7 @@ import java.util.List;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 
+@Named
 @Entity
 @Table(name = "CLUBS")
 @NamedQueries({

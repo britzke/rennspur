@@ -13,25 +13,25 @@
 <h:body>
 	<h:form id="form">
 		<h:panelGrid>
-			<h:outputLabel value="#{trans.teamname}" style="font-weight:bold" />
+			<h:outputLabel value="#{translation.name}" style="font-weight:bold" />
 			<h:inputText value="#{teamBean.name}" />
 			
-			<h:outputLabel value="#{trans.land}" style="font-weight:bold" />
+			<h:outputLabel value="#{translation.country}" style="font-weight:bold" />
 			<h:inputText value="#{teamBean.country}" />
 			
-			<h:outputLabel value="#{trans.email}" style="font-weight:bold" />
+			<h:outputLabel value="#{translation.email}" style="font-weight:bold" />
 			<h:inputText value="#{teamBean.email}" />
 			
-			<h:outputLabel value="#{trans.handicap}" style="font-weight:bold" />
+			<h:outputLabel value="#{translation.handicap}" style="font-weight:bold" />
 			<h:inputText value="#{teamBean.handicap}" />
 			
-			<h:outputLabel value="#{trans.hash}" style="font-weight:bold" />
+			<h:outputLabel value="#{translation.hash}" style="font-weight:bold" />
 			<h:inputText value="#{teamBean.hash}" />
 			
-			<h:outputLabel value="#{trans.clubid}" style="font-weight:bold" />
+			<h:outputLabel value="#{translation.club.id}" style="font-weight:bold" />
 			<h:inputText value="#{teamBean.clubid}" />
 			
-			<h:commandButton value="#{trans.speichern}" action="#{teamBean.insertNewTeam}" />
+			<h:commandButton value="#{translation.save}" action="#{teamBean.insertNewTeam}" />
 		</h:panelGrid>
 	</h:form>
 </h:body>

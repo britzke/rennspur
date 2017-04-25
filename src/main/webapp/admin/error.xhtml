@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+/*
+ *  This file is part of Renspur.
+ *  
+ *  Copyright (C) 2017  burghard.britzke bubi@charmides.in-berlin.de
+ *  
+ *  Rennspur is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  Rennspur is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<p:ajaxExceptionHandler
+		type="javax.faces.application.ViewExpiredException"
+		update="exceptionDialog" onexception="PF('exceptionDialog').show();" />
+	<p:dialog id="exceptionDialog"
+		header="Exception: #{pfExceptionHandler.type} occured!"
+		widgetVar="exceptionDialog" height="500px">
+
+		<p:scrollPanel>
+			<p:panelGrid columns="1">
+				<h:outputLabel for="message" value="Message: " />
+				<h:outputText id="message" value="#{pfExceptionHandler.message}" />
+				<h:outputText value="#{pfExceptionHandler.formattedStackTrace}"
+					escape="false" />
+				<p:commandButton value="Home" action="index.xhtml" />
+			</p:panelGrid>
+		</p:scrollPanel>
+	</p:dialog>
+
+</ui:composition>

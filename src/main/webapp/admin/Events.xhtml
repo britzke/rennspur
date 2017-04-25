@@ -27,7 +27,7 @@
 		xmlns:f="http://xmlns.jcp.org/jsf/core"
 		xmlns:p="http://primefaces.org/ui">
 	
-		<ui:define name="title" value="#{trans.veranstaltung}"></ui:define>
+		<ui:define name="title" value="#{translation.event}"></ui:define>
 		<ui:define name="content">
 			<p:dataTable id="eventsTable" var="event" value="#{eventBean.events}"
 				selectionMode="single" selection="#{selectedEventBean.event}"
@@ -35,7 +35,7 @@
 				<p:ajax event="rowSelect" 
 					update="form:selectedEvent form:menu" />
 
-				<p:column value="#{trans.datum}">
+				<p:column value="#{translation.date}">
 					<h:outputText value="#{event.startDate}">
 						<f:convertDateTime pattern="EE dd.MM.yy" />
 					</h:outputText>

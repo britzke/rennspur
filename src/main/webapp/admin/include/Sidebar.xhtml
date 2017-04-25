@@ -2,19 +2,19 @@
 <!--
 /*
  *  This file is part of Renspur.
- *  
+ *
  *  Copyright (C) 2017  leo.winter
- *  
+ *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  Rennspur is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -26,34 +26,34 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:p="http://primefaces.org/ui">
 	<f:view locale="#{facesContext.externalContext.requestLocale}">
-	
+
 	<div class="sidebar" data-color="blue"
 		data-image="#{request.contextPath}/admin/assets/img/sidebar-bg.jpg">
 		<div class="sidebar-wrapper tabbable">
 			<div class="logo">
-				<a href="#top" class="simple-text">Rennspur</a>
+				<a href="#top" class="simple-text">#{translation.brand}</a>
 			</div>
 			<div class="ui-fluid">
 				<p:menu styleClass="nav nav-tabs-entry" pt:data-tabs="tabs"
 					id="menu">
-					<p:menuitem value="#{trans.ubersicht}" action="index.xhtml?faces-redirect=true"
+					<p:menuitem value="#{translation.outline}" action="index.xhtml?faces-redirect=true"
 						icon="fa fa-home" pt:data-toggle="tab"/>
-					<p:menuitem pt:data-toggle="tab" value="#{trans.veran}"
+					<p:menuitem pt:data-toggle="tab" value="#{translation.events}"
 						action="Events.xhtml?faces-redirect=true" icon="fa fa-calendar"/>
-					<p:menuitem pt:data-toggle="tab" value="#{trans.rennen}"
+					<p:menuitem pt:data-toggle="tab" value="#{translation.races}"
 						action="Races.xhtml?faces-redirect=true" icon="fa fa-hourglass-half"
 						disabled="#{selectedEventBean.event == null}" />
-					<p:menuitem pt:data-toggle="tab" value="#{trans.teams}" action="Teams.xhtml?faces-redirect=true"
+					<p:menuitem pt:data-toggle="tab" value="#{translation.teams}" action="Teams.xhtml?faces-redirect=true"
 						icon="fa fa-users" disabled="#{selectedEventBean.event == null}"/>
-					<p:menuitem pt:data-toggle="tab" value="#{trans.klubs}" action="Clubs.xhtml?faces-redirect=true"
+					<p:menuitem pt:data-toggle="tab" value="#{translation.clubs}" action="Clubs.xhtml?faces-redirect=true"
 						icon="fa fa-user"/>
-					<p:menuitem class="actie-pro" value="#{trans.lzr}" icon="fa fa-external-link"/>
+					<p:menuitem class="actie-pro" value="#{translation.linkToRace}" icon="fa fa-external-link"/>
 				</p:menu>
 			</div>
 			<ul class="nav nav-tabs-entry" data-tabs="tabs" id="menu">
 				<li class="active-pro"><a href="../playground/frontend/"> <i
 						class="fa fa-external-link"></i>
-						<p>Live zum Rennen</p>
+						<p>#{translation.linkToRace}</p>
 				</a></li>
 			</ul>
 		</div>
