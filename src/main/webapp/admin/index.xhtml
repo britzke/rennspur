@@ -33,6 +33,7 @@ Which source is under MIT License - https://github.com/creativetimofficial/light
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions">
 
+<f:view locale="#{facesContext.externalContext.requestLocale}">
 <h:head>
 	<meta charset="utf-8" />
 	<!-- <h:outputStylesheet rel="icon" type="image/png" href="assets/img/favicon.ico"> -->
@@ -42,70 +43,73 @@ Which source is under MIT License - https://github.com/creativetimofficial/light
 		content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
 		name='viewport' />
 	<meta name="viewport" content="width=device-width" />
+	<ui:insert name="metadata" />
 </h:head>
 
-<h:body>
-	<ui:include src="include/CSSandJS.xhtml" />
+	<h:body>
+		<ui:include src="include/CSSandJS.xhtml" />
 
-	<div class="tabbable wrapper">
-		<h:form id="form">
-			<ui:include src="include/Sidebar.xhtml" />
+		<div class="tabbable wrapper">
+			<h:form id="form">
+				<ui:include src="include/Sidebar.xhtml" />
 
-			<div class="content">
-				<div class="main-panel">
-					<nav class="navbar navbar-default navbar-fixed">
-						<div class="container-fluid">
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle"
-									data-toggle="collapse" data-target="#navigation-example-2">
-									<span class="sr-only">Toggle navigation</span> <span
-										class="icon-bar"></span> <span class="icon-bar"></span> <span
-										class="icon-bar"></span>
-								</button>
-								<p class="navbar-brand">
-									<ui:insert name="title">Übersicht</ui:insert>
-								</p>
+				<div class="content">
+					<div class="main-panel">
+						<nav class="navbar navbar-default navbar-fixed">
+							<div class="container-fluid">
+								<div class="navbar-header">
+									<button type="button" class="navbar-toggle"
+										data-toggle="collapse" data-target="#navigation-example-2">
+										<span class="sr-only">Toggle navigation</span> <span
+											class="icon-bar"></span> <span class="icon-bar"></span> <span
+											class="icon-bar"></span>
+									</button>
+									<p class="navbar-brand">
+										<ui:insert name="title">Übersicht</ui:insert>
+									</p>
+								</div>
+								<div class="collapse navbar-collapse"></div>
 							</div>
-							<div class="collapse navbar-collapse"></div>
+						</nav>
+						<p:messages autoUpdate="true" />
+						<ui:include src="error.xhtml" />
+
+						<div class="content">
+
+							<ui:insert name="content">
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="card">
+												<div class="header">
+													<h4 class="title">Text</h4>
+												</div>
+												<div class="content"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="card">
+												<div class="header">
+													<h4 class="title">Text 2</h4>
+												</div>
+												<div class="content"></div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</ui:insert>
 						</div>
-					</nav>
-					<p:messages />
-
-					<div class="content">
-
-						<ui:insert name="content">
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-md-12">
-										<div class="card">
-											<div class="header">
-												<h4 class="title">Text</h4>
-											</div>
-											<div class="content"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-md-12">
-										<div class="card">
-											<div class="header">
-												<h4 class="title">Text 2</h4>
-											</div>
-											<div class="content"></div>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</ui:insert>
+						<ui:include src="include/Footer.xhtml" />
 					</div>
-					<ui:include src="include/Footer.xhtml" />
 				</div>
-			</div>
-		</h:form>
-	</div>
-</h:body>
+			</h:form>
+		</div>
+	</h:body>
+</f:view>
 </html>

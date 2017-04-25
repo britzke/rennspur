@@ -68,7 +68,7 @@ public class TeamBeanTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		when(em.createNamedQuery("Team.findTeamsByEventId")).thenReturn(q);
+		when(em.createNamedQuery("Team.findTeamsByEvent")).thenReturn(q);
 		when(q.getResultList()).thenReturn(teams = new ArrayList<Team>());
 	}
 

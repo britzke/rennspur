@@ -27,6 +27,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.lang.reflect.Method;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -41,6 +42,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import de.rennspur.beans.ClubBean;
+import de.rennspur.model.Club;
 
 /**
  * Tests the ClubBean unit.
@@ -61,6 +63,9 @@ public class ClubBeanTest {
 	Query q;
 	@Mock
 	EntityTransaction et;
+	@Mock
+	List<Club> clubs;
+	
 
 	/**
 	 * Initializes the Mocks to return the objects needed for the test.
@@ -69,9 +74,9 @@ public class ClubBeanTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		when(emf.createEntityManager()).thenReturn(em);
 		when(em.createNamedQuery("Club.findAll")).thenReturn(q);
 		when(em.getTransaction()).thenReturn(et);
+		when(q.getResultList()).thenReturn(clubs);
 //		when(em.merge(any(Club.class))).then(new Answer<Object>() {
 //			@Override
 //			public Object answer(InvocationOnMock invocation) throws Throwable {
@@ -106,7 +111,7 @@ public class ClubBeanTest {
 	}
 
 	/**
-	 * Test method for {@link de.rennspur.beans.ClubBean#insertNewClub()}.
+	 * Test method for {@link de.rennspur.beans.ClubBean#persist()}.
 	 * 
 	 * @throws SecurityException
 	 *             If a SecurityManager is used and no permission to some
@@ -121,10 +126,10 @@ public class ClubBeanTest {
 
 		Class<? extends ClubBean> probandClass = proband.getClass();
 		Method insertNewClubMethod = probandClass
-				.getDeclaredMethod("insertNewClub");
-		assertTrue(insertNewClubMethod.getReturnType().equals(Void.TYPE));
+				.getDeclaredMethod("persist");
+		assertTrue(insertNewClubMethod.getReturnType().equals(String.class));
 
-		proband.insertNewClub();
+		proband.persist();
 
 		verify(et, atLeast(1)).commit();
 	}

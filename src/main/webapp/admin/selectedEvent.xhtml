@@ -26,14 +26,13 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<p:panel styleClass="content"
-		rendered="#{eventBean.selectedEvent != null}">
+	<p:panel id="selectedEvent"
+		rendered="#{eventBean.selectedEventBean.event != null}">
 		<p:outputLabel for="event-name" value="aktuelle Veranstaltung:"></p:outputLabel>
-		<h:outputText id="event-name" value="#{eventBean.selectedEvent.name}" />
+		<h:outputText id="event-name" value="#{selectedEventBean.event.name}" />
 		<h:outputText id="race-count"
-			value=", #{fn:length(eventBean.selectedEvent.races)} Rennen" />
+			value=", #{fn:length(selectedEventBean.event.races)} Rennen" />
 		<h:outputText id="team-count"
-			value=", #{fn:length(eventBean.selectedEvent.teams)} Teams" />
+			value=", #{fn:length(selectedEventBean.event.teams)} Teams" />
 	</p:panel>
-
 </ui:composition>

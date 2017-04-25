@@ -51,11 +51,13 @@ public class TeamBean {
 	public void init() {
 		if (selectedEvent == null) {
 			throw new IllegalArgumentException(
-					"TeamBean cannot be instanciated without a selected event");
+					"TeamBean cannot be instantiated without a selected event");
 		}
-		Query q = entityManager.createNamedQuery("Team.findTeamsByEventId");
-		q.setParameter("id", selectedEvent.getId());
+		Query q = entityManager.createNamedQuery("Team.findTeamsByEvent");
+		q.setParameter("event", selectedEvent);
 		this.teams = q.getResultList();
+		// make the selected event be managed again
+		selectedEvent = entityManager.merge(selectedEvent);
 	}
 
 	/**

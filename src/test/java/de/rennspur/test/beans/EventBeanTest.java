@@ -42,6 +42,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.primefaces.event.SelectEvent;
 
 import de.rennspur.beans.EventBean;
+import de.rennspur.beans.SelectedEventBean;
 import de.rennspur.model.Event;
 
 /**
@@ -57,6 +58,11 @@ public class EventBeanTest {
 	Query q;
 	@Mock
 	EntityTransaction transaction;
+	@Mock
+	SelectedEventBean selectedEventBean;
+	@Mock
+	Event selectedEvent;
+	
 
 	@InjectMocks
 	EventBean proband;
@@ -74,6 +80,7 @@ public class EventBeanTest {
 		when(em.createNamedQuery("Event.findAll")).thenReturn(q);
 		when(em.getTransaction()).thenReturn(transaction);
 		when(q.getResultList()).thenReturn(list = new ArrayList<Event>());
+		when(selectedEventBean.getEvent()).thenReturn(selectedEvent);
 	}
 
 	/**

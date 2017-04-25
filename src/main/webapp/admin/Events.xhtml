@@ -30,8 +30,8 @@
 			<p:dataTable id="eventsTable" var="event" value="#{eventBean.events}"
 				selectionMode="single" selection="#{selectedEventBean.event}"
 				rowKey="#{event.id}">
-				<p:ajax event="rowSelect" listener="#{eventBean.onRowSelect}"
-					update="@parent form:menu" />
+				<p:ajax event="rowSelect" 
+					update="form:selectedEvent form:menu" />
 
 				<p:column headerText="Date">
 					<h:outputText value="#{event.startDate}">
@@ -50,6 +50,6 @@
 						value="#{event.club.abreviation.concat(' – ').concat(event.club.name)}" />
 				</p:column>
 			</p:dataTable>
-			<ui:include id="selectedEvent" src="selectedEvent.xhtml" />
+			<ui:include src="selectedEvent.xhtml" />
 		</ui:define>
 	</ui:composition>

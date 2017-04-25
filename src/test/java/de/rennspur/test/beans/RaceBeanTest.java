@@ -35,8 +35,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import de.rennspur.beans.EventBean;
 import de.rennspur.beans.RaceBean;
+import de.rennspur.model.Event;
 import de.rennspur.model.Race;
 
 /**
@@ -53,7 +53,7 @@ public class RaceBeanTest {
 	@Mock
 	private EntityTransaction transaction;
 	@Mock
-	private EventBean eventBean;
+	private Event selectedEvent;
 	
 	@InjectMocks
 	RaceBean proband;
@@ -65,7 +65,7 @@ public class RaceBeanTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		when(em.createNamedQuery("Race.findRacesByEventId")).thenReturn(q);
+		when(em.createNamedQuery("Race.findRacesByEvent")).thenReturn(q);
 		when(q.getResultList()).thenReturn(list = new ArrayList<Race>());
 	}
 

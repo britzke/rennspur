@@ -32,28 +32,27 @@ import javax.persistence.Query;
 
 import org.primefaces.event.SelectEvent;
 
-import de.rennspur.annotations.SelectedEvent;
 import de.rennspur.model.Event;
 import de.rennspur.model.Race;
 
 /**
- * The EventBean is an  bean, which provides a list of events and
- * information about selected event, races, teams.
+ * The EventBean is an bean, which provides a list of events and information
+ * about selected event, races, teams.
  * 
  * @author burghard.britzke mailto:bubi@charmides.in-berlin.de
  */
 @RequestScoped
 @Named
-public class EventBean{
+public class EventBean {
 
 	@Inject
 	private transient EntityManager entityManager;
 
 	private List<Event> events;
 	
-	@Inject @SelectedEvent
-	private Event selectedEvent;
-	
+	@Inject
+	private SelectedEventBean selectedEventBean;
+
 	private List<Race> eventRaces;
 
 	/**
@@ -74,10 +73,14 @@ public class EventBean{
 		@SuppressWarnings("unchecked")
 		List<Event> events = q.getResultList();
 		this.events = events;
+		if (selectedEventBean.getEvent() != null) {	// make selectedEvent be managed again
+			selectedEventBean.setEvent(entityManager.merge(selectedEventBean.getEvent()));
+		}
 	}
 
 	/**
-	 * @param entityManager the entityManager to set
+	 * @param entityManager
+	 *            the entityManager to set
 	 */
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
@@ -88,23 +91,6 @@ public class EventBean{
 	 */
 	public List<Event> getEvents() {
 		return events;
-	}
-
-	/**
-	 * @return the SelectedEventBean
-	 */
-	public Event getSelectedEvent() {
-		return selectedEvent;
-	}
-
-	/**
-	 * @param SelectedEventBean
-	 *            the SelectedEventBean to set
-	 */
-	public void setSelectedEvent(Event selectedEvent) {
-		System.out.println(
-				"EventBean::setSelectedEvent(Event=" + selectedEvent + ")");
-		this.selectedEvent = selectedEvent;
 	}
 
 	/**
@@ -138,6 +124,20 @@ public class EventBean{
 		entityManager.remove(event);
 		t.commit();
 		return event;
+	}
+
+	/**
+	 * @return the selectedEventBean
+	 */
+	public SelectedEventBean getSelectedEventBean() {
+		return selectedEventBean;
+	}
+
+	/**
+	 * @param selectedEventBean the selectedEventBean to set
+	 */
+	public void setSelectedEventBean(SelectedEventBean selectedEventBean) {
+		this.selectedEventBean = selectedEventBean;
 	}
 
 	/**
@@ -191,6 +191,7 @@ public class EventBean{
 	public void onRowSelect(SelectEvent event) {
 		// try {
 		System.out.println("EventBean::onRowSelect(event=" + event + ")");
+		System.out.println(event.getPhaseId());
 		// FacesContext.getCurrentInstance().getExternalContext()
 		// .redirect("SelectedEventBean.xhtml?id=" + SelectedEventBean.getId());
 		// } catch (IOException e) {

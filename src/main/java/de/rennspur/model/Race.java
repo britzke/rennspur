@@ -23,6 +23,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,7 +50,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
 		@NamedQuery(name = "Race.findAll", query = "SELECT r FROM Race r order by r.number"),
 		@NamedQuery(name = "Race.findRaceByID", query = "SELECT r FROM Race r WHERE r.id=:id"),
-		@NamedQuery(name = "Race.findRacesByEventId", query = "SELECT r FROM Race r WHERE r.event=:event order by r.number") })
+		@NamedQuery(name = "Race.findRacesByEvent", query = "SELECT r FROM Race r WHERE r.event=:event order by r.number") })
 public class Race implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -66,7 +67,7 @@ public class Race implements Serializable {
 	private boolean finished;
 
 	// bi-directional many-to-one association to Event
-	@ManyToOne
+	@ManyToOne (fetch = FetchType.EAGER)
 	@NotNull
 	@JoinColumn(name = "EVENTS_ID", nullable = false)
 	private Event event;
@@ -168,19 +169,23 @@ public class Race implements Serializable {
 
 	/**
 	 * Add a Waypoint to the list of Waypoints.
-	 * @param waypoint The Waypoint to add.
+	 * 
+	 * @param waypoint
+	 *            The Waypoint to add.
 	 * @return The added Waypoint.
 	 */
 	public Waypoint addWaypoint(Waypoint waypoint) {
 		getWaypoints().add(waypoint);
 		waypoint.setRace(this);
 
-	return waypoint;
+		return waypoint;
 	}
 
 	/**
 	 * Removes a given Waypoint from the list of Waypoints.
-	 * @param waypoint The Waypoint to remove.
+	 * 
+	 * @param waypoint
+	 *            The Waypoint to remove.
 	 * @return The removed Waypoint.
 	 */
 	public Waypoint removeWaypoint(Waypoint waypoint) {

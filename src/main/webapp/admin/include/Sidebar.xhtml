@@ -34,16 +34,16 @@
 			<div class="ui-fluid">
 				<p:menu styleClass="nav nav-tabs-entry" pt:data-tabs="tabs"
 					id="menu">
-					<p:menuitem value="Übersicht" action="index.xhtml"
+					<p:menuitem value="Übersicht" action="index.xhtml?faces-redirect=true"
 						icon="fa fa-home" pt:data-toggle="tab"/>
 					<p:menuitem pt:data-toggle="tab" value="Veranstaltungen"
-						action="Events.xhtml" icon="fa fa-calendar"/>
+						action="Events.xhtml?faces-redirect=true" icon="fa fa-calendar"/>
 					<p:menuitem pt:data-toggle="tab" value="Rennen"
-						action="Races.xhtml" icon="fa fa-hourglass-half"
+						action="Races.xhtml?faces-redirect=true" icon="fa fa-hourglass-half"
 						disabled="#{selectedEventBean.event == null}" />
-					<p:menuitem pt:data-toggle="tab" value="Teams" action="Teams.xhtml"
+					<p:menuitem pt:data-toggle="tab" value="Teams" action="Teams.xhtml?faces-redirect=true"
 						icon="fa fa-users" disabled="#{selectedEventBean.event == null}"/>
-					<p:menuitem pt:data-toggle="tab" value="Klubs" action="Clubs.xhtml"
+					<p:menuitem pt:data-toggle="tab" value="Klubs" action="Clubs.xhtml?faces-redirect=true"
 						icon="fa fa-user"/>
 					<p:menuitem class="actie-pro" value="Live zum Rennen" icon="fa fa-external-link"/>
 				</p:menu>

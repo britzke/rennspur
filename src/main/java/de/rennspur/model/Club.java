@@ -57,7 +57,7 @@ import java.util.List;
 @Entity
 @Table(name = "CLUBS")
 @NamedQueries({
-	@NamedQuery (name = "Club.findAll", query = "SELECT c FROM Club c"),
+	@NamedQuery (name = "Club.findAll", query = "SELECT c FROM Club c order by c.name"),
 	@NamedQuery (name = "Club.findClubByID", query = "SELECT c FROM Club c where c.id =:id")
 })
 

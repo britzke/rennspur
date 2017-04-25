@@ -52,7 +52,7 @@ import javax.xml.bind.annotation.XmlType;
 @Table(name = "TEAMS")
 @NamedQueries({
 		@NamedQuery(name = "Team.findAll", query = "SELECT t FROM Team t"),
-		@NamedQuery(name = "Team.findTeamsByEventId", query = "SELECT t from Team t JOIN t.events e where e.id = :id"),
+		@NamedQuery(name = "Team.findTeamsByEvent", query = "SELECT t from Team t JOIN t.events e where e = :event"),
 		@NamedQuery(name = "Team.getTeamByHash", query = "SELECT t FROM Team t where t.hash = :hash") })
 public class Team implements Serializable {
 	private static final long serialVersionUID = 1L;
