@@ -1,5 +1,5 @@
 # Rennspur
-Rennspur is a system for visualizing the traces of races at sporting events such as sailing races. Built with Java from MiA17 @LetteVerein.
+Rennspur is a system for visualizing the traces of races at sporting events such as sailing races. Built with Java by the MiA17 @LetteVerein.
 
 ToDo: Logo and example image
 
@@ -20,7 +20,7 @@ git clone
     - production environment/profile:
 ```docker run -it --rm --name rennspur-maven-build -v "$PWD":/usr/src/rennspur -w /usr/src/rennspur maven:alpine mvn package clean install -Denvironment=prod```
 
-> Add ```-DskipTests``` to skip the java tests. ```--rm``` automatically clean up the container and remove the file system when the maven build container exits.
+> Add ```-DskipTests``` to skip the java tests. ```--rm``` automatically cleans up the container and remove the file system when the maven build container exits.
 
 2) Derby database server:
 ```docker run -d --name rennspur-derby --net=host az82/docker-derby```
