@@ -26,11 +26,6 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="title">Klubs</ui:define>
-	<ui:define name="metadata">
-		<f:metadata>
-			<f:viewParam name="id" value="" />
-		</f:metadata>
-	</ui:define>
 	<ui:define name="content">
 		<p:commandButton icon="fa fa-plus" action="#{clubBean.add}" />
 		<p:dataTable id="clubTable" var="club" value="#{clubBean.clubs}"
