@@ -626,8 +626,12 @@ rs.Map = class {
 
         this.map_ = new ol.Map({
         	controls: ol.control.defaults().extend([
-                new ol.control.FullScreen()
-              ]),
+                new ol.control.FullScreen(),
+                new ol.control.Rotate()
+            ]),
+            interactions: ol.interaction.defaults().extend([
+                new ol.interaction.DragRotateAndZoom()
+            ]),
             view : this.view_,
             layers : [ this.osmLayer_, this.seamarkLayer_, this.traceLayer_, this.imageLayer_ ],
             target : this.div_

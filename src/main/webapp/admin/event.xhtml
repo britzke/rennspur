@@ -73,14 +73,17 @@
 				    let view = event.target.getView();
 				    view.setResolution(view.getResolution()*change);
 				    console.log(change);
-				})
-				var view = rsMap.map.getView().on("change:center", function(event) {
+				});
+				rsMap.map.getView().on("change:center", function(event) {
 				    let center = ol.proj.toLonLat(event.target.getCenter());
 		            $("[id$='rs-map-longitude']").val(center[0]);
 		            $("[id$='rs-map-latitude']").val(center[1]);
 				});
 				rsMap.map.getView().on("change:resolution",function(event){
 				    $("[id$='rs-map-resolution']").val(event.target.getResolution());
+				});
+				rsMap.map.getView().on("change:rotation", function(event){
+				    $("[id$='rs-map-rotation']").val(event.target.getRotation());
 				});
             </script>
 			<p:commandButton value="#{translation.save}"
