@@ -101,10 +101,14 @@ public class ClubBean {
 		return "Clubs.xhtml?faces-redirect=true";
 	}
 
-	public void onRowSelect(SelectEvent club) {
+	/**
+	 * Handler for a double click on a row.
+	 * @param event
+	 */
+	public void onRowDblselect(SelectEvent event) {
 		try {
 			FacesContext.getCurrentInstance().getExternalContext()
-					.redirect("club.xhtml?id=" + selectedClubBean.getClub().getId());
+					.redirect("club.xhtml");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

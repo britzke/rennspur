@@ -30,9 +30,9 @@
 		<p:commandButton icon="fa fa-plus" action="#{clubBean.add}" />
 		<p:dataTable id="clubTable" var="club" value="#{clubBean.clubs}"
 			selectionMode="single" selection="#{selectedClubBean.club}"
-			rowKey="#{club.id}" onRowSelectUpdate="@none">
+			rowKey="#{club.id}">
 
-			<p:ajax event="rowSelect" listener="#{clubBean.onRowSelect}" />
+			<p:ajax event="rowDblselect" listener="#{clubBean.onRowDblselect}" />
 
 			<p:column headerText="#{translation.abbreviation}">
 				<h:outputText value="#{club.abreviation}" />
