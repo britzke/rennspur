@@ -1,19 +1,19 @@
 /*
  *  This file is part of Renspur.
- *  
+ *
  *  Copyright (C) 2016  maximilian lietzmann,
  *                      burghard.britzke bubi@charmides.in-berlin.de
- *  
+ *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  Rennspur is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Rennspur.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -27,7 +27,7 @@ rs.model = {};
 /**
  * A club can organize events and members of competitor teams can belong to a
  * club.
- * 
+ *
  * @class
  */
 rs.model.Club = class Club{
@@ -48,34 +48,34 @@ rs.model.Club = class Club{
     set id(id) {
         this.id_ = id;
     }
-    
+
     get dsvNumber() {
         return this.dsvNumber_;
     }
-    
+
     set dsvNumber(dsvNumber) {
         this.dsvNumber_ = dsvNumber;
     }
-    
+
     get abreviation() {
         return this.abreviation_;
     }
-    
+
     set abreviation(abreviation) {
         this.abreviation_ = abreviation;
     }
     get name() {
         return this.name_;
     }
-    
+
     set name(name) {
         this.name_ = name;
     }
-    
+
     get url() {
         return this.url_;
     }
-    
+
     set url(url) {
         this.url_ = url;
     }
@@ -83,7 +83,7 @@ rs.model.Club = class Club{
 
 /**
  * A group of races which form the event.
- * 
+ *
  * @class
  */
 rs.model.Event = class Event{
@@ -122,7 +122,7 @@ rs.model.Event = class Event{
     set id(id) {
         this.id_ = id;
     }
-        
+
     get club() {
         return this.club_;
     }
@@ -143,7 +143,7 @@ rs.model.Event = class Event{
  */
 rs.model.Waypoint = class Waypoint{
     /**
-     * 
+     *
      */
     constructor (properties = null) {
         for (let property in properties) {
@@ -158,23 +158,23 @@ rs.model.Waypoint = class Waypoint{
             default:
                 this[property]  = properties[property];
             }
-        }        
+        }
     }
-    
+
     get id() {
         return this.id_;
     }
-    
+
     set id(id) {
         this.id_ = id;
     }
-    
+
     get name() {
         return name_;
     }
     set name(name) {
         this.name_ = name;
-    }    
+    }
 }
 /**
  * A group of members who form one competitor team - the team.
@@ -188,11 +188,11 @@ rs.model.Team = class Team{
     get id() {
         return this.id_;
     }
-    
+
     set id(id) {
         this.id_ = id;
     }
-    
+
     get name() {
         return name_;
     }
@@ -263,7 +263,7 @@ rs.model.Race = class Race {
 rs.model.Position = class Position{
     /**
      * Generates a rs.Position object. Initializes its properties.
-     * 
+     *
      * @constructs
      * @param {float}
      *            Longitude of the position in degrees (-180.0 -180.0)
@@ -289,7 +289,7 @@ rs.model.Position = class Position{
              * @type {Date}
              */
           this.time_ = time;
-          
+
     }
 
     get longitude() {
@@ -298,24 +298,24 @@ rs.model.Position = class Position{
     set longitude(longitude) {
         this.longitude_ = longitude;
     }
-    
+
     get latitude() {
         return this.latitude_;
     }
     set latitude(latitude) {
         this.latitude_ = latitude;
     }
-    
+
     get time () {
         return this.time_;
     }
     set time(time) {
         this.time_ = time;
     }
-    
+
     /**
      * Get the coordinate of the positon.
-     * 
+     *
      * @returns [longitude , latitude]
      */
      get coordinate()  {
@@ -330,7 +330,7 @@ rs.model.TeamPosition = class TeamPosition extends rs.model.Position{
     /**
      * Constructs a new TeamPosition either out of an object or out of
      * longitude, latitude, and time.
-     * 
+     *
      * @constructs
      * @param {number|object}
      *            A longitude or an Object from which the properties ar taken.
@@ -377,7 +377,7 @@ rs.model.WaypointPosition = class WaypointPosition extends rs.model.Position{
     /**
      * Constructs a new WaypointPosition either out of an object or out of
      * longitude, latitude, and time.
-     * 
+     *
      * @constructs
      * @param {number|object}
      *            A longitude or an Object from which the properties ar taken.
@@ -418,19 +418,19 @@ rs.model.WaypointPosition = class WaypointPosition extends rs.model.Position{
 /**
  * Represents a control for the legend. Inspired by
  * https://github.com/walkermatt/ol3-layerswitcher
- * 
+ *
  * @extends {ol.control.Control}
  */
 rs.Legend = function (opt_options) {
     /**
-     * 
+     *
      * @constructor
      * @param {Object=}
      *            opt_options Control options.
      */
 // constructor (opt_options) {
         let options = opt_options || {};
-        
+
         this.event_ = options.event ? options.event : {};
         this.teams_ = [];
 
@@ -452,7 +452,7 @@ rs.Legend = function (opt_options) {
             that.togglePanel();
             e.preventDefault();
         };
-        
+
         button.addEventListener('click', toggleLegend, false);
         button.addEventListener('touchstart', toggleLegend, false);
 
@@ -464,7 +464,7 @@ rs.Legend = function (opt_options) {
         this.panel.addEventListener('touchstart', toggleLegend, false);
 
         rs.Legend.enableTouchScroll_(this.panel);
-        
+
         ol.control.Control.call(this, {
             element: element,
             target: options.target
@@ -511,7 +511,7 @@ rs.Legend.prototype.renderPanel = function() {
 
 /**
  * Add a team to the map.
- * 
+ *
  * @param {rs.model.Team}
  *            team The team to add.
  */
@@ -521,7 +521,7 @@ rs.Legend.prototype.addTeam = function (team) {
 
 /**
  * Get the teams.
- * 
+ *
  * @returns {Array.Team}
  */
 rs.Legend.prototype.getTeams = function () {
@@ -563,28 +563,32 @@ rs.Legend.isTouchDevice_ = function() {
  */
 rs.Map = class {
     /**
-     * Generates rs.Map object. Initalizes...
-     * 
+     * Generates the rs.map object. Initializes every writable property,
+     * given with the properties object.
+     *
      * @lends rs.Map#
      * @constructs
-     * 
-     * @param {string}
-     *            Id of the div-element, where the map is to reside.
-     * @param {rs.model.Race}
-     *            Information about the race to display.
      * @returns The RennspurMap Object.
      */
-    constructor (div = "rs-map", race = null, zoom = 16, source = "EPSG:4326", destination = "EPSG:3857") {
-        this.source_ = source;
-        this.destination_ = destination;
-        this.race_ = race;
-        this.center_ = [race.event.longitude,race.event.latitude];
-        this.zoom_ = zoom;
+    constructor (properties) {
+        this.source_ = "EPSG:4326";
+        this.destination_ = "EPSG:3857";
+        this.race_ = null;
+        this.zoom_ = 16;
+        this.div_ = "rs-map";
+        this.center_ = [0,0];
 
+        for (let property in properties) {
+            this[property] = properties[property];
+        }
+
+        if (this.race_ != null) {
+            this.center_ = [this.race.event.longitude,this.race.event.latitude];
+        }
         this.imageSource_ = new ol.source.Vector();
         this.imageLayer_ = new ol.layer.Vector({
         	source: this.imageSource_});
-        
+
         this.waypointStyle_ = new ol.style.Style({
         	image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
                 src: "/rennspur/playground/frontend/waypoint.png",
@@ -596,7 +600,7 @@ rs.Map = class {
                 anchorYUnits: "pixels"
               }))
         });
-        
+
         rs.map = this;
         var center = ol.proj.transform(this.center_, this.source_, this.destination_);
 
@@ -606,7 +610,7 @@ rs.Map = class {
         });
 
         this.osmLayer_ =  new ol.layer.Tile({
-            source: new ol.source.Stamen({layer: 'terrain'})
+            source: new ol.source.Stamen({layer: 'watercolor'})
         });
         this.seamarkLayer_ = new ol.layer.Tile({
             source: new ol.source.OSM({
@@ -614,63 +618,79 @@ rs.Map = class {
                 url: 'https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png'
             })
         });
-        
+
         this.traceSource_ = new ol.source.Vector();
         this.traceLayer_ = new ol.layer.Vector({
             source: this.traceSource_});
 
-        this.legend_ = new rs.Legend({event:this.race_.event});
-        
         this.map_ = new ol.Map({
         	controls: ol.control.defaults().extend([
-                new ol.control.FullScreen(),
-                this.legend
+                new ol.control.FullScreen()
               ]),
             view : this.view_,
             layers : [ this.osmLayer_, this.seamarkLayer_, this.traceLayer_, this.imageLayer_ ],
-            target : div
+            target : this.div_
         });
-        
-        for (let waypoint of race.waypoints){
-            this.addWaypoint(waypoint);
-        };
 
-        // add all teams that are currently in race
-        for (let team of race.event.teams) {
-            this.addTeam(team);
+        if (this.race_ != null) {
+            this.legend_ = new rs.Legend({event:this.race_.event});
+            if (this.legend_ != null) {
+                this.map_.addControl( this.legend_);
+            }
+
+            for (let waypoint of race.waypoints){
+                this.addWaypoint(waypoint);
+            };
+
+            // add all teams that are currently in race
+            for (let team of race.event.teams) {
+                this.addTeam(team);
+            }
+            var timer = setInterval(rs.Map.updateTraces, 1000);
         }
-        var timer = setInterval(rs.Map.updateTraces, 1000);
     }
-    
+
     get zoom() {
         return this.zoom_;
     }
-    
+
     get center() {
         return this.center_;
     }
-    
+
+    set center(center) {
+        this.center_ = center;
+    }
+
     get legend() {
         return this.legend_;
     }
-    
+
+    get map() {
+        return this.map_;
+    }
+
     get traceSource() {
         return this.traceSource_;
     }
-    
+
     get race() {
         return this.race_;
     }
-    
+
+    set race(race) {
+        this.race_ = race;
+    }
+
     toString() {
-        return `Rennspur(zoom=${this.zoom}, center=${this.center})`;
+        return `rs.Map(zoom=${this.zoom}, center=${this.center})`;
     }
 
     /**
      * Transforms an array of TeamPositions to a transformed array of
      * coordinates. Applies the transform into the projection to each
      * coordinate.
-     * 
+     *
      * @param {Array.TeamPosition}
      *            An array of TeamPositions.
      * @returns {Array.Array.number} An array of coordinates, transformed into
@@ -688,10 +708,10 @@ rs.Map = class {
         }
         return transformedTrace;
     }
-    
+
     /**
      * Add a trace for a team to the map.
-     * 
+     *
      * @param {[[x,y],...]}
      *            Array of coordinate Arrays.
      */
@@ -708,22 +728,23 @@ rs.Map = class {
         let traceFeature = new ol.Feature({
             geometry : line});
           traceFeature.setStyle(
-                  new ol.style.Style({ 
+                  new ol.style.Style({
                       stroke : new ol.style.Stroke({color : team.color, width:3})
           }));
           traceFeature.setId(`${team.id}.trace`);
           this.traceSource_.addFeature(traceFeature);
     }
     /**
-     * add waypoints and for every waypoint all of it's waypointPositions to the map.
-     * 
+     * add waypoints and for every waypoint all of it's waypointPositions to the
+     * map.
+     *
      * @param {[[x,y],...]}
      *            Array of coordinate Arrays.
      */
     addWaypoint(waypoint) {
         if (waypoint.waypointPositions != null) {
             let waypointCoordinates = rs.map.coordinateTrace_(waypoint.waypointPositions);
-        
+
             for (let waypointCoordinate of waypointCoordinates) {
                 let waypointFeature = new ol.Feature({
                     geometry: new ol.geom.Point(waypointCoordinates[0])
@@ -735,7 +756,7 @@ rs.Map = class {
             console.log ("Waypoint "+waypoint.name+" without a position.")
         }
     }
-    
+
     /**
      * Updates the Traces from the backend service. This routine is to be called
      * periodically.
