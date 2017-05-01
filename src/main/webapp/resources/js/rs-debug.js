@@ -577,6 +577,7 @@ rs.Map = class {
         this.zoom_ = 16;
         this.div_ = "rs-map";
         this.center_ = [0,0];
+        this.theme_ = "watercolor";
 
         for (let property in properties) {
             this[property] = properties[property];
@@ -610,7 +611,7 @@ rs.Map = class {
         });
 
         this.osmLayer_ =  new ol.layer.Tile({
-            source: new ol.source.Stamen({layer: 'watercolor'})
+            source: new ol.source.Stamen({layer: this.theme_})
         });
         this.seamarkLayer_ = new ol.layer.Tile({
             source: new ol.source.OSM({
@@ -670,6 +671,9 @@ rs.Map = class {
         return this.map_;
     }
 
+    set theme (theme) {
+        this.theme_ = theme;
+    }
     get traceSource() {
         return this.traceSource_;
     }
