@@ -1,18 +1,18 @@
 /*
  *  This file is part of Renspur.
- *  
+ *
  *  Copyright (C) 2016  burghard.britzke, bubi@charmides.in-berlin.de
- *  
+ *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  Rennspur is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Rennspur.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -30,7 +30,7 @@ import java.util.List;
 
 /**
  * The persistent class for the EVENTS database table.
- * 
+ *
  * @author burghard.britzke bubi@charmides.in-berlin.de
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -49,10 +49,10 @@ public class Event implements Serializable {
 	@NotNull
 	private String name;
 
-	@Column(nullable=false, length = 1)
+	@Column(nullable = false, length = 1)
 	@NotNull
 	private Boolean handicap;
-	
+
 	@Column(name = "START_DATE", nullable = false)
 	@NotNull
 	@Temporal(TemporalType.DATE)
@@ -63,17 +63,17 @@ public class Event implements Serializable {
 	private Date endDate;
 
 	private double latitude;
-	
+
 	private double longitude;
-	
+
 	// bi-directional many-to-one association to Club
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "CLUBS_ID", nullable = false)
 	private Club club;
 
-	//bi-directional many-to-many association to Team
-	@ManyToMany(mappedBy="events", cascade={CascadeType.ALL})
+	// bi-directional many-to-many association to Team
+	@ManyToMany(mappedBy = "events", cascade = { CascadeType.ALL })
 	private List<Team> teams;
 
 	@XmlTransient
@@ -158,7 +158,8 @@ public class Event implements Serializable {
 	}
 
 	/**
-	 * @param latitude the latitude to set
+	 * @param latitude
+	 *            the latitude to set
 	 */
 	public void setLatitude(double latitude) {
 		this.latitude = latitude;
@@ -172,7 +173,8 @@ public class Event implements Serializable {
 	}
 
 	/**
-	 * @param longitude the longitude to set
+	 * @param longitude
+	 *            the longitude to set
 	 */
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
@@ -194,7 +196,8 @@ public class Event implements Serializable {
 	}
 
 	/**
-	 * @param teams the teams to set
+	 * @param teams
+	 *            the teams to set
 	 */
 	public void setTeams(List<Team> teams) {
 		this.teams = teams;
@@ -246,14 +249,17 @@ public class Event implements Serializable {
 
 	/**
 	 * Converts the event to a human readable string.
-	 * 
+	 *
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
 		return "<Event (id=" + getId() + ", name=" + name + ", handicap="
-				+ handicap + ", club=" + club.getAbreviation() + ", races="
-				+ (races != null ? races.size() : 0) + ", waypoints="
-				+ (waypoints != null ? waypoints.size() : 0) + ", teams="
-				+ (teams != null ? teams.size(): 0) + ")>";
+				+ handicap + ", club=" + club != null ?
+					"null"	: club.getAbreviation() + ", races="
+								+ (races != null ? races.size() : 0)
+								+ ", waypoints="
+								+ (waypoints != null ? waypoints.size() : 0)
+								+ ", teams="
+								+ (teams != null ? teams.size() : 0) + ")>";
 	}
 }

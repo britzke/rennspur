@@ -1,29 +1,30 @@
 /*
  *  This file is part of Renspur.
- *  
+ *
  *  Copyright (C) 2016  burghard.britzke bubi@charmides.in-berlin.de
- *  
+ *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  Rennspur is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Rennspur.  If not, see <http://www.gnu.org/licenses/>.
  */
 package de.rennspur.beans;
 
-import java.text.ParseException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -38,7 +39,7 @@ import de.rennspur.model.Race;
 /**
  * The EventBean is an bean, which provides a list of events and information
  * about selected event, races, teams.
- * 
+ *
  * @author burghard.britzke mailto:bubi@charmides.in-berlin.de
  */
 @RequestScoped
@@ -49,7 +50,7 @@ public class EventBean {
 	private transient EntityManager entityManager;
 
 	private List<Event> events;
-	
+
 	@Inject
 	private SelectedEventBean selectedEventBean;
 
@@ -94,25 +95,48 @@ public class EventBean {
 	}
 
 	/**
-	 * Add an event to the events managed by this bean.
-	 * 
-	 * @param event
-	 *            The event, which is to be added.
-	 * @return The event, which has been added.
-	 * @throws ParseException
+	 * Initializes the selectedEventBean to a new Event and navigates to event.xhtml in
+	 * order to enable the user to enter data for a new event.
+	 *
+	 * @return Navigation to "event.xhtml", to enable the user to insert data
+	 *         into the club form.
 	 */
-	public Event addEvent(Event event) {
-		EntityTransaction t = entityManager.getTransaction();
-		t.begin();
-		event = entityManager.merge(event);
-		getEvents().add(event);
-		t.commit();
-		return event;
+	public String add() {
+		selectedEventBean.setEvent(new Event());
+		return "event.xhtml?faces-redirect=true";
+	}
+
+	/**
+	 * Persists an event into the database.
+	 */
+	public String persist() {
+		EntityTransaction et = entityManager.getTransaction();
+		et.begin();
+		selectedEventBean.setEvent(entityManager.merge(selectedEventBean.getEvent()));
+		et.commit();
+		events.add(selectedEventBean.getEvent());
+		return "Events.xhtml?faces-redirect=true";
+	}
+
+	/**
+	 * Removes the selectedEvent from the database and navigates to the list of
+	 * events.
+	 *
+	 * @return "Events.xhtml?faces-redirect=true";
+	 */
+	public String remove() {
+		EntityTransaction et = entityManager.getTransaction();
+		et.begin();
+		Event event = entityManager.merge(selectedEventBean.getEvent());
+		entityManager.remove(event);
+		et.commit();
+
+		return "Clubs.xhtml?faces-redirect=true";
 	}
 
 	/**
 	 * Remove an event from the events managed by this bean.
-	 * 
+	 *
 	 * @param event
 	 *            The event, which is to be removed.
 	 * @return The event, which has been removed.
@@ -142,7 +166,7 @@ public class EventBean {
 
 	/**
 	 * Set the actual race for a given event.
-	 * 
+	 *
 	 * @param event
 	 *            The event for which the actual race should be set.
 	 * @param race
@@ -174,7 +198,7 @@ public class EventBean {
 
 	/**
 	 * Get the actual race for an event.
-	 * 
+	 *
 	 * @param event
 	 *            The event for which the actual race should be gotten.
 	 * @return The actual race for the given event.
@@ -188,15 +212,12 @@ public class EventBean {
 		return null;
 	}
 
-	public void onRowSelect(SelectEvent event) {
-		// try {
-		System.out.println("EventBean::onRowSelect(event=" + event + ")");
-		System.out.println(event.getPhaseId());
-		// FacesContext.getCurrentInstance().getExternalContext()
-		// .redirect("SelectedEventBean.xhtml?id=" + SelectedEventBean.getId());
-		// } catch (IOException e) {
-		// e.printStackTrace();
-		// }
-
+	public void onDblselect(SelectEvent event) {
+		try {
+			FacesContext.getCurrentInstance().getExternalContext()
+					.redirect("event.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

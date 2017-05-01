@@ -2,19 +2,19 @@
 <!--
 /*
  *  This file is part of Renspur.
- *  
+ *
  *  Copyright (C) 2017  leo.winter, burghard.britzke bubi@charmides.in-berlin.de
- *  
+ *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  Rennspur is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -29,22 +29,18 @@
 	<ui:define name="content">
 		<p:commandButton icon="fa fa-plus" action="#{clubBean.add}" />
 		<p:dataTable id="clubTable" var="club" value="#{clubBean.clubs}"
-			selectionMode="single" selection="#{clubBean.selectedClub}"
+			selectionMode="single" selection="#{selectedClubBean.club}"
 			rowKey="#{club.id}" onRowSelectUpdate="@none">
 
 			<p:ajax event="rowSelect" listener="#{clubBean.onRowSelect}" />
 
-			<p:column headerText="ID">
-				<h:outputText value="#{club.id}" rendered="#{not empty club.id}">
-				</h:outputText>
-			</p:column>
-			<p:column headerText="Abreviation">
+			<p:column headerText="#{translation.abbreviation}">
 				<h:outputText value="#{club.abreviation}" />
 			</p:column>
-			<p:column headerText="DSV Number">
+			<p:column headerText="#{translation.dsvNumber}">
 				<h:outputText value="#{club.dsvNumber}" />
 			</p:column>
-			<p:column headerText="NAME">
+			<p:column headerText="#{translation.name}">
 				<h:outputText value="#{club.name}" />
 			</p:column>
 		</p:dataTable>

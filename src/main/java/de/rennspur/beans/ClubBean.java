@@ -1,20 +1,20 @@
 /*
  *  This file is part of Renspur.
- *  
+ *
  *  Copyright (C) 2016  Ruben Maurer,
  *  					Leon Schlender,
  *  					burghard.britzke bubi@charmides.in-berlin.de
- *  
+ *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  Rennspur is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Rennspur.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -36,60 +36,66 @@ import org.primefaces.event.SelectEvent;
 
 import de.rennspur.model.Club;
 
+/**
+ * The ClubBean is a request scoped bean, to manage a list of clubs.
+ *
+ * @author Ruben Maurer, Leon Schlender, burghard.britzke
+ *         bubi@charmides.in-berlin.de
+ */
 @RequestScoped
 @Named
 public class ClubBean {
 
 	@Inject
-	EntityManager entityManaer;
+	private EntityManager entityManager;
 
-	List<Club> clubs;
-	Club selectedClub;
+	private List<Club> clubs;
+
+	@Inject
+	private SelectedClubBean selectedClubBean;
 
 	@PostConstruct
+	@SuppressWarnings("unchecked")
 	public void init() {
-		Query q = entityManaer.createNamedQuery("Club.findAll");
-		@SuppressWarnings("unchecked")
-		List<Club> clubs = q.getResultList();
-		this.clubs = clubs;
+		Query q = entityManager.createNamedQuery("Club.findAll");
+		clubs = q.getResultList();
 	}
 
 	/**
-	 * Initializes the selectedClub to a new Club and navigates to club.xhtml in
+	 * Initializes the selectedClubBean to a new Club and navigates to club.xhtml in
 	 * order to enable the user to enter data for a new club.
-	 * 
+	 *
 	 * @return Navigation to "club.xhtml", to enable the user to insert data
 	 *         into the club form.
 	 */
 	public String add() {
-		selectedClub = new Club();
-		return "club.xhtml?faces-redirect=true";
+		selectedClubBean.setClub(new Club());
+		return "club.xhtml?id=" + selectedClubBean.getClub().getId() + "&faces-redirect=true";
 	}
 
 	/**
 	 * Persists a club into the database.
 	 */
 	public String persist() {
-		EntityTransaction et = entityManaer.getTransaction();
+		EntityTransaction et = entityManager.getTransaction();
 		et.begin();
 
-		selectedClub = entityManaer.merge(selectedClub);
+		selectedClubBean.setClub(entityManager.merge(selectedClubBean.getClub()));
 		et.commit();
-		clubs.add(selectedClub);
 		return "Clubs.xhtml?faces-redirect=true";
 	}
 
 	/**
-	 * Removes the selectedClub from the database and navigates to the list of
+	 * Removes the selectedClubBean from the database and navigates to the list of
 	 * clubs.
-	 * 
+	 *
 	 * @return "Clubs.xhtml?faces-redirect=true";
 	 */
 	public String remove() {
-		EntityTransaction et = entityManaer.getTransaction();
+		EntityTransaction et = entityManager.getTransaction();
 		et.begin();
-
-		entityManaer.remove(selectedClub);
+		Club club = entityManager.merge(selectedClubBean.getClub());
+		entityManager.remove(club);
 		et.commit();
 
 		return "Clubs.xhtml?faces-redirect=true";
@@ -98,7 +104,7 @@ public class ClubBean {
 	public void onRowSelect(SelectEvent club) {
 		try {
 			FacesContext.getCurrentInstance().getExternalContext()
-					.redirect("club.xhtml?id=" + selectedClub.getId());
+					.redirect("club.xhtml?id=" + selectedClubBean.getClub().getId());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -120,17 +126,17 @@ public class ClubBean {
 	}
 
 	/**
-	 * @return the selectedClub
+	 * @return the selectedClubBean
 	 */
-	public Club getSelectedClub() {
-		return selectedClub;
+	public SelectedClubBean getSelectedClubBean() {
+		return selectedClubBean;
 	}
 
 	/**
-	 * @param selectedClub
-	 *            the selectedClub to set
+	 * @param selectedClubBean
+	 *            the selectedClubBean to set
 	 */
-	public void setSelectedClub(Club selectedClub) {
-		this.selectedClub = selectedClub;
+	public void setSelectedClubBean(SelectedClubBean selectedClub) {
+		this.selectedClubBean = selectedClub;
 	}
 }

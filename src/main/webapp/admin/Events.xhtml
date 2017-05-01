@@ -2,58 +2,58 @@
 <!--
 /*
  *  This file is part of Renspur.
- *  
+ *
  *  Copyright (C) 2017  leo.winter, burghard.britzke bubi@charmides.in-berlin.de
- *  
+ *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  Rennspur is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
  -->
- 	
-	<ui:composition template="index.xhtml"
-		xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-		xmlns:h="http://xmlns.jcp.org/jsf/html"
-		xmlns:f="http://xmlns.jcp.org/jsf/core"
-		xmlns:p="http://primefaces.org/ui">
-	
-		<ui:define name="title" value="#{translation.event}"></ui:define>
-		<ui:define name="content">
-			<p:dataTable id="eventsTable" var="event" value="#{eventBean.events}"
-				selectionMode="single" selection="#{selectedEventBean.event}"
-				rowKey="#{event.id}">
-				<p:ajax event="rowSelect" 
-					update="form:selectedEvent form:menu" />
+<ui:composition template="index.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-				<p:column value="#{translation.date}">
-					<h:outputText value="#{event.startDate}">
-						<f:convertDateTime pattern="EE dd.MM.yy" />
-					</h:outputText>
-					<h:outputText value="#{event.endDate}"
-						rendered="#{not empty event.endDate}">
-						<f:convertDateTime pattern=" – dd.MM.yy" />
-					</h:outputText>
-				</p:column>
-				<p:column headerText="Event">
-					<h:outputText value="#{event.name}" />
-				</p:column>
-				<p:column headerText="Club">
-					<h:outputText
-						value="#{event.club.abreviation.concat(' – ').concat(event.club.name)}" />
-				</p:column>
-			</p:dataTable>
-			<ui:include src="selectedEvent.xhtml" />
-		</ui:define>
-		
-	</ui:composition>
-	
+	<ui:define name="title">#{translation.events}</ui:define>
+	<ui:define name="content">
+		<p:commandButton icon="fa fa-plus" action="#{eventBean.add}" disabled="true" />
+		<p:dataTable id="eventsTable" var="event" value="#{eventBean.events}"
+			selectionMode="single" selection="#{selectedEventBean.event}"
+			rowKey="#{event.id}">
+			<p:ajax event="rowSelect" update="form:selectedEvent form:menu" />
+			<p:ajax event="rowDblselect" listener="#{eventBean.onDblselect}"
+				update="form:selectedEvent form:menu" />
+
+			<p:column headerText="#{translation.date}">
+				<h:outputText value="#{event.startDate}">
+					<f:convertDateTime pattern="EE dd.MM.yy" />
+				</h:outputText>
+				<h:outputText value="#{event.endDate}"
+					rendered="#{not empty event.endDate}">
+					<f:convertDateTime pattern=" – dd.MM.yy" />
+				</h:outputText>
+			</p:column>
+			<p:column headerText="#{translation.event}">
+				<h:outputText value="#{event.name}" />
+			</p:column>
+			<p:column headerText="#{translation.club}">
+				<h:outputText
+					value="#{event.club.abreviation.concat(' – ').concat(event.club.name)}" />
+			</p:column>
+		</p:dataTable>
+		<ui:include src="selectedEvent.xhtml" />
+	</ui:define>
+
+</ui:composition>

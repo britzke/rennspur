@@ -1,32 +1,30 @@
 /*
  *  This file is part of Renspur.
- *  
+ *
  *  Copyright (C) 2017  burghard.britzke bubi@charmides.in-berlin.de
  *  					Konstantin Baltruschat
  *  					Ruben Maurer
- *  
+ *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  Rennspur is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Rennspur.  If not, see <http://www.gnu.org/licenses/>.
  */
 package de.rennspur.test.beans;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.lang.reflect.Method;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -42,6 +40,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import de.rennspur.beans.ClubBean;
+import de.rennspur.beans.SelectedClubBean;
 import de.rennspur.model.Club;
 
 /**
@@ -65,11 +64,14 @@ public class ClubBeanTest {
 	EntityTransaction et;
 	@Mock
 	List<Club> clubs;
-	
+	@Mock
+	SelectedClubBean selectedClubBean;
+	@Mock
+	Club club;
 
 	/**
 	 * Initializes the Mocks to return the objects needed for the test.
-	 * 
+	 *
 	 * @throws java.lang.Exception
 	 */
 	@Before
@@ -112,7 +114,7 @@ public class ClubBeanTest {
 
 	/**
 	 * Test method for {@link de.rennspur.beans.ClubBean#persist()}.
-	 * 
+	 *
 	 * @throws SecurityException
 	 *             If a SecurityManager is used and no permission to some
 	 *             reflection operation is granted.
@@ -121,16 +123,14 @@ public class ClubBeanTest {
 	 *             by it.
 	 */
 	@Test
-	public void testInsertNewClub()
+	public void testPersist()
 			throws NoSuchMethodException, SecurityException {
-
-		Class<? extends ClubBean> probandClass = proband.getClass();
-		Method insertNewClubMethod = probandClass
-				.getDeclaredMethod("persist");
-		assertTrue(insertNewClubMethod.getReturnType().equals(String.class));
-
+		when(selectedClubBean.getClub()).thenReturn(club);
+		when(em.merge(club)).thenReturn(club);
 		proband.persist();
 
+		verify(em).merge(club);
+		verify(selectedClubBean).setClub(club);
 		verify(et, atLeast(1)).commit();
 	}
 

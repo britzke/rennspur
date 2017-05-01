@@ -1,30 +1,30 @@
 /*
  *  This file is part of Renspur.
- *  
+ *
  *  Copyright (C) 2017  Maximilian Lietzmann,
  *  					burghard.britzke bubi@charmides.in-berlin.de
- *  
+ *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  Rennspur is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Rennspur.  If not, see <http://www.gnu.org/licenses/>.
  */
 package de.rennspur.test.beans;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
-
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +47,7 @@ import de.rennspur.model.Event;
 
 /**
  * Tests for UnitEventBean.
- * 
+ *
  * @author maXLeev
  */
 @RunWith(MockitoJUnitRunner.class)
@@ -62,7 +62,6 @@ public class EventBeanTest {
 	SelectedEventBean selectedEventBean;
 	@Mock
 	Event selectedEvent;
-	
 
 	@InjectMocks
 	EventBean proband;
@@ -71,7 +70,7 @@ public class EventBeanTest {
 
 	/**
 	 * Sets up the Mocks to get a list of events.
-	 * 
+	 *
 	 * @throws Exception
 	 *             on unexpected events.
 	 */
@@ -91,7 +90,7 @@ public class EventBeanTest {
 	@Test
 	public void testInit() {
 		proband.init();
-		
+
 		assertEquals(
 				"The EventBean's list of events must be the list, which the EntityManager returns for the query 'Event.findAll'",
 				proband.getEvents(), list);
@@ -103,17 +102,17 @@ public class EventBeanTest {
 	 * event is merged to the list of entities managed by the entityManager.
 	 */
 	@Test
-	public void testAddEvent() {
-		Event event = new Event();
+	public void testAdd() {
 		proband.init();
 
-		Event mergedEvent = proband.addEvent(event);
+		String navigation = proband.add();
 
-		verify(em).merge(event);
-		verify(transaction).commit();
-		assertTrue(
-				"The event must be added to the list of events managed by this bean",
-				proband.getEvents().contains(mergedEvent));
+		verify(em).merge(any(Event.class));
+		assertNotNull(
+				"A new event must be added to the list of events managed by this bean",
+				proband.getSelectedEventBean().getEvent());
+		assertEquals("Method add() must redirect to 'event.xhtml'",
+				"event.xhtml?faces-redirect=true", navigation);
 	}
 
 	/**
@@ -136,7 +135,8 @@ public class EventBeanTest {
 	}
 
 	/**
-	 * Test method for {@link de.rennspur.beans.EventBean#onRowSelect(SelectEvent)}.
+	 * Test method for
+	 * {@link de.rennspur.beans.EventBean#onRowSelect(SelectEvent)}.
 	 */
 	@Test
 	public void testOnRowSelect() {
