@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>rennspur map</title>
+	<link rel="stylesheet" href="/rennspur/webjars/openlayers/4.0.1/ol.css"
+		type="text/css" />
+	<link rel="stylesheet" href="/rennspur/resources/css/rs.css" type="text/css" />
+	<script src="/rennspur/webjars/jquery/3.1.1-1/jquery.min.js"
+		type="text/ecmascript"></script>
+	<script src="/rennspur/webjars/openlayers/4.0.1/ol-debug.js"
+		type="text/ecmascript"></script>
+	<script
+		src="/rennspur/webjars/json.date-extensions/1.2.2/json.date-extensions.js"
+		type="text/ecmascript"></script>
+	<script src="/rennspur/resources/js/rs-debug.js" type="text/ecmascript"></script>
+	<script src="/rennspur/resources/js/mapstyle-changer.js" type="text/ecmascript"></script>
+
+	<script>
+		var map;
+		JSON.useDateParser(); // parse json dates to js Date objects (see. json.date-extensions)
+		$(document).ready(function() {
+			$.getJSON("/rennspur/rest/frontend/race").done(function(data) {
+				console.log(data);
+				race = new rs.model.Race(data);
+				console.log(race);
+				map = new rs.Map("rs-map", race);
+			}).fail(function() {
+				console.log("xhr-error");
+			});
+		});
+	</script>
+
+</h:head>
+<h:body>
+	<div id="rs-map" style="max-height: 400px; width: auto;">
+		<select id="mapStyleList">
+			<option value="">Change Style</option>
+			<option value="toner">Toner</option>
+			<option value="terrain">Terrain</option>
+			<option value="watercolor">Watercolor</option>
+		</select>
+	</div>
+</h:body>
+</html>

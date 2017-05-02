@@ -1,93 +1,108 @@
 @CHARSET "UTF-8";
-
 .olImageLoadError {
-	display: none !important;
+    display: none !important;
 }
 
 .toggle-legend.shown.ol-control {
-	background-color: transparent;
+    background-color: transparent;
 }
 
 .toggle-legend.shown.ol-control:hover {
-	background-color: transparent;
+    background-color: transparent;
 }
 
 .toggle-legend {
-	position: absolute;
-	top: 3.5em;
-	right: 0.5em;
-	text-align: left;
+    position: absolute;
+    top: 3.5em;
+    right: 0.5em;
+    text-align: left;
 }
 
 .toggle-legend .panel {
-	padding: 0 1em 0 0;
-	margin: 0;
-	border: 4px solid #eee;
-	border-radius: 4px;
-	background-color: rgba(255, 255, 255, 0.5);
-	display: none;
-	max-height: 100%;
-	overflow-y: auto;
+    padding: 0 1em 0 0;
+    margin: 0;
+    border: 4px solid #eee;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: none;
+    max-height: 100%;
+    overflow-y: auto;
 }
 
 .toggle-legend.shown .panel {
-	display: block;
-	font-family: monospace;
+    display: block;
+    font-family: monospace;
 }
 
 .toggle-legend.shown button {
-	display: none;
+    display: none;
 }
 
 .toggle-legend ul {
-	padding-left: 1em;
-	list-style: none;
+    padding-left: 1em;
+    list-style: none;
 }
 
 .toggle-legend ul li {
-	font-size: xx-large;
+    font-size: xx-large;
 }
 
 .toggle-legend li.layer {
-	display: table;
+    display: table;
 }
 
-.toggle-legend li.layer label, .toggle-legend li.layer input {
-	display: table-cell;
-	vertical-align: sub;
+.toggle-legend li.layer label,
+.toggle-legend li.layer input {
+    display: table-cell;
+    vertical-align: sub;
 }
 
 .toggle-legend input {
-	margin: 4px;
+    margin: 4px;
 }
 
 .toggle-legend.touch ::-webkit-scrollbar {
-	width: 4px;
+    width: 4px;
 }
 
 .toggle-legend.touch ::-webkit-scrollbar-track {
-	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-	border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
 }
 
 .toggle-legend.touch ::-webkit-scrollbar-thumb {
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
+
 /* Legend Button */
+
 .toggle-legend {
-	top: 40px;
-	right: .5em;
+    top: 40px;
+    right: .5em;
 }
 
 .ol-touch .toggle-legend {
-	top: 80px;
+    top: 80px;
 }
 
-.ol-rotate {
-	position: absolute;
-	top: 0.5em;
-	right: 2.5em;
-	text-align: left;
+#mapStyleList {
+    border-radius: 0.1px;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    z-index: 100;
+    background-color: #3b7d93;
+    border: 4px solid rgba(181, 178, 178, 0.37);
+    left: 16px;
+    top: 75px;
+}
+
+#mapStyleList:hover {
+    width: auto;
+}
+
+#mapStyleList::-ms-expand {
+    display: none;
 }
