@@ -1,18 +1,18 @@
 /*
  *  This file is part of Renspur.
- *  
+ *
  *  Copyright (C) 2016  burghard.britzke, bubi@charmides.in-berlin.de
- *  
+ *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  Rennspur is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Rennspur.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -21,8 +21,10 @@ package de.rennspur.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,11 +44,12 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * The persistent class for the TEAMS database table.
- * 
+ *
  * burghard.britzke bubi@charmides.in-berlin.de
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder={"id","name","handicapFactor","country","club"})
+@XmlType(name = "", propOrder = { "id", "name", "handicapFactor", "country",
+		"club" })
 
 @Entity
 @Table(name = "TEAMS")
@@ -89,19 +92,13 @@ public class Team implements Serializable {
 	private String hash;
 
 	@XmlTransient
-	//bi-directional many-to-many association to Event
+	// bi-directional many-to-many association to Event
 	@ManyToMany
-	@JoinTable(
-		name="TEAM_EVENTS"
-		, joinColumns={
-			@JoinColumn(name="TEAMS_ID" )
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="EVENTS_ID")
-			}
-		)
+	@JoinTable(name = "TEAM_EVENTS", joinColumns = {
+			@JoinColumn(name = "TEAMS_ID") }, inverseJoinColumns = {
+					@JoinColumn(name = "EVENTS_ID") })
 	private List<Event> events;
-	
+
 	@XmlTransient
 	// bi-directional many-to-one association to TeamMember
 	@OneToMany(mappedBy = "team")
@@ -113,6 +110,17 @@ public class Team implements Serializable {
 	private List<TeamPosition> positions;
 
 	public Team() {
+	}
+
+	/**
+	 * Creates a new team with a given hash. This enables the external creation
+	 * of a hash.
+	 *
+	 * @param hash
+	 *            The hash for the Team.
+	 */
+	public Team(String hash) {
+		this.hash = hash;
 	}
 
 	public int getId() {
@@ -199,7 +207,8 @@ public class Team implements Serializable {
 	}
 
 	/**
-	 * @param events the events to set
+	 * @param events
+	 *            the events to set
 	 */
 	public void setEvents(List<Event> events) {
 		this.events = events;
@@ -222,7 +231,7 @@ public class Team implements Serializable {
 
 	/**
 	 * Adds a member to the team.
-	 * 
+	 *
 	 * @param member
 	 *            The member to add.
 	 * @return The added member.
@@ -236,7 +245,7 @@ public class Team implements Serializable {
 
 	/**
 	 * Removes a member from the team.
-	 * 
+	 *
 	 * @param member
 	 *            The member to remove.
 	 * @return The removed member.
@@ -264,7 +273,7 @@ public class Team implements Serializable {
 
 	/**
 	 * Adds a position to the team.
-	 * 
+	 *
 	 * @param position
 	 *            The position to add.
 	 * @return The position added.
@@ -278,7 +287,7 @@ public class Team implements Serializable {
 
 	/**
 	 * Removes the specified position from the team.
-	 * 
+	 *
 	 * @param position
 	 *            The position to remove
 	 * @return The removed position
@@ -292,7 +301,7 @@ public class Team implements Serializable {
 
 	/**
 	 * Converts the Team to a human readable string.
-	 * 
+	 *
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {

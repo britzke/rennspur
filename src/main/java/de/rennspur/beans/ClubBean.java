@@ -96,6 +96,7 @@ public class ClubBean {
 		et.begin();
 		Club club = entityManager.merge(selectedClubBean.getClub());
 		entityManager.remove(club);
+		selectedClubBean.setClub(null);
 		et.commit();
 
 		return "Clubs.xhtml?faces-redirect=true";

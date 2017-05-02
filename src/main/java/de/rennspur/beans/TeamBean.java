@@ -1,6 +1,9 @@
 package de.rennspur.beans;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -22,27 +25,30 @@ import de.rennspur.model.Team;
 /**
  * A Bean to manage a list of Teams for a specific Event, including CRUD
  * database operations.
- * 
+ *
  * @author Leon Schlender, burghard.britzke bubi@charmides.in-berlin.de
  */
 @RequestScoped
 @Named
 public class TeamBean {
 
-	private List<Team> teams;
-	private Team selectedTeam;
-
-	@Inject @SelectedEvent
-	private Event selectedEvent;
-
 	@Inject
 	EntityManager entityManager;
+
+	private List<Team> teams;
+
+	@Inject
+	private SelectedTeamBean selectedTeamBean;
+
+	@Inject
+	@SelectedEvent
+	private Event selectedEvent;
 
 	/**
 	 * Initalizes the list of {@link Team} objects for the selected
 	 * {@link Event}. If there is no selected event, the bean can not be
 	 * initalized. In this case an {@link IllegalArgumentException} is thrown.
-	 * 
+	 *
 	 * @throws IllegalArgumentException
 	 *             If no selected {@link Event} exists.
 	 */
@@ -61,32 +67,78 @@ public class TeamBean {
 	}
 
 	/**
-	 * @param event
+	 * Action routine for a command button. Initializes the selectedTeamBean
+	 * with a new {@link Team} and redirects to team.xhtml in order to enable
+	 * the user to enter data for a new team. The hash of the new team is
+	 * initialized with a hash.
+	 *
+	 * @return Redirects to "team.xhtml", to enable the user to insert data into
+	 *         the team form.
+	 * @throws NoSuchAlgorithmException
 	 */
-	public void onRowSelect(SelectEvent event) {
-		try {
-			System.out.println("TeamBean::onRowSelect(event=" + event + ")");
-			FacesContext.getCurrentInstance().getExternalContext()
-					.redirect("Team.xhtml?id=" + selectedTeam.getId());
-		} catch (IOException e) {
-			e.printStackTrace();
+	public String add() throws NoSuchAlgorithmException {
+		// create a digest from actual date
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+		byte[] digest = md.digest(new Date().toString().getBytes());
+		StringBuffer hash = new StringBuffer();
+		for (byte b : digest) {
+			hash.append(String.format("%02x", b));
 		}
+		Team team = new Team(hash.toString());
+
+		selectedTeamBean.setTeam(team);
+		return "team.xhtml?faces-redirect=true";
 	}
 
 	/**
-	 * Inserts a team into the database.
+	 * Persists a team into the database.
+	 *
+	 * @return Empty string – ever.
 	 */
-	public void insertNewTeam() {
+	public String persist() {
 		try {
 			EntityTransaction et = entityManager.getTransaction();
 			et.begin();
-			selectedTeam = entityManager.merge(selectedTeam);
+			selectedTeamBean
+					.setTeam(entityManager.merge(selectedTeamBean.getTeam()));
 			et.commit();
 		} catch (NoResultException e) {
 			e.printStackTrace();
 		}
+		return "Teams.xhtml?faces-redirect=true";
 	}
 
+	/**
+	 * Removes the selectedTeam from the database and navigates to the list of
+	 * teams.
+	 *
+	 * @return "Teams.xhtml?faces-redirect=true" - ever!
+	 */
+	public String remove() {
+		EntityTransaction et = entityManager.getTransaction();
+		et.begin();
+		selectedTeamBean
+				.setTeam(entityManager.merge(selectedTeamBean.getTeam()));
+		entityManager.remove(selectedTeamBean.getTeam());
+		selectedTeamBean.setTeam(null);
+		et.commit();
+
+		return "Teams.xhtml?faces-redirect=true";
+	}
+
+	/**
+	 * Redirects user to "team.xhtml".
+	 *
+	 * @param event
+	 */
+	public void onRowDblselect(SelectEvent event) {
+		try {
+			FacesContext.getCurrentInstance().getExternalContext()
+					.redirect("team.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * @return the teams
@@ -104,18 +156,18 @@ public class TeamBean {
 	}
 
 	/**
-	 * @return the selectedTeam
+	 * @return the selectedTeamBean
 	 */
-	public Team getSelectedTeam() {
-		return selectedTeam;
+	public SelectedTeamBean getSelectedTeamBean() {
+		return selectedTeamBean;
 	}
 
 	/**
-	 * @param selectedTeam
-	 *            the selectedTeam to set
+	 * @param selectedTeamBean
+	 *            the selectedTeamBean to set
 	 */
-	public void setSelectedTeam(Team selectedTeam) {
-		this.selectedTeam = selectedTeam;
+	public void setSelectedTeamBean(SelectedTeamBean selectedTeamBean) {
+		this.selectedTeamBean = selectedTeamBean;
 	}
 
 	/**
@@ -126,7 +178,8 @@ public class TeamBean {
 	}
 
 	/**
-	 * @param selectedEvent the selectedEvent to set
+	 * @param selectedEvent
+	 *            the selectedEvent to set
 	 */
 	public void setSelectedEvent(Event selectedEvent) {
 		this.selectedEvent = selectedEvent;
