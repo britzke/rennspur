@@ -210,6 +210,13 @@
 			<version>2.4.0.Final</version>
 		</dependency>
 
+		<!-- crypto provider -->
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk15on</artifactId>
+			<version>1.56</version>
+		</dependency>
+
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
