@@ -2,20 +2,20 @@
 <!--
 /*
  *  This file is part of Renspur.
- *  
+ *
  *  Copyright (C) 2017  leo.winter, Num2,
  *						burghard.britzke bubi@charmides.in-berlin.de
- *  
+ *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  Rennspur is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -26,20 +26,51 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	<ui:define name="title">Team erfassen</ui:define>
+	<ui:define name="title">#{translation.team}</ui:define>
 	<ui:define name="content">
-		<h:panelGrid>
-			<h:outputLabel value="Name: " style="font-weight:bold" />
-			<h:inputText value="#{teamBean.selectedTeam.name}" />
-			<h:outputLabel value="Country: " style="font-weight:bold" />
-			<h:inputText value="#{teamBean.selectedTeam.country}" />
-			<h:outputLabel value="eMail: " style="font-weight:bold" />
-			<h:inputText value="#{teamBean.selectedTeam.email}" />
-			<h:outputLabel value="Handicap: " style="font-weight:bold" />
-			<h:inputText value="#{teamBean.selectedTeam.handicapFactor}" />
-			<h:outputLabel value="Hash " style="font-weight:bold" />
-			<h:inputText value="#{teamBean.selectedTeam.hash}" />
-			<h:commandButton value="Speichern" action="#{teamBean.insertNewTeam}" />
-		</h:panelGrid>
+		<p:commandButton icon="fa fa-minus" action="#{teamBean.remove}"
+			disabled="#{not empty selectedTeamBean.team.positions or not empty selectedTeamBean.team.members}" />
+		<p:panelGrid columns="2" layout="grid"
+			columnClasses="ui-grid-col-2,ui-grid-col-10">
+			<p:outputLabel value="#{translation.club}" />
+			<!--
+			<p:selectOneMenu value="#{selectedTeamBean.team.club}"
+				styleClass="ui-grid-col-12">
+				<f:selectItems value="#{clubBean.clubs}" var="club"
+					itemLabel="#{club.name}" itemValue="#{club}">
+				</f:selectItems>
+			</p:selectOneMenu>
+			 -->
+			<h:outputText value="#{selectedTeamBean.team.club.name}"
+				styleClass="ui-grid-col-12" />
+			<p:outputLabel value="#{translation.hash}" style="font-weight:bold" />
+			<h:outputText value="#{selectedTeamBean.team.hash}"
+				styleClass="ui-grid-col-12" />
+		</p:panelGrid>
+		<p:panelGrid columns="2" layout="grid"
+			columnClasses="ui-grid-col-4,ui-grid-col-8">
+			<p:panelGrid columns="2" layout="grid"
+				styleClass="ui-panelgrid-blank"
+				columnClasses="ui-grid-col-8,ui-grid-col-4">
+				<p:outputLabel value="#{translation.country}" />
+				<h:inputText value="#{selectedTeamBean.team.country}"
+					styleClass="ui-grid-col-12" />
+				<p:outputLabel value="#{translation.handicapFactor}" />
+				<h:inputText value="#{selectedTeamBean.team.handicapFactor}"
+					styleClass="ui-grid-col-12" />
+			</p:panelGrid>
+			<p:panelGrid columns="2" layout="grid"
+				styleClass="ui-panelgrid-blank"
+				columnClasses="ui-grid-col-4,ui-grid-col-8">
+				<p:outputLabel value="#{translation.name}" />
+				<h:inputText value="#{selectedTeamBean.team.name}"
+					styleClass="ui-grid-col-12" />
+				<p:outputLabel value="#{translation.email}" />
+				<h:inputText value="#{selectedTeamBean.team.email}"
+					styleClass="ui-grid-col-12" />
+			</p:panelGrid>
+		</p:panelGrid>
+		<p:commandButton value="#{translation.save}"
+			action="#{teamBean.persist}" />
 	</ui:define>
 </ui:composition>

@@ -2,20 +2,20 @@
 <!--
 /*
  *  This file is part of Renspur.
- *  
+ *
  *  Copyright (C) 2017  leo.winter, Num2,
  *						burghard.britzke bubi@charmides.in-berlin.de
- *  
+ *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  Rennspur is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -30,21 +30,27 @@
 	<ui:define name="content">
 		<ui:include src="selectedEvent.xhtml" />
 
-		<p:dataTable id="eventsTable" var="team" value="#{teamBean.teams}"
-			selectionMode="single" selection="#{teamBean.selectedTeam}"
+		<p:commandButton icon="fa fa-plus" action="#{teamBean.add}" />
+		<p:dataTable id="teamsTable" var="team" value="#{teamBean.teams}"
+			selectionMode="single" selection="#{selectedTeamBean.team}"
 			rowKey="#{team.id}" update="@none">
 
-			<p:column headerText="Land">
-				<h:outputText value="#{team.country}"/>
+			<p:ajax event="rowDblselect" listener="#{teamBean.onRowDblselect}" />
+
+			<p:column headerText="#{translation.country}">
+				<h:outputText value="#{team.country}" />
 			</p:column>
-			<p:column headerText="Klub">
+			<p:column headerText="#{translation.club}">
 				<h:outputText value="#{team.club.abreviation}" />
 			</p:column>
-			<p:column headerText="Name">
-				<h:outputText value="#{team.name}"/>
+			<p:column headerText="#{translation.name}">
+				<h:outputText value="#{team.name}" />
 			</p:column>
-			<p:column headerText="E-Mail">
-				<h:outputText value="#{team.email}"/>
+			<p:column headerText="#{translation.handicapFactor}">
+				<h:outputText value="#{team.handicapFactor}" />
+			</p:column>
+			<p:column headerText="#{translation.email}">
+				<h:outputText value="#{team.email}" />
 			</p:column>
 		</p:dataTable>
 	</ui:define>
