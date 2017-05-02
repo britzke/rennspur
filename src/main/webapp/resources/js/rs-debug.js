@@ -21,10 +21,6 @@
 
 /** @namespace */
 var rs= rs || {};
-var mapStyle = localStorage.getItem("mapStyle");
-if(mapStyle == null){
-	mapstyle = "watercolor";
-}
 /** @namespace */
 rs.model = {};
 
