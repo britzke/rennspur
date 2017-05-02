@@ -4,5 +4,6 @@
 /rennspur-db/
 /.project
 /.classpath
-/.settings/
+/.settings
+/.metadata
 /bin/
