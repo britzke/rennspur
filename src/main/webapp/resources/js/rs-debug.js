@@ -21,6 +21,10 @@
 
 /** @namespace */
 var rs= rs || {};
+var mapStyle = localStorage.getItem("mapStyle");
+if(mapStyle == ""){
+	mapstyle = "watercolor";
+}
 /** @namespace */
 rs.model = {};
 
@@ -577,7 +581,7 @@ rs.Map = class {
         this.zoom_ = 16;
         this.div_ = "rs-map";
         this.center_ = [0,0];
-        this.theme_ = "watercolor";
+        this.theme_ = mapStyle;
 
         for (let property in properties) {
             this[property] = properties[property];
