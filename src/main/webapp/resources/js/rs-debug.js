@@ -577,7 +577,7 @@ rs.Map = class {
         this.zoom_ = 16;
         this.div_ = "rs-map";
         this.center_ = [0,0];
-        this.theme_ = "watercolor";
+        this.theme_ = "terrain";
 
         for (let property in properties) {
             this[property] = properties[property];

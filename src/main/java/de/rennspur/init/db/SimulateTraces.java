@@ -53,7 +53,7 @@ public class SimulateTraces {
 				.createEntityManagerFactory("rennspur-db-local");
 		EntityManager em = emf.createEntityManager();
 
-		javax.persistence.Query q = em.createNamedQuery("Race.findRace");
+		javax.persistence.Query q = em.createNamedQuery("Race.findRaceByID");
 		q.setParameter("id", 1);
 		Race r = (Race) q.getSingleResult();
 
