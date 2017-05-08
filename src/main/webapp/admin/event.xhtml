@@ -1,5 +1,24 @@
 <!DOCTYPE html>
-
+<!--
+/*
+ *  This file is part of Renspur.
+ *
+ *  Copyright (C) 2017  leo.winter, burghard.britzke bubi@charmides.in-berlin.de
+ *
+ *  Rennspur is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  Rennspur is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ -->
 <ui:composition template="index.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -71,7 +90,9 @@
 				
 				let rsMap = new rs.Map({
 				    center : [  Number($("[id$='rs-map-longitude']").val()),
-				                Number( $("[id$='rs-map-latitude']").val())]
+				                Number( $("[id$='rs-map-latitude']").val())],
+				    theme : 'toner',
+				    userTheme_ : 'false'
 				});
 				rsMap.map.on("change:size", function(event){
 				    let newValue = event.target.get(event.key);

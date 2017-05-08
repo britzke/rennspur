@@ -578,16 +578,45 @@ rs.Map = class {
         this.div_ = "rs-map";
         this.center_ = [0,0];
         this.theme_ = "terrain";
+        this.userTheme_ = "false";
         
-        var mapStyle = localStorage.getItem("mapStyle");
-        console.log("mapstyle in storage : " + mapStyle);
-        this.theme_ = mapStyle;
-        
-
         for (let property in properties) {
-            this[property] = properties[property];
+            this[property] = properties[property];    
         }
-
+                
+        $( document ).ready(function() {
+        	$(".ol-zoom-out").parent().prepend($("#mapStyleList"));
+        	$("#mapStyleList").mouseover(function() {
+        		$("#mapStyleList").children().first().hide();
+        	});
+        	$("#mapStyleList").mouseleave(function() {
+        		$("#mapStyleList").children().first().text("T");
+        	});
+        	document.getElementById("mapStyleList").onchange = function() {
+        		changeMap(this.value);
+        		return false
+        	};
+        });
+        
+        function changeMap(style) {
+	    	$("#mapStyleList").children().text("T");
+	    	localStorage.setItem("mapStyle", style);
+	    	location.reload();
+	    }
+        
+	    function removeSelect() {
+	    	$("#mapStyleList").remove();
+	    }
+        
+        if(this.userTheme_ == "false"){
+            $("#mapStyleList").remove();
+            console.log("option removed");
+        }
+        if(this.userTheme_ == "true"){
+            this.theme_ = localStorage.getItem("mapStyle");
+            console.log("option kept");
+        }
+                
         if (this.race_ != null) {
             this.center_ = [this.race.event.longitude,this.race.event.latitude];
         }
@@ -798,30 +827,5 @@ rs.Map = class {
         }
     }    
  };
-
- $(document).ready(function() {
-	    $(window).load(function() {
-	    	$(".ol-zoom-out").parent().prepend($("#mapStyleList"));
-	    	console.log("done");
-	    });
-	    $("#mapStyleList").mouseover(function() {
-	    		$("#mapStyleList").children().first().hide();
-	    });
-	    $("#mapStyleList").mouseleave(function() {
-    		$("#mapStyleList").children().first().text("T");
-	    });
-	    function changeMap(style) {
-	    	$("#mapStyleList").children().text("T");
-	    	localStorage.setItem("mapStyle", style);
-	    	location.reload();
-	    }
-	    function initate() {
-	    	document.getElementById("mapStyleList").onchange = function() {
-	    		changeMap(this.value);
-	    		return false
-	    	};
-	    }
-	    window.onload = initate;
-	});
 
 // ...further classes and code
