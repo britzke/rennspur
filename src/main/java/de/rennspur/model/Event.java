@@ -65,6 +65,8 @@ public class Event implements Serializable {
 	private double latitude;
 
 	private double longitude;
+	
+	private double resolution;
 
 	// bi-directional many-to-one association to Club
 	@NotNull
