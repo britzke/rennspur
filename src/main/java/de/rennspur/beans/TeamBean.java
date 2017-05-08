@@ -3,6 +3,7 @@ package de.rennspur.beans;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -86,7 +87,12 @@ public class TeamBean {
 		}
 		Team team = new Team(hash.toString());
 
+		List<Event> events = new ArrayList<Event>();
+		events.add(selectedEvent);
+		team.setEvents(events);
+
 		selectedTeamBean.setTeam(team);
+
 		return "team.xhtml?faces-redirect=true";
 	}
 
