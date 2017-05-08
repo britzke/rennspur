@@ -1,25 +1,5 @@
 <!DOCTYPE html>
-<!--
-/*
- *  This file is part of Renspur.
- *
- *  Copyright (C) 2017  Leo Winter,
- *						burghard.britzke bubi@charmides.in-berlin.de
- *
- *  Rennspur is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU Affero General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  Rennspur is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Affero General Public License for more details.
- *
- *  You should have received a copy of the GNU Affero General Public License
- *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
- */
- -->
+
 <ui:composition template="index.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -51,35 +31,21 @@
 						style="font-weight:bold" />
 					<p:selectBooleanCheckbox id="handicap"
 						value="#{selectedEventBean.event.handicap}" />
-					<p:outputLabel value="#{translation.startDate}" />
-					<p:calendar value="#{selectedEventBean.event.startDate}"
-						navigator="true" pattern="dd.MM.yyyy"
-						locale="#{view.locale.language}" />
+				</p:panelGrid>
+
+				<p:panelGrid columns="2" layout="grid"
+					styleClass="ui-panelgrid-blank"
+					columnClasses="ui-grid-col-6,ui-grid-col-6">
+					<p:outputLabel value="#{translation.startDate}"
+						style="font-weight:bold" />
+					<p:calendar id="startDate"
+						value="#{selectedEventBean.event.startDate}" navigator="true"
+						pattern="dd.MM.yyyy" />
 					<p:outputLabel value="#{translation.endDate}"
 						style="font-weight:bold" />
-					<p:calendar value="#{selectedEventBean.event.endDate}"
-						navigator="true" pattern="dd.MM.yyyy"
-						locale="#{view.locale.language}" />
+					<p:calendar id="endDate" value="#{selectedEventBean.event.endDate}"
+						navigator="true" pattern="dd.MM.yyyy" />
 				</p:panelGrid>
-				<p:dataTable id="races-datatable"
-					value="#{selectedEventBean.event.races}" var="race">
-					<f:facet name="header">#{translation.races}</f:facet>
-					<f:facet name="footer">
-						<p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
-							<p:commandButton icon="fa fa-minus"
-								actionListener="#{raceBean.removeLast}" update="races-datatable"
-								disabled="#{empty raceBean.races or not empty raceBean.races[raceBean.races.size()-1].waypoints}" />
-							<p:commandButton icon="fa fa-plus"
-								actionListener="#{raceBean.add}" update="races-datatable" />
-						</p:panelGrid>
-					</f:facet>
-					<p:column headerText="#{translation.number}">
-						<h:outputText value="#{race.number}" />
-					</p:column>
-					<p:column headerText="#{translation.finished}" disabled="true">
-						<p:selectBooleanCheckbox value="#{race.finished}" />
-					</p:column>
-				</p:dataTable>
 			</p:panelGrid>
 			<h:inputHidden id="rs-map-latitude"
 				value="#{selectedEventBean.event.latitude}" />
@@ -87,28 +53,22 @@
 				value="#{selectedEventBean.event.longitude}" />
 			<h:inputHidden id="rs-map-resolution" value="" />
 			<h:inputHidden id="rs-map-rotation" value="" />
+			<h:inputHidden id="rs-map-theme" value="#{apiFrontend.theme}" />
 			<h:outputStylesheet name="webjars/openlayers/4.0.1/ol.css" />
 			<h:outputStylesheet name="rs.css" library="css" />
 			<h:outputScript name="webjars/openlayers/4.0.1/ol-debug.js"
 				target="head" />
 			<h:outputScript name="rs-debug.js" library="js" target="head" />
-			<div id="rs-map" />
+			<div id="rs-map">
+				<select id="mapStyleList" title="Change Theme">
+					<option>T</option>
+					<option value="toner">Toner</option>
+					<option value="terrain">Terrain</option>
+					<option value="watercolor">Watercolor</option>
+				</select>
+			</div>
 			<script type="application/ecmascript">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+				
 				let rsMap = new rs.Map({
 				    center : [  Number($("[id$='rs-map-longitude']").val()),
 				                Number( $("[id$='rs-map-latitude']").val())]
@@ -122,6 +82,9 @@
 				    view.setResolution(view.getResolution()*change);
 				    console.log(change);
 				});
+				rsMap.map.on("change:theme", function(event){
+				    console.log("theme changed");
+				});
 				rsMap.map.getView().on("change:center", function(event) {
 				    let center = ol.proj.toLonLat(event.target.getCenter());
 		            $("[id$='rs-map-longitude']").val(center[0]);
@@ -133,22 +96,8 @@
 				rsMap.map.getView().on("change:rotation", function(event){
 				    $("[id$='rs-map-rotation']").val(event.target.getRotation());
 				});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </script>
+            
+			</script>
 			<p:commandButton value="#{translation.save}"
 				action="#{eventBean.persist}" />
 		</div>
