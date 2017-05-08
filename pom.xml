@@ -221,7 +221,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>4.7</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -229,7 +229,7 @@
 			<version>2.7.19</version>
 		</dependency>
 
-		<!-- fron awseome icons -->
+		<!-- font awesome icons -->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>font-awesome</artifactId>
