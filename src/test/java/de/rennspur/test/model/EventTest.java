@@ -1,7 +1,7 @@
 /*
  *  This file is part of Renspur.
  *
- *  Copyright (C) 2017  burghard.britzke bubi@charmides.in-berlin.de
+ *  Copyright (C) 2017  burghard.britzke bubi@charmides.in-berlin.de, leo.winter
  *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -30,14 +30,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import de.rennspur.model.Event;
+import de.rennspur.model.Race;
 import de.rennspur.model.Waypoint;
 
 /**
  * @author bubi
  *
  */
-public class EventTest {
-	
+public class EventTest {	
 	private Event proband;
 
 	@Mock
@@ -52,11 +52,13 @@ public class EventTest {
 	}
 
 	/**
-	 * Test method for {@link de.rennspur.model.Event#addRace(de.rennspur.model.Race)}.
+	 * Test method for
+	 * {@link de.rennspur.model.Event#addRace(de.rennspur.model.Race)}.
 	 */
 	@Test
 	public void testAddRace() {
-		fail("Not yet implemented");
+		proband.addRace(new Race());
+		assertEquals("A race must have been added to the races of the Event", 1, proband.getRaces().size());
 	}
 
 	/**
@@ -64,7 +66,11 @@ public class EventTest {
 	 */
 	@Test
 	public void testRemoveRace() {
-		fail("Not yet implemented");
+		Race race = new Race();
+		proband.addRace(race);
+		proband.removeRace(race);
+		assertEquals("A Race must have been removed from the list of races of this event", 0,
+				proband.getRaces().size());
 	}
 
 	/**
