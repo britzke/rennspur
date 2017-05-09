@@ -14,7 +14,7 @@ fi
 
 # run maven build
 echo "Start with maven build..."
-docker run -it --rm --name rennspur-maven-build -v "$PWD":/usr/src/rennspur -w /usr/src/rennspur maven:alpine mvn package clean install -DskipTests -Denvironment=prod
+docker run -it --rm --name rennspur-maven-build -v "$PWD":/usr/src/rennspur -w /usr/src/rennspur maven:alpine mvn package clean install -Denvironment=prod
 echo "maven build complete."
 # ToDo: Check for error...
 

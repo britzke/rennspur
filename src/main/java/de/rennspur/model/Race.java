@@ -1,18 +1,18 @@
 /*
  *  This file is part of Renspur.
- *  
+ *
  *  Copyright (C) 2016  burghard.britzke, bubi@charmides.in-berlin.de
- *  
+ *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  Rennspur is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Rennspur.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -33,6 +33,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -40,13 +41,14 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * The persistent class for the RACES database table.
- * 
+ *
  * @author burghard.britzke bubi@charmides.in-berlin.de
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 
 @Entity
-@Table(name = "RACES")
+@Table(name = "RACES", uniqueConstraints = @UniqueConstraint(columnNames = {
+		"event","number" }))
 @NamedQueries({
 		@NamedQuery(name = "Race.findAll", query = "SELECT r FROM Race r order by r.number"),
 		@NamedQuery(name = "Race.findRaceByID", query = "SELECT r FROM Race r WHERE r.id=:id"),
@@ -67,7 +69,7 @@ public class Race implements Serializable {
 	private boolean finished;
 
 	// bi-directional many-to-one association to Event
-	@ManyToOne (fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@NotNull
 	@JoinColumn(name = "EVENTS_ID", nullable = false)
 	private Event event;
@@ -133,7 +135,7 @@ public class Race implements Serializable {
 
 	/**
 	 * Add the given TeamPosition to the list of TeamPositions.
-	 * 
+	 *
 	 * @param teamPosition
 	 *            The TeamPosition to add.
 	 * @return The added TeamPosition.
@@ -147,7 +149,7 @@ public class Race implements Serializable {
 
 	/**
 	 * Removes the given TeamPosition from the list of TeamPositions.
-	 * 
+	 *
 	 * @param teamPosition
 	 *            The TeamPosition to be removed.
 	 * @return The removed TeamPosition.
@@ -169,7 +171,7 @@ public class Race implements Serializable {
 
 	/**
 	 * Add a Waypoint to the list of Waypoints.
-	 * 
+	 *
 	 * @param waypoint
 	 *            The Waypoint to add.
 	 * @return The added Waypoint.
@@ -183,7 +185,7 @@ public class Race implements Serializable {
 
 	/**
 	 * Removes a given Waypoint from the list of Waypoints.
-	 * 
+	 *
 	 * @param waypoint
 	 *            The Waypoint to remove.
 	 * @return The removed Waypoint.
@@ -197,7 +199,7 @@ public class Race implements Serializable {
 
 	/**
 	 * Converts the Race to a human readable string.
-	 * 
+	 *
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {

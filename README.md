@@ -9,7 +9,7 @@ ToDo: Logo and example image
 It should run on any *NIX and Windows system with [Java 8](http://www.oracle.com/technetwork/java/index.html) and [Tomcat](https://tomcat.apache.org/).
 
 ## Installation with Docker
-Use our automatic installer [(```docker-run.sh```)](https://github.com/britzke/rennspur/blob/master/docker-run.sh) to build and install it on your system.
+Use our automatic installer ([```docker-run.sh```](https://github.com/britzke/rennspur/blob/master/docker-run.sh)) to build and install it on your system.
 #### Or follow the instructions:
 
 git clone

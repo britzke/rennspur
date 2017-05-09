@@ -21,10 +21,6 @@
 
 /** @namespace */
 var rs= rs || {};
-var mapStyle = localStorage.getItem("mapStyle");
-if(mapStyle == ""){
-	mapstyle = "watercolor";
-}
 /** @namespace */
 rs.model = {};
 
@@ -581,12 +577,46 @@ rs.Map = class {
         this.zoom_ = 16;
         this.div_ = "rs-map";
         this.center_ = [0,0];
-        this.theme_ = mapStyle;
-
+        this.theme_ = "terrain";
+        this.userTheme_ = "false";
+        
         for (let property in properties) {
-            this[property] = properties[property];
+            this[property] = properties[property];    
         }
-
+                
+        $( document ).ready(function() {
+        	$(".ol-zoom-out").parent().prepend($("#mapStyleList"));
+        	$("#mapStyleList").mouseover(function() {
+        		$("#mapStyleList").children().first().hide();
+        	});
+        	$("#mapStyleList").mouseleave(function() {
+        		$("#mapStyleList").children().first().text("T");
+        	});
+        	document.getElementById("mapStyleList").onchange = function() {
+        		changeMap(this.value);
+        		return false
+        	};
+        });
+        
+        function changeMap(style) {
+	    	$("#mapStyleList").children().text("T");
+	    	localStorage.setItem("mapStyle", style);
+	    	location.reload();
+	    }
+        
+	    function removeSelect() {
+	    	$("#mapStyleList").remove();
+	    }
+        
+        if(this.userTheme_ == "false"){
+            $("#mapStyleList").remove();
+            console.log("option removed");
+        }
+        if(this.userTheme_ == "true"){
+            this.theme_ = localStorage.getItem("mapStyle");
+            console.log("option kept");
+        }
+                
         if (this.race_ != null) {
             this.center_ = [this.race.event.longitude,this.race.event.latitude];
         }
@@ -797,6 +827,5 @@ rs.Map = class {
         }
     }
  };
-
 
 // ...further classes and code

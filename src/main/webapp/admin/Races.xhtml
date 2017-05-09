@@ -2,19 +2,19 @@
 <!--
 /*
  *  This file is part of Renspur.
- *  
+ *
  *  Copyright (C) 2017  leo.winter, burghard.britzke bubi@charmides.in-berlin.de
- *  
+ *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  Rennspur is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Affero General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -25,18 +25,20 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	<ui:define name="title">Rennen</ui:define>
+	<ui:define name="title">#{translation.race}</ui:define>
 	<ui:define name="content">
 		<ui:include src="selectedEvent.xhtml" />
-		<p:dataTable id="racesTable" var="race" value="#{raceBean.races}"
-			selectionMode="single" selection="#{raceBean.selectedRace}"
-			rowKey="#{race.id}" update="@none">
+		<p:dataTable var="race" value="#{raceBean.races}"
+			selectionMode="single" selection="#{selectedRaceBean.race}"
+			rowKey="#{race.id}">
 
-			<p:column headerText="Number">
+			<p:ajax event="rowDblselect" listener="#{raceBean.onDblselect}" />
+
+			<p:column headerText="#{translation.number}">
 				<h:outputText value="#{race.number}" />
 			</p:column>
-			<p:column headerText="planned/finished">
-				<h:outputText value="#{race.finished}" />
+			<p:column headerText="#{translation.finished}">
+				<p:selectBooleanCheckbox value="#{race.finished}" disabled="true" />
 			</p:column>
 		</p:dataTable>
 	</ui:define>

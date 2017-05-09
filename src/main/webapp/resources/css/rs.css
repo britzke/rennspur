@@ -106,3 +106,9 @@
 #mapStyleList::-ms-expand {
     display: none;
 }
+
+.ol-rotate {
+	position: absolute;
+	top: 0.5em;
+	right: 2.5em;
+	text-align: left;
