@@ -27,16 +27,16 @@ rs.model = {};
 /**
  * A club can organize events and members of competitor teams can belong to a
  * club.
- *
+ * 
  * @class
  */
 rs.model.Club = class Club{
     /**
-     * @constructs
-     * @param {object}
-     *            properties An object with the properties to initialize.
-     * @return {rs.model.Club} The initialized club object.
-     */
+	 * @constructs
+	 * @param {object}
+	 *            properties An object with the properties to initialize.
+	 * @return {rs.model.Club} The initialized club object.
+	 */
     constructor (properties) {
         for (let property in properties) {
             this[property] = properties[property];
@@ -83,16 +83,16 @@ rs.model.Club = class Club{
 
 /**
  * A group of races which form the event.
- *
+ * 
  * @class
  */
 rs.model.Event = class Event{
     /**
-     * @constructs
-     * @param {object}
-     *            properties An object with the properties to initialize.
-     * @return {rs.model.Event} The initialized event object.
-     */
+	 * @constructs
+	 * @param {object}
+	 *            properties An object with the properties to initialize.
+	 * @return {rs.model.Event} The initialized event object.
+	 */
     constructor (properties) {
         for (let property in properties) {
             switch (property) {
@@ -143,8 +143,8 @@ rs.model.Event = class Event{
  */
 rs.model.Waypoint = class Waypoint{
     /**
-     *
-     */
+	 * 
+	 */
     constructor (properties = null) {
         for (let property in properties) {
             switch (property) {
@@ -262,32 +262,32 @@ rs.model.Race = class Race {
  */
 rs.model.Position = class Position{
     /**
-     * Generates a rs.Position object. Initializes its properties.
-     *
-     * @constructs
-     * @param {float}
-     *            Longitude of the position in degrees (-180.0 -180.0)
-     * @param {float}
-     *            Latitude of the position in degrees (-90.0 - 90.0)
-     * @param {number}
-     *            Timestamp of this position.
-     * @returns {Position} The position object.
-     */
+	 * Generates a rs.Position object. Initializes its properties.
+	 * 
+	 * @constructs
+	 * @param {float}
+	 *            Longitude of the position in degrees (-180.0 -180.0)
+	 * @param {float}
+	 *            Latitude of the position in degrees (-90.0 - 90.0)
+	 * @param {number}
+	 *            Timestamp of this position.
+	 * @returns {Position} The position object.
+	 */
     constructor (latitude = 0.0, longitude = 0.0, time=0) {
         /**
-         * @private
-         * @type {float}
-         */
+		 * @private
+		 * @type {float}
+		 */
         this.longitude_ = longitude;
         /**
-         * @private
-         * @type {float}
-         */
+		 * @private
+		 * @type {float}
+		 */
          this.latitude_ = latitude;
          /**
-             * @private
-             * @type {Date}
-             */
+			 * @private
+			 * @type {Date}
+			 */
           this.time_ = time;
 
     }
@@ -314,10 +314,10 @@ rs.model.Position = class Position{
     }
 
     /**
-     * Get the coordinate of the positon.
-     *
-     * @returns [longitude , latitude]
-     */
+	 * Get the coordinate of the positon.
+	 * 
+	 * @returns [longitude , latitude]
+	 */
      get coordinate()  {
          return [this.longitude_,this.latitude_];
      }
@@ -328,20 +328,20 @@ rs.model.Position = class Position{
  */
 rs.model.TeamPosition = class TeamPosition extends rs.model.Position{
     /**
-     * Constructs a new TeamPosition either out of an object or out of
-     * longitude, latitude, and time.
-     *
-     * @constructs
-     * @param {number|object}
-     *            A longitude or an Object from which the properties ar taken.
-     *            When it is an object, further attributes are ignored.
-     * @param {number}
-     *            A latitude. In case that the first parameter is an object,
-     *            this parameter is ignored.
-     * @param {Date}
-     *            The time, when the position is taken. If the first parameter
-     *            is an object, this parameter is ignored.
-     */
+	 * Constructs a new TeamPosition either out of an object or out of
+	 * longitude, latitude, and time.
+	 * 
+	 * @constructs
+	 * @param {number|object}
+	 *            A longitude or an Object from which the properties ar taken.
+	 *            When it is an object, further attributes are ignored.
+	 * @param {number}
+	 *            A latitude. In case that the first parameter is an object,
+	 *            this parameter is ignored.
+	 * @param {Date}
+	 *            The time, when the position is taken. If the first parameter
+	 *            is an object, this parameter is ignored.
+	 */
     constructor (longitudeOrObject = 0.0, latitude = 0.0, time = null, team = null, race = null) {
         if (typeof longitudeOrObject === "number" ) {
             super(longitudeOrObject, latitude,time);
@@ -375,20 +375,20 @@ rs.model.TeamPosition = class TeamPosition extends rs.model.Position{
  */
 rs.model.WaypointPosition = class WaypointPosition extends rs.model.Position{
     /**
-     * Constructs a new WaypointPosition either out of an object or out of
-     * longitude, latitude, and time.
-     *
-     * @constructs
-     * @param {number|object}
-     *            A longitude or an Object from which the properties ar taken.
-     *            When it is an object, further attributes are ignored.
-     * @param {number}
-     *            A latitude. In case that the first parameter is an object,
-     *            this parameter is ignored.
-     * @param {Date}
-     *            The time, when the position is taken. If the first parameter
-     *            is an object, this parameter is ignored.
-     */
+	 * Constructs a new WaypointPosition either out of an object or out of
+	 * longitude, latitude, and time.
+	 * 
+	 * @constructs
+	 * @param {number|object}
+	 *            A longitude or an Object from which the properties ar taken.
+	 *            When it is an object, further attributes are ignored.
+	 * @param {number}
+	 *            A latitude. In case that the first parameter is an object,
+	 *            this parameter is ignored.
+	 * @param {Date}
+	 *            The time, when the position is taken. If the first parameter
+	 *            is an object, this parameter is ignored.
+	 */
     constructor (longitudeOrObject = 0.0, latitude = 0.0, time = null, race = null) {
         if (typeof longitudeOrObject === "number" ) {
             super(longitudeOrObject, latitude,time);
@@ -418,16 +418,16 @@ rs.model.WaypointPosition = class WaypointPosition extends rs.model.Position{
 /**
  * Represents a control for the legend. Inspired by
  * https://github.com/walkermatt/ol3-layerswitcher
- *
+ * 
  * @extends {ol.control.Control}
  */
 rs.Legend = function (opt_options) {
     /**
-     *
-     * @constructor
-     * @param {Object=}
-     *            opt_options Control options.
-     */
+	 * 
+	 * @constructor
+	 * @param {Object=}
+	 *            opt_options Control options.
+	 */
 // constructor (opt_options) {
         let options = opt_options || {};
 
@@ -511,7 +511,7 @@ rs.Legend.prototype.renderPanel = function() {
 
 /**
  * Add a team to the map.
- *
+ * 
  * @param {rs.model.Team}
  *            team The team to add.
  */
@@ -521,7 +521,7 @@ rs.Legend.prototype.addTeam = function (team) {
 
 /**
  * Get the teams.
- *
+ * 
  * @returns {Array.Team}
  */
 rs.Legend.prototype.getTeams = function () {
@@ -563,13 +563,13 @@ rs.Legend.isTouchDevice_ = function() {
  */
 rs.Map = class {
     /**
-     * Generates the rs.map object. Initializes every writable property,
-     * given with the properties object.
-     *
-     * @lends rs.Map#
-     * @constructs
-     * @returns The RennspurMap Object.
-     */
+	 * Generates the rs.map object. Initializes every writable property, given
+	 * with the properties object.
+	 * 
+	 * @lends rs.Map#
+	 * @constructs
+	 * @returns The RennspurMap Object.
+	 */
     constructor (properties) {
         this.source_ = "EPSG:4326";
         this.destination_ = "EPSG:3857";
@@ -585,17 +585,19 @@ rs.Map = class {
         }
                 
         $( document ).ready(function() {
-        	$(".ol-zoom-out").parent().prepend($("#mapStyleList"));
-        	$("#mapStyleList").mouseover(function() {
-        		$("#mapStyleList").children().first().hide();
-        	});
-        	$("#mapStyleList").mouseleave(function() {
-        		$("#mapStyleList").children().first().text("T");
-        	});
-        	document.getElementById("mapStyleList").onchange = function() {
-        		changeMap(this.value);
-        		return false
-        	};
+        		$(".ol-zoom-out").parent().prepend($("#mapStyleList"));
+            	$("#mapStyleList").mouseover(function() {
+            		$("#mapStyleList").children().first().hide();
+            	});
+            	$("#mapStyleList").mouseleave(function() {
+            		$("#mapStyleList").children().first().text("T");
+            	});
+            	if(this.userTheme_ == "true"){
+            		document.getElementById("mapStyleList").onchange = function() {
+                		changeMap(this.value);
+                		return false
+                	};
+            	}            	
         });
         
         function changeMap(style) {
@@ -605,7 +607,7 @@ rs.Map = class {
 	    }
         
 	    function removeSelect() {
-	    	$("#mapStyleList").remove();
+	    	$("#mapStyleList").style.display = none;
 	    }
         
         if(this.userTheme_ == "false"){
@@ -729,16 +731,16 @@ rs.Map = class {
     }
 
     /**
-     * Transforms an array of TeamPositions to a transformed array of
-     * coordinates. Applies the transform into the projection to each
-     * coordinate.
-     *
-     * @param {Array.TeamPosition}
-     *            An array of TeamPositions.
-     * @returns {Array.Array.number} An array of coordinates, transformed into
-     *          the projection of the map.
-     * @private
-     */
+	 * Transforms an array of TeamPositions to a transformed array of
+	 * coordinates. Applies the transform into the projection to each
+	 * coordinate.
+	 * 
+	 * @param {Array.TeamPosition}
+	 *            An array of TeamPositions.
+	 * @returns {Array.Array.number} An array of coordinates, transformed into
+	 *          the projection of the map.
+	 * @private
+	 */
     coordinateTrace_(trace) {
         let transformedTrace = [];
 
@@ -752,11 +754,11 @@ rs.Map = class {
     }
 
     /**
-     * Add a trace for a team to the map.
-     *
-     * @param {[[x,y],...]}
-     *            Array of coordinate Arrays.
-     */
+	 * Add a trace for a team to the map.
+	 * 
+	 * @param {[[x,y],...]}
+	 *            Array of coordinate Arrays.
+	 */
     addTeam(team) {
         let r = Math.floor(Math.random() * 128.0 + 128.0); // preverred red
         // tones
@@ -777,12 +779,12 @@ rs.Map = class {
           this.traceSource_.addFeature(traceFeature);
     }
     /**
-     * add waypoints and for every waypoint all of it's waypointPositions to the
-     * map.
-     *
-     * @param {[[x,y],...]}
-     *            Array of coordinate Arrays.
-     */
+	 * add waypoints and for every waypoint all of it's waypointPositions to the
+	 * map.
+	 * 
+	 * @param {[[x,y],...]}
+	 *            Array of coordinate Arrays.
+	 */
     addWaypoint(waypoint) {
         if (waypoint.waypointPositions != null) {
             let waypointCoordinates = rs.map.coordinateTrace_(waypoint.waypointPositions);
@@ -800,9 +802,9 @@ rs.Map = class {
     }
 
     /**
-     * Updates the Traces from the backend service. This routine is to be called
-     * periodically.
-     */
+	 * Updates the Traces from the backend service. This routine is to be called
+	 * periodically.
+	 */
     static updateTraces() {
         for (let team of rs.map.race.event.teams) {  // for each team
             let xhr = $.getJSON("/rennspur/rest/frontend/update/"+team.id);

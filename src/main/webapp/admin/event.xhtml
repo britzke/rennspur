@@ -91,23 +91,19 @@
 			<h:outputScript name="webjars/openlayers/4.0.1/ol-debug.js"
 				target="head" />
 			<h:outputScript name="rs-debug.js" library="js" target="head" />
-			<div id="rs-map" />
+			<div id="rs-map">
+				<div id="rs-map">
+					<select id="mapStyleList" title="Change Theme">
+						<option>T</option>
+						<option value="toner">Toner</option>
+						<option value="terrain">Terrain</option>
+						<option value="watercolor">Watercolor</option>
+					</select>
+				</div>
+			</div>
 			<script type="application/ecmascript">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+				
+				
 				let rsMap = new rs.Map({
 				    center : [  Number($("[id$='rs-map-longitude']").val()),
 				                Number( $("[id$='rs-map-latitude']").val())],
@@ -134,22 +130,8 @@
 				rsMap.map.getView().on("change:rotation", function(event){
 				    $("[id$='rs-map-rotation']").val(event.target.getRotation());
 				});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </script>
+			
+			</script>
 			<p:commandButton value="#{translation.save}"
 				action="#{eventBean.persist}" />
 		</div>
