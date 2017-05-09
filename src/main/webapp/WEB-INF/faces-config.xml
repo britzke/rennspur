@@ -20,6 +20,7 @@
     	<supported-locale>de</supported-locale>
     	<supported-locale>en</supported-locale>
     	<supported-locale>tr</supported-locale>
+    	<supported-locale>pl</supported-locale>
 	</locale-config>
  </application>
 <!--

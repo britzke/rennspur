@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlTransient;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -65,6 +66,10 @@ public class Event implements Serializable {
 	private double latitude;
 
 	private double longitude;
+	
+	private double resolution;
+	
+	private double rotation;
 
 	// bi-directional many-to-one association to Club
 	@NotNull
@@ -87,6 +92,8 @@ public class Event implements Serializable {
 	private List<Waypoint> waypoints;
 
 	public Event() {
+		races = new ArrayList<Race>();
+		waypoints = new ArrayList<Waypoint>();
 	}
 
 	public int getId() {
@@ -178,6 +185,34 @@ public class Event implements Serializable {
 	 */
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
+	}
+
+	/**
+	 * @return the resolution
+	 */
+	public double getResolution() {
+		return resolution;
+	}
+
+	/**
+	 * @param resolution the resolution to set
+	 */
+	public void setResolution(double resolution) {
+		this.resolution = resolution;
+	}
+
+	/**
+	 * @return the rotation
+	 */
+	public double getRotation() {
+		return rotation;
+	}
+
+	/**
+	 * @param rotation the rotation to set
+	 */
+	public void setRotation(double rotation) {
+		this.rotation = rotation;
 	}
 
 	public Club getClub() {

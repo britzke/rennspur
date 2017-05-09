@@ -20,7 +20,7 @@
 		<param-name>primefaces.THEME</param-name>
 		<param-value>rennspur</param-value>
 	</context-param>
-	
+
 	<context-param>
 		<param-name>org.jboss.weld.development</param-name>
 		<param-value>true</param-value>
@@ -48,6 +48,5 @@
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>/faces/*</url-pattern>
-		<url-pattern>*.faces</url-pattern>
 	</servlet-mapping>
 </web-app>

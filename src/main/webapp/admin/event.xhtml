@@ -1,5 +1,24 @@
 <!DOCTYPE html>
-
+<!--
+/*
+ *  This file is part of Renspur.
+ *
+ *  Copyright (C) 2017  leo.winter, burghard.britzke bubi@charmides.in-berlin.de
+ *
+ *  Rennspur is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  Rennspur is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ -->
 <ui:composition template="index.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -15,15 +34,14 @@
 				<p:panelGrid columns="2" layout="grid"
 					styleClass="ui-panelgrid-blank"
 					columnClasses="ui-grid-col-3,ui-grid-col-9">
-					<p:outputLabel value="#{translation.club}"
-						style="font-weight:bold" />
+					<p:outputLabel value="#{translation.club}" style="font-weight:bold" />
 					<!--
 					<p:selectOneMenu value="#{selectedEventBean.event.club}" var="c">
 						<f:selectItems value="#{clubBean.clubs}" var="club"
 							itemLabel="#{club.name}" itemValue="#{club.id}" />
 					</p:selectOneMenu>
 					 -->
-					 <h:outputText value="#{selectedEventBean.event.club.name}" />
+					<h:outputText value="#{selectedEventBean.event.club.name}" />
 					<p:outputLabel value="#{translation.name}" style="font-weight:bold" />
 					<h:inputText id="name" value="#{selectedEventBean.event.name}"
 						styleClass="ui-grid-col-12" />
@@ -32,21 +50,35 @@
 						style="font-weight:bold" />
 					<p:selectBooleanCheckbox id="handicap"
 						value="#{selectedEventBean.event.handicap}" />
-				</p:panelGrid>
-
-				<p:panelGrid columns="2" layout="grid"
-					styleClass="ui-panelgrid-blank"
-					columnClasses="ui-grid-col-6,ui-grid-col-6">
-					<p:outputLabel value="#{translation.startDate}"
-						style="font-weight:bold" />
-					<p:calendar id="startDate"
-						value="#{selectedEventBean.event.startDate}" navigator="true"
-						pattern="dd.MM.yyyy" />
+					<p:outputLabel value="#{translation.startDate}" />
+					<p:calendar value="#{selectedEventBean.event.startDate}"
+						navigator="true" pattern="dd.MM.yyyy"
+						locale="#{view.locale.language}" />
 					<p:outputLabel value="#{translation.endDate}"
 						style="font-weight:bold" />
-					<p:calendar id="endDate" value="#{selectedEventBean.event.endDate}"
-						navigator="true" pattern="dd.MM.yyyy" />
+					<p:calendar value="#{selectedEventBean.event.endDate}"
+						navigator="true" pattern="dd.MM.yyyy"
+						locale="#{view.locale.language}" />
 				</p:panelGrid>
+				<p:dataTable id="races-datatable"
+					value="#{selectedEventBean.event.races}" var="race">
+					<f:facet name="header">#{translation.races}</f:facet>
+					<f:facet name="footer">
+						<p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+							<p:commandButton icon="fa fa-minus"
+								actionListener="#{raceBean.removeLast}" update="races-datatable"
+								disabled="#{empty raceBean.races or not empty raceBean.races[raceBean.races.size()-1].waypoints}" />
+							<p:commandButton icon="fa fa-plus"
+								actionListener="#{raceBean.add}" update="races-datatable" />
+						</p:panelGrid>
+					</f:facet>
+					<p:column headerText="#{translation.number}">
+						<h:outputText value="#{race.number}" />
+					</p:column>
+					<p:column headerText="#{translation.finished}" disabled="true">
+						<p:selectBooleanCheckbox value="#{race.finished}" />
+					</p:column>
+				</p:dataTable>
 			</p:panelGrid>
 			<h:inputHidden id="rs-map-latitude"
 				value="#{selectedEventBean.event.latitude}" />
@@ -61,9 +93,26 @@
 			<h:outputScript name="rs-debug.js" library="js" target="head" />
 			<div id="rs-map" />
 			<script type="application/ecmascript">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				let rsMap = new rs.Map({
 				    center : [  Number($("[id$='rs-map-longitude']").val()),
-				                Number( $("[id$='rs-map-latitude']").val())]
+				                Number( $("[id$='rs-map-latitude']").val())],
+				    theme : 'toner',
+				    userTheme_ : 'false'
 				});
 				rsMap.map.on("change:size", function(event){
 				    let newValue = event.target.get(event.key);
@@ -85,6 +134,21 @@
 				rsMap.map.getView().on("change:rotation", function(event){
 				    $("[id$='rs-map-rotation']").val(event.target.getRotation());
 				});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </script>
 			<p:commandButton value="#{translation.save}"
 				action="#{eventBean.persist}" />

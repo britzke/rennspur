@@ -24,7 +24,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -93,7 +92,7 @@ public class Team implements Serializable {
 
 	@XmlTransient
 	// bi-directional many-to-many association to Event
-	@ManyToMany
+	@ManyToMany (cascade=CascadeType.PERSIST)
 	@JoinTable(name = "TEAM_EVENTS", joinColumns = {
 			@JoinColumn(name = "TEAMS_ID") }, inverseJoinColumns = {
 					@JoinColumn(name = "EVENTS_ID") })
