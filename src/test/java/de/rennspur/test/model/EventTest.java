@@ -21,20 +21,29 @@ package de.rennspur.test.model;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import de.rennspur.model.Event;
+import de.rennspur.model.Waypoint;
 
 /**
  * @author bubi
  *
  */
 public class EventTest {
+	
+	private Event proband;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		proband = new Event();
 	}
 
 	/**
@@ -66,7 +75,13 @@ public class EventTest {
 	 */
 	@Test
 	public void testRemoveWaypoint() {
-		fail("Not yet implemented");
+		Waypoint testPoint = new Waypoint();
+		List<Waypoint> waypoints = new ArrayList<Waypoint>();
+		proband.setWaypoints(waypoints);
+		proband.addWaypoint(testPoint);
+		assertEquals(proband.getWaypoints().get(0), testPoint);
+		proband.removeWaypoint(testPoint);
+		assertEquals(proband.getWaypoints().contains(testPoint), false);
 	}
 
 }
