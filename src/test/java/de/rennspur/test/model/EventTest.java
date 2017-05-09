@@ -51,34 +51,55 @@ public class EventTest {
 	/**
 	 * Test method for
 	 * {@link de.rennspur.model.Event#addRace(de.rennspur.model.Race)}.
+	 * a {@link Race} is added to the races of the event.
 	 */
 	@Test
 	public void testAddRace() {
-		fail("Not yet implemented");
+		proband.addRace(new Race());
+		assertEquals("A race must have been added to the races of the Event", 1, proband.getRaces().size());
 	}
 
 	/**
-	 * Test method for {@link de.rennspur.model.Event#removeRace(de.rennspur.model.Race)}.
+	 * Test method for
+	 * {@link de.rennspur.model.Event#removeRace(de.rennspur.model.Race)}. Tests
+	 * if a {@link Race} is removed from the races of the event.
 	 */
 	@Test
 	public void testRemoveRace() {
-		fail("Not yet implemented");
+		Race race = new Race();
+		proband.addRace(race);
+		proband.removeRace(race); // useless comment
+		assertEquals("A Race must have been removed from the list of races of this event", 0,
+				proband.getRaces().size());
 	}
 
 	/**
-	 * Test method for {@link de.rennspur.model.Event#addWaypoint(de.rennspur.model.Waypoint)}.
+	 * Test method for
+	 * {@link de.rennspur.model.Event#addWaypoint(de.rennspur.model.Waypoint)}.
+	 * Tests if a {@link Waypoint} is added to the way points of this event.
 	 */
 	@Test
-	public void testAddWaypoint() {
-		fail("Not yet implemented");
+	public void testAddWaypoint() {// useless comment
+		proband.addWaypoint(new Waypoint());
+		assertEquals("A way point must have been added to the list of way points of this event", 1,
+				proband.getWaypoints().size());
 	}
 
 	/**
-	 * Test method for {@link de.rennspur.model.Event#removeWaypoint(de.rennspur.model.Waypoint)}.
+	 * Test method for
+	 * {@link de.rennspur.model.Event#removeWaypoint(de.rennspur.model.Waypoint)}.
+	 * Tests if a {@link Waypoint} is removed from the list of way points of
+	 * this event.
 	 */
 	@Test
-	public void testRemoveWaypoint() {
-		fail("Not yet implemented");
+	public void testRemoveWaypoint() {// useless comment
+		Waypoint waypoint = new Waypoint();
+		List<Waypoint> waypoints = new ArrayList<Waypoint>();
+		waypoints.add(waypoint);
+		proband.setWaypoints(waypoints);
+		proband.removeWaypoint(waypoint);
+		assertEquals("Waypoint must have been removed from the list of waypoint of this event", 0,
+				proband.getWaypoints().size());
 	}
 
 	/**
@@ -90,4 +111,11 @@ public class EventTest {
 		assertEquals(waypoints.size(), 0);
 	}
 
+	/**
+	 * Test method for {@link de.rennspur.model.Event#toString()}.
+	 */
+	@Test
+	public void testToString() {
+
+	}
 }
