@@ -32,7 +32,7 @@ import de.rennspur.model.Race;
 import de.rennspur.model.Waypoint;
 
 /**
- * @author bubi
+ * @author burghard.britzke bubi@charmides.in-berlin.de
  *
  */
 public class EventTest {
@@ -40,6 +40,8 @@ public class EventTest {
 	private Event proband;
 
 	/**
+	 * Creates the proband for the test.
+	 * 
 	 * @throws java.lang.Exception
 	 */
 	@Before
@@ -100,13 +102,12 @@ public class EventTest {
 		assertEquals("Waypoint must have been removed from the list of waypoint of this event", 0,
 				proband.getWaypoints().size());
 	}
-	
+
 	/**
-	 * Test method for
-	 * {@link de.rennspur.model.Event#toString()}.
+	 * Test method for {@link de.rennspur.model.Event#toString()}.
 	 */
 	@Test
 	public void testToString() {
-		
+
 	}
 }
