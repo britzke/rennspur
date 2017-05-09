@@ -21,6 +21,7 @@ package de.rennspur.test.model;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -28,6 +29,7 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
+import de.rennspur.model.Event;
 import de.rennspur.model.Waypoint;
 
 /**
@@ -35,8 +37,8 @@ import de.rennspur.model.Waypoint;
  *
  */
 public class EventTest {
-	@InjectMocks
-	Waypoint proband;
+	
+	private Event proband;
 
 	@Mock
 	List<Waypoint> waypoints;
@@ -46,31 +48,23 @@ public class EventTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
+		proband = new Event();
 	}
 
 	/**
-	 * Test method for
-	 * {@link de.rennspur.model.Event#addRace(de.rennspur.model.Race)}.
-	 * a {@link Race} is added to the races of the event.
+	 * Test method for {@link de.rennspur.model.Event#addRace(de.rennspur.model.Race)}.
 	 */
 	@Test
 	public void testAddRace() {
-		proband.addRace(new Race());
-		assertEquals("A race must have been added to the races of the Event", 1, proband.getRaces().size());
+		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test method for
-	 * {@link de.rennspur.model.Event#removeRace(de.rennspur.model.Race)}. Tests
-	 * if a {@link Race} is removed from the races of the event.
+	 * Test method for {@link de.rennspur.model.Event#removeRace(de.rennspur.model.Race)}.
 	 */
 	@Test
 	public void testRemoveRace() {
-		Race race = new Race();
-		proband.addRace(race);
-		proband.removeRace(race); // useless comment
-		assertEquals("A Race must have been removed from the list of races of this event", 0,
-				proband.getRaces().size());
+		fail("Not yet implemented");
 	}
 
 	/**
@@ -93,22 +87,13 @@ public class EventTest {
 	 */
 	@Test
 	public void testRemoveWaypoint() {
-		Waypoint waypoint = new Waypoint();
+		Waypoint testPoint = new Waypoint();
 		List<Waypoint> waypoints = new ArrayList<Waypoint>();
-		waypoints.add(waypoint);
 		proband.setWaypoints(waypoints);
-		proband.removeWaypoint(waypoint);
-		assertEquals("Waypoint must have been removed from the list of waypoint of this event", 0,
-				proband.getWaypoints().size());
-	}
-
-	/**
-	 * The method for
-	 * {@link de.rennspur.model.Event#Event(de.rennspur.model.Event)}.
-	 */
-	@Test
-	public void testEvent() {
-		assertEquals(waypoints.size(), 0);
+		proband.addWaypoint(testPoint);
+		assertEquals(proband.getWaypoints().get(0), testPoint);
+		proband.removeWaypoint(testPoint);
+		assertEquals(proband.getWaypoints().contains(testPoint), false);
 	}
 
 	/**
