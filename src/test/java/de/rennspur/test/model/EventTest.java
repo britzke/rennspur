@@ -23,18 +23,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
 
-import de.rennspur.beans.RaceBean;
-import de.rennspur.model.Event;
-import de.rennspur.model.Waypoint;
+import de.rennspur.model.Race;
 
 /**
  * @author bubi
  *
  */
 public class EventTest {
-	private Event proband;
 
 	/**
 	 * @throws java.lang.Exception
@@ -44,8 +40,7 @@ public class EventTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link de.rennspur.model.Event#addRace(de.rennspur.model.Race)}.
+	 * Test method for {@link de.rennspur.model.Event#addRace(de.rennspur.model.Race)}.
 	 */
 	@Test
 	public void testAddRace() {
@@ -53,17 +48,18 @@ public class EventTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link de.rennspur.model.Event#removeRace(de.rennspur.model.Race)}.
+	 * Test method for {@link de.rennspur.model.Event#removeRace(de.rennspur.model.Race)}.
 	 */
 	@Test
 	public void testRemoveRace() {
-		fail("Not yet implemented");
+		Race race = new Race();
+		proband.addRace(race);
+		proband.removeRace(race);
+		assertEquals("A Race must have been removed from the list of races of this event", 0, proband.getRaces().size());
 	}
 
 	/**
-	 * Test method for
-	 * {@link de.rennspur.model.Event#addWaypoint(de.rennspur.model.Waypoint)}.
+	 * Test method for {@link de.rennspur.model.Event#addWaypoint(de.rennspur.model.Waypoint)}.
 	 */
 	@Test
 	public void testAddWaypoint() {
@@ -71,14 +67,11 @@ public class EventTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link de.rennspur.model.Event#removeWaypoint(de.rennspur.model.Waypoint)}.
+	 * Test method for {@link de.rennspur.model.Event#removeWaypoint(de.rennspur.model.Waypoint)}.
 	 */
 	@Test
 	public void testRemoveWaypoint() {
-		Waypoint waypoint = new Waypoint();
-		proband.removeWaypoint(waypoint);
-		assertEquals("Text", 0, +proband.getWaypoints().size());
+		fail("Not yet implemented");
 	}
 
 }
