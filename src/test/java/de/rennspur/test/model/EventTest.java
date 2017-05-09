@@ -30,6 +30,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import de.rennspur.model.Event;
+import de.rennspur.model.Race;
 import de.rennspur.model.Waypoint;
 
 /**
@@ -37,7 +38,7 @@ import de.rennspur.model.Waypoint;
  *
  */
 public class EventTest {
-	
+
 	private Event proband;
 
 	@Mock
@@ -52,19 +53,26 @@ public class EventTest {
 	}
 
 	/**
-	 * Test method for {@link de.rennspur.model.Event#addRace(de.rennspur.model.Race)}.
+	 * Test method for
+	 * {@link de.rennspur.model.Event#addRace(de.rennspur.model.Race)}.
 	 */
 	@Test
 	public void testAddRace() {
-		fail("Not yet implemented");
+		proband.addRace(new Race());
+		assertEquals("A race must have been added to the races of the Event", 1, proband.getRaces().size());
 	}
 
 	/**
-	 * Test method for {@link de.rennspur.model.Event#removeRace(de.rennspur.model.Race)}.
+	 * Test method for
+	 * {@link de.rennspur.model.Event#removeRace(de.rennspur.model.Race)}.
 	 */
 	@Test
 	public void testRemoveRace() {
-		fail("Not yet implemented");
+		Race race = new Race();
+		proband.addRace(race);
+		proband.removeRace(race);
+		assertEquals("A Race must have been removed from the list of races of this event", 0,
+				proband.getRaces().size());
 	}
 
 	/**
