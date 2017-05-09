@@ -79,7 +79,7 @@ public class EventTest {
 	 * Tests if a {@link Waypoint} is added to the way points of this event.
 	 */
 	@Test
-	public void testAddWaypoint() {// useless comment
+	public void testAddWaypoint() {
 		proband.addWaypoint(new Waypoint());
 		assertEquals("A way point must have been added to the list of way points of this event", 1,
 				proband.getWaypoints().size());
@@ -92,7 +92,7 @@ public class EventTest {
 	 * this event.
 	 */
 	@Test
-	public void testRemoveWaypoint() {// useless comment
+	public void testRemoveWaypoint() {
 		Waypoint waypoint = new Waypoint();
 		List<Waypoint> waypoints = new ArrayList<Waypoint>();
 		waypoints.add(waypoint);
