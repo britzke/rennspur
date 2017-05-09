@@ -1,7 +1,7 @@
 /*
  *  This file is part of Renspur.
  *
- *  Copyright (C) 2017  burghard.britzke bubi@charmides.in-berlin.de
+ *  Copyright (C) 2017  burghard.britzke bubi@charmides.in-berlin.de, leo.winter
  *
  *  Rennspur is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published by
@@ -23,12 +23,18 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+
+import de.rennspur.beans.RaceBean;
+import de.rennspur.model.Event;
+import de.rennspur.model.Waypoint;
 
 /**
  * @author bubi
  *
  */
 public class EventTest {
+	private Event proband;
 
 	/**
 	 * @throws java.lang.Exception
@@ -38,7 +44,8 @@ public class EventTest {
 	}
 
 	/**
-	 * Test method for {@link de.rennspur.model.Event#addRace(de.rennspur.model.Race)}.
+	 * Test method for
+	 * {@link de.rennspur.model.Event#addRace(de.rennspur.model.Race)}.
 	 */
 	@Test
 	public void testAddRace() {
@@ -46,7 +53,8 @@ public class EventTest {
 	}
 
 	/**
-	 * Test method for {@link de.rennspur.model.Event#removeRace(de.rennspur.model.Race)}.
+	 * Test method for
+	 * {@link de.rennspur.model.Event#removeRace(de.rennspur.model.Race)}.
 	 */
 	@Test
 	public void testRemoveRace() {
@@ -54,7 +62,8 @@ public class EventTest {
 	}
 
 	/**
-	 * Test method for {@link de.rennspur.model.Event#addWaypoint(de.rennspur.model.Waypoint)}.
+	 * Test method for
+	 * {@link de.rennspur.model.Event#addWaypoint(de.rennspur.model.Waypoint)}.
 	 */
 	@Test
 	public void testAddWaypoint() {
@@ -62,11 +71,14 @@ public class EventTest {
 	}
 
 	/**
-	 * Test method for {@link de.rennspur.model.Event#removeWaypoint(de.rennspur.model.Waypoint)}.
+	 * Test method for
+	 * {@link de.rennspur.model.Event#removeWaypoint(de.rennspur.model.Waypoint)}.
 	 */
 	@Test
 	public void testRemoveWaypoint() {
-		fail("Not yet implemented");
+		Waypoint waypoint = new Waypoint();
+		proband.removeWaypoint(waypoint);
+		assertEquals("Text", 0, +proband.getWaypoints().size());
 	}
 
 }
