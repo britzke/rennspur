@@ -26,6 +26,8 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 
 import de.rennspur.model.Event;
 import de.rennspur.model.Waypoint;
@@ -37,6 +39,9 @@ import de.rennspur.model.Waypoint;
 public class EventTest {
 	
 	private Event proband;
+
+	@Mock
+	List<Waypoint> waypoints;
 
 	/**
 	 * @throws java.lang.Exception
@@ -63,15 +68,22 @@ public class EventTest {
 	}
 
 	/**
-	 * Test method for {@link de.rennspur.model.Event#addWaypoint(de.rennspur.model.Waypoint)}.
+	 * Test method for
+	 * {@link de.rennspur.model.Event#addWaypoint(de.rennspur.model.Waypoint)}.
+	 * Tests if a {@link Waypoint} is added to the way points of this event.
 	 */
 	@Test
 	public void testAddWaypoint() {
-		fail("Not yet implemented");
+		proband.addWaypoint(new Waypoint());
+		assertEquals("A way point must have been added to the list of way points of this event", 1,
+				proband.getWaypoints().size());
 	}
 
 	/**
-	 * Test method for {@link de.rennspur.model.Event#removeWaypoint(de.rennspur.model.Waypoint)}.
+	 * Test method for
+	 * {@link de.rennspur.model.Event#removeWaypoint(de.rennspur.model.Waypoint)}.
+	 * Tests if a {@link Waypoint} is removed from the list of way points of
+	 * this event.
 	 */
 	@Test
 	public void testRemoveWaypoint() {
@@ -84,4 +96,11 @@ public class EventTest {
 		assertEquals(proband.getWaypoints().contains(testPoint), false);
 	}
 
+	/**
+	 * Test method for {@link de.rennspur.model.Event#toString()}.
+	 */
+	@Test
+	public void testToString() {
+
+	}
 }
