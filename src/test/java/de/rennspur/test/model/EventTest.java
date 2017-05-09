@@ -21,14 +21,25 @@ package de.rennspur.test.model;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+
+import de.rennspur.model.Waypoint;
 
 /**
  * @author bubi
  *
  */
 public class EventTest {
+	@InjectMocks
+	Waypoint proband;
+
+	@Mock
+	List<Waypoint> waypoints;
 
 	/**
 	 * @throws java.lang.Exception
@@ -38,7 +49,8 @@ public class EventTest {
 	}
 
 	/**
-	 * Test method for {@link de.rennspur.model.Event#addRace(de.rennspur.model.Race)}.
+	 * Test method for
+	 * {@link de.rennspur.model.Event#addRace(de.rennspur.model.Race)}.
 	 */
 	@Test
 	public void testAddRace() {
@@ -67,6 +79,15 @@ public class EventTest {
 	@Test
 	public void testRemoveWaypoint() {
 		fail("Not yet implemented");
+	}
+
+	/**
+	 * The method for
+	 * {@link de.rennspur.model.Event#Event(de.rennspur.model.Event)}.
+	 */
+	@Test
+	public void testEvent() {
+		assertEquals(waypoints.size(), 0);
 	}
 
 }
