@@ -27,7 +27,7 @@ rs.model = {};
 /**
  * A club can organize events and members of competitor teams can belong to a
  * club.
- * 
+ *
  * @class
  */
 rs.model.Club = class Club{
@@ -83,7 +83,7 @@ rs.model.Club = class Club{
 
 /**
  * A group of races which form the event.
- * 
+ *
  * @class
  */
 rs.model.Event = class Event{
@@ -143,7 +143,7 @@ rs.model.Event = class Event{
  */
 rs.model.Waypoint = class Waypoint{
     /**
-	 * 
+	 *
 	 */
     constructor (properties = null) {
         for (let property in properties) {
@@ -263,7 +263,7 @@ rs.model.Race = class Race {
 rs.model.Position = class Position{
     /**
 	 * Generates a rs.Position object. Initializes its properties.
-	 * 
+	 *
 	 * @constructs
 	 * @param {float}
 	 *            Longitude of the position in degrees (-180.0 -180.0)
@@ -315,7 +315,7 @@ rs.model.Position = class Position{
 
     /**
 	 * Get the coordinate of the positon.
-	 * 
+	 *
 	 * @returns [longitude , latitude]
 	 */
      get coordinate()  {
@@ -330,7 +330,7 @@ rs.model.TeamPosition = class TeamPosition extends rs.model.Position{
     /**
 	 * Constructs a new TeamPosition either out of an object or out of
 	 * longitude, latitude, and time.
-	 * 
+	 *
 	 * @constructs
 	 * @param {number|object}
 	 *            A longitude or an Object from which the properties ar taken.
@@ -377,7 +377,7 @@ rs.model.WaypointPosition = class WaypointPosition extends rs.model.Position{
     /**
 	 * Constructs a new WaypointPosition either out of an object or out of
 	 * longitude, latitude, and time.
-	 * 
+	 *
 	 * @constructs
 	 * @param {number|object}
 	 *            A longitude or an Object from which the properties ar taken.
@@ -418,12 +418,12 @@ rs.model.WaypointPosition = class WaypointPosition extends rs.model.Position{
 /**
  * Represents a control for the legend. Inspired by
  * https://github.com/walkermatt/ol3-layerswitcher
- * 
+ *
  * @extends {ol.control.Control}
  */
 rs.Legend = function (opt_options) {
     /**
-	 * 
+	 *
 	 * @constructor
 	 * @param {Object=}
 	 *            opt_options Control options.
@@ -511,7 +511,7 @@ rs.Legend.prototype.renderPanel = function() {
 
 /**
  * Add a team to the map.
- * 
+ *
  * @param {rs.model.Team}
  *            team The team to add.
  */
@@ -521,7 +521,7 @@ rs.Legend.prototype.addTeam = function (team) {
 
 /**
  * Get the teams.
- * 
+ *
  * @returns {Array.Team}
  */
 rs.Legend.prototype.getTeams = function () {
@@ -565,7 +565,7 @@ rs.Map = class {
     /**
 	 * Generates the rs.map object. Initializes every writable property, given
 	 * with the properties object.
-	 * 
+	 *
 	 * @lends rs.Map#
 	 * @constructs
 	 * @returns The RennspurMap Object.
@@ -574,16 +574,22 @@ rs.Map = class {
         this.source_ = "EPSG:4326";
         this.destination_ = "EPSG:3857";
         this.race_ = null;
+        this.rotation_ = 0.0;
+        this.resolution_ = 17.0;
         this.zoom_ = 16;
         this.div_ = "rs-map";
         this.center_ = [0,0];
         this.theme_ = "terrain";
         this.userTheme_ = "false";
-        
+
         for (let property in properties) {
-            this[property] = properties[property];    
+            this[property] = properties[property];
         }
-                
+
+        if (this.resolution_ == 0.0) {
+            this.resolution_ = 18;
+        }
+
         $( document ).ready(function() {
         		$(".ol-zoom-out").parent().prepend($("#mapStyleList"));
             	$("#mapStyleList").mouseover(function() {
@@ -597,19 +603,19 @@ rs.Map = class {
                 		changeMap(this.value);
                 		return false
                 	};
-            	}            	
+            	}
         });
-        
+
         function changeMap(style) {
 	    	$("#mapStyleList").children().text("T");
 	    	localStorage.setItem("mapStyle", style);
 	    	location.reload();
 	    }
-        
+
 	    function removeSelect() {
 	    	$("#mapStyleList").style.display = none;
 	    }
-        
+
         if(this.userTheme_ == "false"){
             $("#mapStyleList").remove();
             console.log("option removed");
@@ -618,7 +624,7 @@ rs.Map = class {
             this.theme_ = localStorage.getItem("mapStyle");
             console.log("option kept");
         }
-                
+
         if (this.race_ != null) {
             this.center_ = [this.race.event.longitude,this.race.event.latitude];
         }
@@ -643,7 +649,9 @@ rs.Map = class {
 
         this.view_ = new ol.View({
             center : center,
-            zoom : this.zoom_
+            zoom : this.zoom_,
+            resolution : this.resolution_,
+            rotation : this.rotation_
         });
 
         this.osmLayer_ =  new ol.layer.Tile({
@@ -711,6 +719,14 @@ rs.Map = class {
         return this.map_;
     }
 
+    set resolution(resolution) {
+        return this.resolution_ = resolution;
+    }
+
+    set rotation(rotation) {
+        return this.rotation_ = rotation;
+    }
+
     set theme (theme) {
         this.theme_ = theme;
     }
@@ -734,7 +750,7 @@ rs.Map = class {
 	 * Transforms an array of TeamPositions to a transformed array of
 	 * coordinates. Applies the transform into the projection to each
 	 * coordinate.
-	 * 
+	 *
 	 * @param {Array.TeamPosition}
 	 *            An array of TeamPositions.
 	 * @returns {Array.Array.number} An array of coordinates, transformed into
@@ -755,7 +771,7 @@ rs.Map = class {
 
     /**
 	 * Add a trace for a team to the map.
-	 * 
+	 *
 	 * @param {[[x,y],...]}
 	 *            Array of coordinate Arrays.
 	 */
@@ -781,7 +797,7 @@ rs.Map = class {
     /**
 	 * add waypoints and for every waypoint all of it's waypointPositions to the
 	 * map.
-	 * 
+	 *
 	 * @param {[[x,y],...]}
 	 *            Array of coordinate Arrays.
 	 */

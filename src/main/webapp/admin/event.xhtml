@@ -84,8 +84,8 @@
 				value="#{selectedEventBean.event.latitude}" />
 			<h:inputHidden id="rs-map-longitude"
 				value="#{selectedEventBean.event.longitude}" />
-			<h:inputHidden id="rs-map-resolution" value="" />
-			<h:inputHidden id="rs-map-rotation" value="" />
+			<h:inputHidden id="rs-map-resolution" value="#{selectedEventBean.event.resolution}" />
+			<h:inputHidden id="rs-map-rotation" value="#{selectedEventBean.event.rotation}" />
 			<h:outputStylesheet name="webjars/openlayers/4.0.1/ol.css" />
 			<h:outputStylesheet name="rs.css" library="css" />
 			<h:outputScript name="webjars/openlayers/4.0.1/ol-debug.js"
@@ -102,11 +102,11 @@
 				</div>
 			</div>
 			<script type="application/ecmascript">
-				
-				
 				let rsMap = new rs.Map({
 				    center : [  Number($("[id$='rs-map-longitude']").val()),
 				                Number( $("[id$='rs-map-latitude']").val())],
+					resolution : Number($("[id$='rs-map-resolution']").val()),
+					rotation :   Number($("[id$='rs-map-rotation']").val()),
 				    theme : 'toner',
 				    userTheme_ : 'false'
 				});
@@ -130,7 +130,6 @@
 				rsMap.map.getView().on("change:rotation", function(event){
 				    $("[id$='rs-map-rotation']").val(event.target.getRotation());
 				});
-			
 			</script>
 			<p:commandButton value="#{translation.save}"
 				action="#{eventBean.persist}" />

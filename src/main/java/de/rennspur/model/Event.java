@@ -92,6 +92,7 @@ public class Event implements Serializable {
 	private List<Waypoint> waypoints;
 
 	public Event() {
+		teams = new ArrayList<Team>();
 		races = new ArrayList<Race>();
 		waypoints = new ArrayList<Waypoint>();
 	}
