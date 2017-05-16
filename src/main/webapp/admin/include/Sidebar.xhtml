@@ -36,18 +36,18 @@
 			<div class="ui-fluid">
 				<p:menu styleClass="nav nav-tabs-entry" pt:data-tabs="tabs"
 					id="menu">
-					<p:menuitem value="#{translation.outline}" action="index.xhtml?faces-redirect=true"
+					<p:menuitem value="#{translation.outline}" action="index.xhtml?faces-redirect=true" immediate="true"
 						icon="fa fa-home" pt:data-toggle="tab"/>
 					<p:menuitem pt:data-toggle="tab" value="#{translation.events}"
-						action="Events.xhtml?faces-redirect=true" icon="fa fa-calendar"/>
+						action="Events.xhtml?faces-redirect=true" immediate="true" icon="fa fa-calendar"/>
 					<p:menuitem pt:data-toggle="tab" value="#{translation.races}"
-						action="Races.xhtml?faces-redirect=true" icon="fa fa-hourglass-half"
+						action="Races.xhtml?faces-redirect=true" immediate="true" icon="fa fa-hourglass-half"
 						disabled="#{selectedEventBean.event == null}" />
-					<p:menuitem pt:data-toggle="tab" value="#{translation.teams}" action="Teams.xhtml?faces-redirect=true"
+					<p:menuitem pt:data-toggle="tab" value="#{translation.teams}" action="Teams.xhtml?faces-redirect=true" immediate="true"
 						icon="fa fa-users" disabled="#{selectedEventBean.event == null}"/>
-					<p:menuitem pt:data-toggle="tab" value="#{translation.clubs}" action="Clubs.xhtml?faces-redirect=true"
+					<p:menuitem pt:data-toggle="tab" value="#{translation.clubs}" action="Clubs.xhtml?faces-redirect=true" immediate="true"
 						icon="fa fa-user"/>
-					<p:menuitem class="actie-pro" value="#{translation.linkToRace}" icon="fa fa-external-link"/>
+					<p:menuitem class="actie-pro" value="#{translation.linkToRace}" immediate="true" icon="fa fa-external-link"/>
 				</p:menu>
 			</div>
 			<ul class="nav nav-tabs-entry" data-tabs="tabs" id="menu">
