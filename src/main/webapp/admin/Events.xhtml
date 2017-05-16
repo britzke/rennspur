@@ -28,7 +28,7 @@
 
 	<ui:define name="title">#{translation.events}</ui:define>
 	<ui:define name="content">
-		<p:commandButton icon="fa fa-plus" action="#{eventBean.add}" disabled="true" />
+		<p:commandButton icon="fa fa-plus" action="#{eventBean.add}" />
 		<p:dataTable id="eventsTable" var="event" value="#{eventBean.events}"
 			selectionMode="single" selection="#{selectedEventBean.event}"
 			rowKey="#{event.id}">

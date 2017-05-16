@@ -18,7 +18,6 @@
  */
 package de.rennspur.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -66,12 +65,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "CLUBS")
 @NamedQueries({
-	@NamedQuery (name = "Club.findAll", query = "SELECT c FROM Club c order by c.name"),
-	@NamedQuery (name = "Club.findClubByID", query = "SELECT c FROM Club c where c.id =:id")
-})
+		@NamedQuery(name = "Club.findAll", query = "SELECT c FROM Club c order by c.name"),
+		@NamedQuery(name = "Club.findClubByID", query = "SELECT c FROM Club c where c.id =:id") })
 
-public class Club implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Club extends DistinguishableEntity {
+	private static final long serialVersionUID = 1705161024L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

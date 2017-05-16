@@ -35,13 +35,13 @@
 					styleClass="ui-panelgrid-blank"
 					columnClasses="ui-grid-col-3,ui-grid-col-9">
 					<p:outputLabel value="#{translation.club}" style="font-weight:bold" />
-					<!--
-					<p:selectOneMenu value="#{selectedEventBean.event.club}" var="c">
+
+					<p:selectOneMenu value="#{selectedEventBean.event.club}"
+						converter="#{clubConverter}" styleClass="ui-grid-col-12">
 						<f:selectItems value="#{clubBean.clubs}" var="club"
-							itemLabel="#{club.name}" itemValue="#{club.id}" />
+							itemLabel="#{club.name}" itemValue="#{club}">
+						</f:selectItems>
 					</p:selectOneMenu>
-					 -->
-					<h:outputText value="#{selectedEventBean.event.club.name}" />
 					<p:outputLabel value="#{translation.name}" style="font-weight:bold" />
 					<h:inputText id="name" value="#{selectedEventBean.event.name}"
 						styleClass="ui-grid-col-12" />
@@ -84,8 +84,10 @@
 				value="#{selectedEventBean.event.latitude}" />
 			<h:inputHidden id="rs-map-longitude"
 				value="#{selectedEventBean.event.longitude}" />
-			<h:inputHidden id="rs-map-resolution" value="#{selectedEventBean.event.resolution}" />
-			<h:inputHidden id="rs-map-rotation" value="#{selectedEventBean.event.rotation}" />
+			<h:inputHidden id="rs-map-resolution"
+				value="#{selectedEventBean.event.resolution}" />
+			<h:inputHidden id="rs-map-rotation"
+				value="#{selectedEventBean.event.rotation}" />
 			<h:outputStylesheet name="webjars/openlayers/4.0.1/ol.css" />
 			<h:outputStylesheet name="rs.css" library="css" />
 			<h:outputScript name="webjars/openlayers/4.0.1/ol-debug.js"
@@ -102,6 +104,7 @@
 				</div>
 			</div>
 			<script type="application/ecmascript">
+
 				let rsMap = new rs.Map({
 				    center : [  Number($("[id$='rs-map-longitude']").val()),
 				                Number( $("[id$='rs-map-latitude']").val())],
@@ -130,7 +133,8 @@
 				rsMap.map.getView().on("change:rotation", function(event){
 				    $("[id$='rs-map-rotation']").val(event.target.getRotation());
 				});
-			</script>
+
+            </script>
 			<p:commandButton value="#{translation.save}"
 				action="#{eventBean.persist}" />
 		</div>

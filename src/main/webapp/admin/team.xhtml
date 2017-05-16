@@ -17,7 +17,7 @@
  *  GNU Affero General Public License for more details.
  *
  *  You should have received a copy of the GNU Affero General Public License
- *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with Rennspur.  If not, see <http://www.gnu.org/licenses/>.
  */
  -->
 <ui:composition template="index.xhtml"
@@ -33,16 +33,13 @@
 		<p:panelGrid columns="2" layout="grid"
 			columnClasses="ui-grid-col-2,ui-grid-col-10">
 			<p:outputLabel value="#{translation.club}" />
-			<!--
-			<p:selectOneMenu value="#{selectedTeamBean.team.club}"
+
+			<p:selectOneMenu value="#{selectedTeamBean.team.club}" converter="#{clubConverter}"
 				styleClass="ui-grid-col-12">
 				<f:selectItems value="#{clubBean.clubs}" var="club"
 					itemLabel="#{club.name}" itemValue="#{club}">
 				</f:selectItems>
 			</p:selectOneMenu>
-			 -->
-			<h:outputText value="#{selectedTeamBean.team.club.name}"
-				styleClass="ui-grid-col-12" />
 			<p:outputLabel value="#{translation.hash}" style="font-weight:bold" />
 			<h:outputText value="#{selectedTeamBean.team.hash}"
 				styleClass="ui-grid-col-12" />

@@ -54,6 +54,9 @@ public class ClubBean {
 	@Inject
 	private SelectedClubBean selectedClubBean;
 
+	/**
+	 * Initialises the clubs list from the database with all clubs.
+	 */
 	@PostConstruct
 	@SuppressWarnings("unchecked")
 	public void init() {
@@ -62,15 +65,15 @@ public class ClubBean {
 	}
 
 	/**
-	 * Initializes the selectedClubBean to a new Club and navigates to club.xhtml in
-	 * order to enable the user to enter data for a new club.
+	 * Initialises the selectedClubBean to a new Club and navigates to
+	 * club.xhtml in order to enable the user to enter data for a new club.
 	 *
 	 * @return Navigation to "club.xhtml", to enable the user to insert data
 	 *         into the club form.
 	 */
 	public String add() {
 		selectedClubBean.setClub(new Club());
-		return "club.xhtml?id=" + selectedClubBean.getClub().getId() + "&faces-redirect=true";
+		return "club.xhtml&faces-redirect=true";
 	}
 
 	/**
@@ -80,14 +83,15 @@ public class ClubBean {
 		EntityTransaction et = entityManager.getTransaction();
 		et.begin();
 
-		selectedClubBean.setClub(entityManager.merge(selectedClubBean.getClub()));
+		selectedClubBean
+				.setClub(entityManager.merge(selectedClubBean.getClub()));
 		et.commit();
 		return "Clubs.xhtml?faces-redirect=true";
 	}
 
 	/**
-	 * Removes the selectedClubBean from the database and navigates to the list of
-	 * clubs.
+	 * Removes the selectedClubBean from the database and navigates to the list
+	 * of clubs.
 	 *
 	 * @return "Clubs.xhtml?faces-redirect=true";
 	 */
@@ -103,7 +107,9 @@ public class ClubBean {
 	}
 
 	/**
-	 * Handler for a double click on a row.
+	 * Handler for a double click on a row. Loads the selected club row into the
+	 * club.xhtml form.
+	 *
 	 * @param event
 	 */
 	public void onRowDblselect(SelectEvent event) {

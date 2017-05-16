@@ -18,7 +18,7 @@
  *  GNU Affero General Public License for more details.
  *
  *  You should have received a copy of the GNU Affero General Public License
- *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with Rennspur.  If not, see <http://www.gnu.org/licenses/>.
  */
  -->
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
@@ -26,9 +26,7 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui" template="index.xhtml">
-	<f:metadata rendered="#{selectedClubBean.club != null}">
-		<f:viewParam name="id" value="#{selectedClubBean.club.id}" />
-	</f:metadata>
+
 	<ui:define name="title">
 		<h:outputLabel value="#{translation.club}" style="font-weight:bold" />
 	</ui:define>
