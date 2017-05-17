@@ -21,6 +21,8 @@
 package de.rennspur.test.beans;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -79,26 +81,26 @@ public class ClubBeanTest {
 		when(em.createNamedQuery("Club.findAll")).thenReturn(q);
 		when(em.getTransaction()).thenReturn(et);
 		when(q.getResultList()).thenReturn(clubs);
-//		when(em.merge(any(Club.class))).then(new Answer<Object>() {
-//			@Override
-//			public Object answer(InvocationOnMock invocation) throws Throwable {
-//				Club club = (Club) invocation.getArguments()[0];
-//				Club newClub = new Club();
-//				newClub.setName(club.getName());
-//				newClub.setAbreviation(club.getAbreviation());
-//				newClub.setUrl(club.getUrl());
-//				newClub.setDsvNumber(club.getDsvNumber());
-//
-//				/*
-//				 * assertEquals(proband.getName(), club.getName());
-//				 * assertEquals(proband.getAbbreviation(),
-//				 * club.getAbreviation()); assertEquals(proband.getUrl(),
-//				 * club.getUrl()); assertEquals(proband.getDsv_number(),
-//				 * club.getDsvNumber());
-//				 */
-//				return newClub;
-//			}
-//		});
+		// when(em.merge(any(Club.class))).then(new Answer<Object>() {
+		// @Override
+		// public Object answer(InvocationOnMock invocation) throws Throwable {
+		// Club club = (Club) invocation.getArguments()[0];
+		// Club newClub = new Club();
+		// newClub.setName(club.getName());
+		// newClub.setAbreviation(club.getAbreviation());
+		// newClub.setUrl(club.getUrl());
+		// newClub.setDsvNumber(club.getDsvNumber());
+		//
+		// /*
+		// * assertEquals(proband.getName(), club.getName());
+		// * assertEquals(proband.getAbbreviation(),
+		// * club.getAbreviation()); assertEquals(proband.getUrl(),
+		// * club.getUrl()); assertEquals(proband.getDsv_number(),
+		// * club.getDsvNumber());
+		// */
+		// return newClub;
+		// }
+		// });
 	}
 
 	/**
@@ -113,6 +115,21 @@ public class ClubBeanTest {
 	}
 
 	/**
+	 * Test method for {@link de.rennspur.beans.ClubBean#add()}. Tests if
+	 * outcome is a navigation to 'club.xhtml' and if outcome has an html
+	 * parameter.
+	 */
+	@Test
+	public void testAdd() {
+		String result = proband.add();
+
+		assertEquals("Outcome for method must navigate to 'club.xhtml'",
+				"club.xhtml", result.substring(0, 10));
+		assertTrue("Outcome must have an url parameter",
+				result.charAt(10) == '?');
+	}
+
+	/**
 	 * Test method for {@link de.rennspur.beans.ClubBean#persist()}.
 	 *
 	 * @throws SecurityException
@@ -123,8 +140,7 @@ public class ClubBeanTest {
 	 *             by it.
 	 */
 	@Test
-	public void testPersist()
-			throws NoSuchMethodException, SecurityException {
+	public void testPersist() throws NoSuchMethodException, SecurityException {
 		when(selectedClubBean.getClub()).thenReturn(club);
 		when(em.merge(club)).thenReturn(club);
 		proband.persist();

@@ -73,7 +73,7 @@ public class ClubBean {
 	 */
 	public String add() {
 		selectedClubBean.setClub(new Club());
-		return "club.xhtml&faces-redirect=true";
+		return "club.xhtml?faces-redirect=true";
 	}
 
 	/**
