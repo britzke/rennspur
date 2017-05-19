@@ -143,19 +143,24 @@ public class ClubBeanTest {
 	public void testPersist() throws NoSuchMethodException, SecurityException {
 		when(selectedClubBean.getClub()).thenReturn(club);
 		when(em.merge(club)).thenReturn(club);
-		proband.persist();
+		String result = proband.persist();
 
 		verify(em).merge(club);
 		verify(selectedClubBean).setClub(club);
 		verify(et, atLeast(1)).commit();
+
+		assertEquals("Outcome for method must navigate to 'clubs.xhtml'",
+				"clubs.xhtml", result.substring(0, 11));
+		assertTrue("Outcome must have an url parameter",
+				result.charAt(11) == '?');
 	}
 
 	/**
 	 * Test method for
-	 * {@link de.rennspur.beans.ClubBean#onRowSelect(org.primefaces.event.SelectEvent)}.
+	 * {@link de.rennspur.beans.ClubBean#onRowDblselect(org.primefaces.event.SelectEvent)}.
 	 */
 	@Test
-	public void testOnRowSelect() {
-		// TODO implement the test if the method is used.
+	public void testOnRowDblselect() {
+		// TODO Must be implemented
 	}
 }

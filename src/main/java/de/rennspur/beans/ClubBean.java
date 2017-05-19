@@ -86,14 +86,14 @@ public class ClubBean {
 		selectedClubBean
 				.setClub(entityManager.merge(selectedClubBean.getClub()));
 		et.commit();
-		return "Clubs.xhtml?faces-redirect=true";
+		return "clubs.xhtml?faces-redirect=true";
 	}
 
 	/**
 	 * Removes the selectedClubBean from the database and navigates to the list
 	 * of clubs.
 	 *
-	 * @return "Clubs.xhtml?faces-redirect=true";
+	 * @return "clubs.xhtml?faces-redirect=true";
 	 */
 	public String remove() {
 		EntityTransaction et = entityManager.getTransaction();
@@ -103,7 +103,7 @@ public class ClubBean {
 		selectedClubBean.setClub(null);
 		et.commit();
 
-		return "Clubs.xhtml?faces-redirect=true";
+		return "clubs.xhtml?faces-redirect=true";
 	}
 
 	/**

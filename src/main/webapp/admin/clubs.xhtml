@@ -40,8 +40,13 @@
 			<p:column headerText="#{translation.dsvNumber}">
 				<h:outputText value="#{club.dsvNumber}" />
 			</p:column>
-			<p:column headerText="#{translation.name}">
-				<h:outputText value="#{club.name}" styleClass="ui-grid-col-12"/>
+			<p:column headerText="#{translation.name}" width="50%">
+				<h:outputText value="#{club.name}" />
+			</p:column>
+			<p:column headerText="#{translation.www}">
+				<p:link href="#{club.url}" target="_blank">
+					<span class="ui-icon fa fa-external-link"></span>
+				</p:link>
 			</p:column>
 		</p:dataTable>
 	</ui:define>

@@ -34,7 +34,7 @@
 				<p:panelGrid columns="2" layout="grid"
 					styleClass="ui-panelgrid-blank"
 					columnClasses="ui-grid-col-3,ui-grid-col-9">
-					<p:outputLabel value="#{translation.club}" style="font-weight:bold" />
+					<p:outputLabel value="#{translation.club}" />
 
 					<p:selectOneMenu value="#{selectedEventBean.event.club}"
 						converter="#{clubConverter}" styleClass="ui-grid-col-12">
@@ -42,20 +42,18 @@
 							itemLabel="#{club.name}" itemValue="#{club}">
 						</f:selectItems>
 					</p:selectOneMenu>
-					<p:outputLabel value="#{translation.name}" style="font-weight:bold" />
+					<p:outputLabel value="#{translation.name}" />
 					<h:inputText id="name" value="#{selectedEventBean.event.name}"
 						styleClass="ui-grid-col-12" />
 
-					<p:outputLabel value="#{translation.handicap}"
-						style="font-weight:bold" />
+					<p:outputLabel value="#{translation.handicap}" />
 					<p:selectBooleanCheckbox id="handicap"
 						value="#{selectedEventBean.event.handicap}" />
 					<p:outputLabel value="#{translation.startDate}" />
 					<p:calendar value="#{selectedEventBean.event.startDate}"
 						navigator="true" pattern="dd.MM.yyyy"
 						locale="#{view.locale.language}" />
-					<p:outputLabel value="#{translation.endDate}"
-						style="font-weight:bold" />
+					<p:outputLabel value="#{translation.endDate}" />
 					<p:calendar value="#{selectedEventBean.event.endDate}"
 						navigator="true" pattern="dd.MM.yyyy"
 						locale="#{view.locale.language}" />

@@ -34,19 +34,19 @@
 	<ui:define name="content" rendered="#{selectedClubBean.club != null}">
 		<p:commandButton icon="fa fa-minus" action="#{clubBean.remove}"
 			disabled="#{not empty selectedClubBean.club.teams or not empty selectedClubBean.club.events}" />
-		<p:panelGrid columns="2">
+		<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-3,ui-grid-col-9">
 			<p:outputLabel for="abbreviation" value="#{translation.abbreviation}" />
-			<h:inputText id="abbreviation"
+			<h:inputText id="abbreviation" styleClass="ui-grid-col-12"
 				value="#{selectedClubBean.club.abreviation}" />
 			<p:outputLabel for="dsv_number" value="#{translation.dsvNumber}" />
-			<h:inputText id="dsv_number"
+			<h:inputText id="dsv_number" styleClass="ui-grid-col-12"
 				value="#{selectedClubBean.club.dsvNumber}" />
 			<p:outputLabel for="name" value="#{translation.name}" />
-			<h:inputText id="name" value="#{selectedClubBean.club.name}" />
+			<h:inputText id="name" styleClass="ui-grid-col-12" value="#{selectedClubBean.club.name}" />
 			<p:outputLabel value="#{translation.www}" />
-			<h:inputText id="url" value="#{selectedClubBean.club.url}" />
+			<h:inputText id="url" styleClass="ui-grid-col-12" value="#{selectedClubBean.club.url}" />
 		</p:panelGrid>
-		<p:commandButton value="#{translation.save}"
+		<p:commandButton value="#{translation.save}" styleClass="ui-grid-col-12"
 			action="#{clubBean.persist}" />
 	</ui:define>
 </ui:composition>

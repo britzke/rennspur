@@ -19,14 +19,13 @@
 
 package de.rennspur.test.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import de.rennspur.model.Event;
@@ -34,10 +33,9 @@ import de.rennspur.model.Race;
 import de.rennspur.model.Waypoint;
 
 /**
- * @author bubi
- *
+ * @author burghard.britzke bubi@charmides.in-berlin.de
  */
-public class EventTest {	
+public class EventTest {
 	private Event proband;
 
 	@Mock
