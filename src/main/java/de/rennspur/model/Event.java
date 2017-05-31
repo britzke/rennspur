@@ -66,9 +66,9 @@ public class Event implements Serializable {
 	private double latitude;
 
 	private double longitude;
-	
+
 	private double resolution;
-	
+
 	private double rotation;
 
 	// bi-directional many-to-one association to Club
@@ -291,7 +291,7 @@ public class Event implements Serializable {
 	public String toString() {
 		return "<Event (id=" + getId() + ", name=" + name + ", handicap="
 				+ handicap + ", club=" + club != null ?
-					"null"	: club.getAbreviation() + ", races="
+					"null"	: club.getAbbreviation() + ", races="
 								+ (races != null ? races.size() : 0)
 								+ ", waypoints="
 								+ (waypoints != null ? waypoints.size() : 0)

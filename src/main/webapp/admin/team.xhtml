@@ -34,7 +34,9 @@
 			columnClasses="ui-grid-col-2,ui-grid-col-10">
 			<p:outputLabel value="#{translation.club}" />
 
-			<p:selectOneMenu value="#{selectedTeamBean.team.club}" converter="#{clubConverter}"
+			<p:selectOneMenu value="#{selectedTeamBean.team.club}"
+				converter="#{clubConverter}"
+				filter="#{fn:length(clubBean.clubs) gt 6}" autoWidth="false"
 				styleClass="ui-grid-col-12">
 				<f:selectItems value="#{clubBean.clubs}" var="club"
 					itemLabel="#{club.name}" itemValue="#{club}">

@@ -25,26 +25,35 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	<ui:define name="title">Klubs</ui:define>
+	<ui:define name="title">#{translation.clubs}</ui:define>
 	<ui:define name="content">
 		<p:commandButton icon="fa fa-plus" action="#{clubBean.add}" />
 		<p:dataTable id="clubTable" var="club" value="#{clubBean.clubs}"
 			selectionMode="single" selection="#{selectedClubBean.club}"
-			rowKey="#{club.id}">
-
+			rowKey="#{club.id}" paginator="true" rows="10"
+			filterValue="#{selectedClubBean.filteredClubs}" widgetVar="clubs">
+			<f:facet name="header">
+				<p:outputPanel>
+					<h:outputText value="#{translation.searchAll}" />
+					<h:inputText id="globalFilter" onkeyup="PF('clubs').filter()" />
+				</p:outputPanel>
+			</f:facet>
 			<p:ajax event="rowDblselect" listener="#{clubBean.onRowDblselect}" />
 
-			<p:column headerText="#{translation.abbreviation}">
-				<h:outputText value="#{club.abreviation}" />
+			<p:column headerText="#{translation.abbreviation}"
+				sortBy="#{club.abbreviation}" filterBy="#{club.abbreviation}">
+				<h:outputText value="#{club.abbreviation}" />
 			</p:column>
-			<p:column headerText="#{translation.dsvNumber}">
+			<p:column headerText="#{translation.dsvNumber}"
+				sortBy="#{club.dsvNumber}" filterBy="#{club.dsvNumber}">
 				<h:outputText value="#{club.dsvNumber}" />
 			</p:column>
-			<p:column headerText="#{translation.name}" width="50%">
+			<p:column headerText="#{translation.name}" width="30%"
+				sortBy="#{club.name}" filterBy="#{club.name}">
 				<h:outputText value="#{club.name}" />
 			</p:column>
-			<p:column headerText="#{translation.www}">
-				<p:link href="#{club.url}" target="_blank">
+			<p:column headerText="#{translation.www}" width="30%">
+				<p:link href="#{club.url}" target="_blank">#{club.url}
 					<span class="ui-icon fa fa-external-link"></span>
 				</p:link>
 			</p:column>

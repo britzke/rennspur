@@ -20,6 +20,9 @@ package de.rennspur.model;
 
 import java.io.Serializable;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 /**
@@ -37,22 +40,29 @@ public abstract class DistinguishableEntity implements Serializable {
 
 	private static final long serialVersionUID = 1705161027L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
 	/**
-	 * Get the unique identifier within objects of the extending and
-	 * implementing class.
+	 * Get the unique identifier within objects of the extending class.
 	 *
-	 * @return The unique identifier within the extending and implementing
-	 *         class.
+	 * @return The unique identifier within the extending class.
 	 */
-	abstract protected int getId();
+	public int getId() {
+		return this.id;
+	}
 
 	/**
 	 * Set the identifier for the object which has to be unique within the
-	 * extending and implementing class.
+	 * extending class.
 	 *
 	 * @param id The unique identifier to be set.
 	 */
-	abstract protected void setId(int id);
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 	/**
 	 * Tests if another object equals this object by comparing the ids of both

@@ -12,31 +12,6 @@
 	}
 }
 
-.all-icons [class*="pe-"] {
-	font-size: 40px;
-}
-
-.all-icons input {
-	border: 0;
-}
-
-.all-icons .font-icon-detail {
-	text-align: center;
-	padding: 45px 0px 30px;
-	border: 1px solid #e5e5e5;
-	border-radius: 6px;
-	margin: 15px 0;
-}
-
-.all-icons .font-icon-detail input {
-	margin: 25px auto 0;
-	width: 100%;
-	text-align: center;
-	display: block;
-	color: #aaa;
-	font-size: 13px;
-}
-
 #map {
 	position: relative;
 	width: 100%;
@@ -79,18 +54,46 @@
 	text-transform: uppercase;
 	margin-left: 15px;
 }
+
 .ui-menuitem-icon {
-	font-size:28px;
+	font-size: 28px;
 	line-height: 30px;
 	width: 30px;
-	height:30px;
+	height: 30px;
 }
+
 .nav .ui-menuitem-link {
-	padding:5px 15px;
+	padding: 5px 15px;
 }
-.nav .ui-menuitem-link.ui-state-disabled  {
-	color: rgba(255,255,255,0.23);
+
+.nav .ui-menuitem-link.ui-state-disabled {
+	color: rgba(255, 255, 255, 0.23);
 }
-.nav .ui-menuitem-link ui-state-hover{
+
+.nav .ui-menuitem-link ui-state-hover {
 	/* background-color: rgba(255,255,255,0.23); */
+
+}
+
+/*  */
+.navbar-header {
+	width: 100%;
+}
+
+.navbar-header .ui-button {
+	float: right;
+	margin: 12px 0 12px 12px;
+	color: #777;
+}
+
+.ui-datatable-data span.ui-icon {
+	display: inline;
+}
+
+.ui-paginator-next, .ui-paginator-prev, .ui-paginator-page,
+	.ui-paginator-first, .ui-paginator-last {
+	font-size: 13px;
+}
+.ui-selectonemenu-list {
+	background:rgba(0,0,0,0);
 }

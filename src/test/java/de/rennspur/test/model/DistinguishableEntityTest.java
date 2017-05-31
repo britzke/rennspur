@@ -33,17 +33,6 @@ public class DistinguishableEntityTest {
 	private class TestableDistinguishableEntity extends DistinguishableEntity {
 
 		private static final long serialVersionUID = 1705161917L;
-		private int id;
-
-		@Override
-		protected int getId() {
-			return id;
-		}
-
-		@Override
-		protected void setId(int id) {
-			this.id = id;
-		}
 	}
 
 	private TestableDistinguishableEntity proband;

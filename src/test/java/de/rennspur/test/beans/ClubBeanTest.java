@@ -87,14 +87,14 @@ public class ClubBeanTest {
 		// Club club = (Club) invocation.getArguments()[0];
 		// Club newClub = new Club();
 		// newClub.setName(club.getName());
-		// newClub.setAbreviation(club.getAbreviation());
+		// newClub.setAbbreviation(club.getAbbreviation());
 		// newClub.setUrl(club.getUrl());
 		// newClub.setDsvNumber(club.getDsvNumber());
 		//
 		// /*
 		// * assertEquals(proband.getName(), club.getName());
 		// * assertEquals(proband.getAbbreviation(),
-		// * club.getAbreviation()); assertEquals(proband.getUrl(),
+		// * club.getAbbreviation()); assertEquals(proband.getUrl(),
 		// * club.getUrl()); assertEquals(proband.getDsv_number(),
 		// * club.getDsvNumber());
 		// */

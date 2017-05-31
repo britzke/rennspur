@@ -22,9 +22,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -50,7 +47,7 @@ import javax.xml.bind.annotation.XmlTransient;
  *       &lt;all&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="abreviation" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="abbreviation" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="dsvNumber" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/all&gt;
  *     &lt;/restriction&gt;
@@ -71,10 +68,6 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Club extends DistinguishableEntity {
 	private static final long serialVersionUID = 1705161024L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-
 	@XmlElement(required = true)
 	@NotNull
 	@Column(name = "DSV_NUMBER", nullable = false, length = 6)
@@ -83,7 +76,7 @@ public class Club extends DistinguishableEntity {
 	@XmlElement(required = true)
 	@NotNull
 	@Column(nullable = false, length = 64)
-	private String abreviation;
+	private String abbreviation;
 
 	@XmlElement(required = true)
 	@NotNull
@@ -113,14 +106,6 @@ public class Club extends DistinguishableEntity {
 	public Club() {
 	}
 
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getDsvNumber() {
 		return this.dsvNumber;
 	}
@@ -129,12 +114,12 @@ public class Club extends DistinguishableEntity {
 		this.dsvNumber = dsvNummer;
 	}
 
-	public String getAbreviation() {
-		return this.abreviation;
+	public String getAbbreviation() {
+		return this.abbreviation;
 	}
 
-	public void setAbreviation(String abreviation) {
-		this.abreviation = abreviation;
+	public void setAbbreviation(String abbreviation) {
+		this.abbreviation = abbreviation;
 	}
 
 	public String getName() {
@@ -232,7 +217,7 @@ public class Club extends DistinguishableEntity {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return "<Club (id=" + getId() + ", abreviation=" + abreviation
+		return "<Club (id=" + getId() + ", abbreviation=" + abbreviation
 				+ ", name=" + name + ", url=" + url + "events="
 				+ (events != null ? events.size() : 0) + ")>";
 	}

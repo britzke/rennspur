@@ -19,6 +19,7 @@
 package de.rennspur.beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -33,9 +34,10 @@ import de.rennspur.model.Club;
 @SessionScoped
 @Named
 public class SelectedClubBean implements Serializable {
-	private static final long serialVersionUID = 1704260929L;
+	private static final long serialVersionUID = 1705301752L;
 
 	private Club club;
+	private List<Club> filteredClubs;
 
 	/**
 	 * @return the club
@@ -50,5 +52,19 @@ public class SelectedClubBean implements Serializable {
 	 */
 	public void setClub(Club selectedClub) {
 		this.club = selectedClub;
+	}
+
+	/**
+	 * @return the filteredClubs
+	 */
+	public List<Club> getFilteredClubs() {
+		return filteredClubs;
+	}
+
+	/**
+	 * @param filteredClubs the filteredClubs to set
+	 */
+	public void setFilteredClubs(List<Club> filteredClubs) {
+		this.filteredClubs = filteredClubs;
 	}
 }

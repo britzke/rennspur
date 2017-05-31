@@ -263,7 +263,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Poo78IqxEealCsBNxugxSg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Poo78YqxEealCsBNxugxSg" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_TsXQEIqxEealCsBNxugxSg" name="abreviation" visibility="private">
+      <ownedAttribute xmi:id="_TsXQEIqxEealCsBNxugxSg" name="abbreviation" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TsX3IIqxEealCsBNxugxSg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TsYeMIqxEealCsBNxugxSg" value="1"/>

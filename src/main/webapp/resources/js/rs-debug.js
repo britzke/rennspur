@@ -57,12 +57,12 @@ rs.model.Club = class Club{
         this.dsvNumber_ = dsvNumber;
     }
 
-    get abreviation() {
-        return this.abreviation_;
+    get abbreviation() {
+        return this.abbreviation_;
     }
 
-    set abreviation(abreviation) {
-        this.abreviation_ = abreviation;
+    set abbreviation(abbreviation) {
+        this.abbreviation_ = abbreviation;
     }
     get name() {
         return this.name_;

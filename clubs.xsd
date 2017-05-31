@@ -10,7 +10,7 @@
 						<all>
 							<element name="name" type="string"></element>
 							<element name="url" type="string"></element>
-							<element name="abreviation" type="string"></element>
+							<element name="abbreviation" type="string"></element>
 							<element name="dsvNumber" type="string"></element>
 						</all>
 					</complexType>
