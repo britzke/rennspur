@@ -36,9 +36,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import de.rennspur.beans.ClubBean;
+import de.rennspur.beans.CountryBean;
 import de.rennspur.converters.ClubConverter;
-import de.rennspur.model.Club;
+import de.rennspur.converters.CountryConverter;
+import de.rennspur.model.Country;
 
 /**
  * Tests the {@link ClubConverter}.
@@ -46,29 +47,29 @@ import de.rennspur.model.Club;
  * @author burghard.britzke bubi@charmides.in-berlin.de
  */
 @RunWith(MockitoJUnitRunner.class)
-public class ClubConverterTest {
+public class CountryConverterTest {
 
 	@Mock
-	private ClubBean clubBean;
+	private CountryBean countryBean;
 	@Mock
 	private FacesContext facesContext;
 	@Mock
 	private UIComponent component;
 
 	@InjectMocks
-	private ClubConverter proband;
+	public CountryConverter proband;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		List<Club> clubs = new ArrayList<Club>();
-		Club club = new Club();
-		club.setId(1);
-		club.setName("test");
-		clubs.add(club);
-		when(clubBean.getClubs()).thenReturn(clubs);
+		List<Country> countries = new ArrayList<Country>();
+		Country country = new Country();
+		country.setId(1);
+		country.setName("test");
+		countries.add(country);
+		when(countryBean.getCountries()).thenReturn(countries);
 	}
 
 	/**
@@ -77,21 +78,21 @@ public class ClubConverterTest {
 	 */
 	@Test(expected = ConverterException.class)
 	public void testGetAsObject() {
-		Club resultingClub = (Club) proband.getAsObject(facesContext, component,
+		Country resultingCountry = (Country) proband.getAsObject(facesContext, component,
 				"");
 		assertNull(
 				"Must return null, when text representation of object is \"\" (empty string).",
-				resultingClub);
-		resultingClub = (Club) proband.getAsObject(facesContext, component,
+				resultingCountry);
+		resultingCountry = (Country) proband.getAsObject(facesContext, component,
 				"1");
 		assertEquals(
 				"Resulting Club must have the name, which the ClubBean returned club has.",
-				"test", resultingClub.getName());
-		resultingClub = (Club) proband.getAsObject(facesContext, component,
+				"test", resultingCountry.getName());
+		resultingCountry = (Country) proband.getAsObject(facesContext, component,
 				"2");
 		assertNull(
 				"Must return null, when text representation of object has non existing id.",
-				resultingClub);
+				resultingCountry);
 
 		proband.getAsObject(facesContext, component, "abc"); // should throw
 																// ConverterException

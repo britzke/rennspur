@@ -25,9 +25,16 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
+	<h:outputStylesheet
+		name="webjars/flag-icon-css/2.4.0/css/flag-icon.min.css" />
+
 	<ui:define name="title">Teams</ui:define>
 	<ui:define name="content">
+		<h:outputStylesheet
+			name="webjars/flag-icon-css/2.4.0/css/flag-icon.min.css" />
+
 		<ui:include src="selectedEvent.xhtml" />
 
 		<p:commandButton icon="fa fa-plus" action="#{teamBean.add}" />
@@ -37,19 +44,21 @@
 
 			<p:ajax event="rowDblselect" listener="#{teamBean.onRowDblselect}" />
 
-			<p:column headerText="#{translation.country}">
-				<h:outputText value="#{team.country}" />
+			<p:column headerText="#{translation.country}" width="10%">
+				<span title="#{team.country.name}"
+					class="flag-icon flag-icon-#{fn:toLowerCase(team.country.a2Code)}"
+					style="width: 100%" />
 			</p:column>
 			<p:column headerText="#{translation.club}">
 				<h:outputText value="#{team.club.abbreviation}" />
 			</p:column>
-			<p:column headerText="#{translation.name}">
+			<p:column headerText="#{translation.name}" width="30%">
 				<h:outputText value="#{team.name}" />
 			</p:column>
 			<p:column headerText="#{translation.handicapFactor}">
 				<h:outputText value="#{team.handicapFactor}" />
 			</p:column>
-			<p:column headerText="#{translation.email}">
+			<p:column headerText="#{translation.email}" width="40%">
 				<h:outputText value="#{team.email}" />
 			</p:column>
 		</p:dataTable>

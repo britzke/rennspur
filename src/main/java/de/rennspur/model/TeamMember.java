@@ -44,6 +44,10 @@ public class TeamMember implements Serializable {
 	@Column(length = 255)
 	private String surname;
 
+	@ManyToOne
+	@JoinColumn(name = "COUNTRIES_ID")
+	private Country country;
+
 	// bi-directional many-to-one association to Club
 	@ManyToOne
 	@JoinColumn(name = "CLUBS_ID")
@@ -79,6 +83,20 @@ public class TeamMember implements Serializable {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+
+	/**
+	 * @return the country
+	 */
+	public Country getCountry() {
+		return country;
+	}
+
+	/**
+	 * @param country the country to set
+	 */
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 
 	public Club getClub() {

@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "RACES", uniqueConstraints = @UniqueConstraint(columnNames = {
-		"event","number" }))
+		"EVENTS_ID","NUMBER" }))
 @NamedQueries({
 		@NamedQuery(name = "Race.findAll", query = "SELECT r FROM Race r order by r.number"),
 		@NamedQuery(name = "Race.findRaceByID", query = "SELECT r FROM Race r WHERE r.id=:id"),

@@ -62,6 +62,10 @@
 	height: 30px;
 }
 
+.navbar-collapse .ui-menuitem-icon {
+	display: inline;
+}
+
 .nav .ui-menuitem-link {
 	padding: 5px 15px;
 }
@@ -94,6 +98,7 @@
 	.ui-paginator-first, .ui-paginator-last {
 	font-size: 13px;
 }
+
 .ui-selectonemenu-list {
-	background:rgba(0,0,0,0);
+	background: rgba(0, 0, 0, 0);
 }

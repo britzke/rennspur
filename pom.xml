@@ -95,7 +95,7 @@
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>eclipselink</artifactId>
-			<version>2.6.0</version>
+			<version>2.6.4</version>
 		</dependency>
 
 		<dependency>
@@ -246,6 +246,12 @@
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>roboto-fontface</artifactId>
 			<version>0.6.0</version>
+		</dependency>
+		<!-- flags for all countries -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>flag-icon-css</artifactId>
+			<version>2.4.0</version>
 		</dependency>
 	</dependencies>
 </project>

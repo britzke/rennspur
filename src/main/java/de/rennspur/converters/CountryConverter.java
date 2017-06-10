@@ -27,24 +27,25 @@ import javax.faces.convert.ConverterException;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import de.rennspur.beans.ClubBean;
-import de.rennspur.model.Club;
+import de.rennspur.beans.CountryBean;
+import de.rennspur.model.Country;
 
 // TODO Maybe with JSF 2.3 and the ability to inject beans into converters
 // this should not be a bean but a FacesConverter
 // @FacesConverter(forClass = Club.class, value = "clubConverter")
 /**
- * The ClubConverter can convert a club to its internal and external
- * representation.
+ * The CountryConverter can convert a {@link Country} to its internal and
+ * external representation.
  *
  * @author burghard.britzke bubi@charmides.in-berlin.de
  */
 @Named
 @RequestScoped
-public class ClubConverter extends DistinguishableEntityConverter implements Converter {
+public class CountryConverter extends DistinguishableEntityConverter
+		implements Converter {
 
 	@Inject
-	private ClubBean clubBean;
+	private CountryBean countryBean;
 
 	/**
 	 * Get the club object from its external representation. The object data is
@@ -62,17 +63,32 @@ public class ClubConverter extends DistinguishableEntityConverter implements Con
 			try {
 				int number = Integer.parseInt(submittedValue);
 
-				for (Club club : clubBean.getClubs()) {
-					if (club.getId() == number) {
-						return club;
+				for (Country country : countryBean.getCountries()) {
+					if (country.getId() == number) {
+						return country;
 					}
 				}
 				return null;
 			} catch (NumberFormatException exception) {
 				throw new ConverterException(
 						new FacesMessage(FacesMessage.SEVERITY_ERROR,
-								"Conversion Error", "Not a valid club"));
+								"Conversion Error", "Not a valid country"));
 			}
 		}
+	}
+
+	/**
+	 * @return the countryBean
+	 */
+	public CountryBean getCountryBean() {
+		return countryBean;
+	}
+
+	/**
+	 * @param countryBean
+	 *            the countryBean to set
+	 */
+	public void setCountryBean(CountryBean countryBean) {
+		this.countryBean = countryBean;
 	}
 }

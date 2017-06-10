@@ -28,6 +28,9 @@
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="title">#{translation.team}</ui:define>
 	<ui:define name="content">
+		<h:outputStylesheet
+			name="webjars/flag-icon-css/2.4.0/css/flag-icon.min.css" />
+
 		<p:commandButton icon="fa fa-minus" action="#{teamBean.remove}"
 			disabled="#{not empty selectedTeamBean.team.positions or not empty selectedTeamBean.team.members}" />
 		<p:panelGrid columns="2" layout="grid"
@@ -52,8 +55,22 @@
 				styleClass="ui-panelgrid-blank"
 				columnClasses="ui-grid-col-8,ui-grid-col-4">
 				<p:outputLabel value="#{translation.country}" />
-				<h:inputText value="#{selectedTeamBean.team.country}"
-					styleClass="ui-grid-col-12" />
+
+				<p:selectOneMenu value="#{selectedTeamBean.team.country}" var="c"
+					converter="#{countryConverter}" filter="true" autoWidth="false"
+					styleClass="ui-grid-col-12">
+					<f:selectItems value="#{countryBean.countries}" var="country"
+						itemLabel="#{country.name}" itemValue="#{country}">
+					</f:selectItems>
+					<p:column>
+						<span title="#{c.name}"
+							class="flag-icon flag-icon-#{fn:toLowerCase(c.a2Code)}" />
+					</p:column>
+					<p:column>#{c.name}
+					</p:column>
+
+				</p:selectOneMenu>
+
 				<p:outputLabel value="#{translation.handicapFactor}" />
 				<h:inputText value="#{selectedTeamBean.team.handicapFactor}"
 					styleClass="ui-grid-col-12" />

@@ -19,60 +19,41 @@
 package de.rennspur.converters;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.convert.ConverterException;
-import javax.inject.Inject;
 import javax.inject.Named;
 
-import de.rennspur.beans.ClubBean;
-import de.rennspur.model.Club;
+import de.rennspur.model.DistinguishableEntity;
 
 // TODO Maybe with JSF 2.3 and the ability to inject beans into converters
 // this should not be a bean but a FacesConverter
 // @FacesConverter(forClass = Club.class, value = "clubConverter")
 /**
- * The ClubConverter can convert a club to its internal and external
- * representation.
+ * The DistiguishableEntityConverter can convert a DistinguishableEntity to its
+ * external representation. Anchestors of this class must implement the
+ * {@link Converter#getAsObject(FacesContext, UIComponent, String)} function.
  *
  * @author burghard.britzke bubi@charmides.in-berlin.de
  */
 @Named
 @RequestScoped
-public class ClubConverter extends DistinguishableEntityConverter implements Converter {
-
-	@Inject
-	private ClubBean clubBean;
+public abstract class DistinguishableEntityConverter implements Converter {
 
 	/**
-	 * Get the club object from its external representation. The object data is
-	 * retrieved from the database out of the id, which is the external
-	 * representation of the club.
+	 * Get the external representation out of a {@link DistinguishableEntity}
+	 * object. The external representation is the id of the
+	 * DistinguishableEntity.
 	 *
-	 * @see javax.faces.convert.Converter#getAsObject(javax.faces.context.FacesContext,
-	 *      javax.faces.component.UIComponent, java.lang.String)
+	 * @see javax.faces.convert.Converter#getAsString(javax.faces.context.FacesContext,
+	 *      javax.faces.component.UIComponent, java.lang.Object)
 	 */
-	public Object getAsObject(FacesContext facesContext, UIComponent component,
-			String submittedValue) {
-		if (submittedValue.trim().equals("")) {
-			return null;
+	public String getAsString(FacesContext facesContext, UIComponent component,
+			Object value) {
+		if (value == null || value.equals("")) {
+			return "";
 		} else {
-			try {
-				int number = Integer.parseInt(submittedValue);
-
-				for (Club club : clubBean.getClubs()) {
-					if (club.getId() == number) {
-						return club;
-					}
-				}
-				return null;
-			} catch (NumberFormatException exception) {
-				throw new ConverterException(
-						new FacesMessage(FacesMessage.SEVERITY_ERROR,
-								"Conversion Error", "Not a valid club"));
-			}
+			return String.valueOf(((DistinguishableEntity) value).getId());
 		}
 	}
 }

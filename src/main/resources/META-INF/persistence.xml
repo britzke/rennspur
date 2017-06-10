@@ -6,6 +6,7 @@
 	<persistence-unit name="rennspur-db" transaction-type="JTA">
 		<jta-data-source>java:comp/env/jdbc/rennspur-db</jta-data-source>
 		<class>de.rennspur.model.Club</class>
+		<class>de.rennspur.model.Country</class>
 		<class>de.rennspur.model.Team</class>
 		<class>de.rennspur.model.TeamMember</class>
 		<class>de.rennspur.model.TeamPosition</class>
@@ -28,6 +29,7 @@
 	<persistence-unit name="rennspur-db-local" transaction-type="RESOURCE_LOCAL">
 		<jta-data-source>java:comp/env/jdbc/rennspur-db</jta-data-source>
 		<class>de.rennspur.model.Club</class>
+		<class>de.rennspur.model.Country</class>
 		<class>de.rennspur.model.Team</class>
 		<class>de.rennspur.model.TeamMember</class>
 		<class>de.rennspur.model.TeamPosition</class>

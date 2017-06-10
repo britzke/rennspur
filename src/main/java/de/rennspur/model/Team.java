@@ -71,9 +71,9 @@ public class Team implements Serializable {
 	@Column(nullable = false, length = 10)
 	private String name;
 
-	@NotNull
-	@Column(nullable = false, length = 3)
-	private String country;
+	@ManyToOne
+	@JoinColumn(name = "COUNTRIES_ID", nullable = true)
+	private Country country;
 
 	// bi-directional many-to-one association to Club
 	@ManyToOne
@@ -152,12 +152,12 @@ public class Team implements Serializable {
 		this.name = name;
 	}
 
-	public String getCountry() {
+	public Country getCountry() {
 		return this.country;
 	}
 
-	public void setCountry(String land) {
-		this.country = land;
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 
 	public Club getClub() {
