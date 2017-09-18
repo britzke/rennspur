@@ -1,0 +1,1498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<countries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="countries.xsd">
+	<country>
+		<a2code>AD</a2code>
+		<name>Andorra</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>AE</a2code>
+		<name>United Arab Emirates</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>AF</a2code>
+		<name>Afghanistan</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>AG</a2code>
+		<name>Antigua and Barbuda</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>AI</a2code>
+		<name>Anguilla</name>
+		<since>1983</since>
+		<note>AI previously represented French Afar and Issas</note>
+	</country>
+	<country>
+		<a2code>AL</a2code>
+		<name>Albania</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>AM</a2code>
+		<name>Armenia</name>
+		<since>1992</since>
+		<note />
+	</country>
+	<country>
+		<a2code>AO</a2code>
+		<name>Angola</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>AQ</a2code>
+		<name>Antarctica</name>
+		<since>1974</since>
+		<note>Covers the territories south of 60° south latitude Code taken from name in Antarctique</note>
+	</country>
+	<country>
+		<a2code>AR</a2code>
+		<name>Argentina</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>AS</a2code>
+		<name>American Samoa</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>AT</a2code>
+		<name>Austria</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>AU</a2code>
+		<name>Australia</name>
+		<since>1974</since>
+		<note>Includes the Coral Sea Islands</note>
+	</country>
+	<country>
+		<a2code>AW</a2code>
+		<name>Aruba</name>
+		<since>1986</since>
+		<note />
+	</country>
+	<country>
+		<a2code>AX</a2code>
+		<name>Åland Islands</name>
+		<since>2004</since>
+		<note>An autonomous province of Finland</note>
+	</country>
+	<country>
+		<a2code>AZ</a2code>
+		<name>Azerbaijan</name>
+		<since>1992</since>
+		<note />
+	</country>
+	<country>
+		<a2code>BA</a2code>
+		<name>Bosnia and Herzegovina</name>
+		<since>1992</since>
+		<note />
+	</country>
+	<country>
+		<a2code>BB</a2code>
+		<name>Barbados</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>BD</a2code>
+		<name>Bangladesh</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>BE</a2code>
+		<name>Belgium</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>BF</a2code>
+		<name>Burkina Faso</name>
+		<since>1984</since>
+		<note>Name changed from Upper Volta (HV)</note>
+	</country>
+	<country>
+		<a2code>BG</a2code>
+		<name>Bulgaria</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>BH</a2code>
+		<name>Bahrain</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>BI</a2code>
+		<name>Burundi</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>BJ</a2code>
+		<name>Benin</name>
+		<since>1977</since>
+		<note>Name changed from Dahomey (DY)</note>
+	</country>
+	<country>
+		<a2code>BL</a2code>
+		<name>Saint Barthélemy</name>
+		<since>2007</since>
+		<note />
+	</country>
+	<country>
+		<a2code>BM</a2code>
+		<name>Bermuda</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>BN</a2code>
+		<name>Brunei Darussalam</name>
+		<since>1974</since>
+		<note>ISO country name follows UN designation (common name: Brunei)</note>
+	</country>
+	<country>
+		<a2code>BO</a2code>
+		<name>Bolivia, Plurinational State of</name>
+		<since>1974</since>
+		<note>ISO country name follows UN designation (common name and previous ISO country name: Bolivia)</note>
+	</country>
+	<country>
+		<a2code>BQ</a2code>
+		<name>Bonaire, Sint Eustatius and Saba</name>
+		<since>2010</since>
+		<note>Consists of three Caribbean "Saba (the BES Islands) Previous ISO country name: Bonaire, Saint Eustatius and Saba BQ previously represented British Antarctic Territory</note>
+	</country>
+	<country>
+		<a2code>BR</a2code>
+		<name>Brazil</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>BS</a2code>
+		<name>Bahamas</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>BT</a2code>
+		<name>Bhutan</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>BV</a2code>
+		<name>Bouvet Island</name>
+		<since>1974</since>
+		<note>Belongs to Norway</note>
+	</country>
+	<country>
+		<a2code>BW</a2code>
+		<name>Botswana</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>BY</a2code>
+		<name>Belarus</name>
+		<since>1974</since>
+		<note>Code taken from previous ISO country name: BYAA) Code assigned as the country was already a UN member since 1945[16]</note>
+	</country>
+	<country>
+		<a2code>BZ</a2code>
+		<name>Belize</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CA</a2code>
+		<name>Canada</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CC</a2code>
+		<name>Cocos (Keeling) Islands</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CD</a2code>
+		<name>Congo, the Democratic Republic of the</name>
+		<since>1997</since>
+		<note>Name changed from Zaire (ZR)</note>
+	</country>
+	<country>
+		<a2code>CF</a2code>
+		<name>Central African Republic</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CG</a2code>
+		<name>Congo</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CH</a2code>
+		<name>Switzerland</name>
+		<since>1974</since>
+		<note>Code taken from name in Confoederatio Helvetica</note>
+	</country>
+	<country>
+		<a2code>CI</a2code>
+		<name>Côte d'Ivoire</name>
+		<since>1974</since>
+		<note>ISO country name follows UN designation (common name: Ivory Coast)</note>
+	</country>
+	<country>
+		<a2code>CK</a2code>
+		<name>Cook Islands</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CL</a2code>
+		<name>Chile</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CM</a2code>
+		<name>Cameroon</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CN</a2code>
+		<name>China</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CO</a2code>
+		<name>Colombia</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CR</a2code>
+		<name>Costa Rica</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CU</a2code>
+		<name>Cuba</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CV</a2code>
+		<name>Cabo Verde</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CW</a2code>
+		<name>Curaçao</name>
+		<since>2010</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CX</a2code>
+		<name>Christmas Island</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CY</a2code>
+		<name>Cyprus</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>CZ</a2code>
+		<name>Czechia</name>
+		<since>1993</since>
+		<note>Previous ISO country name: Czech Republic</note>
+	</country>
+	<country>
+		<a2code>DE</a2code>
+		<name>Germany</name>
+		<since>1974</since>
+		<note>Code taken from name in Deutschland Code used for West Germany before 1990 (previous ISO country name: Germany, Federal Republic of)</note>
+	</country>
+	<country>
+		<a2code>DJ</a2code>
+		<name>Djibouti</name>
+		<since>1977</since>
+		<note>Name changed from French Afar and Issas (AI)</note>
+	</country>
+	<country>
+		<a2code>DK</a2code>
+		<name>Denmark</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>DM</a2code>
+		<name>Dominica</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>DO</a2code>
+		<name>Dominican Republic</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>DZ</a2code>
+		<name>Algeria</name>
+		<since>1974</since>
+		<note>Code taken from name in Dzayer</note>
+	</country>
+	<country>
+		<a2code>EC</a2code>
+		<name>Ecuador</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>EE</a2code>
+		<name>Estonia</name>
+		<since>1992</since>
+		<note>Code taken from name in Eesti</note>
+	</country>
+	<country>
+		<a2code>EG</a2code>
+		<name>Egypt</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>EH</a2code>
+		<name>Western Sahara</name>
+		<since>1974</since>
+		<note>Previous ISO country name: Sahara español)</note>
+	</country>
+	<country>
+		<a2code>ER</a2code>
+		<name>Eritrea</name>
+		<since>1993</since>
+		<note />
+	</country>
+	<country>
+		<a2code>ES</a2code>
+		<name>Spain</name>
+		<since>1974</since>
+		<note>Code taken from name in España</note>
+	</country>
+	<country>
+		<a2code>ET</a2code>
+		<name>Ethiopia</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>FI</a2code>
+		<name>Finland</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>FJ</a2code>
+		<name>Fiji</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>FK</a2code>
+		<name>Falkland Islands (Malvinas)</name>
+		<since>1974</since>
+		<note>ISO country name follows UN designation due to the [17]</note>
+	</country>
+	<country>
+		<a2code>FM</a2code>
+		<name>Micronesia, Federated States of</name>
+		<since>1986</since>
+		<note>Previous ISO country name: Micronesia</note>
+	</country>
+	<country>
+		<a2code>FO</a2code>
+		<name>Faroe Islands</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>FR</a2code>
+		<name>France</name>
+		<since>1974</since>
+		<note>Includes Clipperton Island</note>
+	</country>
+	<country>
+		<a2code>GA</a2code>
+		<name>Gabon</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>GB</a2code>
+		<name>United Kingdom of Great Britain and Northern Ireland</name>
+		<since>1974</since>
+		<note>Code taken from [18] exceptionally reserved)</note>
+	</country>
+	<country>
+		<a2code>GD</a2code>
+		<name>Grenada</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>GE</a2code>
+		<name>Georgia</name>
+		<since>1992</since>
+		<note>GE previously represented Gilbert and Ellice Islands</note>
+	</country>
+	<country>
+		<a2code>GF</a2code>
+		<name>French Guiana</name>
+		<since>1974</since>
+		<note>Code taken from name in Guyane française</note>
+	</country>
+	<country>
+		<a2code>GG</a2code>
+		<name>Guernsey</name>
+		<since>2006</since>
+		<note>a Crown dependency</note>
+	</country>
+	<country>
+		<a2code>GH</a2code>
+		<name>Ghana</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>GI</a2code>
+		<name>Gibraltar</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>GL</a2code>
+		<name>Greenland</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>GM</a2code>
+		<name>Gambia</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>GN</a2code>
+		<name>Guinea</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>GP</a2code>
+		<name>Guadeloupe</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>GQ</a2code>
+		<name>Equatorial Guinea</name>
+		<since>1974</since>
+		<note>Code taken from name in Guinée équatoriale</note>
+	</country>
+	<country>
+		<a2code>GR</a2code>
+		<name>Greece</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>GS</a2code>
+		<name>South Georgia and the South Sandwich Islands</name>
+		<since>1993</since>
+		<note />
+	</country>
+	<country>
+		<a2code>GT</a2code>
+		<name>Guatemala</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>GU</a2code>
+		<name>Guam</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>GW</a2code>
+		<name>Guinea-Bissau</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>GY</a2code>
+		<name>Guyana</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>HK</a2code>
+		<name>Hong Kong</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>HM</a2code>
+		<name>Heard Island and McDonald Islands</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>HN</a2code>
+		<name>Honduras</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>HR</a2code>
+		<name>Croatia</name>
+		<since>1992</since>
+		<note>Code taken from name in Hrvatska</note>
+	</country>
+	<country>
+		<a2code>HT</a2code>
+		<name>Haiti</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>HU</a2code>
+		<name>Hungary</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>ID</a2code>
+		<name>Indonesia</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>IE</a2code>
+		<name>Ireland</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>IL</a2code>
+		<name>Israel</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>IM</a2code>
+		<name>Isle of Man</name>
+		<since>2006</since>
+		<note>a Crown dependency</note>
+	</country>
+	<country>
+		<a2code>IN</a2code>
+		<name>India</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>IO</a2code>
+		<name>British Indian Ocean Territory</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>IQ</a2code>
+		<name>Iraq</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>IR</a2code>
+		<name>Iran, Islamic Republic of</name>
+		<since>1974</since>
+		<note>ISO country name follows UN designation (common name: Iran)</note>
+	</country>
+	<country>
+		<a2code>IS</a2code>
+		<name>Iceland</name>
+		<since>1974</since>
+		<note>Code taken from name in Ísland</note>
+	</country>
+	<country>
+		<a2code>IT</a2code>
+		<name>Italy</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>JE</a2code>
+		<name>Jersey</name>
+		<since>2006</since>
+		<note>a Crown dependency</note>
+	</country>
+	<country>
+		<a2code>JM</a2code>
+		<name>Jamaica</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>JO</a2code>
+		<name>Jordan</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>JP</a2code>
+		<name>Japan</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>KE</a2code>
+		<name>Kenya</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>KG</a2code>
+		<name>Kyrgyzstan</name>
+		<since>1992</since>
+		<note />
+	</country>
+	<country>
+		<a2code>KH</a2code>
+		<name>Cambodia</name>
+		<since>1974</since>
+		<note>Code taken from former name: Khmer Republic. Previous ISO country name: Kampuchea</note>
+	</country>
+	<country>
+		<a2code>KI</a2code>
+		<name>Kiribati</name>
+		<since>1979</since>
+		<note />
+	</country>
+	<country>
+		<a2code>KM</a2code>
+		<name>Comoros</name>
+		<since>1974</since>
+		<note>Code taken from name in Komori</note>
+	</country>
+	<country>
+		<a2code>KN</a2code>
+		<name>Saint Kitts and Nevis</name>
+		<since>1974</since>
+		<note>Previous ISO country name: Saint Kitts-Nevis-Anguilla</note>
+	</country>
+	<country>
+		<a2code>KP</a2code>
+		<name>Korea, Democratic People's Republic of</name>
+		<since>1974</since>
+		<note>ISO country name follows UN designation (common name: North Korea)</note>
+	</country>
+	<country>
+		<a2code>KR</a2code>
+		<name>Korea, Republic of</name>
+		<since>1974</since>
+		<note>ISO country name follows UN designation (common name: South Korea)</note>
+	</country>
+	<country>
+		<a2code>KW</a2code>
+		<name>Kuwait</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>KY</a2code>
+		<name>Cayman Islands</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>KZ</a2code>
+		<name>Kazakhstan</name>
+		<since>1992</since>
+		<note>Previous ISO country name: Kazakstan</note>
+	</country>
+	<country>
+		<a2code>LA</a2code>
+		<name>Lao People's Democratic Republic</name>
+		<since>1974</since>
+		<note>ISO country name follows UN designation (common name: Laos)</note>
+	</country>
+	<country>
+		<a2code>LB</a2code>
+		<name>Lebanon</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>LC</a2code>
+		<name>Saint Lucia</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>LI</a2code>
+		<name>Liechtenstein</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>LK</a2code>
+		<name>Sri Lanka</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>LR</a2code>
+		<name>Liberia</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>LS</a2code>
+		<name>Lesotho</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>LT</a2code>
+		<name>Lithuania</name>
+		<since>1992</since>
+		<note />
+	</country>
+	<country>
+		<a2code>LU</a2code>
+		<name>Luxembourg</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>LV</a2code>
+		<name>Latvia</name>
+		<since>1992</since>
+		<note />
+	</country>
+	<country>
+		<a2code>LY</a2code>
+		<name>Libya</name>
+		<since>1974</since>
+		<note>Previous ISO country name: Libyan Arab Jamahiriya</note>
+	</country>
+	<country>
+		<a2code>MA</a2code>
+		<name>Morocco</name>
+		<since>1974</since>
+		<note>Code taken from name in Maroc</note>
+	</country>
+	<country>
+		<a2code>MC</a2code>
+		<name>Monaco</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MD</a2code>
+		<name>Moldova, Republic of</name>
+		<since>1992</since>
+		<note>ISO country name follows UN designation (common name and previous ISO country name: Moldova)</note>
+	</country>
+	<country>
+		<a2code>ME</a2code>
+		<name>Montenegro</name>
+		<since>2006</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MF</a2code>
+		<name>Saint Martin (French part)</name>
+		<since>2007</since>
+		<note>The SX</note>
+	</country>
+	<country>
+		<a2code>MG</a2code>
+		<name>Madagascar</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MH</a2code>
+		<name>Marshall Islands</name>
+		<since>1986</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MK</a2code>
+		<name>Macedonia, the former Yugoslav Republic of</name>
+		<since>1993</since>
+		<note>ISO country name follows UN designation (due to Macedonia naming dispute; official name used by country itself: Republic of Macedonia). Code taken from name in Makedonija</note>
+	</country>
+	<country>
+		<a2code>ML</a2code>
+		<name>Mali</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MM</a2code>
+		<name>Myanmar</name>
+		<since>1989</since>
+		<note>Name changed from Burma (BU)</note>
+	</country>
+	<country>
+		<a2code>MN</a2code>
+		<name>Mongolia</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MO</a2code>
+		<name>Macao</name>
+		<since>1974</since>
+		<note>Previous ISO country name: Macau</note>
+	</country>
+	<country>
+		<a2code>MP</a2code>
+		<name>Northern Mariana Islands</name>
+		<since>1986</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MQ</a2code>
+		<name>Martinique</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MR</a2code>
+		<name>Mauritania</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MS</a2code>
+		<name>Montserrat</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MT</a2code>
+		<name>Malta</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MU</a2code>
+		<name>Mauritius</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MV</a2code>
+		<name>Maldives</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MW</a2code>
+		<name>Malawi</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MX</a2code>
+		<name>Mexico</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MY</a2code>
+		<name>Malaysia</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>MZ</a2code>
+		<name>Mozambique</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>NA</a2code>
+		<name>Namibia</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>NC</a2code>
+		<name>New Caledonia</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>NE</a2code>
+		<name>Niger</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>NF</a2code>
+		<name>Norfolk Island</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>NG</a2code>
+		<name>Nigeria</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>NI</a2code>
+		<name>Nicaragua</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>NL</a2code>
+		<name>Netherlands</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>NO</a2code>
+		<name>Norway</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>NP</a2code>
+		<name>Nepal</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>NR</a2code>
+		<name>Nauru</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>NU</a2code>
+		<name>Niue</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>NZ</a2code>
+		<name>New Zealand</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>OM</a2code>
+		<name>Oman</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>PA</a2code>
+		<name>Panama</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>PE</a2code>
+		<name>Peru</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>PF</a2code>
+		<name>French Polynesia</name>
+		<since>1974</since>
+		<note>Code taken from name in Polynésie française</note>
+	</country>
+	<country>
+		<a2code>PG</a2code>
+		<name>Papua New Guinea</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>PH</a2code>
+		<name>Philippines</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>PK</a2code>
+		<name>Pakistan</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>PL</a2code>
+		<name>Poland</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>PM</a2code>
+		<name>Saint Pierre and Miquelon</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>PN</a2code>
+		<name>Pitcairn</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>PR</a2code>
+		<name>Puerto Rico</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>PS</a2code>
+		<name>Palestine, State of</name>
+		<since>2013</since>
+		<note>Previous ISO country name: Palestinian Territory, Occupied. Consists of the Gaza Strip</note>
+	</country>
+	<country>
+		<a2code>PT</a2code>
+		<name>Portugal</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>PW</a2code>
+		<name>Palau</name>
+		<since>1986</since>
+		<note />
+	</country>
+	<country>
+		<a2code>PY</a2code>
+		<name>Paraguay</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>QA</a2code>
+		<name>Qatar</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>RE</a2code>
+		<name>Réunion</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>RO</a2code>
+		<name>Romania</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>RS</a2code>
+		<name>Serbia</name>
+		<since>2006</since>
+		<note>Code taken from official name: Republic of Serbia (see Serbian country codes)</note>
+	</country>
+	<country>
+		<a2code>RU</a2code>
+		<name>Russian Federation</name>
+		<since>1992</since>
+		<note>ISO country name follows UN designation (common name: Russia)</note>
+	</country>
+	<country>
+		<a2code>RW</a2code>
+		<name>Rwanda</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>SA</a2code>
+		<name>Saudi Arabia</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>SB</a2code>
+		<name>Solomon Islands</name>
+		<since>1974</since>
+		<note>Code taken from former name: British Solomon Islands</note>
+	</country>
+	<country>
+		<a2code>SC</a2code>
+		<name>Seychelles</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>SD</a2code>
+		<name>Sudan</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>SE</a2code>
+		<name>Sweden</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>SG</a2code>
+		<name>Singapore</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>SH</a2code>
+		<name>Saint Helena, Ascension and Tristan da Cunha</name>
+		<since>1974</since>
+		<note>Previous ISO country name: Saint Helena</note>
+	</country>
+	<country>
+		<a2code>SI</a2code>
+		<name>Slovenia</name>
+		<since>1992</since>
+		<note />
+	</country>
+	<country>
+		<a2code>SJ</a2code>
+		<name>Svalbard and Jan Mayen</name>
+		<since>1974</since>
+		<note>Consists of two arctic territories of Norway: Jan Mayen</note>
+	</country>
+	<country>
+		<a2code>SK</a2code>
+		<name>Slovakia</name>
+		<since>1993</since>
+		<note>SK previously represented Sikkim</note>
+	</country>
+	<country>
+		<a2code>SL</a2code>
+		<name>Sierra Leone</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>SM</a2code>
+		<name>San Marino</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>SN</a2code>
+		<name>Senegal</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>SO</a2code>
+		<name>Somalia</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>SR</a2code>
+		<name>Suriname</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>SS</a2code>
+		<name>South Sudan</name>
+		<since>2011</since>
+		<note />
+	</country>
+	<country>
+		<a2code>ST</a2code>
+		<name>Sao Tome and Principe</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>SV</a2code>
+		<name>El Salvador</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>SX</a2code>
+		<name>Sint Maarten (Dutch part)</name>
+		<since>2010</since>
+		<note>The MF</note>
+	</country>
+	<country>
+		<a2code>SY</a2code>
+		<name>Syrian Arab Republic</name>
+		<since>1974</since>
+		<note>ISO country name follows UN designation (common name: Syria)</note>
+	</country>
+	<country>
+		<a2code>SZ</a2code>
+		<name>Swaziland</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>TC</a2code>
+		<name>Turks and Caicos Islands</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>TD</a2code>
+		<name>Chad</name>
+		<since>1974</since>
+		<note>Code taken from name in Tchad</note>
+	</country>
+	<country>
+		<a2code>TF</a2code>
+		<name>French Southern Territories</name>
+		<since>1979</since>
+		<note>Covers the French Southern and Antarctic Lands except Adélie Land. Code taken from name in Terres australes françaises</note>
+	</country>
+	<country>
+		<a2code>TG</a2code>
+		<name>Togo</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>TH</a2code>
+		<name>Thailand</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>TJ</a2code>
+		<name>Tajikistan</name>
+		<since>1992</since>
+		<note />
+	</country>
+	<country>
+		<a2code>TK</a2code>
+		<name>Tokelau</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>TL</a2code>
+		<name>Timor-Leste</name>
+		<since>2002</since>
+		<note>Name changed from East Timor (TP)</note>
+	</country>
+	<country>
+		<a2code>TM</a2code>
+		<name>Turkmenistan</name>
+		<since>1992</since>
+		<note />
+	</country>
+	<country>
+		<a2code>TN</a2code>
+		<name>Tunisia</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>TO</a2code>
+		<name>Tonga</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>TR</a2code>
+		<name>Turkey</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>TT</a2code>
+		<name>Trinidad and Tobago</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>TV</a2code>
+		<name>Tuvalu</name>
+		<since>1979</since>
+		<note />
+	</country>
+	<country>
+		<a2code>TW</a2code>
+		<name>Taiwan, Province of China</name>
+		<since>1974</since>
+		<note>Covers the current jurisdiction of the Republic of China. ISO country name follows UN designation (due to [18] (common name: Taiwan)</note>
+	</country>
+	<country>
+		<a2code>TZ</a2code>
+		<name>Tanzania, United Republic of</name>
+		<since>1974</since>
+		<note>ISO country name follows UN designation (common name: Tanzania)</note>
+	</country>
+	<country>
+		<a2code>UA</a2code>
+		<name>Ukraine</name>
+		<since>1974</since>
+		<note>Previous ISO country name: Ukrainian SSR. Code assigned as the country was already a UN member since 1945[16]</note>
+	</country>
+	<country>
+		<a2code>UG</a2code>
+		<name>Uganda</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>UM</a2code>
+		<name>United States Minor Outlying Islands</name>
+		<since>1986</since>
+		<note>Consists of nine minor insular areas of the United States: Wake Island</note>
+	</country>
+	<country>
+		<a2code>US</a2code>
+		<name>United States of America</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>UY</a2code>
+		<name>Uruguay</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>UZ</a2code>
+		<name>Uzbekistan</name>
+		<since>1992</since>
+		<note />
+	</country>
+	<country>
+		<a2code>VA</a2code>
+		<name>Holy See</name>
+		<since>1974</since>
+		<note>Covers Vatican City, territory of the Holy See Previous ISO country name: Vatican City State (Holy See)</note>
+	</country>
+	<country>
+		<a2code>VC</a2code>
+		<name>Saint Vincent and the Grenadines</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>VE</a2code>
+		<name>Venezuela, Bolivarian Republic of</name>
+		<since>1974</since>
+		<note>ISO country name follows UN designation (common name and previous ISO country name: Venezuela)</note>
+	</country>
+	<country>
+		<a2code>VG</a2code>
+		<name>Virgin Islands, British</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>VI</a2code>
+		<name>Virgin Islands, U.S.</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>VN</a2code>
+		<name>Viet Nam</name>
+		<since>1974</since>
+		<note>ISO country name follows UN designation (common name: Vietnam)</note>
+	</country>
+	<country>
+		<a2code>VU</a2code>
+		<name>Vanuatu</name>
+		<since>1980</since>
+		<note>Name changed from New Hebrides (NH)</note>
+	</country>
+	<country>
+		<a2code>WF</a2code>
+		<name>Wallis and Futuna</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>WS</a2code>
+		<name>Samoa</name>
+		<since>1974</since>
+		<note>Code taken from former name: Western Samoa</note>
+	</country>
+	<country>
+		<a2code>YE</a2code>
+		<name>Yemen</name>
+		<since>1974</since>
+		<note>Previous ISO country name: Yemen, Republic of. Code used for North Yemen before 1990</note>
+	</country>
+	<country>
+		<a2code>YT</a2code>
+		<name>Mayotte</name>
+		<since>1993</since>
+		<note />
+	</country>
+	<country>
+		<a2code>ZA</a2code>
+		<name>South Africa</name>
+		<since>1974</since>
+		<note>Code taken from name in Zuid-Afrika</note>
+	</country>
+	<country>
+		<a2code>ZM</a2code>
+		<name>Zambia</name>
+		<since>1974</since>
+		<note />
+	</country>
+	<country>
+		<a2code>ZW</a2code>
+		<name>Zimbabwe</name>
+		<since>1980</since>
+		<note>Name changed from Southern Rhodesia (RH)</note>
+	</country>
+</countries>
