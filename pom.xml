@@ -7,7 +7,7 @@
 	<packaging>war</packaging>
 	<name>rennspur</name>
 	<properties>
-		<org.apache.derby.version>10.13.1.1</org.apache.derby.version>
+		<org.apache.derby.version>10.14.2.0</org.apache.derby.version>
 		<org.glassfish.jersey.version>2.25</org.glassfish.jersey.version>
 	</properties>
 	<profiles>
